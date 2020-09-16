@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { Home } from './pages/Home.jsx';
 import { LoginSignup } from './pages/Login.jsx';
 import { About } from './pages/About.jsx';
+import { ExpApp } from './pages/ExpApp.jsx';
+import { ExpDetails } from './pages/ExpDetails.jsx';
 
 
 export function App() {
@@ -18,6 +20,8 @@ export function App() {
         </nav>
         <Switch>
           <Route path="/" component={Home} exact />
+          <Route path="/exp" component={ExpApp} exact />
+          <Route path="/exp/:id?" component={ExpDetails} exact />
           <Route path="/about" component={About} exact />
           <Route path="/login" component={LoginSignup} exact />
         </Switch>
