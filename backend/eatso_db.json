@@ -13,12 +13,7 @@
         "name": "Amazing Kit-Chen",
         "title": "Israeli authentic meal and experience",
         "imgUrl": "main.jpg",
-        "price": 100,
-        "avgRate": 5,
-        "schedule": {
-          "at": 121545645612112310,
-          "duration": 120
-        }
+        "price": 100
       },
       "status": "pending"
     }
@@ -27,7 +22,6 @@
     {
       "_id": "e101",
       "name": "Amazing Kit-Chen",
-      "type": "mediterranean",
       "title": "Israeli authentic meal and experience",
       "desc": "A casual, multi-course, gourmet Israeli- Mediterranean dinner prepared by a chef who trained in Michelin-starred restaurants in Italy and cooked in some of the best restaurants in Tel Aviv.",
       "price": 100,
@@ -105,7 +99,7 @@
           }
         }
       ],
-      "chatMsgs": [
+      "msgs": [
         {
           "from": " {mini-user}",
           "txt": "What about...",
@@ -116,7 +110,6 @@
     {
       "_id": "e102",
       "name": "Italian Nights",
-      "type": "meal",
       "title": "Summer Nights Tasting Menu",
       "desc": "A culinary gem is hidden near the Basel complex. Join Tomer, a chef, in his chic apartment in the center of Tel Aviv for a meal with flavors that will take you one evening to an unforgettable visit to Sicily. What to expect:\n• A meticulous 8-course Sicilian chef's meal\n• Israeli and international wines are served throughout the meal without restriction\n• Chef with a rich background in restaurants in Israel and around the world\n• Designed apartment, near the Basel complex in Tel Aviv",
       "price": 150,
@@ -205,7 +198,7 @@
           }
         }
       ],
-      "chatMsgs": [
+      "msgs": [
         {
           "from": " {mini-user}",
           "txt": "What about...",
@@ -216,7 +209,6 @@
     {
       "_id": "e103",
       "name": "Come Eat Lionesses",
-      "type": "meal",
       "title": "Innovative Sustainable Tasting Menu in Hackney",
       "desc": "Michelin-trained Chef Aidan Brooks, creator of Eleven98 invites you to experience his Chef's Table concept: an innovative and sustainable fine dining tasting menu in the open-plan dining space of his Shoreditch home.\nWhat to expect :  \n• An innovative, sustainable 7-course tasting menu\n• Welcome drink on arrival\n• Guests are welcome to BYOB\n• In the heart of Hackney, East London's most sought-after borough\n• 10 guests around one communal table\n• Host offers both private and open events\n• Former Head Chef at the critically acclaimed Vanilla Black",
       "price": 200,
@@ -307,7 +299,7 @@
           }
         }
       ],
-      "chatMsgs": [
+      "msgs": [
         {
           "from": " {mini-user}",
           "txt": "What about...",
@@ -318,7 +310,6 @@
     {
       "_id": "e104",
       "name": "Come BBQ in the oval office",
-      "type": "meal",
       "title": "presidential meal",
       "desc": "Calling all meat lovers! Experience a delightful authentic Uruguayan barbecue in the heart of Brooklyn made with organic, market-fresh ingredients sourced locally and imported Uruguayan beef.\n• Classic Uruguayan barbecue slowly cooked over firewood embers\n• Yerba mate crafted cocktails, guests can also BYOB\n• Communal dining for 4 to 20 people\n• Casual atmosphere: 'mi casa es tu casa' - make yourself at home!",
       "price": 250,
@@ -413,7 +404,7 @@
           }
         }
       ],
-      "chatMsgs": [
+      "msgs": [
         {
           "from": " {mini-user}",
           "txt": "What about...",
@@ -504,5 +495,4 @@
       "desc": ""
     }
   ]
-
 }
