@@ -8,18 +8,14 @@ import { About } from './pages/About.jsx';
 import { ExpApp } from './pages/ExpApp.jsx';
 import { ExpDetails } from './pages/ExpDetails.jsx';
 import { ExpEdit } from './pages/ExpEdit.jsx';
+import { Header } from './cmps/Header.jsx';
 
 
 export function App() {
   return (
     <div className="App">
       <Router>
-        <nav>
-          <Link to="/login">Login</Link> |
-          <Link to="/">User Reviews</Link> |
-          <Link to="/about">Chat Room</Link> |
-          <Link to="/exp">Experiences</Link>
-        </nav>
+        <Header />
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/exp/edit/:id?" component={ExpEdit} exact />
