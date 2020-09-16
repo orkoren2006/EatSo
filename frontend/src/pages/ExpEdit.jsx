@@ -40,6 +40,7 @@ class _ExpEdit extends Component {
         console.log(exp);
         return (
             <div>
+                EDIT
                 {/* <form className="exp-edit-form"
                     autoComplete="off" onSubmit={this.onSaveExp}>
                     <input type="hidden" name="id" value={exp._id} />
