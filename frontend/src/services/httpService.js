@@ -9,7 +9,7 @@ var axios = Axios.create({
     withCredentials: true
 });
 
-export default {
+export const httpService =  {
     get(endpoint, data) {
         return ajax(endpoint, 'GET', data)
     },

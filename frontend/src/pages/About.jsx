@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import socketService from '../services/socketService';
-export default class About extends Component {
+import { socketService } from '../services/socketService.js';
+
+export class About extends Component {
   state = {
     msg: { from: 'Me', txt: '' },
     msgs: [],
@@ -25,7 +26,7 @@ export default class About extends Component {
   changeTopic = () => {
     socketService.emit('chat topic', this.state.topic);
   };
-  
+
   sendMsg = ev => {
     ev.preventDefault();
     socketService.emit('chat newMsg', this.state.msg.txt);

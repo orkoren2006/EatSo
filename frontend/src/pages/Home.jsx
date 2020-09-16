@@ -5,7 +5,7 @@ import { loadReviews, addReview } from '../actions/reviewActions.js';
 import { loadUsers } from '../actions/userActions.js';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
+class _Home extends Component {
   state = {
     reviewToEdit: {
       txt: '',
@@ -94,4 +94,4 @@ const mapDispatchToProps = {
   addReview
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export const Home =  connect(mapStateToProps, mapDispatchToProps)(_Home);

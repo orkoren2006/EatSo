@@ -6,7 +6,7 @@ const initialState = {
   users: []
 };
 
-export default function(state = initialState, action = {}) {
+export function userReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_USER':
       return { ...state, loggedInUser: action.user };

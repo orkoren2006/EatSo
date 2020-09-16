@@ -1,4 +1,4 @@
-import reviewService from '../services/reviewService';
+import { reviewService } from '../services/reviewService';
 
 export function loadReviews() {
   return async dispatch => {

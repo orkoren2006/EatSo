@@ -1,6 +1,6 @@
-import httpService from './httpService';
+import { httpService } from './httpService';
 
-export default {
+export const reviewService = {
   add,
   query,
   remove
@@ -12,14 +12,14 @@ export default {
 
 
 function query(filterBy) {
-  var queryStr = (!filterBy)? '' : `?name=${filterBy.name}&sort=anaAref`
+  var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
   return httpService.get(`review${queryStr}`);
 }
 
 function remove(reviewId) {
   return httpService.delete(`review/${reviewId}`);
 }
-async function add(review) {
-  const addedReview = await httpService.post(`review`, review);
-  return addedReview
+
+function add(review) {
+  return httpService.post(`review`, review);
 }
