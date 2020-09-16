@@ -8,7 +8,7 @@
         "imgUrl": "/img/img2.jpg"
       },
       "numOfGuests": 4,
-      "experience": {
+      "exp": {
         "_id": "e101",
         "name": "Amazing Kit-Chen",
         "title": "Israeli authentic meal and experience",
@@ -23,7 +23,7 @@
       "status": "pending"
     }
   ],
-  "experience": [
+  "exp": [
     {
       "_id": "e101",
       "name": "Amazing Kit-Chen",
@@ -504,5 +504,5 @@
       "desc": ""
     }
   ]
-  
+
 }

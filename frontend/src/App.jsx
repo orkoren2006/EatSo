@@ -20,8 +20,6 @@ export function App() {
           <Route path="/" component={Home} exact />
           <Route path="/about" component={About} exact />
           <Route path="/login" component={LoginSignup} exact />
-          {/* <Route path="/" component={About} exact/> */}
-          {/* <Route path="/" component={Home} exact/> */}
         </Switch>
       </Router>
     </div>
