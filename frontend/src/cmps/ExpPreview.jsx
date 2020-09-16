@@ -6,7 +6,7 @@ export function ExpPreview (props) {
     const { exp } = props
         return (
             <div className="exp-card">
-                <Link to={`/exp/edit/${exp._id}`}>
+                <Link to={`/exp/${exp._id}`}>
                 <img src={exp.imgUrls[0]}></img>
                 <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
                 <h3>{exp.name}</h3>
