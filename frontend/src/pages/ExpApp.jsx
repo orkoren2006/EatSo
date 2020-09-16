@@ -18,7 +18,7 @@ class _ExpApp extends Component {
                 {/* <ExpList /> */}
                 <ul>
                     {
-                        exps.map(exp => <li key={exp._id}>{exp.name}</li>)
+                        exps.map(exp => <li key={exp._id}>{exp.name} <img src={exp.imgUrls[0]} alt="popo"></img></li>)
                     }
                 </ul>
             </div>
