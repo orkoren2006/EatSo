@@ -42,7 +42,7 @@ class _ExpEdit extends Component {
             <div>
                 {/* <form className="exp-edit-form"
                     autoComplete="off" onSubmit={this.onSaveExp}>
-                    {/* <input type="hidden" name="id" value={exp._id} /> */}
+                    <input type="hidden" name="id" value={exp._id} />
                     <label htmlFor="exp-name">
                         Name:
                         <TextField type="text" id="exp-name" name="name"
