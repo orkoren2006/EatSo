@@ -6,15 +6,14 @@ import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 
 class _ExpEdit extends Component {
     state = {
-        exp: null
+        exp: ''
     }
 
     async componentDidMount() {
         const expId = this.props.match.params.id;
-        console.log(expId);
         if (expId) {
             const exp = await expService.getById(expId)
-            this.setState({ exp })
+            this.setState({ exp }, () => console.log('from mount', this.state.exp))
         }
     }
 
@@ -37,11 +36,11 @@ class _ExpEdit extends Component {
 
     render() {
         const { exp } = this.state
-        console.log(exp);
+        console.log(exp.imgUrls);
         return (
             <div>
                 EDIT
-                {/* <form className="exp-edit-form"
+                <form className="exp-edit-form flex column align-center justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
                     <input type="hidden" name="id" value={exp._id} />
                     <label htmlFor="exp-name">
@@ -72,8 +71,8 @@ class _ExpEdit extends Component {
                             value={exp.price} placeholder="Enter experience price"
                             onChange={this.handleChange} />
                     </label>
+                    <span style={{ display: "inline" }}>Description:</span>
                     <label htmlFor="exp-desc">
-                        Description:
                         <TextareaAutosize type="text" id="exp-description" name="desc"
                             value={exp.desc} placeholder="Enter experience description"
                             onChange={this.handleChange} />
@@ -81,8 +80,19 @@ class _ExpEdit extends Component {
                     <label> Choose your exp image!
                         <input onChange={this.uploadImg} type="file" />
                     </label>
+                    {exp.imgUrls && <section className="edit-gallery">
+                        <ul>
+                            {exp.imgUrls.map(url => {
+                                return <li key={exp._id}>
+                                    <img src={url} alt="##" />
+                                    <Button variant="contained" color="primary" 
+                                    onClick={this.onSaveToy}>X</Button>
+                                </li>
+                            })}
+                        </ul>
+                    </section>}
                     <Button variant="contained" color="primary" onClick={this.onSaveToy}>Save</Button>
-                </form> */}
+                </form>
             </div>
         )
     }
@@ -90,7 +100,7 @@ class _ExpEdit extends Component {
 
 const mapStateToProps = state => {
     return {
-
+        exps: state.exp.exps
     };
 };
 const mapDispatchToProps = {
