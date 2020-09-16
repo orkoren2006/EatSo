@@ -5,19 +5,22 @@ import { loadExps } from '../store/actions/expAction';
 
 class _ExpApp extends Component {
 
-    state = {
-        exps: null
-    }
-
-    async componentDidMount(){
-        const exps = await this.props.loadExps()
-        console.log(exps)
+    async componentDidMount() {
+        await this.props.loadExps();
+        console.log(this.props.exps);
         // this.setState({exps}, () => console.log(this.state.exps))
     }
     render() {
+        const { exps } = this.props;
+        if(!exps) return <div></div>
         return (
             <div>
-                App
+                {/* <ExpList /> */}
+                <ul>
+                    {
+                        exps.map(exp => <li key={exp._id}>{exp.name}</li>)
+                    }
+                </ul>
             </div>
         )
     }
@@ -25,11 +28,11 @@ class _ExpApp extends Component {
 
 const mapStateToProps = state => {
     return {
-        // exp: state.expReducer.exps
+        exps: state.exp.exps
     };
-  };
-  const mapDispatchToProps = {
+};
+const mapDispatchToProps = {
     loadExps
-  };
-  
-  export const ExpApp =  connect(mapStateToProps, mapDispatchToProps)(_ExpApp);
+};
+
+export const ExpApp = connect(mapStateToProps, mapDispatchToProps)(_ExpApp);
