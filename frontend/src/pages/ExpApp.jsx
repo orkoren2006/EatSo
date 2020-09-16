@@ -15,11 +15,11 @@ class _ExpApp extends Component {
         return (
             <div>
                 
-                {/* <ul>
+                <ul>
                     {
                         exps.map(exp => <li key={exp._id}>{exp.name} <img src={exp.imgUrls[0]} alt="popo"></img></li>)
                     }
-                </ul> */}
+                </ul>
             </div>
         )
     }
