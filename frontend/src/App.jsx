@@ -22,9 +22,9 @@ export function App() {
         </nav>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/exp" component={ExpApp} exact />
-          <Route path="/exp/:id" component={ExpDetails} exact />
           <Route path="/exp/edit/:id?" component={ExpEdit} exact />
+          <Route path="/exp/:id" component={ExpDetails} exact />
+          <Route path="/exp" component={ExpApp} exact />
           <Route path="/about" component={About} exact />
           <Route path="/login" component={LoginSignup} exact />
         </Switch>
