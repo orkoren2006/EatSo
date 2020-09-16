@@ -7,7 +7,7 @@ import {
   login,
   logout,
   signup
-} from '../actions/userActions';
+} from '../store/actions/userActions';
 
 class _LoginSignup extends Component {
   state = {
