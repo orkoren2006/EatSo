@@ -27,6 +27,183 @@
     {
       "_id": "e101",
       "name": "Amazing Kit-Chen",
+      "type": "mediterranean",
+      "title": "Israeli authentic meal and experience",
+      "desc": "A casual, multi-course, gourmet Israeli- Mediterranean dinner prepared by a chef who trained in Michelin-starred restaurants in Italy and cooked in some of the best restaurants in Tel Aviv.",
+      "price": 100,
+      "capacity": {
+        "min": 8,
+        "max": 20
+      },
+      "schedule": {
+        "at": 121545645612112310,
+        "duration": 120 //minutes
+      },
+      "owner": {
+        "_id": "u101",
+        "fullName": "Chen kitty",
+        "imgUrl": "/img/img1.jpg"
+      },
+      "tags": [
+        "vegan",
+        "vegge",
+        "gluten free",
+        "mediterranean"
+      ],
+      "imgUrls": [
+        "main.jpg",
+        "more1.jpg",
+        "more2.jpg"
+      ],
+      "location": {
+        "name": "Tel Aviv",
+        "lat": 32.109333,
+        "lng": 34.855499
+      },
+      "menu": {
+        "appetizer": [
+          {
+            "title": "Jerusalem pretzel",
+            "desc": "Jerusalem style pretzel with sesame and Za’atar"
+          }
+        ],
+        "mainCourse": [
+          {
+            "title": "Kubenia",
+            "desc": "hand chopped tenderloin with bulgur, smoked onion and almonds"
+          }
+        ],
+        "desserts": [
+          {
+            "title": "Basbusa",
+            "desc": "semolina cake with goat cheese cream, walnuts honey and cinnamon"
+          }
+        ],
+        "drinks": [
+          {
+            "title": "Har Hermon",
+            "desc": "merlot wine"
+          }
+        ]
+      },
+      "participants": [
+        {
+          "_id": "u104",
+          "fullName": "Avi Nusbaum",
+          "imgUrl": "/img/avi.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "madeId",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u103",
+            "fullName": "Michal Ansky",
+            "imgUrl": "/img/michal.jpg"
+          }
+        }
+      ],
+      "chatMsgs": [
+        {
+          "from": " {mini-user}",
+          "txt": "What about...",
+          "sentAt": 123456
+        }
+      ]
+    },
+    {
+      "_id": "e102",
+      "name": "Amazing Kit-Chen",
+      "type": "meal",
+      "title": "Israeli authentic meal and experience",
+      "desc": "here desc ....",
+      "price": 100,
+      "capacity": {
+        "min": 8,
+        "max": 20
+      },
+      "schedule": {
+        "at": 121545645612112310,
+        "duration": 120 //minutes
+      },
+      "owner": {
+        "_id": "u101",
+        "fullName": "Chen kitty",
+        "imgUrl": "/img/img1.jpg"
+      },
+      "tags": [
+        "vegan",
+        "vegge",
+        "gluten free"
+      ],
+      "imgUrls": [
+        "main.jpg",
+        "more1.jpg",
+        "more2.jpg"
+      ],
+      "location": {
+        "name": "Paris",
+        "lat": 32.9898,
+        "lng": 12.28
+      },
+      "menu": {
+        "appetizer": [
+          {
+            "title": "Batata",
+            "desc": "description aboute the batata"
+          }
+        ],
+        "mainCourse": [
+          {
+            "title": "Beef",
+            "desc": "description aboute the beef"
+          }
+        ],
+        "desserts": [
+          {
+            "title": "Creame Bruelle",
+            "desc": "description aboute the creame bruelle"
+          }
+        ],
+        "drinks": [
+          {
+            "title": "Coca-Cola",
+            "desc": "<optional>"
+          }
+        ]
+      },
+      "participants": [
+        {
+          "_id": "u102",
+          "fullName": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "madeId",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user2",
+            "imgUrl": "/img/img2.jpg"
+          }
+        }
+      ],
+      "chatMsgs": [
+        {
+          "from": " {mini-user}",
+          "txt": "What about...",
+          "sentAt": 123456
+        }
+      ]
+    },
+    {
+      "_id": "e103",
+      "name": "Amazing Kit-Chen",
       "type": "meal",
       "title": "Israeli authentic meal and experience",
       "desc": "here desc ....",
@@ -117,25 +294,44 @@
     {
       "_id": "u101",
       "fullName": "Chen kitty",
-      "imgUrl": "/img/img1.jpg",
+      "imgUrl": "/img/chen.jpg",
       "isAdmin": false,
       "userName": "Chenkitty",
       "email": "Chenkitty@email.com",
       "password": "secret",
-      "desc": "description about Chen Kitty :)"
+      "desc": "Chen has been hosting in her kitchen ever since EatSo was launched. She fell in love with the concept of inviting people who are passioante about food and claims that there's nothing more fulfilling than cooking for people who share the same love with her"
       // "isHost" : true - needed?
       // "": ""
     },
     {
       "_id": "u102",
-      "fullName": "User 2",
-      "imgUrl": "/img/img2.jpg",
+      "fullName": "Haim Cohen",
+      "imgUrl": "/img/haim.jpg",
       "isAdmin": false,
-      "userName": "user2",
-      "email": "user2@email.com",
+      "userName": "haimcohen",
+      "email": "haim@email.com",
       "password": "secret",
-      "desc": "description about the user2"
-      // "isHost" : true - needed?
+      "desc": "Haim has been known for his authentic oriental cuisine for years. He's an awarded top-chef in Israel and began his journey with EatSo 4 years ago"
+    },
+    {
+      "_id": "u103",
+      "fullName": "Michal Ansky",
+      "imgUrl": "/img/michal.jpg",
+      "isAdmin": false,
+      "userName": "michala",
+      "email": "michal_ansky@email.com",
+      "password": "secret",
+      "desc": "The passion of Michal for food began long time ago when she used to watch her grandmother cooking. Ever since she's been cooking herself and invite you all to an unforgattable evening in her kitchen"
+    },
+    {
+      "_id": "u104",
+      "fullName": "Avi Nusbaum",
+      "imgUrl": "/img/avi.jpg",
+      "isAdmin": false,
+      "userName": "avinus",
+      "email": "avinus@email.com",
+      "password": "secret",
+      "desc": ""
     }
   ]
 }

@@ -1,0 +1,141 @@
+{
+  "booking": [
+    {
+      "_id": "b1225",
+      "guest": {
+        "_id": "u102",
+        "fullName": "user2",
+        "imgUrl": "/img/img2.jpg"
+      },
+      "numOfGuests": 4,
+      "experience": {
+        "_id": "e101",
+        "name": "Amazing Kit-Chen",
+        "title": "Israeli authentic meal and experience",
+        "imgUrl": "main.jpg",
+        "price": 100,
+        "avgRate": 5,
+        "schedule": {
+          "at": 121545645612112310,
+          "duration": 120 //minutes
+        }
+      },
+      "status": "pending"
+    }
+  ],
+  "experience": [
+    {
+      "_id": "e101",
+      "name": "Amazing Kit-Chen",
+      "type": "meal",
+      "title": "Israeli authentic meal and experience",
+      "desc": "here desc ....",
+      "price": 100,
+      "capacity": {
+        "min": 8,
+        "max": 20
+      },
+      "schedule": {
+        "at": 121545645612112310,
+        "duration": 120 //minutes
+      },
+      "owner": {
+        "_id": "u101",
+        "fullName": "Chen kitty",
+        "imgUrl": "/img/img1.jpg"
+      },
+      "tags": [
+        "vegan",
+        "vegge",
+        "gluten free"
+      ],
+      "imgUrls": [
+        "main.jpg",
+        "more1.jpg",
+        "more2.jpg"
+      ],
+      "location": {
+        "name": "Paris",
+        "lat": 32.9898,
+        "lng": 12.28
+      },
+      "menu": {
+        "appetizer": [
+          {
+            "title": "Batata",
+            "desc": "description aboute the batata"
+          }
+        ],
+        "mainCourse": [
+          {
+            "title": "Beef",
+            "desc": "description aboute the beef"
+          }
+        ],
+        "desserts": [
+          {
+            "title": "Creame Bruelle",
+            "desc": "description aboute the creame bruelle"
+          }
+        ],
+        "drinks": [
+          {
+            "title": "Coca-Cola",
+            "desc": "<optional>"
+          }
+        ]
+      },
+      "participants": [
+        {
+          "_id": "u102",
+          "fullName": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "madeId",
+          "txt": "a great place to dine..",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user2",
+            "imgUrl": "/img/img2.jpg"
+          }
+        }
+      ],
+      "chatMsgs": [
+        {
+          "from": " {mini-user}",
+          "txt": "What about...",
+          "sentAt": 123456
+        }
+      ]
+    }
+  ],
+  "user": [
+    {
+      "_id": "u101",
+      "fullName": "Chen kitty",
+      "imgUrl": "/img/img1.jpg",
+      "isAdmin": false,
+      "userName": "Chenkitty",
+      "email": "Chenkitty@email.com",
+      "password": "secret",
+      "desc": "description about Chen Kitty :)"
+      // "isHost" : true - needed?
+      // "": ""
+    },
+    {
+      "_id": "u102",
+      "fullName": "User 2",
+      "imgUrl": "/img/img2.jpg",
+      "isAdmin": false,
+      "userName": "user2",
+      "email": "user2@email.com",
+      "password": "secret",
+      "desc": "description about the user2"
+      // "isHost" : true - needed?
+    }
+  ]
+}
