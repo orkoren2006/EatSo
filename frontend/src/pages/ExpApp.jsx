@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadExps, removeExp } from '../store/actions/expAction';
 
-
 class _ExpApp extends Component {
 
     async componentDidMount() {
         await this.props.loadExps();
-        console.log(this.props.exps);
         // this.setState({exps}, () => console.log(this.state.exps))
     }
 
