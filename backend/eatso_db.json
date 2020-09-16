@@ -54,6 +54,7 @@
       ],
       "location": {
         "address": "Shabazi St 10, Tel Aviv-Yafo",
+        "city": "Tel Aviv-Yafo",
         "lat": 32.061149,
         "lng": 34.763583
       },
@@ -135,12 +136,13 @@
         "Star Chef"
       ],
       "imgUrls": [
-        "main.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg",
         "more1.jpg",
         "more2.jpg"
       ],
       "location": {
         "address": "Kikar Kdumim 10, Tel Aviv-Yafo",
+        "city": "Tel Aviv-Yafo",
         "lat": 32.054514,
         "lng": 34.751456
       },
@@ -235,12 +237,13 @@
         "vegan"
       ],
       "imgUrls": [
-        "main.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/pizza-placed-wooden-plate_1150-24398_ufcxoe.jpg",
         "more1.jpg",
         "more2.jpg"
       ],
       "location": {
         "address": "10 Downing St, Westminster, London SW1A 2AA, United Kingdom",
+        "city": "London",
         "lat": 51.503348,
         "lng": -0.127624
       },
@@ -336,12 +339,13 @@
         "meat"
       ],
       "imgUrls": [
-        "main.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/beautiful-girl-with-long-hair-is-sittting-table-terrace-cafe-she-wears-white-dress-with-bare-shoulders-red-lipstick-she-is-smiling-camera_197531-663_tsieui.jpg",
         "more1.jpg",
         "more2.jpg"
       ],
       "location": {
         "address": "1600 Pennsylvania Avenue NW, Washington, DC 20500, United States",
+        "city": "Washington, DC",
         "lat": 38.897466, 
         "lng": -77.036580
       },

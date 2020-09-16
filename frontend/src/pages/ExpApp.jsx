@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadExps, removeExp } from '../store/actions/expAction';
+import { ExpList } from '../cmps/ExpList';
 
 class _ExpApp extends Component {
 
@@ -14,10 +15,9 @@ class _ExpApp extends Component {
         if (!exps) return <div></div>
         return (
             <div>
-                
                 <ul>
                     {
-                        exps.map(exp => <li key={exp._id}>{exp.name} <img src={exp.imgUrls[0]} alt="popo"></img></li>)
+                        <ExpList exps={exps} />
                     }
                 </ul>
             </div>

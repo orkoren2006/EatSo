@@ -1,39 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { loadExps, removeExp } from '../store/actions/expAction';
+import React from 'react'
+import {ExpPreview} from './ExpPreview'
 
-class _ExpList extends Component {
 
-    async componentDidMount() {
-        await this.props.loadExps();
-        // this.setState({exps}, () => console.log(this.state.exps))
-    }
+export function ExpList (props) {
 
-    render() {
-        const { exps } = this.props;
-        if (!exps) return <div></div>
         return (
-            <div>
+            <div className="grid-container">
                 
-                <ul>
-                    {
-                        exps.map(exp => <li key={exp._id}>{exp.name} <img src={exp.imgUrls[0]} alt="popo"></img></li>)
-                    }
-                </ul>
+                    {props.exps.map(exp => <ExpPreview key={exp._id} exp={exp} />)}
             </div>
         )
     }
-}
 
-const mapStateToProps = state => {
-    return {
-        exps: state.exp.exps
-    };
-};
-
-const mapDispatchToProps = {
-    loadExps,
-    removeExp
-};
-
-export const ExpList = connect(mapStateToProps, mapDispatchToProps)(_ExpList);
