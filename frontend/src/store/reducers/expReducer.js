@@ -4,15 +4,15 @@ const initialState = {
   
   export function expReducer (state = initialState, action = {}) {
     switch (action.type) {
-      case 'SET_EVENTS':
+      case 'SET_EXPS':
         return { ...state, exps: action.exps };
-      case 'ADD_EVENT':
+      case 'ADD_EXP':
         return { ...state, exps: [...state.exps, action.exps] };
-      case 'UPDATE_EVENT':
+      case 'UPDATE_EXP':
         return {
           ...state,
-          exps: state.exps.map(eventush =>
-            eventush._id === action.exps._id ? action.exps : exps
+          exps: state.exps.map(exp =>
+            exp._id === action.exp._id ? action.exp : exp
           )};
       default:
         return state;
