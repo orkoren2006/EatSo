@@ -7,6 +7,7 @@ import { LoginSignup } from './pages/Login.jsx';
 import { About } from './pages/About.jsx';
 import { ExpApp } from './pages/ExpApp.jsx';
 import { ExpDetails } from './pages/ExpDetails.jsx';
+import { ExpEdit } from './pages/ExpEdit.jsx';
 
 
 export function App() {
@@ -22,7 +23,8 @@ export function App() {
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/exp" component={ExpApp} exact />
-          <Route path="/exp/:id?" component={ExpDetails} exact />
+          <Route path="/exp/:id" component={ExpDetails} exact />
+          <Route path="/exp/edit/:id?" component={ExpEdit} exact />
           <Route path="/about" component={About} exact />
           <Route path="/login" component={LoginSignup} exact />
         </Switch>
