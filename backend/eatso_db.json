@@ -45,9 +45,12 @@
         "mediterranean"
       ],
       "imgUrls": [
-        "main.jpg",
-        "more1.jpg",
-        "more2.jpg"
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/group-friends-eating-restaurant_23-2148006646_gdk4co.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/pizza-placed-wooden-plate_1150-24398_ufcxoe.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/beautiful-girl-with-long-hair-is-sittting-table-terrace-cafe-she-wears-white-dress-with-bare-shoulders-red-lipstick-she-is-smiling-camera_197531-663_tsieui.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chef-cooking-food-restaurant-kitchen_53876-67_ucxolu.jpg"
+
       ],
       "location": {
         "address": "Shabazi St 10, Tel Aviv-Yafo",

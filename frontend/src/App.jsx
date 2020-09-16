@@ -16,7 +16,7 @@ export function App() {
         <nav>
           <Link to="/login">Login</Link> |
           <Link to="/">User Reviews</Link> |
-          <Link to="/about">Chat Room</Link>
+          <Link to="/about">Chat Room</Link> |
           <Link to="/exp">Experiences</Link>
         </nav>
         <Switch>

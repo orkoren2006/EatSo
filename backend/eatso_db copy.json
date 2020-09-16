@@ -37,7 +37,7 @@
       },
       "schedule": {
         "at": 121545645612112310,
-        "duration": 120 //minutes
+        "duration": 120 
       },
       "owner": {
         "_id": "u101",
