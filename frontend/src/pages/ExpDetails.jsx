@@ -21,7 +21,7 @@ class _ExpDetails extends Component {
         if (!exp) return <div> </div>
         return (
             <div className="exp-details">
-                <section className="exp-img">
+                <section className="exp-imgs">
                     {
                         exp.imgUrls.map((imgUrl, idx) => <img key={`img-${idx}-${exp._id}`} src={imgUrl} alt="img" />)
                     }
