@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { GoogleMap } from '../cmps/GoogleMap';
 import { expService } from '../services/expService';
 
 class _ExpDetails extends Component {
@@ -12,13 +13,14 @@ class _ExpDetails extends Component {
         const id = this.props.match.params.id;
         const exp = await expService.getById(id);
         if (!exp) return;
-        this.setState({ exp }, () => console.log(this.state.exp))
+        this.setState({ exp })
     }
 
 
     render() {
         const { exp } = this.state;
         if (!exp) return <div> </div>
+        const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container">
                 <section className="exp-imgs">
@@ -37,10 +39,11 @@ class _ExpDetails extends Component {
                         <p>{exp.desc}</p>
                     </section>
                     <section className="exp-booking">
-                        Price: ${exp.price}
+                        <span> Price: ${exp.price}</span>
                         <button>Book!</button>
                     </section>
                 </section>
+                <GoogleMap style={{ width: '80%', height: 350 }} center={center} />
             </div>
         )
     }
