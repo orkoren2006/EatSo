@@ -1,13 +1,21 @@
 .exp-edit-form{
-    text-align: center !important;
 
+    * {
+        padding: 10px;
+        margin: 10px;
+    }
+    text-align: center !important;
+    list-style: none;
     #exp-description{
         width: 80vw;
     }
 
+    input {
+        width: 60vw
+    }
+
     .edit-gallery{
-        grid-column: auto;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         grid-gap: 20px;
     }
 }

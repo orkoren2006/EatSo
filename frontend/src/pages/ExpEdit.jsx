@@ -186,11 +186,10 @@ class _ExpEdit extends Component {
                             value={exp.desc} placeholder="Enter experience description"
                             onChange={this.handleChange} />
                     </label>
-                    <label> Choose your exp image!
+                    <label> Choose your EXPERIENCE imageד!
                         <input onChange={this.uploadImg} type="file" />
                     </label>
-                    {exp.imgUrls && <section className="edit-gallery grid">
-                        <ul>
+                    {exp.imgUrls && <section className="edit-gallery grid">   
                             {exp.imgUrls.map((url, idx) => {
                                 return <li key={`img-${idx}-${exp._id}`}>
                                     <img src={url} alt="##" />
@@ -198,10 +197,10 @@ class _ExpEdit extends Component {
                                         onClick={() => this.onRemoveImg(idx)}>X</Button>
                                 </li>
                             })}
-                        </ul>
                     </section>}
                     {this.state.editMenu &&
-                        <MenuEdit menu={this.state.exp.menu} onSaveMenu={this.setMenu}/>}
+                        <MenuEdit menu={this.state.exp.menu} 
+                        onSaveMenu={this.setMenu}/>}
                     <Button variant="contained" color="primary" onClick={this.onEditMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
                     <Button variant="contained" color="primary" onClick={this.onSaveExp}>Save</Button>
                 </form>

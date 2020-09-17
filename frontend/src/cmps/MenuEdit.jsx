@@ -9,6 +9,29 @@ export class MenuEdit extends Component {
     componentDidMount() {
         console.log(this.state.menu);
     }
+
+    handleChange = ({target}) => {
+        // const idx = target.datasetidx
+        // const idx = +target.id.split('-')[1];
+        // const [field, subField] = target.name.split('-')
+        // const value = (target.type === 'number') ? +target.value : target.value
+        // const newDish = this.state.menu[field]
+        // // newDish[idx].
+        // console.log(newDish);
+        // console.log(field, subField, value);
+        // this.setState(prevState => {
+        //     return {
+        //         menu: {
+        //             ...prevState.menu,
+        //             [field]: {
+        //                 ...prevState.menu[field],
+        //                 [subField]: newDish
+        //             }
+        //         }
+        //     }
+        // }, () => console.log('from handle change', this.state))
+    }
+
     render() {
         const { menu } = this.state
         return (
@@ -17,7 +40,7 @@ export class MenuEdit extends Component {
                 <label htmlFor="menu-appetizer">
                     {menu.appetizer.map((app, idx) => {
                         return (
-                            <section className="appetizer">
+                            <section className="appetizer" key="app">
                                 <TextField data-idx={idx} autoComplete="off" type="text"
                                     id="menu-appetizer-title" name="appetizer-title"
                                     value={app.title} placeholder="Title"
@@ -25,7 +48,8 @@ export class MenuEdit extends Component {
                                 <TextField data-idx={idx} autoComplete="off" type="text"
                                     id="menu-appetizer-desc" name="appetizer-desc"
                                     value={app.desc} placeholder="Desc"
-                                    onChange={this.handleChange} />
+                                    onChange={(ev)=>this.handleChange(ev)} />
+                                <Button variant="contained" color="primary" onClick={this.addInput}>+</Button>
                             </section>
                         )
                     })}
@@ -34,7 +58,7 @@ export class MenuEdit extends Component {
                 <label htmlFor="menu-main">
                     {menu.mainCourse.map((main, idx) => {
                         return (
-                            <section className="main">
+                            <section className="main" key="main">
                                 <TextField data-idx={idx} autoComplete="off" type="text"
                                     id="menu-main-title" name="main-title"
                                     value={main.title} placeholder="Title"
@@ -51,8 +75,8 @@ export class MenuEdit extends Component {
                 <label htmlFor="menu-desserts">
                     {menu.desserts.map((dess, idx) => {
                         return (
-                            <section className="desserts">
-                                <TextField data-idx={idx} autoComplete="off" type="text"
+                            <section className="desserts" key="desserts">
+                                <TextField data-tag={idx} autoComplete="off" type="text"
                                     id="menu-desserts-title" name="desserts-title"
                                     value={dess.title} placeholder="Title"
                                     onChange={this.handleChange} />
@@ -68,11 +92,11 @@ export class MenuEdit extends Component {
                 <label htmlFor="menu-drinks">
                     {menu.drinks.map((drink, idx) => {
                         return (
-                            <section className="drinks">
-                                <TextField data-idx={idx} autoComplete="off" type="text"
-                                    id="menu-drinks-title" name="drinks-title"
+                            <section className="drinks" key="drinks">
+                                <TextField autoComplete="off" type="text"
+                                    id={`idx-${idx}`} name="drinks-title"
                                     value={drink.title} placeholder="Title"
-                                    onChange={this.handleChange} />
+                                    onChange={(ev) => this.handleChange(ev)} />
                                 <TextField data-idx={idx} autoComplete="off" type="text"
                                     id="menu-drinks-title" name="drinks-desc"
                                     value={drink.desc} placeholder="Desc"
