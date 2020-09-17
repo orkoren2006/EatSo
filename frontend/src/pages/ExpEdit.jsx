@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { expService } from '../services/expService';
 import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 import { cloudinaryService } from '../services/cloudinary-service';
+import DateFnsUtils from '@date-io/date-fns'; // choose your lib
+import {
+    DateTimePicker,
+    MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 
 
 class _ExpEdit extends Component {
@@ -41,40 +46,52 @@ class _ExpEdit extends Component {
         }, () => console.log('from upload', this.state.exp))
     }
 
-    handleChange = ({ target }) => {
-        let field = target.name
-        const value = (target.type === 'number') ? +target.value : target.value
-        if (value < 0) return
-        console.log('handle change\n', 'field', field, 'val', value);
-        if (field.includes('capacity')) {
-            field = (field.includes('min')) ? 'min' : 'max';
-            this.setState(prevState => {
-                return {
-                    exp: {
-                        ...prevState.exp,
-                        capacity: {
-                            ...prevState.exp.capacity,
+
+    handleChange = (ev) => {
+        if (ev.target) {
+            let field = ev.target.name
+            const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value
+            if (value < 0) return
+            if (field.includes('capacity')) {
+                field = (field.includes('min')) ? 'min' : 'max';
+                this.setState(prevState => {
+                    return {
+                        exp: {
+                            ...prevState.exp,
+                            capacity: {
+                                ...prevState.exp.capacity,
+                                [field]: value
+                            }
+                        }
+                    }
+                }, (console.log(this.state.exp)))
+            } else { 
+                this.setState(prevState => {
+                    return {
+                        exp: {
+                            ...prevState.exp,
                             [field]: value
                         }
                     }
-                }
-            }, (console.log(this.state.exp)))
-        } else {
-            this.setState(prevState => {
-                return {
-                    exp: {
-                        ...prevState.exp,
-                        [field]: value
-                    }
-                }
-            })
+                })
+            }
+        } else { // for time and date picker
+            const time = Date.parse(ev)
+            console.log(time);
         }
+
+    }
+
+    getTimeDate(){
+        // const msec = this.state.exp.schedule.at
+        console.log(new Date(this.state.exp.schedule.at));
+        // const time = new Date(msec)
+        // const timeDate = (this.state.exp.schedule.at) ? new Date(this.state.exp.schedule.at):''
+        return (this.state.exp.schedule.at) ? new Date(this.state.exp.schedule.at):''
     }
 
     render() {
         const { exp } = this.state
-        console.log(exp);
-        // const capacity = (exp) ? { min: exp.capacity.min, max: exp.capacity.max } : { min: '', max: '' }
 
         return (
             <div>
@@ -110,10 +127,19 @@ class _ExpEdit extends Component {
                             value={exp.price} placeholder="Enter experience price"
                             onChange={this.handleChange} />
                     </label>
-                    <label htmlFor="exp-price">
+                    <label htmlFor="exp-address">
                         Address:
                         <TextField type="text" id="exp-address" name="address"
-                            value={exp.address} placeholder="Enter experience address"
+                            value={exp.location.address} placeholder="Enter experience address"
+                            onChange={this.handleChange} />
+                    </label>
+                    <MuiPickersUtilsProvider value={this.getTimeDate()} utils={DateFnsUtils}>
+                        <DateTimePicker onChange={this.handleChange} />
+                    </MuiPickersUtilsProvider>
+                    <label htmlFor="exp-duration">
+                        Duration:
+                        <TextField type="text" id="exp-duration" name="duration"
+                            value={exp.schedule.duration} placeholder="Enter experience duration"
                             onChange={this.handleChange} />
                     </label>
                     <span style={{ display: "inline" }}>Description:</span>
