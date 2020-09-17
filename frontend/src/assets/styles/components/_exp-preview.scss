@@ -18,25 +18,22 @@
 
 .cont {
     justify-content: flex-end;
+    overflow       : hidden;
 }
 
 .img-in-div {
     z-index : 1;
-    position: relative;    
+    position: relative;
+
 }
 
-.img-in-div {
-    // height: 300px; /* [1.1] Set it as per your need */
-    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
-  }
-
-  .img-in-div img {
+.cont img {
     transition: transform .5s ease;
-  }
+}
 
-.img-in-div:hover img {
+.cont:hover img {
     transform: scale(1.5);
-  }
+}
 
 .div-in-image {
     background-color: white;
@@ -51,7 +48,8 @@
 
 desc {
 
-    p,h3 {
+    p,
+    h3 {
         padding-left: 5px;
     }
 }
