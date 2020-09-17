@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { expService } from '../services/expService';
 import { TextField, Button, TextareaAutosize } from '@material-ui/core';
+import { cloudinaryService } from '../services/cloudinary-service';
 
 
 class _ExpEdit extends Component {
@@ -13,12 +14,30 @@ class _ExpEdit extends Component {
         const expId = this.props.match.params.id;
         if (expId) {
             const exp = await expService.getById(expId)
-            this.setState({ exp }, () => console.log('from mount', this.state.exp))
+            this.setState({ exp })
         }
     }
 
     onSaveExp = () => {
-        console.log('save');
+        console.log(this.state.exp);
+    }
+
+    onRemoveImg = (imgIdx) => {
+        const imgUrls = this.state.exp.imgUrls.splice(imgIdx,1)
+        this.setState({...this.state, imgUrls: {imgUrls}})
+    }
+
+    uploadImg = async (ev) => {
+        const clousinaryUrl = await cloudinaryService.uploadImg(ev)
+        const imgUrl = clousinaryUrl.secure_url;
+        this.setState(prevState => {
+            return {
+                exp: {
+                    ...prevState.exp,
+                    imgUrls: [...this.state.exp.imgUrls, imgUrl]
+                }
+            }
+        },()=>console.log('from upload' ,this.state.exp))
     }
 
     handleChange = ({ target }) => {
@@ -36,7 +55,6 @@ class _ExpEdit extends Component {
 
     render() {
         const { exp } = this.state
-        console.log(exp.imgUrls);
         return (
             <div>
                 EDIT
@@ -82,16 +100,16 @@ class _ExpEdit extends Component {
                     </label>
                     {exp.imgUrls && <section className="edit-gallery">
                         <ul>
-                            {exp.imgUrls.map(url => {
+                            {exp.imgUrls.map((url, idx) => {
                                 return <li key={exp._id}>
                                     <img src={url} alt="##" />
-                                    <Button variant="contained" color="primary" 
-                                    onClick={this.onSaveToy}>X</Button>
+                                    <Button variant="contained" color="primary"
+                                        onClick={() => this.onRemoveImg(idx)}>X</Button>
                                 </li>
                             })}
                         </ul>
                     </section>}
-                    <Button variant="contained" color="primary" onClick={this.onSaveToy}>Save</Button>
+                    <Button variant="contained" color="primary" onClick={this.onSaveExp}>Save</Button>
                 </form>
             </div>
         )
