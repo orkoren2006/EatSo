@@ -11,11 +11,11 @@ export function ExpPreview(props) {
                     <img className="img-in-div" src={exp.imgUrls[0]}></img>
                     <div className="div-in-image">${exp.price}</div>
                 </section>
-                <desc className="desc">
+                <section className="desc">
                 <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
                 <h3>{exp.name}</h3>
                 <p>{exp.reviews[0].rate}/5</p>
-                </desc>
+                </section>
             </Link>
         </div>
     )
