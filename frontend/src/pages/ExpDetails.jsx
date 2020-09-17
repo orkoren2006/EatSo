@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { GoogleMap } from '../cmps/GoogleMap';
 import { expService } from '../services/expService';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 class _ExpDetails extends Component {
 
     state = {
@@ -16,13 +17,27 @@ class _ExpDetails extends Component {
         this.setState({ exp })
     }
 
+    get avgRate() {
+        const exp = this.state.exp;
+        const sum = exp.reviews.reduce((acc, review) => acc += review.rate, 0)
+        return (sum / exp.reviews.length).toFixed(1);
+    }
+
+    get numOfReviews() {
+        return this.state.exp.reviews.length;
+    }
 
     render() {
         const { exp } = this.state;
-        if (!exp) return <div> </div>
+        if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container">
+                <h2>{exp.name}</h2>
+                <div className="exp-rate">
+                    <FontAwesomeIcon className="star-icon" icon={faStar} />&nbsp;
+                    {this.avgRate} ({this.numOfReviews})
+                </div>
                 <section className="exp-imgs">
                     {
                         exp.imgUrls.map((imgUrl, idx) => <img key={`img-${idx}-${exp._id}`} src={imgUrl} alt="img" />)
@@ -32,7 +47,7 @@ class _ExpDetails extends Component {
                 <section className="exp-content">
                     <section className="exp-details">
                         <h6>{exp.location.city} &gt; </h6>
-                        <h1>{exp.name}</h1>
+
                         <h3>{exp.title}</h3>
                         <h6>Hosted by {exp.owner.fullName}</h6>
                         <h5>A word about the experience</h5>
@@ -43,7 +58,7 @@ class _ExpDetails extends Component {
                         <button>Book!</button>
                     </section>
                 </section>
-                <GoogleMap style={{ width: '80%', height: 350 }} center={center} />
+                <GoogleMap containerStyle={{ width: '80%', height: 350 }} style={{ width: '80%', height: 350 }} center={center} />
             </div>
         )
     }

@@ -9,12 +9,12 @@ class _GoogleMap extends React.Component {
         lng: 30.7818
     }
     componentDidMount() {
-        const {lat, lng} = this.props.center;
-        this.setState({lat, lng})
+        const { lat, lng } = this.props.center;
+        this.setState({ lat, lng })
     }
-    
+
     onMarkerClick = (props, marker, event) => {
-        
+
     }
 
     onMapClicked = (mapProps, map, ev) => {
@@ -23,9 +23,8 @@ class _GoogleMap extends React.Component {
 
     render() {
         return (
-            <Map initialCenter={this.state} style={this.props.style} center={this.state} onClick={this.onMapClicked} google={this.props.google} zoom={18}>
-                <Marker position={this.state}
-                    name={'Current location'} />
+            <Map initialCenter={this.state} style={this.props.style} containerStyle={this.props.containerStyle} center={this.state} onClick={this.onMapClicked} google={this.props.google} zoom={18}>
+                <Marker position={this.state} name={'Current location'} />
             </Map>
         );
     }
