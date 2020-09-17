@@ -84,10 +84,10 @@ class _ExpEdit extends Component {
 
     getTimeDate(){
         // const msec = this.state.exp.schedule.at
-        console.log(new Date(this.state.exp.schedule.at));
         // const time = new Date(msec)
-        // const timeDate = (this.state.exp.schedule.at) ? new Date(this.state.exp.schedule.at):''
-        return (this.state.exp.schedule.at) ? new Date(this.state.exp.schedule.at):''
+        const timeDate = (this.state.exp.schedule.at) ? new Date(this.state.exp.schedule.at):''
+        console.log(new Date(timeDate));
+        return timeDate
     }
 
     render() {
@@ -133,7 +133,7 @@ class _ExpEdit extends Component {
                             value={exp.location.address} placeholder="Enter experience address"
                             onChange={this.handleChange} />
                     </label>
-                    <MuiPickersUtilsProvider value={this.getTimeDate()} utils={DateFnsUtils}>
+                    <MuiPickersUtilsProvider value="september 21 2020 20:00:00" utils={DateFnsUtils}>
                         <DateTimePicker onChange={this.handleChange} />
                     </MuiPickersUtilsProvider>
                     <label htmlFor="exp-duration">
