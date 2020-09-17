@@ -19,5 +19,12 @@
     .exp-content {
         display: flex;
         justify-content: space-between;
+        padding: 10px;
+        .exp-booking {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            right:10px;
+        }
     }
 }
