@@ -20,11 +20,16 @@ class _ExpDetails extends Component {
         const {exp} = this.state;
         if (!exp) return <div> </div>
         return (
-            <div className="exp-details">
+            <div className="exp-details-container">
                 <section className="exp-imgs">
                     {
                         exp.imgUrls.map((imgUrl, idx) => <img key={`img-${idx}-${exp._id}`} src={imgUrl} alt="img" />)
                     }
+                </section>
+                
+                <section className="exp-content"> 
+                    <section className="exp-booking">Hoooo</section>
+                    <section className="exp-details">Coooo</section>
                 </section>
             </div>
         )
