@@ -37,7 +37,10 @@ function getEmptyExp(){
           'min': '',
           'max': ''
         },
-        'schedule': '',
+        'schedule': {
+            "at": '',
+            "duration": '' 
+          },
         'tags': [],
         'imgUrls': [],
         'location': {
