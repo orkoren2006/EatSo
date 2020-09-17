@@ -189,7 +189,7 @@ class _ExpEdit extends Component {
                     <label> Choose your exp image!
                         <input onChange={this.uploadImg} type="file" />
                     </label>
-                    {exp.imgUrls && <section className="edit-gallery">
+                    {exp.imgUrls && <section className="edit-gallery grid">
                         <ul>
                             {exp.imgUrls.map((url, idx) => {
                                 return <li key={`img-${idx}-${exp._id}`}>
