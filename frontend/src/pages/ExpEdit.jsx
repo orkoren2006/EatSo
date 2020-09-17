@@ -4,17 +4,15 @@ import { expService } from '../services/expService';
 import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 import { cloudinaryService } from '../services/cloudinary-service';
 import DateFnsUtils from '@date-io/date-fns'; // choose your lib
-import {
-    DateTimePicker,
-    MuiPickersUtilsProvider,
-} from '@material-ui/pickers';
+import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { saveExp } from '../store/actions/expAction';
+import { MenuEdit } from '../cmps/MenuEdit';
 
 
 class _ExpEdit extends Component {
     state = {
-        // exp: ''
-        exp: expService.getEmptyExp()
+        exp: expService.getEmptyExp(),
+        editMenu: false
     }
 
     async componentDidMount() {
@@ -79,6 +77,18 @@ class _ExpEdit extends Component {
                         }
                     }
                 })
+            } else if (field === 'address') {
+                this.setState(prevState => {
+                    return {
+                        exp: {
+                            ...prevState.exp,
+                            location: {
+                                ...prevState.exp.schedule,
+                                [field]: value
+                            }
+                        }
+                    }
+                })
             } else {
                 this.setState(prevState => {
                     return {
@@ -109,6 +119,14 @@ class _ExpEdit extends Component {
     getTimeDate() {
         const timeDate = (this.state.exp.schedule.at) ? new Date(this.state.exp.schedule.at) : ''
         return timeDate
+    }
+
+    setMenu = (menu) => {
+        console.log('menu', menu);
+    } 
+
+    onEditMenu = () => {
+        this.setState({ editMenu: !this.state.editMenu })
     }
 
     render() {
@@ -182,6 +200,9 @@ class _ExpEdit extends Component {
                             })}
                         </ul>
                     </section>}
+                    {this.state.editMenu &&
+                        <MenuEdit menu={this.state.exp.menu} onSaveMenu={this.setMenu}/>}
+                    <Button variant="contained" color="primary" onClick={this.onEditMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
                     <Button variant="contained" color="primary" onClick={this.onSaveExp}>Save</Button>
                 </form>
             </div>
