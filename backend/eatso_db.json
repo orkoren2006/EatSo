@@ -24,7 +24,7 @@
       "name": "Amazing Kit-Chen",
       "title": "Israeli authentic meal and experience",
       "desc": "A casual, multi-course, gourmet Israeli- Mediterranean dinner prepared by a chef who trained in Michelin-starred restaurants in Italy and cooked in some of the best restaurants in Tel Aviv.",
-      "price": 150,
+      "price": 250,
       "capacity": {
         "min": 8,
         "max": 20
@@ -109,7 +109,7 @@
           "sentAt": 123456
         }
       ],
-      "updatedAt": 1600339974526
+      "updatedAt": 1600344440671
     },
     {
       "_id": "e102",
