@@ -23,8 +23,8 @@ class _ExpEdit extends Component {
     }
 
     onRemoveImg = (imgIdx) => {
-        const imgUrls = this.state.exp.imgUrls.splice(imgIdx,1)
-        this.setState({...this.state, imgUrls: {imgUrls}})
+        const imgUrls = this.state.exp.imgUrls.splice(imgIdx, 1)
+        this.setState({ ...this.state, imgUrls: { imgUrls } })
     }
 
     uploadImg = async (ev) => {
@@ -37,24 +37,44 @@ class _ExpEdit extends Component {
                     imgUrls: [...this.state.exp.imgUrls, imgUrl]
                 }
             }
-        },()=>console.log('from upload' ,this.state.exp))
+        }, () => console.log('from upload', this.state.exp))
     }
 
     handleChange = ({ target }) => {
-        const field = target.name
+        let field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
-        this.setState(prevState => {
-            return {
-                exp: {
-                    ...prevState.exp,
-                    [field]: value
+        if (value < 0) return
+        console.log('handle change\n', 'field', field, 'val', value);
+        if (field.includes('capacity')) {
+            field = (field.includes('min')) ? 'min' : 'max';
+            this.setState(prevState => {
+                return {
+                    exp: {
+                        ...prevState.exp,
+                        capacity: {
+                            ...prevState.exp.capacity,
+                            [field]: value
+                        }
+                    }
                 }
-            }
-        })
+            }, (console.log(this.state.exp)))
+        } else {
+            this.setState(prevState => {
+                return {
+                    exp: {
+                        ...prevState.exp,
+                        [field]: value
+                    }
+                }
+            })
+        }
     }
 
     render() {
         const { exp } = this.state
+        console.log(exp);
+        const capacity = (exp) ? { min: exp.capacity.min, max: exp.capacity.max } : { min: '', max: '' }
+
         return (
             <div>
                 EDIT
@@ -75,12 +95,12 @@ class _ExpEdit extends Component {
                     </label>
                     <label htmlFor="exp-capacity">
                         Capacity:
-                        <TextField type="text" id="exp-title" name="title"
-                            value={exp.minCap} placeholder="Min Cap."
+                        <TextField autoComplete="off" type="number" id="exp-capacity-min" name="capacity.min"
+                            value={capacity.min} placeholder="Min Cap."
                             onChange={this.handleChange} />
                             -
-                        <TextField type="text" id="exp-title" name="title"
-                            value={exp.maxCap} placeholder="Max Cap."
+                        <TextField autoComplete="off" type="number" id="exp-capacity-max" name="capacity.max"
+                            value={capacity.max} placeholder="Max Cap."
                             onChange={this.handleChange} />
                     </label>
                     <label htmlFor="exp-price">
