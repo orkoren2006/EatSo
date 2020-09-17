@@ -30,3 +30,19 @@ export function removeExp(expId) {
   };
 }
 
+export function saveExp(exp) {
+  return async dispatch => {
+    try {
+      const expObj = await expService.save(exp);
+      dispatch({ type: 'SAVE_EXP', exp: expObj.exp, isNew: expObj.isNew })
+      // const notificationTxt = (expObj.isNew) ? 'Toy Added' : 'Toy Updated'
+      // dispatch({ type: 'SEND_NOTIFICATION', notification: notificationTxt })
+      // setTimeout(() => {
+      //   dispatch({ type: 'CLEAR_NOTIFICATION' })
+      // }, 2000);
+    } catch (err) {
+      console.log('ExpsActions: err in SaveExp', err);
+    }
+  };
+}
+

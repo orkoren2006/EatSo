@@ -24,14 +24,14 @@
       "name": "Amazing Kit-Chen",
       "title": "Israeli authentic meal and experience",
       "desc": "A casual, multi-course, gourmet Israeli- Mediterranean dinner prepared by a chef who trained in Michelin-starred restaurants in Italy and cooked in some of the best restaurants in Tel Aviv.",
-      "price": 100,
+      "price": 150,
       "capacity": {
         "min": 8,
         "max": 20
       },
       "schedule": {
         "at": 1600707600000,
-        "duration": 120 
+        "duration": 150
       },
       "owner": {
         "_id": "u101",
@@ -50,7 +50,6 @@
         "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/pizza-placed-wooden-plate_1150-24398_ufcxoe.jpg",
         "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/beautiful-girl-with-long-hair-is-sittting-table-terrace-cafe-she-wears-white-dress-with-bare-shoulders-red-lipstick-she-is-smiling-camera_197531-663_tsieui.jpg",
         "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chef-cooking-food-restaurant-kitchen_53876-67_ucxolu.jpg"
-
       ],
       "location": {
         "address": "Shabazi St 10, Tel Aviv-Yafo",
@@ -109,7 +108,8 @@
           "txt": "What about...",
           "sentAt": 123456
         }
-      ]
+      ],
+      "updatedAt": 1600339974526
     },
     {
       "_id": "e102",
@@ -346,8 +346,8 @@
       "location": {
         "address": "1600 Pennsylvania Avenue NW, Washington, DC 20500, United States",
         "city": "Washington, DC",
-        "lat": 38.897466, 
-        "lng": -77.036580
+        "lat": 38.897466,
+        "lng": -77.03658
       },
       "menu": {
         "appetizer": [

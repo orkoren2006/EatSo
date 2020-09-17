@@ -8,12 +8,21 @@ const initialState = {
         return { ...state, exps: action.exps };
       case 'ADD_EXP':
         return { ...state, exps: [...state.exps, action.exps] };
-      case 'UPDATE_EXP':
-        return {
-          ...state,
-          exps: state.exps.map(exp =>
-            exp._id === action.exp._id ? action.exp : exp
-          )};
+      case 'SAVE_EXP':
+        console.log('from action',action);
+        let expsToSave;
+            if (action.isNew) {
+                expsToSave = [...state.exps, action.exp]
+            } else {
+                expsToSave = state.exps.map(exp => {
+                    if (exp._id === action.exp._id) return action.exp
+                    else { return exp }
+                })
+            }
+            return {
+                ...state,
+                exps: expsToSave
+            }
       default:
         return state;
     }

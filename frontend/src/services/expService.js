@@ -4,9 +4,10 @@ export const expService = {
     getExps,
     getById,
     remove,
-    update,
-    add,
-    getEmptyExp
+    // update,
+    // add,
+    getEmptyExp,
+    save,
 }
 
 function getExps() {
@@ -20,12 +21,26 @@ function remove(expId) {
     return httpService.delete(`exp/${expId}`)
 }
 
-function update(exp) {
-    return httpService.put(`exp/${exp._id}`, exp)
+async function save(exp) {
+    if (exp._id) {
+        exp.updatedAt = Date.now();
+        // return httpService.put(`exp/${exp._id}`, exp)
+        const updateExp = await httpService.put(`exp/${exp._id}`, exp)
+        return {exp: updateExp, isNew: false}
+    } else {
+        // exp.createdAt = Date.now();
+        // return httpService.post('exp', exp)
+        const updateExp = await httpService.post('exp', exp)
+        return {exp: updateExp, isNew: true}
+    }
 }
-function add(exp) {
-    return httpService.post(`exp/${exp._id}`, exp)
-}
+
+// function update(exp) {
+//     return httpService.put(`exp/${exp._id}`, exp)
+// }
+// function add(exp) {
+//     return httpService.post(`exp/${exp._id}`, exp)
+// }
 
 function getEmptyExp(){
     return     {
