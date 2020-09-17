@@ -7,7 +7,8 @@ import { cloudinaryService } from '../services/cloudinary-service';
 
 class _ExpEdit extends Component {
     state = {
-        exp: ''
+        // exp: ''
+        exp: expService.getEmptyExp()
     }
 
     async componentDidMount() {
@@ -73,7 +74,7 @@ class _ExpEdit extends Component {
     render() {
         const { exp } = this.state
         console.log(exp);
-        const capacity = (exp) ? { min: exp.capacity.min, max: exp.capacity.max } : { min: '', max: '' }
+        // const capacity = (exp) ? { min: exp.capacity.min, max: exp.capacity.max } : { min: '', max: '' }
 
         return (
             <div>
@@ -93,20 +94,26 @@ class _ExpEdit extends Component {
                             value={exp.title} placeholder="Enter experience title"
                             onChange={this.handleChange} />
                     </label>
+                    <span>Capacity:</span>
                     <label htmlFor="exp-capacity">
-                        Capacity:
                         <TextField autoComplete="off" type="number" id="exp-capacity-min" name="capacity.min"
-                            value={capacity.min} placeholder="Min Cap."
+                            value={exp.capacity.min} placeholder="Min Cap."
                             onChange={this.handleChange} />
                             -
                         <TextField autoComplete="off" type="number" id="exp-capacity-max" name="capacity.max"
-                            value={capacity.max} placeholder="Max Cap."
+                            value={exp.capacity.max} placeholder="Max Cap."
                             onChange={this.handleChange} />
                     </label>
                     <label htmlFor="exp-price">
                         Price:
                         <TextField type="number" id="exp-price" name="price"
                             value={exp.price} placeholder="Enter experience price"
+                            onChange={this.handleChange} />
+                    </label>
+                    <label htmlFor="exp-price">
+                        Address:
+                        <TextField type="text" id="exp-address" name="address"
+                            value={exp.address} placeholder="Enter experience address"
                             onChange={this.handleChange} />
                     </label>
                     <span style={{ display: "inline" }}>Description:</span>
