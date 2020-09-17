@@ -5,7 +5,8 @@ export const expService = {
     getById,
     remove,
     update,
-    add
+    add,
+    getEmptyExp
 }
 
 function getExps() {
@@ -24,4 +25,24 @@ function update(exp) {
 }
 function add(exp) {
     return httpService.post(`exp/${exp._id}`, exp)
+}
+
+function getEmptyExp(){
+    return     {
+        'name': '',
+        'title': '',
+        'desc': '',
+        'price': '',
+        'capacity': {
+          'min': '',
+          'max': ''
+        },
+        'schedule': '',
+        'tags': [],
+        'imgUrls': [],
+        'location': {
+          'address': '',
+          'city': '',
+        }
+    }
 }
