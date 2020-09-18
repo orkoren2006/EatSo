@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { GoogleMap } from '../cmps/GoogleMap';
 import { expService } from '../services/expService';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Menu } from '../cmps/Menu';
 import { Modal } from '../cmps/Modal';
 import { ExpRate } from '../cmps/ExpRate';
+import { Link } from 'react-router-dom'
 class _ExpDetails extends Component {
 
     state = {
@@ -60,7 +59,7 @@ class _ExpDetails extends Component {
                         <h6>{exp.location.city} &gt; </h6>
 
                         <h3>{exp.title}</h3>
-                        <h6>Hosted by {exp.owner.fullName}</h6>
+                        <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
                         <h5>A word about the experience</h5>
                         <p>{exp.desc}</p>
                         <Menu menu={exp.menu} />
@@ -68,12 +67,10 @@ class _ExpDetails extends Component {
                     </section>
                     <section className="exp-booking">
                         <div className="flex space-between">
-                            <span className="price">${exp.price}  <span >/ Person</span></span>
+                            <span className="price">${exp.price}  <span >/ Person &nbsp;</span></span>
                             <ExpRate avgRate={this.avgRate} numOfRates={this.numOfReviews} />
                         </div>
-                        <div>
-                            {new Date(Date.now() + 1000*60*60*24*3).toDateString()}
-                        </div>
+                        <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
                         <button onClick={this.onBookClick}>Book!</button>
                     </section>
                 </section>

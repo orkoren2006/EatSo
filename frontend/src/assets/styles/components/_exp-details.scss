@@ -49,16 +49,33 @@
                     font-size: 0.8em;
                 }
             }
-            .exp-rate {
+            .exp-rate, .exp-date {
                 font-size: 0.8em;
             }
+             
             button {
-                // text-align: center;
-                // width: 50%;
+                cursor: pointer;
+                border: 1px solid transparent;
+                outline: none;
+                padding: 10px;
+                border-radius: 2em;
+                background-color: #fd7854;
+                color: $clr6;
+                transition: .5s;
+                margin-top: 10px;
+                &:hover {
+                    background-color: $clr6;
+                    color: black;
+                    border: 1px solid #fd7854;
+                }
             }
         }
         .exp-details {
             width: 60%;
+            .owner {
+                color:  #fd7854;
+                text-decoration: none;
+            }
         }
     }
 }
