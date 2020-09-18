@@ -63,9 +63,16 @@ class _Home extends Component {
         <section className="tel-aviv">
           <section className="tel-aviv-header">
             <h2>Top Tel Aviv Meals</h2>
-            <Button><span> All traditional -></span></Button>
+            <Button><span> All Tel Aviv -></span></Button>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
+        </section>
+        <section className="scenic">
+          <section className="tel-aviv-header">
+            <h2>Top Scenic Meals</h2>
+            <Button><span> All Scenic -></span></Button>
+          </section>
+          <ExpList exps={this.getExps('tag-scenic')} />
         </section>
       </section>
     );
