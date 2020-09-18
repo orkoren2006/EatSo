@@ -10,7 +10,8 @@ import { Modal } from '../cmps/Modal';
 class _ExpDetails extends Component {
 
     state = {
-        exp: null
+        exp: null,
+        isModalShown: false
     }
 
     async componentDidMount() {
@@ -31,16 +32,19 @@ class _ExpDetails extends Component {
     }
 
     onBookClick = () => {
-
+        this.setState({isModalShown: true})
     }
-
+    
+    onCloseModal = () => {
+        this.setState({isModalShown: false})
+    }
     render() {
-        const { exp } = this.state;
+        const { exp, isModalShown } = this.state;
         if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container">
-                <Modal>
+                <Modal onCloseModal={this.onCloseModal} isShown={isModalShown}>
                     <p>Lop</p>
                 </Modal>
                 <h2>{exp.name}</h2>
