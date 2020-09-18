@@ -1,9 +1,5 @@
 .exp-edit-form{
-
-    * {
-        padding: 10px;
-        margin: 10px;
-    }
+ 
     text-align: center !important;
     list-style: none;
     #exp-description{
@@ -14,8 +10,28 @@
         width: 60vw
     }
 
+    span {
+        display: block;
+    }
+
     .edit-gallery{
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         grid-gap: 20px;
+
+        .img-container{
+            position: relative;
+        }
+
+        Button{
+            z-index: 1;
+            position: absolute;
+            outline: transparent;
+            background-color: rgb(216, 216, 216);
+        }
+
+        img {
+            @include aspect-ratio(1, 1);
+        }
+
     }
 }
