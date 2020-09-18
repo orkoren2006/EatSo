@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { MenuSection } from '../cmps/MenuSection';
 import { Menu } from '../cmps/Menu';
+import { Modal } from '../cmps/Modal';
 class _ExpDetails extends Component {
 
     state = {
@@ -29,13 +30,19 @@ class _ExpDetails extends Component {
         return this.state.exp.reviews.length;
     }
 
+    onBookClick = () => {
+
+    }
+
     render() {
         const { exp } = this.state;
         if (!exp) return <div>  </div>
-        console.log(exp.menu);
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container">
+                <Modal>
+                    <p>Lop</p>
+                </Modal>
                 <h2>{exp.name}</h2>
                 <div className="exp-rate">
                     <FontAwesomeIcon className="star-icon" icon={faStar} />&nbsp;
@@ -60,7 +67,7 @@ class _ExpDetails extends Component {
                     </section>
                     <section className="exp-booking">
                         <span> Price: ${exp.price}</span>
-                        <button>Book!</button>
+                        <button onClick={this.onBookClick}>Book!</button>
                     </section>
                 </section>
                 <GoogleMap containerStyle={{ width: '80%', height: 350 }} style={{ width: '80%', height: 350 }} center={center} />
