@@ -24,11 +24,10 @@
 .img-in-div {
     z-index : 1;
     position: relative;
-
 }
 
 .cont img {
-    transition: transform .5s ease;
+    transition: transform 10s ease;
 }
 
 .cont:hover img {
@@ -43,11 +42,9 @@
     z-index         : 2;
     position        : absolute;
     align-self      : flex-end;
-
 }
 
-desc {
-
+section {
     p,
     h3 {
         padding-left: 5px;
