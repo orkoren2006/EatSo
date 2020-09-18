@@ -36,7 +36,7 @@
       "owner": {
         "_id": "u101",
         "fullName": "Chen kitty",
-        "imgUrl": "/img/img1.jpg"
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
       },
       "tags": [
         "vegan",
@@ -159,7 +159,7 @@
       "owner": {
         "_id": "u102",
         "fullName": "Haim Cohen",
-        "imgUrl": "/img/haim.jpg"
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg"
       },
       "tags": [
         "Italian",
@@ -366,7 +366,7 @@
       "owner": {
         "_id": "u108",
         "fullName": "Barak Obama",
-        "imgUrl": "/img/barak.jpg"
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427448/eatso-profile/obama_a2ttie.jpg"
       },
       "tags": [
         "BBQ",

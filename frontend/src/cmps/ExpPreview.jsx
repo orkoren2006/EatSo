@@ -15,16 +15,17 @@ export function ExpPreview(props) {
                     <div className="div-in-image">${exp.price}</div>
                 </section>
                 <section className="desc">
-                <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
-                <h3>{exp.name}</h3>
-                <p>{exp.reviews[0].rate}/5</p>
-                {/* <FontAwesomeIcon className="star-icon" icon={faStar} /> */}
+                    <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
+                    <h3>{exp.name}</h3>
+                    <p>{exp.reviews[0].rate}/5</p>
+                    {/* <FontAwesomeIcon className="star-icon" icon={faStar} /> */}
                 </section>
             </Link>
             <Link to={`/host/${exp.owner._id}`}>
-            <section className="host-preview">
-                host
-            </section>
+                <section className="host-preview">
+                    <p>Hosted by <span>{exp.owner.fullName}</span></p>&nbsp;
+                    <img className="preview-avatar" src={exp.owner.imgUrl}></img>
+                </section>
             </Link>
         </div>
     )
