@@ -48,7 +48,7 @@ export class MenuEdit extends Component {
         const { menu } = this.state
 
         return (
-            <form className="menu-edit-form" onSubmit={this.onSaveMenu}>
+            <div className="menu-edit-form" onSubmit={this.onSaveMenu}>
                 <span>Appetizer</span>
                 <label htmlFor="menu-appetizer">
                     {menu.appetizers.map((app, idx) => {
@@ -125,8 +125,9 @@ export class MenuEdit extends Component {
                 </label>
                 <Button id="add-appetizer-btn " variant="contained" color="primary" 
                 onClick={() => this.addInputCourse('drinks')}>+</Button>
-                <Button variant="contained" color="primary" onClick={this.onSaveMenu}>Save Changes</Button>
-            </form>
+                <Button variant="contained" color="primary" 
+                id="save-menu-btn" onClick={this.onSaveMenu}>Save Changes</Button>
+            </div>
         )
     }
 }

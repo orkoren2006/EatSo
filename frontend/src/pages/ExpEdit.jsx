@@ -143,8 +143,7 @@ class _ExpEdit extends Component {
         const { exp } = this.state
 
         return (
-            <div>
-                EDIT
+            <div className="edit-div">
                 <form className="exp-edit-form flex column align-center justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
                     <label htmlFor="exp-name">
@@ -216,7 +215,8 @@ class _ExpEdit extends Component {
                         <MenuEdit menu={this.state.exp.menu} 
                         setMenu={this.saveMenu}/>}
                     <Button variant="contained" color="primary" onClick={this.onToggleMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
-                    <Button variant="contained" color="primary" onClick={this.onSaveExp}>Save</Button>
+                    <Button variant="contained" color="primary" 
+                    onClick={this.onSaveExp}>Save</Button>
                 </form>
             </div>
         )
