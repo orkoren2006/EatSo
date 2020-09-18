@@ -51,7 +51,7 @@ export class MenuEdit extends Component {
             <form className="menu-edit-form" onSubmit={this.onSaveMenu}>
                 <span>Appetizer</span>
                 <label htmlFor="menu-appetizer">
-                    {menu.appetizer.map((app, idx) => {
+                    {menu.appetizers.map((app, idx) => {
                         return (
                             <section className="appetizer" key="app">
                                 <TextField data-idx={idx} autoComplete="off" type="text"
