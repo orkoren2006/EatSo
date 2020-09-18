@@ -4,6 +4,8 @@ import { GoogleMap } from '../cmps/GoogleMap';
 import { expService } from '../services/expService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { MenuSection } from '../cmps/MenuSection';
+import { Menu } from '../cmps/Menu';
 class _ExpDetails extends Component {
 
     state = {
@@ -53,33 +55,8 @@ class _ExpDetails extends Component {
                         <h6>Hosted by {exp.owner.fullName}</h6>
                         <h5>A word about the experience</h5>
                         <p>{exp.desc}</p>
-                        <section className="exp-menu">
-                        <h4>Menu</h4>
-                        <h5>Appetizers</h5>
-                        <ul>
-                            {
-                                exp.menu.appetizers.map((app, idx) => <li key={`appetizer-${idx}-${exp._id}`}>{app.title}</li>)
-                            }
-                        </ul>
-                        <h5>Main Dishes</h5>
-                        <ul>
-                            {
-                                exp.menu.mainCourse.map((dish, idx) => <li key={`main-dish-${idx}-${exp._id}`}>{dish.title}</li>)
-                            }
-                        </ul>
-                        <h5>Desserts</h5>
-                        <ul>
-                            {
-                                exp.menu.desserts.map((des, idx) => <li key={`des-${idx}-${exp._id}`}>{des.title}</li>)
-                            }
-                        </ul>
-                        <h5>Drinks</h5>
-                        <ul>
-                            {
-                                exp.menu.drinks.map((drink, idx) => <li key={`drink-${idx}-${exp._id}`}>{drink.title}</li>)
-                            }
-                        </ul>
-                    </section>
+                        <Menu className="" menu={exp.menu} />
+
                     </section>
                     <section className="exp-booking">
                         <span> Price: ${exp.price}</span>
