@@ -28,15 +28,24 @@ class _Home extends Component {
       case 'address':
         expsToSend = this.props.exps.filter(exp => {
           return keyWordRegex.test(exp.location.address)
-          })
+        })
         break;
-    
+      case 'capacity':
+        if (keyWord === 'multi') {
+          expsToSend = this.props.exps.filter(exp => {
+            return exp.capacity.min >= 20
+          })
+        } else {
+          expsToSend = this.props.exps.filter(exp => {
+            return exp.capacity.max <= 20
+        })
+      }
+        break;
       default:
         break;
     }
 
-    
-    return expsToSend; 
+    return expsToSend;
   }
 
 
@@ -73,6 +82,13 @@ class _Home extends Component {
             <Button><span> All Scenic -></span></Button>
           </section>
           <ExpList exps={this.getExps('tag-scenic')} />
+        </section>
+        <section className="multi-participants">
+          <section className="capacity-header">
+            <h2>Top Multi-Participants Meals</h2>
+            <Button><span> All Multi-Participants -></span></Button>
+          </section>
+          <ExpList exps={this.getExps('capacity-multi')} />
         </section>
       </section>
     );
