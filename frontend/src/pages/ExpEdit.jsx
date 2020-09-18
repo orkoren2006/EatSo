@@ -9,6 +9,8 @@ import { saveExp } from '../store/actions/expAction';
 import { MenuEdit } from '../cmps/MenuEdit';
 
 
+
+
 class _ExpEdit extends Component {
     state = {
         exp: expService.getEmptyExp(),
@@ -121,11 +123,19 @@ class _ExpEdit extends Component {
         return timeDate
     }
 
-    setMenu = (menu) => {
-        console.log('menu', menu);
+    saveMenu = (newMenu) => {
+        this.setState(prevState => {
+            return {
+                exp: {
+                    ...prevState.exp,
+                    menu: newMenu
+                },
+                editMenu: false
+            }
+        })
     } 
 
-    onEditMenu = () => {
+    onToggleMenu = () => {
         this.setState({ editMenu: !this.state.editMenu })
     }
 
@@ -133,8 +143,7 @@ class _ExpEdit extends Component {
         const { exp } = this.state
 
         return (
-            <div>
-                EDIT
+            <div className="edit-div">
                 <form className="exp-edit-form flex column align-center justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
                     <label htmlFor="exp-name">
@@ -186,23 +195,28 @@ class _ExpEdit extends Component {
                             value={exp.desc} placeholder="Enter experience description"
                             onChange={this.handleChange} />
                     </label>
-                    <label> Choose your EXPERIENCE imageד!
+                    <label> Choose your EXPERIENCE image!
                         <input onChange={this.uploadImg} type="file" />
                     </label>
                     {exp.imgUrls && <section className="edit-gallery grid">   
                             {exp.imgUrls.map((url, idx) => {
-                                return <li key={`img-${idx}-${exp._id}`}>
+                                return <li className="img-container flex align-center justify-center" 
+                                key={`img-${idx}-${exp._id}`}>
                                     <img src={url} alt="##" />
-                                    <Button variant="contained" color="primary"
-                                        onClick={() => this.onRemoveImg(idx)}>X</Button>
+                                    <button className="flex" variant="contained" color="primary"
+                                        onClick={() => this.onRemoveImg(idx)}>
+                                            <img className="trash" 
+                                            src={require(`../assets/imgs/trash.png`)} alt="##" />
+                                            </button>
                                 </li>
                             })}
                     </section>}
                     {this.state.editMenu &&
                         <MenuEdit menu={this.state.exp.menu} 
-                        onSaveMenu={this.setMenu}/>}
-                    <Button variant="contained" color="primary" onClick={this.onEditMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
-                    <Button variant="contained" color="primary" onClick={this.onSaveExp}>Save</Button>
+                        setMenu={this.saveMenu}/>}
+                    <Button variant="contained" color="primary" onClick={this.onToggleMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
+                    <Button variant="contained" color="primary" 
+                    onClick={this.onSaveExp}>Save</Button>
                 </form>
             </div>
         )

@@ -1,9 +1,10 @@
-.exp-edit-form{
+.edit-div{
+    box-shadow: 5px -5px 20px black;
+    border: 1px black solid;
+}
 
-    * {
-        padding: 10px;
-        margin: 10px;
-    }
+.exp-edit-form{
+ 
     text-align: center !important;
     list-style: none;
     #exp-description{
@@ -11,11 +12,51 @@
     }
 
     input {
-        width: 60vw
+        width: 60vw;
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
+    }
+
+    &span, label {
+        display: block;
+        padding: 5px;
+        margin: 10px;
+    }
+
+    Button{
+        margin: 10px;
     }
 
     .edit-gallery{
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         grid-gap: 20px;
+
+        .img-container{
+            position: relative;
+        }
+
+        Button{
+            display: block;
+            z-index: 1;
+            position: absolute;
+            outline: transparent;
+            background-color: rgb(216, 216, 216);
+        }
+
+        img {
+            @include aspect-ratio(1, 1);
+        }
+
+    }
+}
+
+.menu-edit-form{
+    span{
+        display: block;
+    }
+
+    #save-menu-btn{
+        display: block;
     }
 }
