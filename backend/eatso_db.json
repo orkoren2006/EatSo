@@ -58,7 +58,7 @@
         "lng": 34.763583
       },
       "menu": {
-        "appetizer": [
+        "appetizers": [
           {
             "title": "Jerusalem pretzel",
             "desc": "Jerusalem style pretzel with sesame and Za’atar"
@@ -167,8 +167,10 @@
       ],
       "imgUrls": [
         "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg",
-        "more1.jpg",
-        "more2.jpg"
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/group-friends-eating-restaurant_23-2148006646_gdk4co.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/pizza-placed-wooden-plate_1150-24398_ufcxoe.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/beautiful-girl-with-long-hair-is-sittting-table-terrace-cafe-she-wears-white-dress-with-bare-shoulders-red-lipstick-she-is-smiling-camera_197531-663_tsieui.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chef-cooking-food-restaurant-kitchen_53876-67_ucxolu.jpg"
       ],
       "location": {
         "address": "Kikar Kdumim 10, Tel Aviv-Yafo",
@@ -177,7 +179,7 @@
         "lng": 34.751456
       },
       "menu": {
-        "appetizer": [
+        "appetizers": [
           {
             "title": "Home-made breads",
             "desc": "Home-made breads from a traditional brick oven"
@@ -267,9 +269,11 @@
         "vegan"
       ],
       "imgUrls": [
-        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/pizza-placed-wooden-plate_1150-24398_ufcxoe.jpg",
-        "more1.jpg",
-        "more2.jpg"
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chef-cooking-food-restaurant-kitchen_53876-67_ucxolu.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/group-friends-eating-restaurant_23-2148006646_gdk4co.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/beautiful-girl-with-long-hair-is-sittting-table-terrace-cafe-she-wears-white-dress-with-bare-shoulders-red-lipstick-she-is-smiling-camera_197531-663_tsieui.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/pizza-placed-wooden-plate_1150-24398_ufcxoe.jpg"
       ],
       "location": {
         "address": "10 Downing St, Westminster, London SW1A 2AA, United Kingdom",
@@ -278,7 +282,7 @@
         "lng": -0.127624
       },
       "menu": {
-        "appetizer": [
+        "appetizers": [
           {
             "title": "PULLED PARTRIDGE CROQUETTE",
             "desc": "Hawthorn Ketchup - The secret course"
@@ -380,7 +384,7 @@
         "lng": -77.03658
       },
       "menu": {
-        "appetizer": [
+        "appetizers": [
           {
             "title": "Welcome Yerba Mate Cocktail",
             "desc": "yerba mate is a typical South American tea infused with vodka and fresh herbs"
