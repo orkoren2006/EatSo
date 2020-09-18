@@ -79,7 +79,7 @@
         "drinks": [
           {
             "title": "Har Hermon",
-            "desc": "merlot wine"
+            "desc": "merlot wine, cocktails"
           }
         ]
       },
@@ -139,7 +139,7 @@
           "sentAt": 123456
         }
       ],
-      "updatedAt": 1600344440671
+      "updatedAt": 1600415293126
     },
     {
       "_id": "e102",

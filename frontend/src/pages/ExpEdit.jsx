@@ -207,7 +207,7 @@ class _ExpEdit extends Component {
                                     <button className="flex" variant="contained" color="primary"
                                         onClick={() => this.onRemoveImg(idx)}>
                                             <img className="trash" 
-                                            src={require(`../assets/imgs/delete.png`)} alt="##" />
+                                            src={require(`../assets/imgs/trash.png`)} alt="##" />
                                             </button>
                                 </li>
                             })}

@@ -7,11 +7,16 @@
     }
 
     input {
-        width: 60vw
+        width: 60vw;
+        text-align: center;
+        padding: 5px;
+        margin: 10px;
     }
 
-    span {
+    &span {
         display: block;
+        padding: 5px;
+        margin: 10px;
     }
 
     .edit-gallery{
@@ -23,6 +28,7 @@
         }
 
         Button{
+            display: block;
             z-index: 1;
             position: absolute;
             outline: transparent;
