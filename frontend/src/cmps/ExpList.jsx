@@ -6,7 +6,7 @@ export function ExpList (props) {
 
         return (
             <div className="grid-container">
-                
+                    {/* <h3>{console.log(this.props)}</h3> */}
                     {props.exps.map(exp => <ExpPreview key={exp._id} exp={exp} />)}
             </div>
         )

@@ -53,50 +53,50 @@ export class MenuEdit extends Component {
                 <label htmlFor="menu-appetizer">
                     {menu.appetizers.map((app, idx) => {
                         return (
-                            <section className="appetizer" key="app">
-                                <TextField data-idx={idx} autoComplete="off" type="text"
-                                    id={`appTitleIdx-${idx}`} name="appetizer-title"
+                            <section className="appetizer" key={`app-${idx}`}>
+                                <TextField autoComplete="off" type="text"
+                                    id={`appTitleIdx-${idx}`} name="appetizers-title"
                                     value={app.title} placeholder="Title"
                                     onChange={this.handleChange} />
-                                <TextField data-idx={idx} autoComplete="off" type="text"
-                                    id={`appDescIdx-${idx}`} name="appetizer-desc"
+                                <TextField autoComplete="off" type="text"
+                                    id={`appDescIdx-${idx}`} name="appetizers-desc"
                                     value={app.desc} placeholder="Desc"
-                                    onChange={(ev) => this.handleChange(ev)} />
+                                    onChange={this.handleChange} />
                             </section>
                         )
                     })}
                 </label>
                 <Button id="add-appetizer-btn " variant="contained" color="primary" 
-                onClick={() => this.addInputCourse('appetizer')}>+</Button>
+                onClick={() => this.addInputCourse('appetizers')}>+</Button>
                 <span>Main</span>
                 <label htmlFor="menu-main">
                     {menu.mainCourse.map((main, idx) => {
                         return (
-                            <section className="main" key="main">
-                                <TextField data-idx={idx} autoComplete="off" type="text"
-                                    id={`mainTitleIdx-${idx}`} name="main-title"
+                            <section className="main" key={`main-${idx}`}>
+                                <TextField autoComplete="off" type="text"
+                                    id={`mainTitleIdx-${idx}`} name="mainCourse-title"
                                     value={main.title} placeholder="Title"
                                     onChange={this.handleChange} />
-                                <TextField data-idx={idx} autoComplete="off" type="text"
-                                    id={`mainDescIdx-${idx}`} name="main-desc"
+                                <TextField autoComplete="off" type="text"
+                                    id={`mainDescIdx-${idx}`} name="mainCourse-desc"
                                     value={main.desc} placeholder="Desc"
                                     onChange={this.handleChange} />
                             </section>
                         )
                     })}
                 </label>
-                <Button id="add-appetizer-btn " variant="contained" color="primary" 
-                onClick={() => this.addInputCourse('main')}>+</Button>
+                <Button id="add-main-btn " variant="contained" color="primary" 
+                onClick={() => this.addInputCourse('mainCourse')}>+</Button>
                 <span>Desserts</span>
                 <label htmlFor="menu-desserts">
                     {menu.desserts.map((dess, idx) => {
                         return (
-                            <section className="desserts" key="desserts">
-                                <TextField data-tag={idx} autoComplete="off" type="text"
+                            <section className="desserts" key={`desserts-${idx}`}>
+                                <TextField autoComplete="off" type="text"
                                     id={`dessertsTitleIdx-${idx}`} name="desserts-title"
                                     value={dess.title} placeholder="Title"
                                     onChange={this.handleChange} />
-                                <TextField data-idx={idx} autoComplete="off" type="text"
+                                <TextField autoComplete="off" type="text"
                                     id={`dessertsDescIdx-${idx}`} name="desserts-desc"
                                     value={dess.desc} placeholder="Desc"
                                     onChange={this.handleChange} />
@@ -104,13 +104,13 @@ export class MenuEdit extends Component {
                         )
                     })}
                 </label>
-                <Button id="add-appetizer-btn " variant="contained" color="primary" 
+                <Button id="add-desserts-btn " variant="contained" color="primary" 
                 onClick={() => this.addInputCourse('desserts')}>+</Button>
                 <span>Drinks</span>
                 <label htmlFor="menu-drinks">
                     {menu.drinks.map((drink, idx) => {
                         return (
-                            <section className="drinks" key="drinks">
+                            <section className="drinks" key={`drinks-${idx}`}>
                                 <TextField autoComplete="off" type="text"
                                     id={`drinksTitleIdx-${idx}`} name="drinks-title"
                                     value={drink.title} placeholder="Title"
@@ -123,7 +123,7 @@ export class MenuEdit extends Component {
                         )
                     })}
                 </label>
-                <Button id="add-appetizer-btn " variant="contained" color="primary" 
+                <Button id="add-drinks-btn " variant="contained" color="primary" 
                 onClick={() => this.addInputCourse('drinks')}>+</Button>
                 <Button variant="contained" color="primary" 
                 id="save-menu-btn" onClick={this.onSaveMenu}>Save Changes</Button>
