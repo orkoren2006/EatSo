@@ -28,14 +28,37 @@
         display: flex;
         justify-content: space-between;
         padding: 10px;
+        box-shadow: 0 0 4px 0px #6d6d6d;
+        margin-bottom: 5px;
+        position: relative;
         .exp-booking {
+            width: 30%;
+            height: fit-content;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 4px 0px #6d6d6d;
             display: flex;
             flex-direction: column;
-            position: fixed;
+            justify-content: space-between;
+            position: sticky;
             right: 4.5vw;
+            top: 15px;
+            .price {
+                font-weight: bold;
+                span {
+                    font-size: 0.8em;
+                }
+            }
+            .exp-rate {
+                font-size: 0.8em;
+            }
+            button {
+                // text-align: center;
+                // width: 50%;
+            }
         }
         .exp-details {
-            width: 80%;
+            width: 60%;
         }
     }
 }

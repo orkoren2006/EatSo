@@ -4,9 +4,9 @@ import { GoogleMap } from '../cmps/GoogleMap';
 import { expService } from '../services/expService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { MenuSection } from '../cmps/MenuSection';
 import { Menu } from '../cmps/Menu';
 import { Modal } from '../cmps/Modal';
+import { ExpRate } from '../cmps/ExpRate';
 class _ExpDetails extends Component {
 
     state = {
@@ -32,11 +32,11 @@ class _ExpDetails extends Component {
     }
 
     onBookClick = () => {
-        this.setState({isModalShown: true})
+        this.setState({ isModalShown: true })
     }
-    
+
     onCloseModal = () => {
-        this.setState({isModalShown: false})
+        this.setState({ isModalShown: false })
     }
     render() {
         const { exp, isModalShown } = this.state;
@@ -48,10 +48,7 @@ class _ExpDetails extends Component {
                     <p>Lop</p>
                 </Modal>
                 <h2>{exp.name}</h2>
-                <div className="exp-rate">
-                    <FontAwesomeIcon className="star-icon" icon={faStar} />&nbsp;
-                    {this.avgRate} ({this.numOfReviews})
-                </div>
+                <ExpRate avgRate={this.avgRate} numOfRates={this.numOfReviews} />
                 <section className="exp-imgs">
                     {
                         exp.imgUrls.map((imgUrl, idx) => <img key={`img-${idx}-${exp._id}`} src={imgUrl} alt="img" />)
@@ -66,15 +63,21 @@ class _ExpDetails extends Component {
                         <h6>Hosted by {exp.owner.fullName}</h6>
                         <h5>A word about the experience</h5>
                         <p>{exp.desc}</p>
-                        <Menu className="" menu={exp.menu} />
+                        <Menu menu={exp.menu} />
 
                     </section>
                     <section className="exp-booking">
-                        <span> Price: ${exp.price}</span>
+                        <div className="flex space-between">
+                            <span className="price">${exp.price}  <span >/ Person</span></span>
+                            <ExpRate avgRate={this.avgRate} numOfRates={this.numOfReviews} />
+                        </div>
+                        <div>
+                            {new Date(Date.now() + 1000*60*60*24*3).toDateString()}
+                        </div>
                         <button onClick={this.onBookClick}>Book!</button>
                     </section>
                 </section>
-                <GoogleMap containerStyle={{ width: '80%', height: 350 }} style={{ width: '80%', height: 350 }} center={center} />
+                <GoogleMap containerStyle={{ width: '50%', height: 150 }} style={{ width: '50%', height: 150 }} center={center} />
             </div>
         )
     }

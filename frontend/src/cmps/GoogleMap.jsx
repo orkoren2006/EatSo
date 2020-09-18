@@ -23,7 +23,9 @@ class _GoogleMap extends React.Component {
 
     render() {
         return (
-            <Map initialCenter={this.state} style={this.props.style} containerStyle={this.props.containerStyle} center={this.state} onClick={this.onMapClicked} google={this.props.google} zoom={18}>
+            <Map initialCenter={this.state} style={this.props.style}
+                containerStyle={this.props.containerStyle} center={this.state}
+                onClick={this.onMapClicked} google={this.props.google} zoom={18}>
                 <Marker position={this.state} name={'Current location'} />
             </Map>
         );
