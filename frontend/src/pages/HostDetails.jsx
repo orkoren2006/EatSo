@@ -5,12 +5,13 @@ import { hostService } from '../services/hostService';
 import { loadExps, removeExp } from '../store/actions/expAction';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { HostList } from '../cmps/HostList';
 
 class _HostDetails extends Component {
 
     state = {
         host: null,
-        exps: []
+        exps: null,
     }
 
     async componentDidMount() {
@@ -26,7 +27,7 @@ class _HostDetails extends Component {
     render() {
         const { host, exps } = this.state;
         if (!host) return <div>Loading...</div>
-        console.log(host);
+        if (!exps) return <div>Loading...</div>
         return (
             <React.Fragment>
                 <section>
@@ -34,7 +35,7 @@ class _HostDetails extends Component {
                     <p>{host.desc}</p>
                 </section>
                 <section>
-                    pop
+                    {exps.map(exp => <HostList key={exp._id} exp={exp} />)}
                 </section>
             </React.Fragment>
         )
