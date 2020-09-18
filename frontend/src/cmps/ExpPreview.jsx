@@ -9,12 +9,12 @@ export function ExpPreview(props) {
     return (
         <div className="exp-card">
             <Link to={`/exp/${exp._id}`}>
-                <section className="cont flex">
+                <section className="exp-card-cont flex">
                     <img className="img-in-div" src={exp.imgUrls[0]}></img>
                     {/* <img className="img-in-div-2" src={exp.imgUrls[1]}></img> */}
                     <div className="div-in-image">${exp.price}</div>
                 </section>
-                <section className="desc">
+                <section className="exp-card-desc">
                     <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
                     <h3>{exp.name}</h3>
                     <p>{exp.reviews[0].rate}/5</p>
