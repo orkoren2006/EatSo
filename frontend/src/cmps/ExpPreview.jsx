@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { ExpRate } from './ExpRate';
 
 
 export function ExpPreview(props) {
@@ -17,7 +18,7 @@ export function ExpPreview(props) {
                 <section className="exp-card-desc">
                     <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
                     <h3>{exp.name}</h3>
-                    <p>{exp.reviews[0].rate}/5</p>
+                    <ExpRate reviews={exp.reviews} />
                     {/* <FontAwesomeIcon className="star-icon" icon={faStar} /> */}
                 </section>
             </Link>

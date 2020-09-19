@@ -1,12 +1,7 @@
 .exp-details-container {
     margin-top: 20px;
 
-    .exp-rate {
-        // font-size: 50px;
-        .star-icon {
-            color: #fd7854;
-        }
-    }
+    
     .exp-imgs {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

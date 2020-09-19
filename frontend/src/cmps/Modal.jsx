@@ -22,7 +22,7 @@ export class Modal extends Component {
         return (
             <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
                 <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
-                    <button onClick={this.closeModal}>X</button>
+                    <button className="close-modal" onClick={this.closeModal}>X</button>
                     {children}
                 </div>
             </div >

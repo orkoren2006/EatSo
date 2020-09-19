@@ -134,6 +134,10 @@ class _LoginSignup extends Component {
           </div>
         )}
         {!loggedInUser && loginSection}
+        <hr />
+        <h1>
+          Sign Up
+        </h1>
         {!loggedInUser && signupSection}
         {/* <h2>Login</h2>
         <form>div</form>
@@ -141,24 +145,8 @@ class _LoginSignup extends Component {
         <h2>Signup</h2>
         <form></form> */}
 
-        <hr />
-        <button onClick={this.props.loadUsers}>Get All Users</button>
-        {this.props.isLoading && 'Loading...' }
-        {this.props.users && <ul>
-
-          {this.props.users.map(user => (
-            <li key={user._id}>
-              <pre>{JSON.stringify(user, null, 2)}</pre>
-              <button
-                onClick={() => {
-                  this.removeUser(user._id);
-                }}
-              >
-                Remove {user.username}
-              </button>
-            </li>
-          ))}
-        </ul>}
+        
+    
       </div>
     );
   }
