@@ -29,13 +29,11 @@ class _ExpDetails extends Component {
         const exp = await expService.getById(id);
         if (!exp) return;
         this.setState({ exp })
-        // console.log(this.props.user);
-        // console.log('mount',this.state.review.rate);
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state !== prevState) {
-            // console.log('update', this.state.review.rate);
+
         }
     }
 
@@ -64,23 +62,16 @@ class _ExpDetails extends Component {
 
     onAddReview = (ev) => {
         ev.preventDefault();
-        // if(!this.props.user) return this.onShowMaodl();
+        if(!this.props.user) return this.onShowMaodl();
         const reviewToAdd = this.state.review;
-        // const {user} = this.props;
-        // reviewToAdd.by = {
-        //     _id: user._id,
-        //     fullName: user.fullName,
-        //     imgUrl: user.imgUrl
-        // }
-        reviewToAdd.by = { 
-            _id: 'u102',
-            fullName: 'Haim Cohen',
-            imgUrl: 'https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg',
+        const {user} = this.props;
+        reviewToAdd.by = {
+            _id: user._id,
+            fullName: user.fullName,
+            imgUrl: user.imgUrl
         }
         var exp = JSON.parse(JSON.stringify(this.state.exp));
-        // console.log('exp', exp);
         exp.reviews = [reviewToAdd, ...exp.reviews];
-        // console.log('exp.review', exp.reviews);
         this.setState({exp, review: {...this.state.review, id: utilService.makeId(), txt: '' } })
         this.props.saveExp(exp);
         this.toggleAddReviewShown();
@@ -89,7 +80,6 @@ class _ExpDetails extends Component {
     render() {
         const { exp, review, isModalShown, isAddReviewShown } = this.state;
         if (!exp) return <div>  </div>
-        console.log(exp.reviews);
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container">
