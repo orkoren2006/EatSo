@@ -20,7 +20,6 @@ export class Header extends Component {
     render() {
         const toggleNavbarClass = this.state.navbar ? 'main-nav flex toggle' : 'main-nav flex'
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
-        console.log(toggleNavbarClass);
         return (
             <div className="header flex align-center space-between">
                 <Link to="/"><h1>EatSo!</h1></Link>
