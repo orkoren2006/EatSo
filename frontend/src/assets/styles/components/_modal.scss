@@ -20,12 +20,12 @@
     flex-direction: column;
     background: white;
     max-width: 90%;
-    min-width: 20%;
+    min-width: 50%;
     min-height: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     position: relative;
     padding: 15px;
-
+    border-radius: 5px;
     .close-modal {
         align-self: flex-end;
     }

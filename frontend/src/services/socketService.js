@@ -1,34 +1,68 @@
 import io from 'socket.io-client';
 
-const BASE_URL =
-  process.env.NODE_ENV === 'production' ? '/' : '//localhost:3030';
+const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
+// const socketService = createSocketService();
+const socketService = createDummySocketService();
 
-let socket;
+window.socketService = socketService;
+export default socketService;
 
-export const socketService = {
-  setup,
-  terminate,
-  on,
-  off,
-  emit
-};
-
-function setup() {
-  socket = io(BASE_URL);
+function createSocketService() {
+  var socket;
+  const socketService = {
+    setup() {
+      socket = io(baseUrl);
+    },
+    on(eventName, cb) {
+      socket.on(eventName, cb);
+    },
+    off(eventName, cb) {
+      socket.off(eventName, cb);
+    },
+    emit(eventName, data) {
+      socket.emit(eventName, data);
+    },
+    terminate() {
+      socket = null;
+    }
+  }
+  return socketService;
 }
 
-function terminate() {
-  socket = null;
+function createDummySocketService() {
+  var listenersMap = {}
+  const socketService = {
+    setup() {
+      listenersMap = {}
+      window.listenersMap = listenersMap;
+    },
+    terminate() {
+      listenersMap = {}
+    },
+    on(eventName, cb) {
+      listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+      console.log(listenersMap[eventName]);
+    },
+    off(eventName, cb) {
+      listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
+    },
+    emit(eventName, data) {
+      if (!listenersMap[eventName]) return;
+      listenersMap[eventName].forEach(listener => {
+        console.log(listener,data);
+        listener(data)
+      });
+    },
+    debugMsg() {
+      this.emit('chat addMsg', {from: 'Someone', txt: 'Aha it worked!'})
+    },
+  }
+  return socketService;
 }
 
-function on(eventName, cb) {
-  socket.on(eventName, cb);
-}
 
-function off(eventName, cb) {
-  socket.off(eventName, cb);
-}
-
-function emit(eventName, data) {
-  socket.emit(eventName, data);
-}
+// Basic Tests
+// function cb(x) {console.log(x)}
+// socketService.on('baba', cb)
+// socketService.emit('baba', 'DATA')
+// socketService.off('baba', cb)
