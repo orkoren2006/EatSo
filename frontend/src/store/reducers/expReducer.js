@@ -9,7 +9,6 @@ const initialState = {
       case 'ADD_EXP':
         return { ...state, exps: [...state.exps, action.exps] };
       case 'SAVE_EXP':
-        console.log('from reducer',action);
         let expsToSave;
             if (action.isNew) {
                 expsToSave = [...state.exps, action.exp]
@@ -19,6 +18,7 @@ const initialState = {
                     else { return exp }
                 })
             }
+            
             return {
                 ...state,
                 exps: expsToSave
