@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ExpChat } from '../cmps/ExpChat';
 
 import {
   loadUsers,
@@ -11,6 +12,7 @@ import {
 
 class _LoginSignup extends Component {
   state = {
+    users: [],
     msg: '',
     loginCred: {
       email: '',
@@ -19,9 +21,16 @@ class _LoginSignup extends Component {
     signupCred: {
       email: '',
       password: '',
-      username: ''
+      userName: ''
     }
   };
+
+
+  async componentDidMount() {
+    await this.props.loadUsers()
+    // console.log('from login' ,this.props.users);
+    // this.setState({ users }, () => console.log(this.state.users))
+  }
 
   loginHandleChange = ev => {
     const { name, value } = ev.target;
@@ -56,18 +65,19 @@ class _LoginSignup extends Component {
 
   doSignup = async ev => {
     ev.preventDefault();
-    const { email, password, username } = this.state.signupCred;
-    if (!email || !password || !username) {
+    const { email, password, userName } = this.state.signupCred;
+    if (!email || !password || !userName) {
       return this.setState({ msg: 'All inputs are required!' });
     }
-    const signupCreds = { email, password, username };
+    const signupCreds = { email, password, userName };
     this.props.signup(signupCreds);
-    this.setState({ signupCred: { email: '', password: '', username: '' } });
+    this.setState({ signupCred: { email: '', password: '', userName: '' } });
   };
 
   removeUser = userId => {
     this.props.removeUser(userId);
   };
+
   render() {
     let signupSection = (
       <form onSubmit={this.doSignup}>
@@ -89,8 +99,8 @@ class _LoginSignup extends Component {
         <br />
         <input
           type="text"
-          name="username"
-          value={this.state.signupCred.username}
+          name="userName"
+          value={this.state.signupCred.userName}
           onChange={this.signupHandleChange}
           placeholder="Username"
         />
@@ -121,6 +131,8 @@ class _LoginSignup extends Component {
     );
 
     const { loggedInUser } = this.props;
+    // if (loggedInUser) {const { userName } = loggedInUser}
+
     return (
       <div className="test">
         <h1>
@@ -129,7 +141,7 @@ class _LoginSignup extends Component {
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
-            <h2>Welcome: {loggedInUser.username} </h2>
+            <h2>Welcome: {loggedInUser.userName} </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
         )}
@@ -139,14 +151,16 @@ class _LoginSignup extends Component {
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
+
+        {loggedInUser && <ExpChat userName={loggedInUser.userName}/>}
         {/* <h2>Login</h2>
         <form>div</form>
 
         <h2>Signup</h2>
         <form></form> */}
 
-        
-    
+
+
       </div>
     );
   }
@@ -167,4 +181,4 @@ const mapDispatchToProps = {
   loadUsers
 };
 
-export const LoginSignup =  connect(mapStateToProps, mapDispatchToProps)(_LoginSignup);
+export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup);
