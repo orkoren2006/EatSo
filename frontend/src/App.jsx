@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 import { Home } from './pages/Home.jsx';
-import { LoginSignup } from './pages/Login.jsx';
+import { LoginSignup } from './pages/LoginSignup.jsx';
 import { About } from './pages/About.jsx';
 import { ExpApp } from './pages/ExpApp.jsx';
 import { ExpDetails } from './pages/ExpDetails.jsx';

@@ -6,6 +6,7 @@ import { Menu } from '../cmps/Menu';
 import { Modal } from '../cmps/Modal';
 import { ExpRate } from '../cmps/ExpRate';
 import { Link } from 'react-router-dom'
+import { LoginSignup } from './LoginSignup';
 class _ExpDetails extends Component {
 
     state = {
@@ -18,16 +19,6 @@ class _ExpDetails extends Component {
         const exp = await expService.getById(id);
         if (!exp) return;
         this.setState({ exp })
-    }
-
-    get avgRate() {
-        const exp = this.state.exp;
-        const sum = exp.reviews.reduce((acc, review) => acc += review.rate, 0)
-        return (sum / exp.reviews.length).toFixed(1);
-    }
-
-    get numOfReviews() {
-        return this.state.exp.reviews.length;
     }
 
     onBookClick = () => {
@@ -44,10 +35,10 @@ class _ExpDetails extends Component {
         return (
             <div className="exp-details-container">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown}>
-                    <p>Lop</p>
+                    <LoginSignup />
                 </Modal>
                 <h2>{exp.name}</h2>
-                <ExpRate avgRate={this.avgRate} numOfRates={this.numOfReviews} />
+                <ExpRate reviews={exp.reviews} />
                 <section className="exp-imgs">
                     {
                         exp.imgUrls.map((imgUrl, idx) => <img key={`img-${idx}-${exp._id}`} src={imgUrl} alt="img" />)
@@ -68,7 +59,7 @@ class _ExpDetails extends Component {
                     <section className="exp-booking">
                         <div className="flex space-between">
                             <span className="price">${exp.price}  <span >/ Person &nbsp;</span></span>
-                            <ExpRate avgRate={this.avgRate} numOfRates={this.numOfReviews} />
+                            <ExpRate reviews={exp.reviews} />
                         </div>
                         <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
                         <button onClick={this.onBookClick}>Book!</button>

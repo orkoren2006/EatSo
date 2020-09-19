@@ -124,7 +124,7 @@ class _LoginSignup extends Component {
     return (
       <div className="test">
         <h1>
-          This is a testing page for working with the Production Ready Server
+          Login
         </h1>
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
