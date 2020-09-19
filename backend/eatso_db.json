@@ -490,7 +490,7 @@
       "location": {
         "address": "Neuschwansteinstraße 20, 87645 Schwangau, Germany",
         "city": "Washington, DC",
-        "lat": 47.557559,
+        "lat": 47.557559, 
         "lng": 10.749771
       },
       "menu": {
@@ -557,7 +557,7 @@
     },
     {
       "_id": "e106",
-      "name": "On The Tip Of The Crater",
+      "name": "On Top Of The Crater",
       "title": "Vegan Brunch in Mitzpe Ramon",
       "desc": "You will eat in our cosy Dining room or, if the weather is nice, out on our pretty terrace.\nThis is the perfect meal:\nfor those who want to try Vegan food without spending a fortune…\nfor those who believe vegans just eat fruit and vegetables…",
       "price": 120,
@@ -589,7 +589,7 @@
       "location": {
         "address": "Ma'ale Ben Tur St, Mitzpe Ramon",
         "city": "Mitzpe Ramon",
-        "lat": 30.60996,
+        "lat": 30.609960, 
         "lng": 34.805599
       },
       "menu": {
@@ -652,6 +652,46 @@
     }
   ],
   "user": [
+    {
+      "_id": "u101",
+      "fullName": "Chen kitty",
+      "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg",
+      "isAdmin": false,
+      "userName": "Chenkitty",
+      "email": "Chenkitty@email.com",
+      "password": "secret",
+      "desc": "Chen has been hosting in her kitchen ever since EatSo was launched. She fell in love with the concept of inviting people who are passioante about food and claims that there's nothing more fulfilling than cooking for people who share the same love with her"
+    },
+    {
+      "_id": "u102",
+      "fullName": "Haim Cohen",
+      "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg",
+      "isAdmin": false,
+      "userName": "haimcohen",
+      "email": "haim@email.com",
+      "password": "secret",
+      "desc": "Haim has been known for his authentic oriental cuisine for years. He's an awarded top-chef in Israel and began his journey with EatSo 4 years ago"
+    },
+    {
+      "_id": "u103",
+      "fullName": "Michal Ansky",
+      "imgUrl": "/img/michal.jpg",
+      "isAdmin": false,
+      "userName": "michala",
+      "email": "michal_ansky@email.com",
+      "password": "secret",
+      "desc": "The passion of Michal for food began long time ago when she used to watch her grandmother cooking. Ever since she's been cooking herself and invite you all to an unforgattable evening in her kitchen"
+    },
+    {
+      "_id": "u104",
+      "fullName": "Avi Nusbaum",
+      "imgUrl": "/img/avi.jpg",
+      "isAdmin": false,
+      "userName": "avinus",
+      "email": "avinus@email.com",
+      "password": "secret",
+      "desc": ""
+    },
     {
       "_id": "u105",
       "fullName": "Magen Rapinoe",
