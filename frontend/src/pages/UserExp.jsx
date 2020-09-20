@@ -8,8 +8,7 @@ class _UserExp extends Component {
     state = {
         user: '',
         userExps: '',
-        filter: 'all',
-        tabColor: ['#ffffff', '#ffffff', '#C9C9C9']
+        filter: 'all'
     }
 
     async componentDidMount() {
@@ -30,19 +29,6 @@ class _UserExp extends Component {
 
     onExpTimeFilter = ({ target }) => {
         this.setState({ filter: target.id })
-        switch (target.id) {
-            case 'all':
-                this.setState({ tabColor: ['#ffffff', '#ffffff', '#C9C9C9'] })
-                break;
-            case 'past':
-                this.setState({ tabColor: ['#C9C9C9', '#ffffff', '#ffffff'] })
-                break;
-            case 'future':
-                this.setState({ tabColor: ['#ffffff', '#C9C9C9', '#ffffff'] })
-                break
-            default:
-                break;
-        }
     }
 
     getExpsToShow = () => {
@@ -65,8 +51,6 @@ class _UserExp extends Component {
         return (
             <React.Fragment>
                 <section>
-                    {/* <h2>{user.fullName}</h2>
-                    <p>{user.desc}</p> */}
                     <h3>Experiences As a {(this.props.match.params.as === 'owner') ? 'Host' : "Participants"} </h3>
                 </section>
                 <section className="user-exp-navbar">
