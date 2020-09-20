@@ -49,24 +49,24 @@ class _UserExp extends Component {
         const { user } = this.props;
         if (!user) return <div>Itay Loading...</div>
         return (
-            <React.Fragment>
-                <section>
-                    <h3>Experiences As a {(this.props.match.params.as === 'owner') ? 'Host' : "Participants"} </h3>
-                </section>
+            // <React.Fragment className="user-exp-div">
+            <section className="user-exp-div">
+                <h3 className="user-exp-type">Experiences As a {(this.props.match.params.as === 'owner') ? 'Host' : "Participants"} </h3>
                 <section className="user-exp-navbar">
                     <ul className="user-exp-navbar-list flex">
-                        <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked':''}
+                        <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
                             id="past" onClick={this.onExpTimeFilter}>Past</li>
-                        <li key="future-exps" className={(this.state.filter === 'future') ? 'clicked':''}
+                        <li key="future-exps" className={(this.state.filter === 'future') ? 'clicked' : ''}
                             id="future" onClick={this.onExpTimeFilter}>Upcoming</li>
-                        <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked':''}
+                        <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked' : ''}
                             id="all" onClick={this.onExpTimeFilter}>All</li>
                     </ul>
-                    {this.state.userExps && 
-                    ((this.getExpsToShow().length) ? 
-                    <ExpList exps={this.getExpsToShow()}/>:<h2>No Exps To Show</h2>)}
+                    {this.state.userExps &&
+                        ((this.getExpsToShow().length) ?
+                            <ExpList exps={this.getExpsToShow()} /> : <h2>No Exps To Show</h2>)}
                 </section>
-            </React.Fragment>
+            </section>
+            // </React.Fragment>
         )
     }
 }

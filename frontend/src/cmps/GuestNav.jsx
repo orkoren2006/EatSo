@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom'
 
 export function GuestNav({navClass, onItemClick}) {
     return (
-        <nav className={navClass}>
+        <div className={navClass}>
+            {/* <NavLink onClick={onItemClick} to="/login">Login/Signup</NavLink> */}
             <ul>
                 <li><NavLink onClick={onItemClick} to="/login">Login/Signup</NavLink></li>
             </ul>
-        </nav>
+        </div>
     )
 }
