@@ -12,6 +12,7 @@ import { ExpRate } from '../cmps/ExpRate';
 import { LoginSignup } from './LoginSignup';
 import { utilService } from '../services/utilService';
 import { saveExp } from '../store/actions/expAction';
+import { ReviewList } from '../cmps/ReviewList';
 class _ExpDetails extends Component {
 
     state = {
@@ -40,6 +41,7 @@ class _ExpDetails extends Component {
 
     onBookClick = () => {
         if (!this.props.user) return this.onShowMaodl();
+        
     }
 
     onCloseModal = () => {
@@ -62,17 +64,20 @@ class _ExpDetails extends Component {
 
     onAddReview = (ev) => {
         ev.preventDefault();
-        if(!this.props.user) return this.onShowMaodl();
+        if (!this.props.user) return this.onShowMaodl();
         const reviewToAdd = this.state.review;
-        const {user} = this.props;
+        const { user } = this.props;
+
         reviewToAdd.by = {
             _id: user._id,
             fullName: user.fullName,
             imgUrl: user.imgUrl
         }
-        var exp = JSON.parse(JSON.stringify(this.state.exp));
+        reviewToAdd.createdAt = Date.now();
+
+        const { exp } = this.state;
         exp.reviews = [reviewToAdd, ...exp.reviews];
-        this.setState({exp, review: {...this.state.review, id: utilService.makeId(), txt: '' } })
+        this.setState({ exp, review: { ...this.state.review, id: utilService.makeId(), txt: '' } })
         this.props.saveExp(exp);
         this.toggleAddReviewShown();
     }
@@ -108,19 +113,7 @@ class _ExpDetails extends Component {
                         </section>
 
                         <section className="exp-reviews">
-                            <h4>Reviews</h4>
-                            <ul>
-                                {
-                                    exp.reviews.map((review, idx) =>
-                                        <li key={`review-${idx}-${exp._id}`}>
-                                            {review.by.fullName}:&nbsp;
-                                            {review.txt}
-                                            <br />
-                                            
-                                            <StyledRating  value={review.rate} readOnly />
-                                        </li>
-                                    )}
-                            </ul>
+                            <ReviewList reviews={exp.reviews} />                           
                             <button onClick={this.toggleAddReviewShown}>Add review</button>
                             {
                                 isAddReviewShown &&
