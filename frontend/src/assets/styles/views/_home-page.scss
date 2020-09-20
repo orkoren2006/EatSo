@@ -5,7 +5,7 @@
 
 .hero-image {
     background-image   : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600539549/eatso/14465_ok6xje.jpg");
-    height             : 80vh;
+    height             : 50vh;
     background-position: bottom;
     background-repeat  : no-repeat;
     background-size    : cover;
@@ -18,7 +18,7 @@
     z-index            : 0;
 
     h1 {
-        font-size  : 140px;
+        font-size  : 100px;
         color      : #fbf9ee;
         font-family: 'prata';
         margin-top : -24px;
@@ -26,7 +26,7 @@
 
     h2 {
         margin-top: 24px;
-        font-size  : 60px;
+        font-size  : 50px;
         font-family: 'prata';
         color      : #fbf9ee;
     }
@@ -38,14 +38,36 @@
 
 }
 
-.home-card {
+.home-card-1 {
     height : 100%;
-    width  : 33.3%;
-    padding: 0 8px;
+    width: 66.6%;
+    padding: 8px 8px;
+}
+.home-card-2 {
+    height : 100%;
+    width: 33.3%;
+    padding: 8px 8px;
+}
+.home-card-3 {
+    height : 100%;
+    width: 33.3%;
+    padding: 8px 8px;
+}
+.home-card-4 {
+    height : 100%;
+    width: 33.3%;
+    padding: 8px 8px;
+}
+.home-card-5 {
+    height : 100%;
+    width: 33.3%;
+    padding: 8px 8px;
 }
 
 .preview-cards {
-    height: 27vh;
+    height: 30vh;
+    margin-bottom: 400px !important;
+    
 
     a {
         color          : inherit;
@@ -61,6 +83,7 @@
 .width-90 {
     width : 90%;
     margin: 16px auto;
+    
 }
 
 .preview-image {

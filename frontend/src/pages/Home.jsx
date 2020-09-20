@@ -59,17 +59,24 @@ class _Home extends Component {
           <h2>Where love and food </h2>
           <h1> meet<span className="animate__animated animate__bounce">.</span></h1>
         </div>
-        <div className="flex flex center align-center preview-cards width-90">
-          <div className="home-card">
+        <section className="flex flex center wrap align-center preview-cards width-90">
+          
+          <div className="home-card-1">
             <Link to="/exp"><div className="preview-image img-1 flex align-center justify-center"><h3>Dinners</h3></div></Link>
           </div>
-          <div className="home-card">
+          <div className="home-card-2">
             <Link to="/exp"><div className="preview-image img-2 flex align-center justify-center"><h3>Workshops</h3></div></Link>
           </div>
-          <div className="home-card">
+          <div className="home-card-3">
             <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
           </div>
-        </div>
+          <div className="home-card-4">
+            <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+          </div>
+          <div className="home-card-5">
+            <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+          </div>
+        </section>
         <section className="traditional">
           <section className="teaditional-header">
             <h2>Top Traditional Cuisine</h2>
