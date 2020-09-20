@@ -1,19 +1,6 @@
-.teaditional-header{
-    
-    text-align: center;
-    h2{
-        
-        font-size: 40px;
-        font-family: 'prata';
-    }
-}
-
-.traditional{
-    margin: 120px 0;
-}
 
 .exp-card {
-    border     : 1px lightgray solid;
+    box-shadow: 0px 8px 6px 0px #0000004d;
     font-family: roboto;
     flex: 1;
     margin: 0 8px;
@@ -30,6 +17,10 @@
         color          : inherit;
         text-decoration: none;
     }
+}
+
+.exp-card:hover {
+    box-shadow: 11px 13px 6px 0px #0000005c;
 }
 
 .exp-card-cont {

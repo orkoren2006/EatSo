@@ -6,6 +6,9 @@ import { loadExps } from '../store/actions/expAction';
 import { Button } from '@material-ui/core';
 
 
+
+
+
 class _Home extends Component {
 
   async componentDidMount() {
@@ -60,7 +63,7 @@ class _Home extends Component {
           <h1> meet<span className="animate__animated animate__bounce">.</span></h1>
         </div>
         <section className="flex flex center wrap align-center preview-cards width-90">
-          
+
           <div className="home-card-1">
             <Link to="/exp"><div className="preview-image img-1 flex column align-start justify-start"><h3>Outdoor</h3><h4>dinner experiences</h4></div></Link>
           </div>
@@ -78,40 +81,42 @@ class _Home extends Component {
           </div>
         </section>
         <section className="traditional">
-          <section className="teaditional-header">
+          <section className="preview-header">
             <h2>Top Traditional Cuisine</h2>
-            <Button><span> All traditional - &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tag-traditional')} />
+          <Button><span> All traditional - &gt;</span></Button>
         </section>
+
         <section className="tokyo-banner flex justify-center align-center">
-          <div className= "width-40"></div>
+          <div className="width-40"></div>
           <div>
             <h2> Eat real traditional</h2>
-            <h2> sushi in Tokyo</h2>
+            <h2> sushi in <span>Tokyo</span></h2>
+            <Button className="sushi-button" variant="contained" color="secondary">Show More</Button>
           </div>
         </section>
         <section className="tel-aviv">
-          <section className="tel-aviv-header">
-            <h2>Top Tel Aviv Meals</h2>
-            <Button><span> All Tel Aviv &gt;</span></Button>
+          <section className="preview-header">
+            <h2>Top Dinners in your Location</h2>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
+          <Button><span> All dinners in your location &gt;</span></Button>
         </section>
         <section className="scenic">
-          <section className="tel-aviv-header">
+          <section className="preview-header">
             <h2>Top Scenic Meals</h2>
-            <Button><span> All Scenic &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tag-scenic')} />
+          <Button><span> All Scenic &gt;</span></Button>
         </section>
-        <section className="multi-participants">
-          <section className="capacity-header">
+        {/* <section className="multi-participants">
+          <section className="preview-header">
             <h2>Top Multi-Participants Meals</h2>
-            <Button><span> All Multi-Participants &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('capacity-multi')} />
-        </section>
+          <Button><span> All Multi-Participants &gt;</span></Button>
+        </section> */}
       </section>
     );
   }
