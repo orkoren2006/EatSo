@@ -5,7 +5,7 @@ import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 import { cloudinaryService } from '../services/cloudinary-service';
 import DateFnsUtils from '@date-io/date-fns'; // choose your lib
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { saveExp } from '../store/actions/expAction';
+import { getById, saveExp } from '../store/actions/expAction';
 import { MenuEdit } from '../cmps/MenuEdit';
 
 
@@ -229,7 +229,8 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = {
-    saveExp
+    saveExp,
+    getById
 };
 
 export const ExpEdit = connect(mapStateToProps, mapDispatchToProps)(_ExpEdit);

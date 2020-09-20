@@ -2,13 +2,30 @@ import { expService } from '../../services/expService';
 import { loading, doneLoading } from './systemActions';
 
 // THUNK
-export function loadExps() {
+export function loadExps(filterBy) {
   return async dispatch => {
     try {
       // example for loading
       dispatch(loading);
-      const exps = await expService.getExps();
+      const exps = await expService.getExps(filterBy);
       dispatch({ type: 'SET_EXPS', exps });
+    } catch (err) {
+      console.log('ExpActions: err in loadExps', err);
+      // example for routing - after changing the store
+      // history.push('/some/path');
+    } finally {
+      dispatch(doneLoading);
+    }
+  };
+
+}
+export function getById(expId) {
+  return async dispatch => {
+    try {
+      // example for loading
+      dispatch(loading);
+      const exp = await expService.getById(expId);
+      dispatch({ type: 'SET_EXP', exp });
     } catch (err) {
       console.log('ExpActions: err in loadExps', err);
       // example for routing - after changing the store
