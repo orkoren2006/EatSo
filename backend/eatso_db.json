@@ -63,24 +63,40 @@
           {
             "title": "Jerusalem pretzel",
             "desc": "Jerusalem style pretzel with sesame and Za’atar"
+          },
+          {
+            "title": "Caprese salad",
+            "desc": "Tomatoes, fresh mozzarella, and basil drizzled with a sweet balsamic reduction and olive oil."
           }
         ],
-        "mainCourse": [
+        "main": [
           {
             "title": "Kubenia",
             "desc": "hand chopped tenderloin with bulgur, smoked onion and almonds"
+          },
+          {
+            "title": "Goulash",
+            "desc": "delicious beef stew with a rich paprika seasoned broth"
           }
         ],
         "desserts": [
           {
             "title": "Basbusa",
             "desc": "semolina cake with goat cheese cream, walnuts honey and cinnamon"
+          },
+          {
+            "title": "Chocolate Cake",
+            "desc": "Yummm!!!"
           }
         ],
         "drinks": [
           {
             "title": "Har Hermon",
             "desc": "merlot wine"
+          },
+          {
+            "title": "Coca Cola",
+            "desc": "Classic, Zero, Diet"
           }
         ]
       },
@@ -208,7 +224,7 @@
           "sentAt": 123456
         }
       ],
-      "updatedAt": 1600608885895
+      "updatedAt": 1600616166975
     },
     {
       "_id": "e102",
@@ -263,7 +279,7 @@
             "desc": "Smoked eggplant, thyme cream, and sheep yogurt"
           }
         ],
-        "mainCourse": [
+        "main": [
           {
             "title": "Grilled young kohlrabi, cachuta cheese, sunflower and thyme vinaigrette",
             "desc": "Chopped beef tenderloin, spices from Palermo, Turkish spinach, barley and walnuts"
@@ -422,7 +438,7 @@
             "desc": "Labneh + Pumpernickel"
           }
         ],
-        "mainCourse": [
+        "main": [
           {
             "title": "ROASTED PORRIDGE",
             "desc": "Ajoblanco + Fermented Green Beans"
@@ -529,7 +545,7 @@
             "desc": "corn-cheese baked empanada"
           }
         ],
-        "mainCourse": [
+        "main": [
           {
             "title": "Grilled Organic Seasonal Vegetables",
             "desc": "potatoes, onions, and carrots"
@@ -639,7 +655,7 @@
             "desc": "Egg with mustard-sauce and beetroot-apple-salat"
           }
         ],
-        "mainCourse": [
+        "main": [
           {
             "title": "Zander auf Maultaschen von weißen Zwiebeln in Meerrettichsoße",
             "desc": "Pike-perch (fish) on german ravioli, filled with white onions in horseradish-sauce"
@@ -743,7 +759,7 @@
             "desc": "Natural Yoghurt with Home Made Granola & Fermented Blueberries"
           }
         ],
-        "mainCourse": [
+        "main": [
           {
             "title": "Frittat",
             "desc": "Blackened Corn Frittata with Crushed Avocado, split Cherry Tomatoes & Coriander Cress"
