@@ -6,6 +6,7 @@ import { ExpRate } from './ExpRate';
 import { Image, Transformation } from 'cloudinary-react';
 
 
+
 export function ExpPreview(props) {
     const { exp } = props
     return (

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { logout } from '../store/actions/userActions';
 import { UserNav } from './UserNav';
 import { GuestNav } from './GuestNav';
+import { Image, Transformation } from 'cloudinary-react';
 
 function DynamicCmp(props){
     if (props.user) {
@@ -39,6 +40,7 @@ class _Header extends Component {
         const toggleNavbarClass = this.state.navbar ? 'main-nav flex toggle' : 'main-nav flex'
         const toggleScreen = this.state.navbar ? 'header-screen' : 'header-screen open-menu'
         const { user } = this.props
+        const avatar = (user) ? user.imgUrl : `https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png`
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
@@ -48,7 +50,10 @@ class _Header extends Component {
                     <DynamicCmp user={user} navClass={toggleNavbarClass}
                         onItemClick={this.toggleMenu}
                         onLogout={this.onLogout} />
-                    <img className="login-avatar" src="https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png" onClick={this.toggleMenu}></img>
+                    {/* <img className="login-avatar" src={user.imgUrl} onClick={this.toggleMenu}></img> */}
+                    <Image className="login-avatar" onClick={this.toggleMenu} cloudName="orkofy" publicId={avatar} type="fetch">
+                        <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
+                    </Image>
                 </div>
             </React.Fragment>
         )
