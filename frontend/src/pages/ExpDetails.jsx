@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
-import { Rating } from '@material-ui/lab';
-import { withStyles } from '@material-ui/core/styles';
 
 import { GoogleMap } from '../cmps/GoogleMap';
 import { expService } from '../services/expService';
-import { Menu } from '../cmps/Menu';
+
 import { Modal } from '../cmps/Modal';
 import { ExpRate } from '../cmps/ExpRate';
 import { LoginSignup } from './LoginSignup';
 import { utilService } from '../services/utilService';
-import { saveExp } from '../store/actions/expAction';
-import { ReviewList } from '../cmps/ReviewList';
+import { loadExps, saveExp } from '../store/actions/expAction';
+import { ExpGallery } from '../cmps/ExpGallery';
+import ExpContent from '../cmps/ExpContent';
 class _ExpDetails extends Component {
 
     state = {
@@ -30,6 +28,7 @@ class _ExpDetails extends Component {
         const exp = await expService.getById(id);
         if (!exp) return;
         this.setState({ exp })
+        if(!this.props.exps) this.props.loadExps();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -41,7 +40,7 @@ class _ExpDetails extends Component {
 
     onBookClick = () => {
         if (!this.props.user) return this.onShowMaodl();
-        
+
     }
 
     onCloseModal = () => {
@@ -93,47 +92,10 @@ class _ExpDetails extends Component {
                 </Modal>
                 <h2>{exp.name}</h2>
                 <ExpRate reviews={exp.reviews} />
-                <section className="exp-imgs">
-                    {
-                        exp.imgUrls.map((imgUrl, idx) => <img key={`img-${idx}-${exp._id}`} src={imgUrl} alt="img" />)
-                    }
-                </section>
-
-                <section className="exp-content">
-                    <div className="exp-details">
-                        <section >
-                            <h6>{exp.location.city} &gt; </h6>
-
-                            <h3>{exp.title}</h3>
-                            <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
-                            <h5>A word about the experience</h5>
-                            <p>{exp.desc}</p>
-                            <Menu menu={exp.menu} />
-                            <hr />
-                        </section>
-
-                        <section className="exp-reviews">
-                            <ReviewList reviews={exp.reviews} />                           
-                            <button onClick={this.toggleAddReviewShown}>Add review</button>
-                            {
-                                isAddReviewShown &&
-                                <form onSubmit={this.onAddReview}>
-                                    <input autoComplete="off" name="txt" onChange={this.onHandleChange} value={review.txt} type="text" />
-                                    <StyledRating defaultValue={1} name="rate" onChange={this.onHandleChange} value={review.rate} />
-                                    <button>Send</button>
-                                </form>
-                            }
-                        </section>
-                    </div>
-                    <section className="exp-booking">
-                        <div className="flex space-between">
-                            <span className="price">${exp.price}  <span >/ Person &nbsp;</span></span>
-                            <ExpRate reviews={exp.reviews} />
-                        </div>
-                        <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
-                        <button onClick={this.onBookClick}>Book!</button>
-                    </section>
-                </section>
+                <ExpGallery imgUrls={exp.imgUrls} />
+                <ExpContent exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                onHandleChange={this.onHandleChange} onAddReview={this.onAddReview}
+                isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} />
                 <GoogleMap containerStyle={{ width: '50%', height: 150 }} style={{ width: '50%', height: 150 }} center={center} />
             </div>
         )
@@ -148,8 +110,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    saveExp
+    saveExp,
+    loadExps
 };
 
 export const ExpDetails = connect(mapStateToProps, mapDispatchToProps)(_ExpDetails);
-const StyledRating = withStyles({ iconFilled: { color: '#fd7854' } })(Rating);
+

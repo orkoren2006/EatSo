@@ -1,0 +1,40 @@
+.exp-booking {
+    min-width: 230px;
+    width: 30%;
+    height: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 4px 0px #6d6d6d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    right: 4.5vw;
+    top: 15px;
+    .price {
+        font-weight: bold;
+        span {
+            font-size: 0.8em;
+        }
+    }
+    .exp-rate, .exp-date {
+        font-size: 0.8em;
+    }
+     
+    button {
+        cursor: pointer;
+        border: 1px solid transparent;
+        outline: none;
+        padding: 10px;
+        border-radius: 2em;
+        background-color: #fd7854;
+        color: $clr6;
+        transition: .5s;
+        margin-top: 10px;
+        &:hover {
+            background-color: $clr6;
+            color: black;
+            border: 1px solid #fd7854;
+        }
+    }
+}
