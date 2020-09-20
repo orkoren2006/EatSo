@@ -34,15 +34,12 @@ function update(user) {
 }
 
 async function login(userCred) {
-    console.log(userCred);
     // const user = await httpService.post('auth/login', userCred)
     const users = await httpService.get('user')
-    console.log(users);
     // const users = await storageService.query('user')
     const user = users.find(user =>
         (user.email === userCred.email &&
             user.password === userCred.password))
-    console.log(user);
 
     if (user) return _handleLogin(user)
 }

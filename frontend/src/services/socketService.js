@@ -41,7 +41,6 @@ function createDummySocketService() {
     },
     on(eventName, cb) {
       listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
-      console.log(listenersMap[eventName]);
     },
     off(eventName, cb) {
       listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
@@ -49,7 +48,6 @@ function createDummySocketService() {
     emit(eventName, data) {
       if (!listenersMap[eventName]) return;
       listenersMap[eventName].forEach(listener => {
-        console.log(listener,data);
         listener(data)
       });
     },
