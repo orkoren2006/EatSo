@@ -56,25 +56,25 @@ class _Home extends Component {
       <section className="home">
         <div className="hero-image flex column">
 
-          <h2>Where love and food </h2>
+          <h2>Where friends and food </h2>
           <h1> meet<span className="animate__animated animate__bounce">.</span></h1>
         </div>
         <section className="flex flex center wrap align-center preview-cards width-90">
           
           <div className="home-card-1">
-            <Link to="/exp"><div className="preview-image img-1 flex align-center justify-center"><h3>Dinners</h3></div></Link>
+            <Link to="/exp"><div className="preview-image img-1 flex column align-start justify-start"><h3>Outdoor</h3><h4>dinner experiences</h4></div></Link>
           </div>
           <div className="home-card-2">
-            <Link to="/exp"><div className="preview-image img-2 flex align-center justify-center"><h3>Workshops</h3></div></Link>
+            <Link to="/exp"><div className="preview-image img-2 flex column align-start justify-start"><h3>Traditional</h3><h4>cuisine</h4></div></Link>
           </div>
           <div className="home-card-3">
-            <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+            <Link to="/exp"> <div className="preview-image img-3 flex column align-start justify-start"><h3>Romantic</h3><h4>dinners</h4></div></Link>
           </div>
           <div className="home-card-4">
-            <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+            <Link to="/exp"> <div className="preview-image img-4 flex column align-start justify-start"><h3>Holiday</h3><h4>meals</h4></div></Link>
           </div>
           <div className="home-card-5">
-            <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+            <Link to="/exp"> <div className="preview-image img-5 flex column align-start justify-start"><h3>Dinner</h3><h4>parties</h4></div></Link>
           </div>
         </section>
         <section className="traditional">

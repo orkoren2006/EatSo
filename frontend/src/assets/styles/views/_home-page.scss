@@ -4,9 +4,9 @@
 }
 
 .hero-image {
-    background-image   : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600539549/eatso/14465_ok6xje.jpg");
-    height             : 50vh;
-    background-position: bottom;
+    background-image   : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600615140/eatso/hero-friends_r4vyhs.jpg");
+    height             : 75vh;
+    background-position: center;
     background-repeat  : no-repeat;
     background-size    : cover;
     position           : relative;
@@ -65,7 +65,7 @@
 }
 
 .preview-cards {
-    height: 30vh;
+    height: 35vh;
     margin-bottom: 400px !important;
     
 
@@ -75,13 +75,26 @@
     }
 
     h3 {
-        font-size: 30px;
+        font-size: 45px;
         color    : #fbf9ee;
+        
+        line-height: 0.3;
+        letter-spacing: 0.02em;
+        
+    }
+    h4{
+        font-size: 20px;
+        color:  #fbf9ee;
+        font-weight: 400;
+        letter-spacing: 0.5em;
+        
+
+
     }
 }
 
 .width-90 {
-    width : 90%;
+    max-width : 1366px;
     margin: 16px auto;
     
 }
@@ -89,21 +102,32 @@
 .preview-image {
     height             : 100%;
     width              : 100%;
-    background-position: bottom;
+    background-position: center;
     background-size    : cover;
+    padding: 40px 0 0 40px;
+    
 
     &.img-1 {
-        background-image: url("../../imgs/28.jpg");
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.0)), url("https://res.cloudinary.com/orkofy/image/upload/v1600615333/eatso/outdoor-clif_istcxq.jpg");
+        background-position: 50% 70%;
+        
 
     }
 
     &.img-2 {
-        background-image: url("../../imgs/2592.jpg");
+        background-image:linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600615231/eatso/indian-dinner_plgw3z.jpg");
 
     }
 
     &.img-3 {
-        background-image: url("../../imgs/643529-PONTX7-209.jpg");
+        background-image:linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600612055/eatso/663-1_ptufl4.jpg");
+    }
+    &.img-4 {
+        background-image:linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600612040/eatso/121_zqcgrt.jpg");
+    }
+    &.img-5 {
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)),url("https://res.cloudinary.com/orkofy/image/upload/v1600612018/eatso/97442b84f225a84ba6cb728f81c34e46_qcps4y.jpg");
+        background-position: bottom;
     }
 }
 
