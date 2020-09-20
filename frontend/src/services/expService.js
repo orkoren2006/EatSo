@@ -11,22 +11,20 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
-    // const criteria = {};
-    // for (const filterType in filterBy) {
-    //     if (filterBy[filterType]) {
-    //         criteria[filterType] = (filterType === 'name') ?
-    //             new RegExp(`${filterBy.name}`, 'i') : filterBy[filterType]
-    //     }
-    // }
     const exps = await httpService.get('exp')
     let expToReturn = exps;
-    // debugger
-    if (filterBy._id) expToReturn = exps.filter(exp => {
-        return (exp.owner._id === filterBy._id ||
-            exp.participants.some(participant => participant._id === filterBy._id))
-    })
+    if (filterBy.userId) {
+        if (filterBy.field === 'owner') {
+            expToReturn = exps.filter(exp => {
+                return (exp.owner._id === filterBy.userId)
+            })
+        } else if (filterBy.field === 'participant') {
+            expToReturn = exps.filter(exp => {
+                return exp.participants.some(participant => participant._id === filterBy.userId)
+            })
+        }
+    }
     return expToReturn;
-
 }
 
 function getById(expId) {

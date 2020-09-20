@@ -89,6 +89,11 @@
           "_id": "u104",
           "fullName": "Avi Nusbaum",
           "imgUrl": "/img/avi.jpg"
+        },
+        {
+          "_id": "u102",
+          "fullName": "Haim Cohen",
+          "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg"
         }
       ],
       "reviews": [
@@ -272,9 +277,14 @@
       },
       "participants": [
         {
-          "_id": "u102",
-          "fullName": "user2",
-          "imgUrl": "/img/img2.jpg"
+          "_id": "u103",
+          "fullName": "Michal Ansky",
+          "imgUrl": "/img/michal.jpg"
+        },
+        {
+          "_id": "u101",
+          "fullName": "Chen kitty",
+          "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
         }
       ],
       "reviews": [
@@ -598,6 +608,11 @@
         ]
       },
       "participants": [
+        {
+          "_id": "u101",
+          "fullName": "Chen kitty",
+          "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
+        },
         {
           "_id": "u107",
           "fullName": "Alaska Thunderfuck",
