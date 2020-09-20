@@ -98,6 +98,28 @@
       ],
       "reviews": [
         {
+          "id": "t2kNVYUxjx66",
+          "txt": "Meh",
+          "rate": 2,
+          "by": {
+            "_id": "u101",
+            "fullName": "Chen kitty",
+            "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
+          },
+          "createdAt": 1600594423770
+        },
+        {
+          "id": "phOCTsr7pmtL",
+          "txt": "Delicious!",
+          "rate": 4,
+          "by": {
+            "_id": "u101",
+            "fullName": "Chen kitty",
+            "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
+          },
+          "createdAt": 1600593291911
+        },
+        {
           "id": "r4OSZgZQ9Hn0",
           "txt": "awesome",
           "rate": 5,
@@ -175,7 +197,7 @@
           "sentAt": 123456
         }
       ],
-      "updatedAt": 1600528959435
+      "updatedAt": 1600594423771
     },
     {
       "_id": "e102",
