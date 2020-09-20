@@ -24,7 +24,7 @@ export function App() {
           <Route path="/exp/:id" component={ExpDetails} exact />
           <Route path="/exp" component={ExpApp} exact />
           <Route path="/host/:id" component={HostDetails} exact />
-          <Route path="/user/:id/exp" component={UserExp} exact />
+          <Route path="/myexp/:as" component={UserExp} exact />
           <Route path="/about" component={About} exact />
           <Route path="/login" component={LoginSignup} exact />
         </Switch>

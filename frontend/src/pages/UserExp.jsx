@@ -8,41 +8,79 @@ class _UserExp extends Component {
     state = {
         user: '',
         userExps: '',
-        type: 'participant',
-        subField: 'all'
+        filter: 'all',
+        tabColor: ['#ffffff', '#ffffff', '#C9C9C9']
     }
 
     async componentDidMount() {
         const userId = this.props.user._id;
-        await this.props.loadExps({ _id: userId })
-        const userExps = await expService.getExps({ _id: userId })
-        // console.log(userExps);
-        this.setState({ userExps }, () => console.log(this.state))
+        const expAs = this.props.match.params.as;
+        // await this.props.loadExps({ userId: userId, field: 'owner' })
+        const userExps = await expService.getExps({ userId: userId, field: expAs })
+        this.setState({ userExps })
     }
 
-    onSubField = ({target}) => {
-        this.setState({subField: target.id},()=>console.log(this.state))
+    async componentDidUpdate(prevProps, prevState) {
+        if (prevProps === this.props) return
+        const userId = this.props.user._id;
+        const expAs = this.props.match.params.as;
+        const userExps = await expService.getExps({ userId: userId, field: expAs })
+        this.setState({ userExps })
+    }
+
+    onExpTimeFilter = ({ target }) => {
+        this.setState({ filter: target.id })
+        switch (target.id) {
+            case 'all':
+                this.setState({ tabColor: ['#ffffff', '#ffffff', '#C9C9C9'] })
+                break;
+            case 'past':
+                this.setState({ tabColor: ['#C9C9C9', '#ffffff', '#ffffff'] })
+                break;
+            case 'future':
+                this.setState({ tabColor: ['#ffffff', '#C9C9C9', '#ffffff'] })
+                break
+            default:
+                break;
+        }
+    }
+
+    getExpsToShow = () => {
+        let expsToShow = this.state.userExps;
+        if (this.state.filter === 'past') {
+            expsToShow = this.state.userExps.filter(exp => {
+                return exp.schedule.at < Date.now()
+            })
+        } else {
+            expsToShow = this.state.userExps.filter(exp => {
+                return exp.schedule.at > Date.now()
+            })
+        }
+        return expsToShow
     }
 
     render() {
-        const { user, exps } = this.props;
-        if (!user || !exps) return <div>Itay Loading...</div>
+        const { user } = this.props;
+        if (!user) return <div>Itay Loading...</div>
         return (
             <React.Fragment>
-                ITAY
                 <section>
-                    <h2>{user.fullName}</h2>
-                    <p>{user.desc}</p>
-                    <h3>Experiences As a {this.state.type}</h3>
+                    {/* <h2>{user.fullName}</h2>
+                    <p>{user.desc}</p> */}
+                    <h3>Experiences As a {(this.props.match.params.as === 'owner') ? 'Host' : "Participants"} </h3>
                 </section>
                 <section className="user-exp-navbar">
-                    <ul className="user-exp-navbar-list">
-                        <li key="past-exps" id="past" onClick={this.onSubField}>Past Exp.</li>
-                        <li key="future-exps" id="future" onClick={this.onSubField}>Future Exp.</li>
-                        <li key="all-exps" id="all" onClick={this.onSubField}>All</li>
+                    <ul className="user-exp-navbar-list flex">
+                        <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked':''}
+                            id="past" onClick={this.onExpTimeFilter}>Past</li>
+                        <li key="future-exps" className={(this.state.filter === 'future') ? 'clicked':''}
+                            id="future" onClick={this.onExpTimeFilter}>Upcoming</li>
+                        <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked':''}
+                            id="all" onClick={this.onExpTimeFilter}>All</li>
                     </ul>
-
-                    {/* <ExpList exps={exps} /> */}
+                    {this.state.userExps && 
+                    ((this.getExpsToShow().length) ? 
+                    <ExpList exps={this.getExpsToShow()}/>:<h2>No Exps To Show</h2>)}
                 </section>
             </React.Fragment>
         )
@@ -51,7 +89,7 @@ class _UserExp extends Component {
 
 const mapStateToProps = state => {
     return {
-        exps: state.exp.exps,
+        // exps: state.exp.exps,
         user: state.user.loggedInUser
     };
 };

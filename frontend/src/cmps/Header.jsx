@@ -29,10 +29,8 @@ export class Header extends Component {
                     <nav className={toggleNavbarClass}>
                         <ul>
                             <li><NavLink onClick={this.toggleMenu} to="/login">Login</NavLink></li>
-                            {/* <li><NavLink onClick={this.toggleMenu} to="/">User Reviews</NavLink></li>
-                            <li><NavLink onClick={this.toggleMenu} to="/about">Chat Room</NavLink></li> */}
-                            <li><NavLink onClick={this.toggleMenu} to="/exp">All Experiences</NavLink></li>
-                            <li><NavLink onClick={this.toggleMenu} to="/user/:id/exp">My Experiences</NavLink></li>
+                            <li><NavLink onClick={this.toggleMenu} to="/myexp/owner">Manage as Host</NavLink></li>
+                            <li><NavLink onClick={this.toggleMenu} to="/myexp/participant">My Experiences</NavLink></li>
                         </ul>
                     </nav>
                     <img className="login-avatar" src="https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png" onClick={this.toggleMenu}></img>
