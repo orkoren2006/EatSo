@@ -638,13 +638,13 @@
         "traditional"
       ],
       "imgUrls": [
-        "https://res.cloudinary.com/orkofy/image/upload/v1600440572/eatso/switzerland_hxxsfy.jpg",
+        "https://res.cloudinary.com/orkofy/image/upload/v1600440576/eatso/luxemburg-castle_bfl1gx.jpg",
         "more1.jpg",
         "more2.jpg"
       ],
       "location": {
         "address": "Neuschwansteinstraße 20, 87645 Schwangau, Germany",
-        "city": "Washington, DC",
+        "city": "Alterschrofen",
         "lat": 47.557559,
         "lng": 10.749771
       },
@@ -732,7 +732,7 @@
       "owner": {
         "_id": "u104",
         "fullName": "Avi Nusbaum",
-        "imgUrl": "/img/avi.jpg"
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600627583/eatso-profile/5534_ewpxm4.jpg"
       },
       "tags": [
         "Dessert",
@@ -845,7 +845,7 @@
     {
       "_id": "u104",
       "fullName": "Avi Nusbaum",
-      "imgUrl": "/img/avi.jpg",
+      "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600627583/eatso-profile/5534_ewpxm4.jpg",
       "isAdmin": false,
       "userName": "avinus",
       "email": "avinus@email.com",
