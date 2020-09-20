@@ -12,7 +12,7 @@ import {
 
 class _LoginSignup extends Component {
   state = {
-    users: [],
+    isLoggedIn: true,
     msg: '',
     loginCred: {
       email: '',
@@ -59,8 +59,15 @@ class _LoginSignup extends Component {
       return this.setState({ msg: 'Please enter user/password' });
     }
     const userCreds = { email, password };
-    this.props.login(userCreds);
-    this.setState({ loginCred: { email: '', password: '' } });
+    try {
+      await this.props.login(userCreds);
+      this.setState({ loginCred: { email: '', password: '' } });
+      this.setState({isLoggedIn: true})
+      this.props.history.push('/')
+    } catch (err) {
+      console.log('failed to login',err);
+      this.setState({isLoggedIn: false})
+    }
   };
 
   doSignup = async ev => {
@@ -146,6 +153,7 @@ class _LoginSignup extends Component {
           </div>
         )}
         {!loggedInUser && loginSection}
+        {!this.state.isLoggedIn && <h3>Login Fail!</h3> }
         <hr />
         <h1>
           Sign Up
@@ -153,13 +161,6 @@ class _LoginSignup extends Component {
         {!loggedInUser && signupSection}
 
         {loggedInUser && <ExpChat userName={loggedInUser.userName}/>}
-        {/* <h2>Login</h2>
-        <form>div</form>
-
-        <h2>Signup</h2>
-        <form></form> */}
-
-
 
       </div>
     );

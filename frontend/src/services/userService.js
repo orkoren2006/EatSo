@@ -42,7 +42,9 @@ async function login(userCred) {
             user.password === userCred.password))
 
     if (user) return _handleLogin(user)
+    else {return Promise.reject('Invalid email or password')}
 }
+
 async function signup(userCred) {
     // const user = await httpService.post('auth/signup', userCred)
     const user = await storageService.post('user', userCred)

@@ -1,23 +1,8 @@
 .exp-details-container {
     margin-top: 20px;
 
-    
-    .exp-imgs {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        margin-bottom: 20px;
-        // min-height: 220px;
-        img {
-            object-fit: cover;
-            // height: 100%;
-            &:first-child {
-                grid-row: 1/3;
-                grid-column: 1/3;
-                height: 100%;
-            }
-        }
-    }
+    @import "exp-gallery";
+    @import "exp-booking";
 
     .exp-content {
         display: flex;
@@ -26,46 +11,7 @@
         box-shadow: 0 0 4px 0px #6d6d6d;
         margin-bottom: 5px;
         position: relative;
-        .exp-booking {
-            min-width: 230px;
-            width: 30%;
-            height: fit-content;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 0 4px 0px #6d6d6d;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: sticky;
-            right: 4.5vw;
-            top: 15px;
-            .price {
-                font-weight: bold;
-                span {
-                    font-size: 0.8em;
-                }
-            }
-            .exp-rate, .exp-date {
-                font-size: 0.8em;
-            }
-             
-            button {
-                cursor: pointer;
-                border: 1px solid transparent;
-                outline: none;
-                padding: 10px;
-                border-radius: 2em;
-                background-color: #fd7854;
-                color: $clr6;
-                transition: .5s;
-                margin-top: 10px;
-                &:hover {
-                    background-color: $clr6;
-                    color: black;
-                    border: 1px solid #fd7854;
-                }
-            }
-        }
+        
         .exp-details {
             width: 60%;
             .owner {

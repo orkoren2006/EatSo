@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../store/actions/userActions';
+import { UserNav } from './UserNav';
+import { GuestNav } from './GuestNav';
 
+function DynamicCmp(props){
+    if (props.user) {
+        return <UserNav { ...props }/>
+    } else {
+        return <GuestNav { ...props }/>
+    }
+}
 
-export class Header extends Component {
+class _Header extends Component {
 
     state = {
         navbar: true,
-        button: false
+        button: false,
+        user: null
     }
 
     componentDidMount() {
+
     }
 
     toggleMenu = () => {
@@ -17,25 +30,38 @@ export class Header extends Component {
         // this.setState({ navbar: !this.state.navbar, button: !this.state.button })
     }
 
+    onLogout = () => {
+        this.toggleMenu()
+        this.props.logout()
+    }
+
     render() {
         const toggleNavbarClass = this.state.navbar ? 'main-nav flex toggle' : 'main-nav flex'
         const toggleScreen = this.state.navbar ? 'header-screen' : 'header-screen open-menu'
+        const { user } = this.props
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
                 <div className={toggleScreen} onClick={this.toggleMenu}></div>
                 <div className="header flex align-center space-between width-90">
                     <Link to="/"><h1>EatSo!</h1></Link>
-                    <nav className={toggleNavbarClass}>
-                        <ul>
-                            <li><NavLink onClick={this.toggleMenu} to="/login">Login</NavLink></li>
-                            <li><NavLink onClick={this.toggleMenu} to="/myexp/owner">Manage as Host</NavLink></li>
-                            <li><NavLink onClick={this.toggleMenu} to="/myexp/participant">My Experiences</NavLink></li>
-                        </ul>
-                    </nav>
+                    <DynamicCmp user={user} navClass={toggleNavbarClass}
+                        onItemClick={this.toggleMenu}
+                        onLogout={this.onLogout} />
                     <img className="login-avatar" src="https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png" onClick={this.toggleMenu}></img>
                 </div>
             </React.Fragment>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.user.loggedInUser
+    };
+};
+const mapDispatchToProps = {
+    logout,
+};
+
+export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header);
