@@ -10,7 +10,7 @@ export const expService = {
     save,
 }
 
-async function getExps(filterBy) {
+async function getExps(filterBy = {}) {
     // const criteria = {};
     // for (const filterType in filterBy) {
     //     if (filterBy[filterType]) {
@@ -18,8 +18,8 @@ async function getExps(filterBy) {
     //             new RegExp(`${filterBy.name}`, 'i') : filterBy[filterType]
     //     }
     // }
-    let expToReturn;
     const exps = await httpService.get('exp')
+    let expToReturn = exps;
     // debugger
     if (filterBy._id) expToReturn = exps.filter(exp => {
         return (exp.owner._id === filterBy._id ||

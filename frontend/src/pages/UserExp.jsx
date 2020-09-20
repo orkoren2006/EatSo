@@ -8,7 +8,8 @@ class _UserExp extends Component {
     state = {
         user: '',
         userExps: '',
-        type: 'participant'
+        type: 'participant',
+        subField: 'all'
     }
 
     async componentDidMount() {
@@ -17,8 +18,10 @@ class _UserExp extends Component {
         const userExps = await expService.getExps({ _id: userId })
         // console.log(userExps);
         this.setState({ userExps }, () => console.log(this.state))
+    }
 
-
+    onSubField = ({target}) => {
+        this.setState({subField: target.id},()=>console.log(this.state))
     }
 
     render() {
@@ -33,10 +36,10 @@ class _UserExp extends Component {
                     <h3>Experiences As a {this.state.type}</h3>
                 </section>
                 <section className="user-exp-navbar">
-                    <ul className="user-exp-navbar-list flex column">
+                    <ul className="user-exp-navbar-list">
                         <li key="past-exps" id="past" onClick={this.onSubField}>Past Exp.</li>
                         <li key="future-exps" id="future" onClick={this.onSubField}>Future Exp.</li>
-                        <li key="all-exps" id="past" onClick={this.onSubField}>All</li>
+                        <li key="all-exps" id="all" onClick={this.onSubField}>All</li>
                     </ul>
 
                     {/* <ExpList exps={exps} /> */}
