@@ -1,56 +1,107 @@
 .home {
-    height: 100vh;
-    font-family: roboto;   
+    height     : 100vh;
+    font-family: roboto;
 }
 
 .hero-image {
-    background-image   : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url("../../imgs/13916-1.jpg");
-    height             : 50%;
-    background-position: center;
+    background-image   : linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url("https://res.cloudinary.com/orkofy/image/upload/v1600539549/eatso/14465_ok6xje.jpg");
+    height             : 80vh;
+    background-position: bottom;
     background-repeat  : no-repeat;
     background-size    : cover;
     position           : relative;
-    align-items        : center;
+    align-items        : left;
     justify-content    : center;
+    padding-left       : 100px;
+    margin-top         : -120px;
+    padding-top: 80px;
+    z-index            : 0;
 
     h1 {
+        font-size  : 140px;
+        color      : #fbf9ee;
+        font-family: 'prata';
+        margin-top : -24px;
+    }
+
+    h2 {
+        margin-top: 24px;
         font-size  : 60px;
-        color: #fbf9ee;
-        font-style : bold;
+        font-family: 'prata';
+        color      : #fbf9ee;
     }
 
     span {
         color: #fd7854;
     }
+
+
+}
+
+.home-card {
+    height : 100%;
+    width  : 33.3%;
+    padding: 0 8px;
 }
 
 .preview-cards {
-    margin: 20px auto;
+    height: 27vh;
+
     a {
-        color: inherit;
+        color          : inherit;
         text-decoration: none;
     }
+
     h3 {
         font-size: 30px;
-        color: #fbf9ee;
+        color    : #fbf9ee;
     }
 }
 
-.preview-image{
-    height: 300px;
-    width: 300px;
-    margin-left: 20px;
-    background-size: contain;
+.width-90 {
+    width : 90%;
+    margin: 16px auto;
+}
 
-    &.img-1{
+.preview-image {
+    height             : 100%;
+    width              : 100%;
+    background-position: bottom;
+    background-size    : cover;
+
+    &.img-1 {
         background-image: url("../../imgs/28.jpg");
+
     }
-    &.img-2{
+
+    &.img-2 {
         background-image: url("../../imgs/2592.jpg");
+
     }
-    &.img-3{
+
+    &.img-3 {
         background-image: url("../../imgs/643529-PONTX7-209.jpg");
     }
 }
 
+.width-40{
+    width: 40%;
+}
 
+.tokyo-banner {
+    padding-right: 64px;
+    
+    height             : 50%;
+    width              : 100%;
+    background-position: center;
+    background-size    : cover;
+    background-image   : url("https://res.cloudinary.com/orkofy/image/upload/v1600550880/eatso/3027583_hhubqy.jpg");
+
+    h2 {
+        font-family: 'prata';
+        color      : #FFF;
+        font-size: 60px;
+
+    }
+
+}

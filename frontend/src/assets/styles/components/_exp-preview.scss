@@ -1,6 +1,22 @@
+.teaditional-header{
+    
+    text-align: center;
+    h2{
+        
+        font-size: 40px;
+        font-family: 'prata';
+    }
+}
+
+.traditional{
+    margin: 120px 0;
+}
+
 .exp-card {
     border     : 1px lightgray solid;
     font-family: roboto;
+    flex: 1;
+    margin: 0 8px;
 
     p {
         color: #8f8e87;

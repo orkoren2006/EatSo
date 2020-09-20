@@ -38,8 +38,8 @@ class _Home extends Component {
         } else {
           expsToSend = this.props.exps.filter(exp => {
             return exp.capacity.max <= 20
-        })
-      }
+          })
+        }
         break;
       default:
         break;
@@ -54,39 +54,54 @@ class _Home extends Component {
     if (!exps) return <div>Load</div>
     return (
       <section className="home">
-        <div className="hero-image flex">
-          <h1>Where love and food meet<span>.</span></h1>
+        <div className="hero-image flex column">
+
+          <h2>Where love and food </h2>
+          <h1> meet<span className="animate__animated animate__bounce">.</span></h1>
         </div>
-        <div className="flex flex center align-center preview-cards">
-          <Link to="/exp"><div className="preview-image img-1 flex align-center justify-center"><h3>Dinners</h3></div></Link>
-          <Link to="/exp"><div className="preview-image img-2 flex align-center justify-center"><h3>Workshops</h3></div></Link>
-          <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+        <div className="flex flex center align-center preview-cards width-90">
+          <div className="home-card">
+            <Link to="/exp"><div className="preview-image img-1 flex align-center justify-center"><h3>Dinners</h3></div></Link>
+          </div>
+          <div className="home-card">
+            <Link to="/exp"><div className="preview-image img-2 flex align-center justify-center"><h3>Workshops</h3></div></Link>
+          </div>
+          <div className="home-card">
+            <Link to="/exp"> <div className="preview-image img-3 flex align-center justify-center"><h3>Tours</h3></div></Link>
+          </div>
         </div>
         <section className="traditional">
           <section className="teaditional-header">
             <h2>Top Traditional Cuisine</h2>
-            <Button><span> All traditional -></span></Button>
+            <Button><span> All traditional - &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tag-traditional')} />
+        </section>
+        <section className="tokyo-banner flex justify-center align-center">
+          <div className= "width-40"></div>
+          <div>
+            <h2> Eat real traditional</h2>
+            <h2> sushi in Tokyo</h2>
+          </div>
         </section>
         <section className="tel-aviv">
           <section className="tel-aviv-header">
             <h2>Top Tel Aviv Meals</h2>
-            <Button><span> All Tel Aviv -></span></Button>
+            <Button><span> All Tel Aviv &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
         </section>
         <section className="scenic">
           <section className="tel-aviv-header">
             <h2>Top Scenic Meals</h2>
-            <Button><span> All Scenic -></span></Button>
+            <Button><span> All Scenic &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tag-scenic')} />
         </section>
         <section className="multi-participants">
           <section className="capacity-header">
             <h2>Top Multi-Participants Meals</h2>
-            <Button><span> All Multi-Participants -></span></Button>
+            <Button><span> All Multi-Participants &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('capacity-multi')} />
         </section>

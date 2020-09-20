@@ -24,7 +24,7 @@ export class Header extends Component {
         return (
             <React.Fragment>
                 <div className={toggleScreen} onClick={this.toggleMenu}></div>
-                <div className="header flex align-center space-between">
+                <div className="header flex align-center space-between width-90">
                     <Link to="/"><h1>EatSo!</h1></Link>
                     <nav className={toggleNavbarClass}>
                         <ul>
@@ -35,7 +35,6 @@ export class Header extends Component {
                         </ul>
                     </nav>
                     <img className="login-avatar" src="https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png" onClick={this.toggleMenu}></img>
-                    {/* <button className={toggleNavbarButton} onClick={this.toggleMenu}>X</button> */}
                 </div>
             </React.Fragment>
         )
