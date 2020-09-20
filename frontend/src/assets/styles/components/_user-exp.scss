@@ -1,0 +1,19 @@
+.user-exp-navbar-list{
+    list-style: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+
+    li {
+        padding: 10px 15px;
+        margin: 0 5px;
+        text-align: center;
+        
+        &.clicked {
+            border-bottom: 2px black solid;
+        }
+    }
+
+    li:hover{
+        cursor: pointer;
+        background-color: rgb(240, 240, 240) !important;
+    }
+}

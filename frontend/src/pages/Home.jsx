@@ -8,8 +8,8 @@ import { Button } from '@material-ui/core';
 
 class _Home extends Component {
 
-  componentDidMount() {
-    this.props.loadExps()
+  async componentDidMount() {
+    await this.props.loadExps()
   }
 
   getExps = (attr) => {
