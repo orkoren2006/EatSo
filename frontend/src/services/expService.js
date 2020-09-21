@@ -27,6 +27,8 @@ async function getExps(filterBy = {}) {
     //         })
     //     }
     // }
+    console.log('expToReturn', expToReturn)
+    
     return expToReturn;
 }
 
