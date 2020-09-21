@@ -11,11 +11,11 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
-    console.log(filterBy);
     const exps = await httpService.get('exp')
     let expToReturn = exps;
 
-    expToReturn = _getExps(filterBy)
+    if (Object.keys(filterBy).length) expToReturn = _getExps(exps,filterBy)
+
     // if (filterBy.userId) {
     //     if (filterBy.field === 'owner') {
     //         expToReturn = exps.filter(exp => {
@@ -81,49 +81,67 @@ function getEmptyExp() {
     }
 }
 
-function _getExps(filterBy) {
+function _getExps(exps,filterBy) {
 
-    const [field, keyWord] = attr.split('-')
-    
+    let expsToReturn;
+    // const [field, keyWord] = attr.split('-')
+    const { field, keyWord } = filterBy
+    console.log('from _getExp - expService', filterBy, 'field', field, 'value', keyWord);
+    console.log('from _getExp - expService', exps);
+
     const keyWordRegex = new RegExp(`${keyWord}`, 'i')
 
+    // debugger
     switch (field) {
-      case 'tag':
-        expsToSend = this.props.exps.filter(exp => {
-          return exp.tags.some(tag => {
-            return keyWordRegex.test(tag)
-          })
-        })
-        break;
-      case 'address':
-        expsToSend = this.props.exps.filter(exp => {
-          return keyWordRegex.test(exp.location.address)
-        })
-        break;
-      case 'capacity':
-        if (keyWord === 'multi') {
-          expsToSend = this.props.exps.filter(exp => {
-            return exp.capacity.min >= 20
-          })
-        } else {
-          expsToSend = this.props.exps.filter(exp => {
-            return exp.capacity.max <= 20
-          })
-        }
-        break;
-      default:
-        break;
-    }
-
-    if (filterBy.userId) {
-        if (filterBy.field === 'owner') {
-            expToReturn = exps.filter(exp => {
+        case 'tag':
+            expsToReturn = exps.filter(exp => {
+                return exp.tags.some(tag => {
+                    return keyWordRegex.test(tag)
+                })
+            })
+            break;
+        case 'address':
+            expsToReturn = exps.filter(exp => {
+                return keyWordRegex.test(exp.location.address)
+            })
+            break;
+        case 'owner':
+            expsToReturn = exps.filter(exp => {
                 return (exp.owner._id === filterBy.userId)
             })
-        } else if (filterBy.field === 'participant') {
-            expToReturn = exps.filter(exp => {
+            break;
+        case 'participant':
+            expsToReturn = exps.filter(exp => {
                 return exp.participants.some(participant => participant._id === filterBy.userId)
             })
-        }
+            break;
+        case 'capacity':
+            if (keyWord === 'multi') {
+                expsToReturn = exps.filter(exp => {
+                    return exp.capacity.min >= 20
+                })
+            } else {
+                expsToReturn = exps.filter(exp => {
+                    return exp.capacity.max <= 20
+                })
+            }
+            break;
+        default:
+            break;
     }
+
+    // console.log(expsToReturn);
+    return expsToReturn;
+
+    // if (filterBy.userId) {
+    //     if (filterBy.field === 'owner') {
+    //         expToReturn = exps.filter(exp => {
+    //             return (exp.owner._id === filterBy.userId)
+    //         })
+    //     } else if (filterBy.field === 'participant') {
+    //         expToReturn = exps.filter(exp => {
+    //             return exp.participants.some(participant => participant._id === filterBy.userId)
+    //         })
+    //     }
+    // }
 }
