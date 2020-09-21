@@ -30,7 +30,7 @@ class _UserExp extends Component {
         const userId = this.props.user._id;
         const expAs = this.props.match.params.as;
         this.setState({ isHost: (expAs === 'owner') ? true : false })
-        const userExps = await expService.getExps({{ field: expAs, keyWord: userId })
+        const userExps = await expService.getExps({ field: expAs, keyWord: userId })
         this.setState({ userExps })
     }
 
