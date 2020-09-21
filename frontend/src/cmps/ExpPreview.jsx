@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ExpRate } from './ExpRate';
 import { Image, Transformation } from 'cloudinary-react';
+import { Button } from '@material-ui/core';
 
 
 
@@ -36,6 +37,9 @@ export function ExpPreview(props) {
                     {/* <img className="preview-avatar" src={exp.owner.imgUrl}></img> */}
                 </section>
             </Link>
+            {props.isHost &&
+                <Link to={`/exp/edit/${exp._id}`}><Button variant="contained" color="primary">
+                    Edit</Button></Link>}
         </div>
     )
 }
