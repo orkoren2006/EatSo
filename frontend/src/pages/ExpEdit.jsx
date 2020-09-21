@@ -143,9 +143,11 @@ class _ExpEdit extends Component {
         const { exp } = this.state
 
         return (
-            <div className="edit-div">
-                <form className="exp-edit-form flex column align-center justify-center"
+            <div className="edit-div flex align-center justify-center">
+                
+                <form className="exp-edit-form flex  justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
+                        <div className= "form-left">
                     <label htmlFor="exp-name">
                         Name:
                         <TextField type="text" id="exp-name" name="name"
@@ -180,6 +182,8 @@ class _ExpEdit extends Component {
                             value={exp.location.address} placeholder="Enter experience address"
                             onChange={this.handleChange} />
                     </label>
+                    </div>
+                    <div className= "form-right">
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
                     </MuiPickersUtilsProvider>
@@ -217,7 +221,9 @@ class _ExpEdit extends Component {
                     <Button variant="contained" color="primary" onClick={this.onToggleMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
                     <Button variant="contained" color="primary" 
                     onClick={this.onSaveExp}>Save</Button>
+                     </div>
                 </form>
+               
             </div>
         )
     }

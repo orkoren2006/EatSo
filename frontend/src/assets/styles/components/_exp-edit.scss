@@ -1,18 +1,42 @@
 .edit-div{
-    box-shadow: 5px -5px 20px black;
+    max-width: 1024px;
+    min-height: 600px;;
+    margin: 0 auto;
+    font-family: 'Roboto';
     border: 1px black solid;
+   
 }
 
 .exp-edit-form{
- 
-    text-align: center !important;
+    text-align: left !important;
     list-style: none;
+
+    .form-left{
+        max-width: 450px;
+        background-color: #F8F8F8;
+        padding: 36px;
+        margin-right: 36px;
+    }
+    .form-right{
+        max-width: 450px;
+        background-color: #F8F8F8;
+        padding: 36px;
+        
+    }
+    .MuiInput-underline:before{
+        border-bottom: none;
+        content: none;
+    }
+    
+
+    
     #exp-description{
-        width: 80vw;
+       
     }
 
     input {
-        width: 60vw;
+       border: solid 1px lightgray;
+       background-color: #fff;
         text-align: center;
         padding: 5px;
         margin: 10px;

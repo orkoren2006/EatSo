@@ -6,7 +6,9 @@ import { ExpList } from '../cmps/ExpList';
 class _ExpApp extends Component {
 
     async componentDidMount() {
-        await this.props.loadExps();
+        let filterBy = {}
+        if (this.props.match.params.field) filterBy = this.props.match.params
+        await this.props.loadExps(filterBy);
         // this.setState({exps}, () => console.log(this.state.exps))
     }
 
