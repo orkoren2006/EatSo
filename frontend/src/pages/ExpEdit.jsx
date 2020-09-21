@@ -148,37 +148,39 @@ class _ExpEdit extends Component {
                 <form className="exp-edit-form flex  justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
                         <div className= "form-left">
+                        <span> Name:</span>
                     <label htmlFor="exp-name">
-                        Name:
-                        <TextField type="text" id="exp-name" name="name"
+                        
+                        <input type="text" id="exp-name" name="name"
                             value={exp.name} placeholder="Enter experience name"
                             onChange={this.handleChange} />
                     </label>
+                        <span> Title:</span>
                     <label htmlFor="exp-title">
-                        Title:
-                        <TextField type="text" id="exp-title" name="title"
+                            <input type="text" id="exp-title" name="title"
                             value={exp.title} placeholder="Enter experience title"
                             onChange={this.handleChange} />
                     </label>
-                    <span>Capacity:</span>
-                    <label htmlFor="exp-capacity">
-                        <TextField autoComplete="off" type="number" id="exp-capacity-min" name="capacity.min"
+                        <span> Capacity:</span>
+                    <label className="flex align-center" htmlFor="exp-capacity">
+                            <input className="small-field" autoComplete="off" type="number" id="exp-capacity-min" name="capacity.min" 
                             value={exp.capacity.min} placeholder="Min Cap."
                             onChange={this.handleChange} />
                             -
-                        <TextField autoComplete="off" type="number" id="exp-capacity-max" name="capacity.max"
+                        <input className="small-field" autoComplete="off" type="number" id="exp-capacity-max" name="capacity.max"
                             value={exp.capacity.max} placeholder="Max Cap."
                             onChange={this.handleChange} />
                     </label>
+                         <span> Price:</span>
                     <label htmlFor="exp-price">
-                        Price:
-                        <TextField type="number" id="exp-price" name="price"
+                            <input type="number" id="exp-price" name="price"
                             value={exp.price} placeholder="Enter experience price"
                             onChange={this.handleChange} />
                     </label>
+                    <span> Address:</span>
                     <label htmlFor="exp-address">
-                        Address:
-                        <TextField type="text" id="exp-address" name="address"
+                        
+                        <input type="text" id="exp-address" name="address"
                             value={exp.location.address} placeholder="Enter experience address"
                             onChange={this.handleChange} />
                     </label>
@@ -189,7 +191,7 @@ class _ExpEdit extends Component {
                     </MuiPickersUtilsProvider>
                     <label htmlFor="exp-duration">
                         Duration:
-                        <TextField type="number" id="exp-duration" name="duration"
+                        <input type="number" id="exp-duration" name="duration"
                             value={exp.schedule.duration} placeholder="Enter experience duration"
                             onChange={this.handleChange} />
                     </label>
