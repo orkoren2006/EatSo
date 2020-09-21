@@ -2,7 +2,7 @@ import { httpService } from './httpService'
 
 export const expService = {
     getExps,
-    getById,
+    getExpById,
     remove,
     // update,
     // add,
@@ -18,8 +18,9 @@ async function getExps(filterBy = {}) {
     return expToReturn;
 }
 
-function getById(expId) {
-    return httpService.get(`exp/${expId}`)
+async function getExpById(expId) {
+    const exp = await httpService.get(`exp/${expId}`)
+    return Promise.resolve(exp)
 }
 function remove(expId) {
     return httpService.delete(`exp/${expId}`)

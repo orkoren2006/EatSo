@@ -5,7 +5,7 @@ import { TextField, Button, TextareaAutosize } from '@material-ui/core';
 import { cloudinaryService } from '../services/cloudinary-service';
 import DateFnsUtils from '@date-io/date-fns'; // choose your lib
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { getById, saveExp } from '../store/actions/expAction';
+import { getExpById, saveExp } from '../store/actions/expAction';
 import { MenuEdit } from '../cmps/MenuEdit';
 
 
@@ -20,7 +20,7 @@ class _ExpEdit extends Component {
     async componentDidMount() {
         const expId = this.props.match.params.id;
         if (expId) {
-            const exp = await expService.getById(expId)
+            const exp = await expService.getExpById(expId)
             this.setState({ exp })
         }
     }
@@ -242,7 +242,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     saveExp,
-    getById
+    getExpById
 };
 
 export const ExpEdit = connect(mapStateToProps, mapDispatchToProps)(_ExpEdit);

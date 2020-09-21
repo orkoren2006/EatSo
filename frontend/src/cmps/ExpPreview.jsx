@@ -10,6 +10,7 @@ import { Button } from '@material-ui/core';
 
 export function ExpPreview(props) {
     const { exp } = props
+
     return (
         <div className="exp-card">
             <Link to={`/exp/${exp._id}`}>

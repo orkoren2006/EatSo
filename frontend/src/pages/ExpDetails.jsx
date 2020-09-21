@@ -26,7 +26,7 @@ class _ExpDetails extends Component {
     }
     async componentDidMount() {
         const id = this.props.match.params.id;
-        const exp = await expService.getById(id);
+        const exp = await expService.getExpById(id);
         if (!exp) return;
         this.setState({ exp })
         if(!this.props.exps) this.props.loadExps();
