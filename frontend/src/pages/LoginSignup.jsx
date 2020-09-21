@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { ExpChat } from '../cmps/ExpChat';
 
 import {
@@ -62,11 +63,12 @@ class _LoginSignup extends Component {
     try {
       await this.props.login(userCreds);
       this.setState({ loginCred: { email: '', password: '' } });
-      this.setState({isLoggedIn: true})
-      this.props.history.push('/')
+      this.setState({ isLoggedIn: true })
+      if(this.props.closeModal) this.props.closeModal();
+      else this.props.history.push('/')
     } catch (err) {
-      console.log('failed to login',err);
-      this.setState({isLoggedIn: false})
+      console.log('failed to login', err);
+      this.setState({ isLoggedIn: false })
     }
   };
 
@@ -153,14 +155,14 @@ class _LoginSignup extends Component {
           </div>
         )}
         {!loggedInUser && loginSection}
-        {!this.state.isLoggedIn && <h3>Login Fail!</h3> }
+        {!this.state.isLoggedIn && <h3>Login Fail!</h3>}
         <hr />
         <h1>
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
 
-        {loggedInUser && <ExpChat userName={loggedInUser.userName}/>}
+        
 
       </div>
     );
@@ -182,4 +184,4 @@ const mapDispatchToProps = {
   loadUsers
 };
 
-export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup);
+export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(withRouter(_LoginSignup));

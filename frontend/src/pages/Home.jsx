@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ExpList } from '../cmps/ExpList';
 import { loadExps } from '../store/actions/expAction';
 import { Button } from '@material-ui/core';
+import { HomeCardList } from '../cmps/HomeCardList';
 
 
 
@@ -62,24 +63,7 @@ class _Home extends Component {
           <h2>Experience food </h2>
           <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
         </div>
-        <section className="flex flex center wrap align-center preview-cards width-1366">
-
-          <div className="home-card home-card-1">
-            <Link to="/exp"><div className="preview-image img-1 flex column align-start justify-start"><h3>Outdoor</h3><h4>dinner experiences</h4></div></Link>
-          </div>
-          <div className="home-card home-card-2">
-            <Link to="/exp"><div className="preview-image img-2 flex column align-start justify-start"><h3>Traditional</h3><h4>cuisine</h4></div></Link>
-          </div>
-          <div className="home-card home-card-2">
-            <Link to="/exp"> <div className="preview-image img-3 flex column align-start justify-start"><h3>Romantic</h3><h4>dinners</h4></div></Link>
-          </div>
-          <div className="home-card home-card-2">
-            <Link to="/exp"> <div className="preview-image img-4 flex column align-start justify-start"><h3>Holiday</h3><h4>meals</h4></div></Link>
-          </div>
-          <div className="home-card home-card-2">
-            <Link to="/exp"> <div className="preview-image img-5 flex column align-start justify-start"><h3>Dinner</h3><h4>parties</h4></div></Link>
-          </div>
-        </section>
+        <HomeCardList />
         <section className="traditional">
           <section className="preview-header">
             <h2>Top Traditional Cuisine</h2>
@@ -110,13 +94,6 @@ class _Home extends Component {
           <ExpList exps={this.getExps('tag-scenic')} />
           <Button className="scenic-button"><span> Show More &gt;</span></Button>
         </section>
-        {/* <section className="multi-participants">
-          <section className="preview-header">
-            <h2>Top Multi-Participants Meals</h2>
-          </section>
-          <ExpList exps={this.getExps('capacity-multi')} />
-          <Button><span> All Multi-Participants &gt;</span></Button>
-        </section> */}
       </section>
     );
   }

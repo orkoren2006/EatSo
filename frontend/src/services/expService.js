@@ -11,19 +11,22 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
+    console.log(filterBy);
     const exps = await httpService.get('exp')
     let expToReturn = exps;
-    if (filterBy.userId) {
-        if (filterBy.field === 'owner') {
-            expToReturn = exps.filter(exp => {
-                return (exp.owner._id === filterBy.userId)
-            })
-        } else if (filterBy.field === 'participant') {
-            expToReturn = exps.filter(exp => {
-                return exp.participants.some(participant => participant._id === filterBy.userId)
-            })
-        }
-    }
+
+    expToReturn = _getExps(filterBy)
+    // if (filterBy.userId) {
+    //     if (filterBy.field === 'owner') {
+    //         expToReturn = exps.filter(exp => {
+    //             return (exp.owner._id === filterBy.userId)
+    //         })
+    //     } else if (filterBy.field === 'participant') {
+    //         expToReturn = exps.filter(exp => {
+    //             return exp.participants.some(participant => participant._id === filterBy.userId)
+    //         })
+    //     }
+    // }
     return expToReturn;
 }
 
@@ -74,6 +77,53 @@ function getEmptyExp() {
         'location': {
             'address': '',
             'city': '',
+        }
+    }
+}
+
+function _getExps(filterBy) {
+
+    const [field, keyWord] = attr.split('-')
+    
+    const keyWordRegex = new RegExp(`${keyWord}`, 'i')
+
+    switch (field) {
+      case 'tag':
+        expsToSend = this.props.exps.filter(exp => {
+          return exp.tags.some(tag => {
+            return keyWordRegex.test(tag)
+          })
+        })
+        break;
+      case 'address':
+        expsToSend = this.props.exps.filter(exp => {
+          return keyWordRegex.test(exp.location.address)
+        })
+        break;
+      case 'capacity':
+        if (keyWord === 'multi') {
+          expsToSend = this.props.exps.filter(exp => {
+            return exp.capacity.min >= 20
+          })
+        } else {
+          expsToSend = this.props.exps.filter(exp => {
+            return exp.capacity.max <= 20
+          })
+        }
+        break;
+      default:
+        break;
+    }
+
+    if (filterBy.userId) {
+        if (filterBy.field === 'owner') {
+            expToReturn = exps.filter(exp => {
+                return (exp.owner._id === filterBy.userId)
+            })
+        } else if (filterBy.field === 'participant') {
+            expToReturn = exps.filter(exp => {
+                return exp.participants.some(participant => participant._id === filterBy.userId)
+            })
         }
     }
 }

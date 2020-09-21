@@ -1,14 +1,16 @@
 import React from 'react'
 import { Rating } from '@material-ui/lab';
 import { withStyles } from '@material-ui/core/styles';
+import { UserPreview } from './UserPreview';
+import { LongTxt } from './LongTxt';
 
 export function ReviewPreview({ review }) {
     return (
         <div className="review-preview">
-            {review.by.fullName}:&nbsp;
-            {review.txt}
-            <br />
+            <UserPreview user={review.by} date={review.createdAt}/>
             <StyledRating value={review.rate} readOnly />
+            <LongTxt length={120} txt={review.txt}/>
+            
         </div>
     )
 }

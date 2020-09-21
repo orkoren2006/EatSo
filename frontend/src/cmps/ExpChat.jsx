@@ -15,7 +15,6 @@ export class ExpChat extends Component {
         // for not DUMMY
         // this.setState({ exp: this.props.exp },
         //     () => socketService.emit('chat exp', this.state.exp._id))
-
         socketService.emit('chat exp', 'c101')
         socketService.on('chat addMsg', this.addMsg);
         socketService.on('chat newMsg', this.addMsg);
