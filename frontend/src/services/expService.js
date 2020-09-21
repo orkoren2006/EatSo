@@ -130,7 +130,7 @@ function _getExps(exps,filterBy) {
             break;
     }
 
-    // console.log(expsToReturn);
+    console.log(expsToReturn);
     return expsToReturn;
 
     // if (filterBy.userId) {
