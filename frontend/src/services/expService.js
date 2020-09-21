@@ -93,12 +93,12 @@ function _getExps(exps,filterBy) {
             break;
         case 'owner':
             expsToReturn = exps.filter(exp => {
-                return (exp.owner._id === filterBy.userId)
+                return (exp.owner._id === keyWord)
             })
             break;
         case 'participant':
             expsToReturn = exps.filter(exp => {
-                return exp.participants.some(participant => participant._id === filterBy.userId)
+                return exp.participants.some(participant => participant._id === keyWord)
             })
             break;
         case 'capacity':
