@@ -11,6 +11,7 @@ import { utilService } from '../services/utilService';
 import { loadExps, saveExp } from '../store/actions/expAction';
 import { ExpGallery } from '../cmps/ExpGallery';
 import ExpContent from '../cmps/ExpContent';
+import { ExpChat } from '../cmps/ExpChat';
 class _ExpDetails extends Component {
 
     state = {
@@ -80,15 +81,17 @@ class _ExpDetails extends Component {
         this.props.saveExp(exp);
         this.toggleAddReviewShown();
     }
-
+    
     render() {
         const { exp, review, isModalShown, isAddReviewShown } = this.state;
+        const { user } = this.props;
+        console.log(user);
         if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container">
-                <Modal onCloseModal={this.onCloseModal} isShown={isModalShown}>
-                    <LoginSignup />
+                <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
+                    <LoginSignup closeModal={this.onCloseModal}/>
                 </Modal>
                 <h2>{exp.name}</h2>
                 <ExpRate reviews={exp.reviews} />
@@ -96,7 +99,10 @@ class _ExpDetails extends Component {
                 <ExpContent exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
                 onHandleChange={this.onHandleChange} onAddReview={this.onAddReview}
                 isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} />
-                <GoogleMap containerStyle={{ width: '50%', height: 150 }} style={{ width: '50%', height: 150 }} center={center} />
+                <div className="flex space-between ">
+                <GoogleMap containerStyle={{ width: '50%', height: 150 }} style={{ height: 150 }} center={center} />
+                {user && <ExpChat userName={user.userName} />}
+                </div>
             </div>
         )
     }

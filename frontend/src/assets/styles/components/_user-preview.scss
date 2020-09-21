@@ -1,0 +1,26 @@
+.user-preview-container {
+    a {
+        text-decoration: none;
+        color: black;
+        .user-preview {
+            display: grid;
+            grid-template-columns: 50px 200px;
+            grid-template-rows: 1em 1em 0.7em;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+            .preview-avatar {
+                grid-row: 1/-1;
+                align-self: start;
+                width: 50px;
+                height: 50px;
+            }
+            .user-name {
+                font-weight: bold;
+            }
+            .user-date {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
