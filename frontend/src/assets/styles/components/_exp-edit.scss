@@ -3,7 +3,10 @@
     min-height: 600px;;
     margin: 0 auto;
     font-family: 'Roboto';
-    border: 1px black solid;
+    
+    background-color: #545871;
+    border-radius: 24px;
+    
    
 }
 
@@ -12,15 +15,16 @@
     list-style: none;
 
     .form-left{
-        max-width: 450px;
-        background-color: #F8F8F8;
-        padding: 36px;
-        margin-right: 36px;
+        margin-right: 24px;
+             
     }
-    .form-right{
-        max-width: 450px;
+
+    .form-side{
+        flex: 1; 
         background-color: #F8F8F8;
         padding: 36px;
+        border-radius: 24px;
+        width: 450px;
         
     }
     .MuiInput-underline:before{
@@ -46,21 +50,38 @@
         padding: 8px 4px;
         margin-top: 4px;
         width: 100%;
-        font-size: 16px;
+        font-size: 14px;
+        
+    }
+    .clean-field{
+        background-color: transparent;
+        border:none;
     }
 
     span {
-        font-size: 14px;
+        font-size: 14px;    
+        // color:#636D73; 
         
     }
 
     textarea{
         width: 100%;
+        padding: 8px 4px;
+        margin-top: 4px;
     }
 
     Button{
         margin: 10px;
+        border-radius: 24px;
+        min-width: 144px;
+        height: 40px;;
     }
+
+    .form-buttons:first-child{
+        color: #fd7854;
+        background-color: #F8F8F8;
+    }
+
 
     .edit-gallery{
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

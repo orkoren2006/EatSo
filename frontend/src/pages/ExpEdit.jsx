@@ -147,7 +147,7 @@ class _ExpEdit extends Component {
                 
                 <form className="exp-edit-form flex  justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
-                        <div className= "form-left">
+                        <div className= "form-side form-left">
                         <span> Name:</span>
                     <label htmlFor="exp-name">
                         
@@ -183,7 +183,7 @@ class _ExpEdit extends Component {
                         <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
                     </MuiPickersUtilsProvider>
                     </div>
-                    <div className= "form-right">
+                    <div className= "form-side">
                    
                     <span>  Duration:</span>
                     <label htmlFor="exp-duration">
@@ -205,8 +205,9 @@ class _ExpEdit extends Component {
                             value={exp.desc} placeholder="Enter experience description"
                             onChange={this.handleChange} />
                     </label>
-                    <label> Choose your EXPERIENCE image!
-                        <input onChange={this.uploadImg} type="file" />
+                    <span>Choose your EXPERIENCE image!</span>
+                    <label> 
+                        <input className="clean-field" onChange={this.uploadImg} type="file" />
                     </label>
                     {exp.imgUrls && <section className="edit-gallery grid">   
                             {exp.imgUrls.map((url, idx) => {
@@ -221,12 +222,14 @@ class _ExpEdit extends Component {
                                 </li>
                             })}
                     </section>}
+                    <div className="form-buttons flex space-between">
                     {this.state.editMenu &&
                         <MenuEdit menu={this.state.exp.menu} 
                         setMenu={this.saveMenu}/>}
                     <Button variant="contained" color="primary" onClick={this.onToggleMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
                     <Button variant="contained" color="primary" 
                     onClick={this.onSaveExp}>Save</Button>
+                     </div>
                      </div>
                 </form>
                
