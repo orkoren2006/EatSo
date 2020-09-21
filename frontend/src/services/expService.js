@@ -15,18 +15,6 @@ async function getExps(filterBy = {}) {
     let expToReturn = exps;
 
     if (Object.keys(filterBy).length) expToReturn = _getExps(exps,filterBy)
-
-    // if (filterBy.userId) {
-    //     if (filterBy.field === 'owner') {
-    //         expToReturn = exps.filter(exp => {
-    //             return (exp.owner._id === filterBy.userId)
-    //         })
-    //     } else if (filterBy.field === 'participant') {
-    //         expToReturn = exps.filter(exp => {
-    //             return exp.participants.some(participant => participant._id === filterBy.userId)
-    //         })
-    //     }
-    // }
     return expToReturn;
 }
 
@@ -86,8 +74,6 @@ function _getExps(exps,filterBy) {
     let expsToReturn;
     // const [field, keyWord] = attr.split('-')
     const { field, keyWord } = filterBy
-    console.log('from _getExp - expService', filterBy, 'field', field, 'value', keyWord);
-    console.log('from _getExp - expService', exps);
 
     const keyWordRegex = new RegExp(`${keyWord}`, 'i')
 
@@ -130,7 +116,6 @@ function _getExps(exps,filterBy) {
             break;
     }
 
-    console.log(expsToReturn);
     return expsToReturn;
 
     // if (filterBy.userId) {
