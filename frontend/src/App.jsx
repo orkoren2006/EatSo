@@ -17,9 +17,9 @@ export function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header /> 
         <Switch>
-          <Route path="/" component={Home} exact />
+          <Route path="/" component={Home} exact /> 
           <Route path="/exp/edit/:id?" component={ExpEdit} exact />
           <Route path="/exp/:id" component={ExpDetails} exact />
           <Route path="/exp/:field?/:keyWord?" component={ExpApp} />
