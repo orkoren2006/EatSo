@@ -20,8 +20,8 @@ export class Modal extends Component {
         const { isShown } = this.state
         const { children } = this.props
         return (
-            <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onClick={this.closeModal} >
-                <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
+            <div className={`modal-wrapper ${isShown ? '' : 'hide'}`} onMouseDown={this.closeModal} >
+                <div className="modal-content" onMouseDown={(ev) => ev.stopPropagation()}>
                     <button className="close-modal" onClick={this.closeModal}>X</button>
                     {children}
                 </div>
