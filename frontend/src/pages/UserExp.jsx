@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { expService } from '../services/expService';
 import { loadExps, removeExp } from '../store/actions/expAction'
 import { ExpList } from "../cmps/ExpList";
+import { Button } from '@material-ui/core';
+
+
 class _UserExp extends Component {
 
     state = {
         user: '',
         userExps: '',
-        filter: 'all'
+        filter: 'all',
+        isHost: false
     }
 
     async componentDidMount() {
         const userId = this.props.user._id;
-        const expAs = this.props.match.params.as;
+        const expAs = this.props.match.params.as; // gets 'host' OR 'participant' - from url
+        this.setState({ isHost: (expAs === 'owner') ? true : false })
         // await this.props.loadExps({ userId: userId, field: 'owner' })
         const userExps = await expService.getExps({ userId: userId, field: expAs })
         this.setState({ userExps })
@@ -23,6 +29,7 @@ class _UserExp extends Component {
         if (prevProps === this.props) return
         const userId = this.props.user._id;
         const expAs = this.props.match.params.as;
+        this.setState({ isHost: (expAs === 'owner') ? true : false })
         const userExps = await expService.getExps({ userId: userId, field: expAs })
         this.setState({ userExps })
     }
@@ -51,7 +58,7 @@ class _UserExp extends Component {
         return (
             // <React.Fragment className="user-exp-div">
             <section className="user-exp-div">
-                <h3 className="user-exp-type">Experiences As a {(this.props.match.params.as === 'owner') ? 'Host' : "Participants"} </h3>
+                <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
                 <section className="user-exp-navbar">
                     <ul className="user-exp-navbar-list flex">
                         <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
@@ -61,9 +68,14 @@ class _UserExp extends Component {
                         <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked' : ''}
                             id="all" onClick={this.onExpTimeFilter}>All</li>
                     </ul>
+                    {this.state.isHost &&
+                        <Link to="/exp/edit"><Button variant="contained" color="primary">
+                            Add Experience</Button></Link>}
+                </section>
+                <section className="user-exp-list">
                     {this.state.userExps &&
                         ((this.getExpsToShow().length) ?
-                            <ExpList exps={this.getExpsToShow()} /> : <h2>No Exps To Show</h2>)}
+                            <ExpList exps={this.getExpsToShow()} isHost={this.state.isHost} /> : <h2>No Exps To Show</h2>)}
                 </section>
             </section>
             // </React.Fragment>
