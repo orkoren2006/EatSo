@@ -5,12 +5,14 @@ import { logout } from '../store/actions/userActions';
 import { UserNav } from './UserNav';
 import { GuestNav } from './GuestNav';
 import { Image, Transformation } from 'cloudinary-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-function DynamicCmp(props){
+function DynamicCmp(props) {
     if (props.user) {
-        return <UserNav { ...props }/>
+        return <UserNav {...props} />
     } else {
-        return <GuestNav { ...props }/>
+        return <GuestNav {...props} />
     }
 }
 
@@ -40,20 +42,27 @@ class _Header extends Component {
         const toggleNavbarClass = this.state.navbar ? 'main-nav flex toggle' : 'main-nav flex'
         const toggleScreen = this.state.navbar ? 'header-screen' : 'header-screen open-menu'
         const { user } = this.props
-        const avatar = (user) ? user.imgUrl : `https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png`
+        const avatar = (user) ? user.imgUrl : `https://res.cloudinary.com/orkofy/image/upload/v1600666498/eatso-profile/user_bqaypc.jpg`
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
                 <div className={toggleScreen} onClick={this.toggleMenu}></div>
-                <div className="header flex align-center space-between width-90">
+                <div className="header flex align-center space-between">
                     <Link to="/"><h1>EatSo!</h1></Link>
+                    <div className="middle-navbar flex">
+                        <Link to="/exp"><h3>All Experiences</h3></Link> |
+                        <Link to="/exp/edit"><h3>Become a host</h3></Link>
+                    </div>
                     <DynamicCmp user={user} navClass={toggleNavbarClass}
                         onItemClick={this.toggleMenu}
                         onLogout={this.onLogout} />
                     {/* <img className="login-avatar" src={user.imgUrl} onClick={this.toggleMenu}></img> */}
-                    <Image className="login-avatar" onClick={this.toggleMenu} cloudName="orkofy" publicId={avatar} type="fetch">
-                        <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
-                    </Image>
+                    <div className="header-avatar flex space-between align-center" onClick={this.toggleMenu}>
+                        <FontAwesomeIcon className="bar-icon" icon={faBars} />
+                        <Image className="login-avatar" cloudName="orkofy" publicId={avatar} type="fetch">
+                            <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
+                        </Image>
+                    </div>
                 </div>
             </React.Fragment>
         )

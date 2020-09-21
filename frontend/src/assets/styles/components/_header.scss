@@ -1,17 +1,18 @@
 .header {
     // border-bottom: 1px solid black ; 
     margin-bottom: 5px;
- 
+
 
     h1 {
-        margin: 0.67em 0;
-        color : #fd7854;
+        margin     : 0.67em 0;
+        color      : #fd7854;
+        margin-left: 5px;
     }
 
     a {
         color          : inherit;
         text-decoration: none;
-        z-index:1;
+        z-index        : 1;
     }
 
 }
@@ -22,6 +23,7 @@
     position        : fixed;
     top             : 75px;
     right           : 60px;
+    border-radius   : 15px;
     background-color: lightgray;
     box-shadow      : -13px 3px 20px 0px rgba(0, 0, 0, 0.4);
     z-index         : 6;
@@ -43,10 +45,15 @@
         // text-decoration: none;
         // color: inherit;
     }
+
+    li a:first-child {
+        padding-top: 5px;
+    }
 }
 
 .main-nav li a:hover {
-    background-color: gray;
+    box-shadow      : -13px 3px 20px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 
@@ -80,10 +87,36 @@
 
 }
 
-.login-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
+.header-avatar {
+    z-index         : 1;
+    background-color: #FFFFFF;
+    margin-right    : 10px;
+    width           : 70px;
+    height          : 40px;
+    border-radius   : 25px;
+    cursor          : pointer;
+
+    .login-avatar {
+        margin-right : 10px;
+        width        : 30px;
+        height       : 30px;
+        border-radius: 50%;
+    }
+
+    .bar-icon {
+        font-size   : 20px;
+        margin-left : 5px;
+        padding-left: 5px;
+    }
+}
+
+.middle-navbar {
     z-index: 1;
+    color  : white;
+
+    h3 {
+        margin     : 5px;
+        font-family: roboto;
+        font-weight: 400;
+    }
 }

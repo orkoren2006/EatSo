@@ -59,24 +59,24 @@ class _Home extends Component {
       <section className="home">
         <div className="hero-image flex column">
 
-          <h2>Where friends and food </h2>
-          <h1> meet<span className="animate__animated animate__bounce">.</span></h1>
+          <h2>Experience food </h2>
+          <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
         </div>
-        <section className="flex flex center wrap align-center preview-cards width-90">
+        <section className="flex flex center wrap align-center preview-cards width-1366">
 
-          <div className="home-card-1">
+          <div className="home-card home-card-1">
             <Link to="/exp"><div className="preview-image img-1 flex column align-start justify-start"><h3>Outdoor</h3><h4>dinner experiences</h4></div></Link>
           </div>
-          <div className="home-card-2">
+          <div className="home-card home-card-2">
             <Link to="/exp"><div className="preview-image img-2 flex column align-start justify-start"><h3>Traditional</h3><h4>cuisine</h4></div></Link>
           </div>
-          <div className="home-card-3">
+          <div className="home-card home-card-2">
             <Link to="/exp"> <div className="preview-image img-3 flex column align-start justify-start"><h3>Romantic</h3><h4>dinners</h4></div></Link>
           </div>
-          <div className="home-card-4">
+          <div className="home-card home-card-2">
             <Link to="/exp"> <div className="preview-image img-4 flex column align-start justify-start"><h3>Holiday</h3><h4>meals</h4></div></Link>
           </div>
-          <div className="home-card-5">
+          <div className="home-card home-card-2">
             <Link to="/exp"> <div className="preview-image img-5 flex column align-start justify-start"><h3>Dinner</h3><h4>parties</h4></div></Link>
           </div>
         </section>
@@ -85,7 +85,7 @@ class _Home extends Component {
             <h2>Top Traditional Cuisine</h2>
           </section>
           <ExpList exps={this.getExps('tag-traditional')} />
-          <Button><span> All traditional - &gt;</span></Button>
+          <Button className="traditional-button "><span> Show More  &gt;</span></Button>
         </section>
 
         <section className="tokyo-banner flex justify-center align-center">
@@ -101,14 +101,14 @@ class _Home extends Component {
             <h2>Top Dinners in your Location</h2>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
-          <Button><span> All dinners in your location &gt;</span></Button>
+          <Button className="tel-aviv-button"><span> Show More &gt;</span></Button>
         </section>
         <section className="scenic">
           <section className="preview-header">
             <h2>Top Scenic Meals</h2>
           </section>
           <ExpList exps={this.getExps('tag-scenic')} />
-          <Button><span> All Scenic &gt;</span></Button>
+          <Button className="scenic-button"><span> Show More &gt;</span></Button>
         </section>
         {/* <section className="multi-participants">
           <section className="preview-header">
