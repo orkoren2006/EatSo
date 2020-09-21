@@ -89,7 +89,7 @@ class _ExpDetails extends Component {
         if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
-            <div className="exp-details-container">
+            <div className="exp-details-container width-1366">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
                     <LoginSignup closeModal={this.onCloseModal}/>
                 </Modal>

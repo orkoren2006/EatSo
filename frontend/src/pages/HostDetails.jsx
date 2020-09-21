@@ -29,15 +29,10 @@ class _HostDetails extends Component {
         if (!host) return <div>Loading...</div>
         if (!exps) return <div>Loading...</div>
         return (
-            <React.Fragment>
+
                 <section>
-                    <h2>{host.fullName}</h2>
-                    <p>{host.desc}</p>
+                    {exps.map(exp => <HostList key={exp._id} exp={exp} host={host} />)}
                 </section>
-                <section>
-                    {exps.map(exp => <HostList key={exp._id} exp={exp} />)}
-                </section>
-            </React.Fragment>
         )
     }
 }

@@ -8,7 +8,7 @@ export function UserNav({ navClass, onItemClick, onLogout }) {
                 <ul>
                     <li><NavLink onClick={onItemClick} to="/myexp/owner">Manage as Host</NavLink></li>
                     <li><NavLink onClick={onItemClick} to="/myexp/participant">My Experiences</NavLink></li>
-                    <li><NavLink onClick={onLogout} to="/login">Logout</NavLink></li>
+                    <li><NavLink onClick={onLogout} to="/">Logout</NavLink></li>
                 </ul>
             </nav>
         //     <img className="login-avatar" src="https://res.cloudinary.com/orkofy/image/upload/v1600527561/eatso-profile/img_avatar_rqu4ym.png" onClick={onItemClick}></img> 

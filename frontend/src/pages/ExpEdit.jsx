@@ -177,22 +177,26 @@ class _ExpEdit extends Component {
                             value={exp.price} placeholder="Enter experience price"
                             onChange={this.handleChange} />
                     </label>
+                  
+                    
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
+                    </MuiPickersUtilsProvider>
+                    </div>
+                    <div className= "form-right">
+                   
+                    <span>  Duration:</span>
+                    <label htmlFor="exp-duration">
+                       
+                        <input type="number" id="exp-duration" name="duration"
+                            value={exp.schedule.duration} placeholder="Enter experience duration"
+                            onChange={this.handleChange} />
+                    </label>
                     <span> Address:</span>
                     <label htmlFor="exp-address">
                         
                         <input type="text" id="exp-address" name="address"
                             value={exp.location.address} placeholder="Enter experience address"
-                            onChange={this.handleChange} />
-                    </label>
-                    </div>
-                    <div className= "form-right">
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
-                    </MuiPickersUtilsProvider>
-                    <label htmlFor="exp-duration">
-                        Duration:
-                        <input type="number" id="exp-duration" name="duration"
-                            value={exp.schedule.duration} placeholder="Enter experience duration"
                             onChange={this.handleChange} />
                     </label>
                     <span style={{ display: "inline" }}>Description:</span>
