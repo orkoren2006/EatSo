@@ -63,6 +63,7 @@ class _LoginSignup extends Component {
       await this.props.login(userCreds);
       this.setState({ loginCred: { email: '', password: '' } });
       this.setState({isLoggedIn: true})
+      debugger
       this.props.history.push('/')
     } catch (err) {
       console.log('failed to login',err);
