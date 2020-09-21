@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { expService } from '../services/expService';
-import { loadExps, removeExp } from '../store/actions/expAction'
+import { getExpById, loadExps, removeExp } from '../store/actions/expAction'
 import { ExpList } from "../cmps/ExpList";
 import { Button } from '@material-ui/core';
-
+import { loadBookings } from '../store/actions/bookingAction';
+import bookingService from '../services/bookingService';
 
 class _UserExp extends Component {
 
@@ -13,7 +14,8 @@ class _UserExp extends Component {
         user: '',
         userExps: '',
         filter: 'all',
-        isHost: false
+        isHost: false,
+        pastBookedExps: ''
     }
 
     async componentDidMount() {
@@ -22,7 +24,13 @@ class _UserExp extends Component {
         this.setState({ isHost: (expAs === 'owner') ? true : false })
         // await this.props.loadExps({ userId: userId, field: 'owner' })
         const userExps = await expService.getExps({ field: expAs, keyWord: userId })
-        this.setState({ userExps })
+        const pastBooked = await bookingService.getBookings({ field: 'past', keyWord: userId })
+        const pastBookedExps =  pastBooked.map( async (booking) => {
+           return await expService.getExpById(booking.exp._id)
+        })
+        Promise.all(pastBookedExps)
+        .then(res => this.setState({ pastBookedExps: res }))
+        this.setState({ userExps})
     }
 
     async componentDidUpdate(prevProps, prevState) {
@@ -41,14 +49,16 @@ class _UserExp extends Component {
     getExpsToShow = () => {
         let expsToShow = this.state.userExps;
         if (this.state.filter === 'past') {
-            expsToShow = this.state.userExps.filter(exp => {
-                return exp.schedule.at < Date.now()
-            })
+            expsToShow = this.state.pastBookedExps;
+            // expsToShow = this.state.userExps.filter(exp => {
+            //     return exp.schedule.at < Date.now()
+            // })
         } else {
             expsToShow = this.state.userExps.filter(exp => {
                 return exp.schedule.at > Date.now()
             })
         }
+
         return expsToShow
     }
 
@@ -86,13 +96,16 @@ class _UserExp extends Component {
 const mapStateToProps = state => {
     return {
         // exps: state.exp.exps,
-        user: state.user.loggedInUser
+        user: state.user.loggedInUser,
+        bookings: state.booking
     };
 };
 
 const mapDispatchToProps = {
     loadExps,
-    removeExp
+    removeExp,
+    loadBookings,
+    getExpById
 };
 
 export const UserExp = connect(mapStateToProps, mapDispatchToProps)(_UserExp);

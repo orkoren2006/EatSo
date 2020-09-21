@@ -19,12 +19,12 @@ export function loadExps(filterBy) {
   };
 
 }
-export function getById(expId) {
+export function getExpById(expId) {
   return async dispatch => {
     try {
       // example for loading
       dispatch(loading);
-      const exp = await expService.getById(expId);
+      const exp = await expService.getExpById(expId);
       dispatch({ type: 'SET_EXP', exp });
     } catch (err) {
       console.log('ExpActions: err in loadExps', err);
