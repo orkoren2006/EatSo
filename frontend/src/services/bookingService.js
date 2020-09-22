@@ -1,6 +1,8 @@
 
 import storageService from './asyncStorageService'
+import { expService } from './expService';
 import { httpService } from './httpService'
+
 
 const bookingService = {
     getBookings,
@@ -66,14 +68,15 @@ function _getBookings(bookings, filterBy) {
     const keys = Object.keys(filterBy)
     const values = Object.values(filterBy)
     // const field = (keys[0] === 'participants') ? 'guest' : 'owner'
+    console.log(bookings);
     // debugger
     const valueRegex = new RegExp(`${values[0]}`, 'i')
     switch (keys[0]) {
         case 'participants':
-            bookingsToReturn = bookings.filter(booking => {
-                const timeDiff = (Date.now() - booking.exp.schedule.at < 0) ? true : false; // true for upcoming, false for past
+            bookingsToReturn = bookings.filter(async (booking) => {
+                const exp = await expService.getExpById(booking.exp._id)
+                const timeDiff = (Date.now() - exp.schedule.at < 0) ? true : false; // true for upcoming, false for past
                 return (booking.guest._id === values[0] &&
-                    timeDiff === !filterBy[keys[1]] &&
                     booking.status === 'approved')
             })
             break;

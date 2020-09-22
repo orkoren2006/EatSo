@@ -48,7 +48,7 @@ class _UserExp extends Component {
         const field = (expAs === 'owner') ? 'owner' : 'participants';
         this.setState({ isHost: (expAs === 'owner') ? true : false })
         this._getUserExps(userId, field)
-        this.setState({pastBookedExps: undefined})
+        // this.setState({pastBookedExps: undefined})
         
         if (field !== 'owner') this._getParticipantPastExp(userId, field)
         // const userId = this.props.user._id;
@@ -81,7 +81,7 @@ class _UserExp extends Component {
     getExpsToShow = () => {
         let expToRender = this.state.userExps;
         // let expToRender;
-        console.log('booking',this.state.pastBookedExps, '\nexps',this.state.userExps);
+        // console.log('booking',this.state.pastBookedExps, '\nexps',this.state.userExps);
         // debugger
         if (this.state.filter === 'past' && !this.state.isHost) {
             expToRender = this.state.pastBookedExps;
@@ -91,9 +91,10 @@ class _UserExp extends Component {
             // })
         } else if (this.state.filter === 'past' && this.state.isHost) {
             expToRender = this.state.userExps.filter(exp => {
-                console.log(exp);
+                // console.log(exp);
                 return exp.schedule.at < Date.now()
             })
+            if (!expToRender.length) expToRender = undefined
             // expsToShow = this.state.userExps.filter(exp => {
             //     return exp.schedule.at > Date.now()
             // })
