@@ -11,7 +11,7 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
-    
+
     const exps = await httpService.get('exp')
     let expToReturn = exps;
 
@@ -72,7 +72,6 @@ function getEmptyExp() {
 }
 
 function _getExps(exps, filterBy) {
-
     let expsToReturn;
     const keys = Object.keys(filterBy)
     const values = Object.values(filterBy)
@@ -91,7 +90,7 @@ function _getExps(exps, filterBy) {
                 return valueRegex.test(exp.location.address)
             })
             break;
-        case 'owner':
+        case '_id':
             expsToReturn = exps.filter(exp => {
                 return (exp.owner._id === values[0])
             })
@@ -115,17 +114,6 @@ function _getExps(exps, filterBy) {
         default:
             break;
     }
-    return expsToReturn;
 
-    // if (filterBy.userId) {
-    //     if (filterBy.field === 'owner') {
-    //         expToReturn = exps.filter(exp => {
-    //             return (exp.owner._id === filterBy.userId)
-    //         })
-    //     } else if (filterBy.field === 'participant') {
-    //         expToReturn = exps.filter(exp => {
-    //             return exp.participants.some(participant => participant._id === filterBy.userId)
-    //         })
-    //     }
-    // }
+    return expsToReturn;
 }

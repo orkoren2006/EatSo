@@ -11,108 +11,110 @@ import bookingService from '../services/bookingService';
 class _UserExp extends Component {
 
     state = {
-        user: '',
-        userExps: '',
+        userExps: [], // for exps as a host
+        userBookings: [], // for exps as a participants
         filter: 'past',
         isHost: false,
-        pastBookedExps: undefined
+        expList: null
     }
 
     async componentDidMount() {
-        const userId = this.props.user._id;
+        // console.log(this.props.user._id);
+        // this.setState({userId: this.props.user._id});
         const expAs = this.props.match.params.as; // gets 'host' OR 'participant' - from url
-        const field = (expAs === 'owner') ? 'owner' : 'participants';
-        this.setState({ isHost: (expAs === 'owner') ? true : false })
-        this._getUserExps(userId, field)
-
-        if (field !== 'owner') this._getParticipantPastExp(userId, field)
-
-        // const userId = this.props.user._id;
-        // const expAs = this.props.match.params.as; // gets 'host' OR 'participant' - from url
-        // this.setState({ isHost: (expAs === 'owner') ? true : false })
-        // await this.props.loadExps({ userId: userId, field: 'owner' })
-        // const userExps = await expService.getExps({ field: expAs, value: userId })
-        // const pastBooked = await bookingService.getBookings({ field: 'past', value: userId })
-        // const pastBookedExps =  pastBooked.map( async (booking) => {
-        //    return await expService.getExpById(booking.exp._id)
-        // })
-        // Promise.all(pastBookedExps)
-        // .then(res => this.setState({ pastBookedExps: res }))
-        // this.setState({ userExps})
+        this.setState({ isHost: (expAs === 'owner') })
+        // const field = (expAs === 'owner') ? 'owner' : 'participants';
+        await this._getUserExps()
+        await this._getUserBooking()
+        this.getExpsList()
+        // this._getUserExps(userId, field)
+        // this._getUserBooking(userId, field)
+        // if (field !== 'owner') this._getParticipantPastExp(userId, field)
     }
 
     async componentDidUpdate(prevProps, prevState) {
+
         if (prevProps === this.props) return
-        const userId = this.props.user._id;
-        const expAs = this.props.match.params.as; // gets 'owner' OR 'participant' - from url
-        const field = (expAs === 'owner') ? 'owner' : 'participants';
-        this.setState({ isHost: (expAs === 'owner') ? true : false })
-        this._getUserExps(userId, field)
-        // this.setState({pastBookedExps: undefined})
-        
-        if (field !== 'owner') this._getParticipantPastExp(userId, field)
         // const userId = this.props.user._id;
-        // const expAs = this.props.match.params.as;
-        // const field = (expAs === 'owner') ? 'owner':'participants';
-        // this.setState({ isHost: (expAs === 'owner') ? true : false })
-        // this._getUserExps(userId,field)
-        // const userExps = await expService.getExps({ field: expAs, value: userId })
-        // this.setState({ userExps })
+        const expAs = this.props.match.params.as; // gets 'owner' OR 'participant' - from url
+        this.setState({ isHost: (expAs === 'owner') }, () => this.getExpsList())
+        // this.getExpsList()
+        // const field = (expAs === 'owner') ? 'owner' : 'participants';
+        // this._getUserExps(this.state.userId)
+        // this._getUserBooking(this.state.userId)
+        // this._getUserExps(userId, field)
+        // this._getUserBooking(userId, field)
     }
 
-    async _getUserExps(userId, field) {
-        const userExps = await expService.getExps({ [field]: userId })
+    async _getUserExps() {
+        const userExps = await expService.getExps({ _id: this.props.user._id })
         this.setState({ userExps })
     }
 
-    async _getParticipantPastExp(userId, field) {
-        const pastBooked = await bookingService.getBookings({ [field]: userId, isOver: true })
-        const pastBookedExps = pastBooked.map(async (booking) => {
-            return await expService.getExpById(booking.exp._id)
-        })
-        Promise.all(pastBookedExps)
-            .then(res => this.setState({ pastBookedExps: res }))
+    async _getUserBooking() {
+        const userBookings = await bookingService.getBookings({ _id: this.props.user._id })
+        this.setState({ userBookings })
     }
 
     onExpTimeFilter = ({ target }) => {
-        this.setState({ filter: target.id })
+        this.setState({ filter: target.id }, () => this.getExpsList())
+
     }
 
-    getExpsToShow = () => {
-        let expToRender = this.state.userExps;
-        // let expToRender;
-        // console.log('booking',this.state.pastBookedExps, '\nexps',this.state.userExps);
-        // debugger
-        if (this.state.filter === 'past' && !this.state.isHost) {
-            expToRender = this.state.pastBookedExps;
+    // getExpsList = () =>{
+    //      console.log('state',this.state);
+    // }
 
-            // expsToShow = this.state.userExps.filter(exp => {
-            //     return exp.schedule.at < Date.now()
-            // })
-        } else if (this.state.filter === 'past' && this.state.isHost) {
-            expToRender = this.state.userExps.filter(exp => {
-                // console.log(exp);
-                return exp.schedule.at < Date.now()
+    getExpsList = () => {
+        // let expsRender;
+        console.log('exps', this.state.userExps, '\nBooking', this.state.userBookings);
+
+        if (this.state.isHost) this.setState({ expList: this.state.userExps })
+        else if (this.state.filter === 'pending') {
+            const pendingExpArr = [];
+            this.state.userBookings.forEach(booking => {
+                if (booking.status === 'pending') {
+                    const item = expService.getExpById(booking.exp._id)
+                    pendingExpArr.push(item)
+                }
             })
-            if (!expToRender.length) expToRender = undefined
-            // expsToShow = this.state.userExps.filter(exp => {
-            //     return exp.schedule.at > Date.now()
-            // })
-        } else if (this.state.filter === 'past' && this.state.isHost){
-            expToRender = undefined
+            Promise.all(pendingExpArr)
+                .then(expList => {
+                    this.setState({ expList })
+                })
+        } else if (this.state.filter !== 'pending') {
+            const approvedBookings = this.state.userBookings.filter(booking => {
+                return (booking.status === 'approved')
+            })
+            const pastExpArr = [];
+            if (this.state.filter === 'past') {
+                approvedBookings.forEach((booking) => {
+                    if (booking.exp.schedule.at < Date.now()) {
+                        const item = expService.getExpById(booking.exp._id)
+                        pastExpArr.push(item)
+                    }
+                })
+            } else {
+                approvedBookings.forEach((booking) => {
+                    if (booking.exp.schedule.at > Date.now()) {
+                        const item = expService.getExpById(booking.exp._id)
+                        pastExpArr.push(item)
+                    }
+                })
+            }
+            Promise.all(pastExpArr)
+                .then(expList => {
+                    this.setState({ expList })
+                })
         }
-        console.log('render' ,expToRender);
-        return expToRender
-
-        // return expsToShow
-        // return this.state.userExps
     }
+
 
     render() {
         const { user } = this.props;
+        const { expList } = this.state
         if (!user) return <div>Itay Loading...</div>
         return (
-            // <React.Fragment className="user-exp-div">
             <section className="user-exp-div">
                 <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
                 <section className="user-exp-navbar">
@@ -121,8 +123,10 @@ class _UserExp extends Component {
                             id="past" onClick={this.onExpTimeFilter}>Past</li>
                         <li key="future-exps" className={(this.state.filter === 'future') ? 'clicked' : ''}
                             id="future" onClick={this.onExpTimeFilter}>Upcoming</li>
-                        <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked' : ''}
-                            id="all" onClick={this.onExpTimeFilter}>All</li>
+                        <li key="pending-exps" className={(this.state.filter === 'pending') ? 'clicked' : ''}
+                            id="pending" onClick={this.onExpTimeFilter}>Pending</li>
+                        {/* <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked' : ''}
+                        id="all" onClick={this.onExpTimeFilter}>All</li> */}
                     </ul>
                     {this.state.isHost &&
                         <Link to="/exp/edit"><Button variant="contained" color="primary">
@@ -130,12 +134,10 @@ class _UserExp extends Component {
                 </section>
                 <section className="user-exp-list">
                     {this.state.userExps &&
-                        // ((this.getExpsToShow().length) ?
-                        ((this.getExpsToShow()) ?
-                            <ExpList exps={this.getExpsToShow()} isHost={this.state.isHost} /> : <h2>No Exps To Show</h2>)}
+                        ((expList) ?
+                            <ExpList exps={expList} isHost={this.state.isHost} /> : <h2>No Exps To Show</h2>)}
                 </section>
             </section>
-            // </React.Fragment>
         )
     }
 }

@@ -76,27 +76,18 @@ function getEmpty() {
 
 function _getBookings(bookings, filterBy) {
     let bookingsToReturn;
-    console.log(filterBy);
     const keys = Object.keys(filterBy)
     const values = Object.values(filterBy)
-    // const field = (keys[0] === 'participants') ? 'guest' : 'owner'
-    console.log(bookings);
-    // debugger
     const valueRegex = new RegExp(`${values[0]}`, 'i')
     switch (keys[0]) {
-        case 'participants':
-            bookingsToReturn = bookings.filter(async (booking) => {
-                const exp = await expService.getExpById(booking.exp._id)
-                const timeDiff = (Date.now() - exp.schedule.at < 0) ? true : false; // true for upcoming, false for past
-                return (booking.guest._id === values[0] &&
-                    booking.status === 'approved')
+        case '_id':
+            bookingsToReturn = bookings.filter( (booking) => {
+                return booking.guest._id === values[0]
             })
             break;
-        // case 'owner':
-
         default:
             break;
     }
-    console.log(bookingsToReturn);
+
     return bookingsToReturn
 }
