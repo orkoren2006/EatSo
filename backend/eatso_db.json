@@ -9,7 +9,11 @@
       },
       "numOfGuests": 4,
       "exp": {
-        "_id": "e101"
+        "_id": "e101",
+        "schedule": {
+          "at": 1600707600000,
+          "duration": 150
+        }
       },
       "status": "pending"
     },
@@ -22,7 +26,11 @@
       },
       "numOfGuests": 4,
       "exp": {
-        "_id": "e101"
+        "_id": "e101",
+        "schedule": {
+          "at": 1600707600000,
+          "duration": 150
+        }
       },
       "status": "pending"
     },
@@ -35,7 +43,11 @@
       },
       "numOfGuests": 4,
       "exp": {
-        "_id": "e101"
+        "_id": "e101",
+        "schedule": {
+          "at": 1600707600000,
+          "duration": 150
+        }
       },
       "status": "pending"
     },
@@ -48,7 +60,11 @@
       },
       "numOfGuests": 4,
       "exp": {
-        "_id": "e102"
+        "_id": "e102",
+        "schedule": {
+          "at": 1584741600000,
+          "duration": 150
+        }
       },
       "status": "approved"
     },
@@ -61,7 +77,11 @@
       },
       "numOfGuests": 4,
       "exp": {
-        "_id": "e103"
+        "_id": "e102",
+        "schedule": {
+          "at": 1584741600000,
+          "duration": 150
+        }
       },
       "status": "approved"
     },
@@ -74,9 +94,30 @@
       },
       "numOfGuests": 2,
       "exp": {
-        "_id": "e103"
+        "_id": "e103",
+        "schedule": {
+          "at": 1601053200000,
+          "duration": 120
+        }
       },
       "status": "approved"
+    },
+    {
+      "guest": {
+        "_id": "u102",
+        "fullName": "Haim Cohen",
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg"
+      },
+      "numOfGuests": 6,
+      "exp": {
+        "_id": "e101",
+        "schedule": {
+          "at": 1600707600000,
+          "duration": 150
+        }
+      },
+      "status": "pending",
+      "_id": "yBZoRgI"
     }
   ],
   "exp": [
