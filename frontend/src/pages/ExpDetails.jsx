@@ -44,7 +44,7 @@ class _ExpDetails extends Component {
 
 
     onBookClick = async () => {
-        if (!this.props.user) return this.onShowMaodl();
+        if (!this.props.user) return this.onShowModal();
         const { exp } = this.state;
         const { user } = this.props;
         const booking = await bookingService.getEmpty();
@@ -70,7 +70,7 @@ class _ExpDetails extends Component {
         this.setState({ isModalShown: false })
     }
 
-    onShowMaodl = () => {
+    onShowModal = () => {
         this.setState({ isModalShown: true })
     }
 
@@ -92,7 +92,7 @@ class _ExpDetails extends Component {
 
     onAddReview = (ev) => {
         ev.preventDefault();
-        if (!this.props.user) return this.onShowMaodl();
+        if (!this.props.user) return this.onShowModal();
         const reviewToAdd = this.state.review;
         const { user } = this.props;
 
@@ -118,7 +118,7 @@ class _ExpDetails extends Component {
         return (
             <div className="exp-details-container width-1366">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
-                    <LoginSignup closeModal={this.onCloseModal} />
+                    {<LoginSignup closeModal={this.onCloseModal} />}
                 </Modal>
                 <h2>{exp.name}</h2>
                 <ExpRate reviews={exp.reviews} />
