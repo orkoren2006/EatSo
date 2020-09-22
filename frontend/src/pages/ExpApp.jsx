@@ -6,8 +6,12 @@ import { ExpList } from '../cmps/ExpList';
 class _ExpApp extends Component {
 
     async componentDidMount() {
-        let filterBy = {}
-        if (this.props.match.params.field) filterBy = this.props.match.params
+        // let { field, value } = this.props.match.params
+        // let field=null
+        // let value= null
+        let filterBy;
+        if (this.props.match.params.field) {filterBy = {[this.props.match.params.field]:this.props.match.params.value}}
+        console.log(filterBy);
         await this.props.loadExps(filterBy);
         // this.setState({exps}, () => console.log(this.state.exps))
     }

@@ -61,12 +61,7 @@ class _UserExp extends Component {
 
     }
 
-    // getExpsList = () =>{
-    //      console.log('state',this.state);
-    // }
-
     getExpsList = () => {
-        // let expsRender;
         console.log('exps', this.state.userExps, '\nBooking', this.state.userBookings);
 
         if (this.state.isHost) this.setState({ expList: this.state.userExps })
@@ -117,7 +112,7 @@ class _UserExp extends Component {
         return (
             <section className="user-exp-div">
                 <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
-                <section className="user-exp-navbar">
+                {!this.state.isHost && <section className="user-exp-navbar">
                     <ul className="user-exp-navbar-list flex">
                         <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
                             id="past" onClick={this.onExpTimeFilter}>Past</li>
@@ -125,13 +120,12 @@ class _UserExp extends Component {
                             id="future" onClick={this.onExpTimeFilter}>Upcoming</li>
                         <li key="pending-exps" className={(this.state.filter === 'pending') ? 'clicked' : ''}
                             id="pending" onClick={this.onExpTimeFilter}>Pending</li>
-                        {/* <li key="all-exps" className={(this.state.filter === 'all') ? 'clicked' : ''}
-                        id="all" onClick={this.onExpTimeFilter}>All</li> */}
                     </ul>
-                    {this.state.isHost &&
-                        <Link to="/exp/edit"><Button variant="contained" color="primary">
-                            Add Experience</Button></Link>}
                 </section>
+                }
+                <Link to="/exp/edit"><Button variant="contained" color="primary">
+                    Add Experience</Button></Link>
+
                 <section className="user-exp-list">
                     {this.state.userExps &&
                         ((expList) ?
