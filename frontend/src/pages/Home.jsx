@@ -18,24 +18,24 @@ class _Home extends Component {
 
   getExps = (attr) => {
     let expsToSend;
-    const [field, keyWord] = attr.split('-')
-    const keyWordRegex = new RegExp(`${keyWord}`, 'i')
+    const [field, value] = attr.split('-')
+    const valueRegex = new RegExp(`${value}`, 'i')
 
     switch (field) {
       case 'tag':
         expsToSend = this.props.exps.filter(exp => {
           return exp.tags.some(tag => {
-            return keyWordRegex.test(tag)
+            return valueRegex.test(tag)
           })
         })
         break;
       case 'address':
         expsToSend = this.props.exps.filter(exp => {
-          return keyWordRegex.test(exp.location.address)
+          return valueRegex.test(exp.location.address)
         })
         break;
       case 'capacity':
-        if (keyWord === 'multi') {
+        if (value === 'multi') {
           expsToSend = this.props.exps.filter(exp => {
             return exp.capacity.min >= 20
           })
