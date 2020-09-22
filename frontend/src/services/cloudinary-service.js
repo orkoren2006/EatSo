@@ -1,6 +1,7 @@
 async function uploadImg(ev) {
+    console.log('cloudinary');
     const CLOUD_NAME = "orkofy"
-    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload/`
 
     const formData = new FormData();
     formData.append('file', ev.target.files[0])

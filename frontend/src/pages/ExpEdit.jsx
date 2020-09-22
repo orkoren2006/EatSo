@@ -22,6 +22,20 @@ class _ExpEdit extends Component {
         if (expId) {
             const exp = await expService.getExpById(expId)
             this.setState({ exp })
+        } else {
+            const {loggedInUser} = this.props 
+            this.setState(
+                {
+                    exp: {
+                        ...this.state.exp,
+                        owner:
+                        {
+                            _id: loggedInUser._id,
+                            fullName: loggedInUser.fullName,
+                            imgUrl: loggedInUser.imgUrl
+                        }
+                    }
+                })
         }
     }
 
@@ -37,8 +51,11 @@ class _ExpEdit extends Component {
     }
 
     uploadImg = async (ev) => {
-        const clousinaryUrl = await cloudinaryService.uploadImg(ev)
-        const imgUrl = clousinaryUrl.secure_url;
+        
+        const cloudinaryUrl = await cloudinaryService.uploadImg(ev)
+        console.log('here', cloudinaryUrl);
+        const imgUrl = cloudinaryUrl.secure_url;
+        
         this.setState(prevState => {
             return {
                 exp: {
@@ -86,7 +103,7 @@ class _ExpEdit extends Component {
                         exp: {
                             ...prevState.exp,
                             location: {
-                                ...prevState.exp.schedule,
+                                ...prevState.exp.location,
                                 [field]: value
                             }
                         }
@@ -204,18 +221,18 @@ class _ExpEdit extends Component {
                     </div>
 
                     <div className="form-side">
-                        <span>  Date:</span>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
-                            </MuiPickersUtilsProvider>
-                        <label htmlFor="exp-duration"></label>
+                        <span> Date:</span>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
+                        </MuiPickersUtilsProvider>
+                        {/* <label htmlFor="exp-duration"></label>
                         <span>  Duration:</span>
                         <select name="duration" id="exp-duration" onChange={this.handleChange}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                        </select>
+                        </select> */}
                         {/* <input type="dropdown" id="exp-duration" name="duration"
                             value={exp.schedule.duration} placeholder="Enter experience duration"
                             onChange={this.handleChange} /> */}
@@ -277,7 +294,8 @@ class _ExpEdit extends Component {
 
 const mapStateToProps = state => {
     return {
-        exps: state.exp.exps
+        exps: state.exp.exps,
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
