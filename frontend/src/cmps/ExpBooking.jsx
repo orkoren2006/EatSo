@@ -4,11 +4,11 @@ import { loadBookings } from '../store/actions/bookingAction';
 import { ExpRate } from './ExpRate'
 
 function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, bookings, user, ...props }) {
-    const isAlreadyBooked = bookings.find(booking => booking.guest._id === user._id && booking.exp.schedule.at > Date.now() && booking.exp._id === exp._id)
-    console.log('im here');
+    const isAlreadyBooked = bookings.find(booking => user && booking.guest._id === user._id && booking.exp.schedule.at > Date.now() && booking.exp._id === exp._id)
     const className = isAlreadyBooked ? 'disable' : ''
     const txtBtn = isAlreadyBooked ? 'You\'ve already booked this experience' : 'Book!';
-    return (  user && exp.owner._id !== user._id &&
+
+    return (user && exp.owner._id !== user._id &&
         <section className="exp-booking">
             <div className="flex space-between">
                 <span className="price">${exp.price}  <span >/ Person &nbsp;</span></span>
