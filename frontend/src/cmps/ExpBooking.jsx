@@ -8,7 +8,7 @@ function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, booki
     console.log('im here');
     const className = isAlreadyBooked ? 'disable' : ''
     const txtBtn = isAlreadyBooked ? 'You\'ve already booked this experience' : 'Book!';
-    return ( user && exp.owner._id !== user._id &&
+    return (  user && exp.owner._id !== user._id &&
         <section className="exp-booking">
             <div className="flex space-between">
                 <span className="price">${exp.price}  <span >/ Person &nbsp;</span></span>
