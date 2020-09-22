@@ -6,7 +6,8 @@ const bookingService = {
     getBookings,
     getById,
     remove,
-    update
+    update,
+    getEmpty
 }
 
 window.bookingService = bookingService;
@@ -33,6 +34,30 @@ function remove(bookingId) {
 function update(booking) {
     return storageService.put('booking', booking)
     // return httpService.put(`booking/${booking._id}`, booking)
+}
+
+
+function getEmpty() {
+    return {
+        guest: {
+          _id: '',
+          fullName: '',
+          imgUrl: ''
+        },
+        numOfGuests: 0,
+        exp: {
+          _id: '',
+          name: '',
+          title: '',
+          imgUrls: [],
+          price: 0,
+          schedule: {
+            at: 0,
+            duration: 0
+          }
+        },
+        status: "pending"
+      }
 }
 
 function _getBookings(bookings, filterBy) {

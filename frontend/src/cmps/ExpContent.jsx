@@ -5,7 +5,7 @@ import { Menu } from './Menu'
 import { ReviewEdit } from './ReviewEdit'
 import { ReviewList } from './ReviewList'
 
-export default function ExpContent({ exp, toggleAddReviewShown, onHandleChange, onAddReview, review, onBookClick, isAddReviewShown }) {
+export default function ExpContent({ exp,onNumOfGuestsChange, toggleAddReviewShown, onHandleChange, onAddReview, review, onBookClick, isAddReviewShown }) {
     return (
         <section className="exp-content">
             <div className="exp-details">
@@ -26,7 +26,7 @@ export default function ExpContent({ exp, toggleAddReviewShown, onHandleChange, 
                     {isAddReviewShown && <ReviewEdit onHandleChange={onHandleChange} onAddReview={onAddReview} review={review} />}
                 </section>
             </div>
-            <ExpBooking exp={exp} onBookClick={onBookClick} />
+            <ExpBooking exp={exp} onBookClick={onBookClick} onNumOfGuestsChange={onNumOfGuestsChange} />
         </section>
     )
 }

@@ -50,6 +50,8 @@ export function removeBooking(bookingId) {
 export function saveBooking(booking) {
   return async dispatch => {
     try {
+      
+      
       const bookingObj = await bookingService.save(booking);
       dispatch({ type: 'SAVE_BOOKING', booking: bookingObj.booking, isNew: bookingObj.isNew })
       // const notificationTxt = (bookingObj.isNew) ? 'Toy Added' : 'Toy Updated'
