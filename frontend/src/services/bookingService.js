@@ -7,7 +7,8 @@ const bookingService = {
     getById,
     remove,
     update,
-    getEmpty
+    getEmpty,
+    save
 }
 
 window.bookingService = bookingService;
@@ -36,6 +37,17 @@ function update(booking) {
     // return httpService.put(`booking/${booking._id}`, booking)
 }
 
+async function save(booking) {
+    if (booking._id) {
+        booking.updatedAt = Date.now();
+        // return httpService.put(`booking/${booking._id}`, booking)
+        const updateBooking = await httpService.put(`booking/${booking._id}`, booking)
+        return { booking: updateBooking, isNew: false }
+    } else {
+        const updateBooking = await httpService.post('booking', booking)
+        return { booking: updateBooking, isNew: true }
+    }
+}
 
 function getEmpty() {
     return {

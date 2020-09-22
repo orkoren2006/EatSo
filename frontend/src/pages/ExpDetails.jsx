@@ -54,12 +54,7 @@ class _ExpDetails extends Component {
         };
         booking.numOfGuests = this.state.numOfGuests;
         booking.exp = {
-            _id: exp._id,
-            name: exp.name,
-            title: exp.title,
-            imgUrls: [exp.imgUrls[0]],
-            price: exp.price,
-            schedule: exp.schedule
+            _id: exp._id
         };
         booking.status = 'pending'
         this.props.saveBooking(booking)

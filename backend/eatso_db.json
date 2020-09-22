@@ -12,7 +12,9 @@
         "_id": "e101",
         "name": "Amazing Kit-Chen",
         "title": "Israeli authentic meal and experience",
-        "imgUrls": ["main.jpg"],
+        "imgUrls": [
+          "main.jpg"
+        ],
         "price": 100,
         "schedule": {
           "at": 1600707600000,
@@ -33,7 +35,9 @@
         "_id": "e101",
         "name": "Amazing Kit-Chen",
         "title": "Israeli authentic meal and experience",
-        "imgUrls": ["main.jpg"],
+        "imgUrls": [
+          "main.jpg"
+        ],
         "price": 100,
         "schedule": {
           "at": 1600707600000,
@@ -54,7 +58,9 @@
         "_id": "e101",
         "name": "Amazing Kit-Chen",
         "title": "Israeli authentic meal and experience",
-        "imgUrls": ["main.jpg"],
+        "imgUrls": [
+          "main.jpg"
+        ],
         "price": 100,
         "schedule": {
           "at": 1600707600000,
@@ -75,7 +81,9 @@
         "_id": "e102",
         "name": "Italian Nights",
         "title": "Summer Nights Tasting Menu",
-        "imgUrls": ["https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg"],
+        "imgUrls": [
+          "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg"
+        ],
         "price": 150,
         "schedule": {
           "at": 1584741600000,
@@ -96,7 +104,9 @@
         "_id": "e102",
         "name": "Italian Nights",
         "title": "Summer Nights Tasting Menu",
-        "imgUrls": ["https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg"],
+        "imgUrls": [
+          "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg"
+        ],
         "price": 150,
         "schedule": {
           "at": 1584741600000,
@@ -119,13 +129,61 @@
         "title": "Innovative Sustainable Tasting Menu in Hackney",
         "desc": "Michelin-trained Chef Aidan Brooks, crater of Eleven98 invites you to experience his Chef's Table concept: an innovative and sustainable fine dining tasting menu in the open-plan dining space of his Shoreditch home.\nWhat to expect :  \n• An innovative, sustainable 7-course tasting menu\n• Welcome drink on arrival\n• Guests are welcome to BYOB\n• In the heart of Hackney, East London's most sought-after borough\n• 10 guests around one communal table\n• Host offers both private and open events\n• Former Head Chef at the critically acclaimed Vanilla Black",
         "price": 200,
-        "imgUrls": ["https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chef-cooking-food-restaurant-kitchen_53876-67_ucxolu.jpg"],
+        "imgUrls": [
+          "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chef-cooking-food-restaurant-kitchen_53876-67_ucxolu.jpg"
+        ],
         "schedule": {
           "at": 1601053200000,
           "duration": 120
         }
       },
       "status": "approved"
+    },
+    {
+      "guest": {
+        "_id": "u102",
+        "fullName": "Haim Cohen",
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg"
+      },
+      "numOfGuests": 6,
+      "exp": {
+        "_id": "e101",
+        "name": "Amazing Kit-Chen",
+        "title": "Israeli authentic meal and experience",
+        "imgUrls": [
+          "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/group-friends-eating-restaurant_23-2148006646_gdk4co.jpg"
+        ],
+        "price": 100,
+        "schedule": {
+          "at": 1600707600000,
+          "duration": 150
+        }
+      },
+      "status": "pending",
+      "_id": "yBZoRgI"
+    },
+    {
+      "guest": {
+        "_id": "u101",
+        "fullName": "Chen kitty",
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
+      },
+      "numOfGuests": 2,
+      "exp": {
+        "_id": "e102",
+        "name": "Italian Nights",
+        "title": "Summer Nights Tasting Menu",
+        "imgUrls": [
+          "https://res.cloudinary.com/orkofy/image/upload/v1600269054/eatso/chicken-pork-beef-meat-skewers-with-vegetables-spicy-potatoes_52137-30827_vuh6jf.jpg"
+        ],
+        "price": 150,
+        "schedule": {
+          "at": 1601744400000,
+          "duration": 150
+        }
+      },
+      "status": "pending",
+      "_id": "mB8n_y1"
     }
   ],
   "exp": [
