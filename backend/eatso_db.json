@@ -52,23 +52,6 @@
       "status": "pending"
     },
     {
-      "_id": "b1228",
-      "guest": {
-        "_id": "u101",
-        "fullName": "Chen kitty",
-        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
-      },
-      "numOfGuests": 4,
-      "exp": {
-        "_id": "e102",
-        "schedule": {
-          "at": 1584741600000,
-          "duration": 150
-        }
-      },
-      "status": "approved"
-    },
-    {
       "_id": "b1229",
       "guest": {
         "_id": "u102",
@@ -81,23 +64,6 @@
         "schedule": {
           "at": 1584741600000,
           "duration": 150
-        }
-      },
-      "status": "approved"
-    },
-    {
-      "_id": "b1230",
-      "guest": {
-        "_id": "u101",
-        "fullName": "Chen kitty",
-        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
-      },
-      "numOfGuests": 2,
-      "exp": {
-        "_id": "e103",
-        "schedule": {
-          "at": 1601053200000,
-          "duration": 120
         }
       },
       "status": "approved"
@@ -118,6 +84,23 @@
       },
       "status": "pending",
       "_id": "yBZoRgI"
+    },
+    {
+      "guest": {
+        "_id": "u101",
+        "fullName": "Chen kitty",
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/chen_rxmvr8.jpg"
+      },
+      "numOfGuests": 1,
+      "exp": {
+        "_id": "e102",
+        "schedule": {
+          "at": 1601744400000,
+          "duration": 150
+        }
+      },
+      "status": "pending",
+      "_id": "JFUFCK3"
     }
   ],
   "exp": [
