@@ -51,7 +51,7 @@ class _Header extends Component {
                     <Link to="/"><h1>EatSo!</h1></Link>
                     <div className="middle-navbar flex">
                         <Link to="/exp"><h3>All Experiences</h3></Link> |
-                        <Link to="/exp/edit"><h3>Become a host</h3></Link>
+                        <Link to="/exp/edit"><h3>Host a meal</h3></Link>
                     </div>
                     <DynamicCmp user={user} navClass={toggleNavbarClass}
                         onItemClick={this.toggleMenu}

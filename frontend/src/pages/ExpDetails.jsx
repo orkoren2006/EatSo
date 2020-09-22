@@ -13,7 +13,7 @@ import { ExpGallery } from '../cmps/ExpGallery';
 import ExpContent from '../cmps/ExpContent';
 import { ExpChat } from '../cmps/ExpChat';
 import bookingService from '../services/bookingService';
-import { saveBooking } from '../store/actions/bookingAction';
+import { loadBookings, saveBooking } from '../store/actions/bookingAction';
 class _ExpDetails extends Component {
 
     state = {
@@ -32,7 +32,8 @@ class _ExpDetails extends Component {
         const exp = await expService.getExpById(id);
         if (!exp) return;
         this.setState({ exp })
-        if (!this.props.exps) this.props.loadExps();
+        if (!this.props.exps) await this.props.loadExps();
+        if (!this.props.bookings.length) await this.props.loadBookings();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -43,7 +44,7 @@ class _ExpDetails extends Component {
 
 
     onBookClick = async () => {
-        if (!this.props.user) return this.onShowMaodl();
+        if (!this.props.user) return this.onShowModal();
         const { exp } = this.state;
         const { user } = this.props;
         const booking = await bookingService.getEmpty();
@@ -54,17 +55,22 @@ class _ExpDetails extends Component {
         };
         booking.numOfGuests = this.state.numOfGuests;
         booking.exp = {
-            _id: exp._id
+            _id: exp._id,
+            schedule: exp.schedule
         };
-        booking.status = 'pending'
-        this.props.saveBooking(booking)
+        booking.status = 'pending';
+        await this.props.saveBooking(booking);
+        // TODO: booked successfully, please wait to host for approving
+        // DONE? make sense?: re-render the exp-booking section
+        await this.props.loadBookings();
+        // this.setState({numOfGuests: 1})
     }
 
     onCloseModal = () => {
         this.setState({ isModalShown: false })
     }
 
-    onShowMaodl = () => {
+    onShowModal = () => {
         this.setState({ isModalShown: true })
     }
 
@@ -86,7 +92,7 @@ class _ExpDetails extends Component {
 
     onAddReview = (ev) => {
         ev.preventDefault();
-        if (!this.props.user) return this.onShowMaodl();
+        if (!this.props.user) return this.onShowModal();
         const reviewToAdd = this.state.review;
         const { user } = this.props;
 
@@ -112,7 +118,7 @@ class _ExpDetails extends Component {
         return (
             <div className="exp-details-container width-1366">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
-                    <LoginSignup closeModal={this.onCloseModal} />
+                    {<LoginSignup closeModal={this.onCloseModal} />}
                 </Modal>
                 <h2>{exp.name}</h2>
                 <ExpRate reviews={exp.reviews} />
@@ -132,14 +138,16 @@ class _ExpDetails extends Component {
 const mapStateToProps = state => {
     return {
         user: state.user.loggedInUser,
-        exps: state.exp.exps
+        exps: state.exp.exps,
+        bookings: state.booking.bookings
     };
 };
 
 const mapDispatchToProps = {
     saveExp,
     loadExps,
-    saveBooking
+    saveBooking,
+    loadBookings
 };
 
 export const ExpDetails = connect(mapStateToProps, mapDispatchToProps)(_ExpDetails);

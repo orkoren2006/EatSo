@@ -31,10 +31,15 @@
         color: $clr6;
         transition: .5s;
         margin-top: 10px;
-        &:hover {
+        &:hover:not(.disable) {
             background-color: $clr6;
             color: black;
             border: 1px solid #fd7854;
+        }
+        &.disable {
+            background-color: #ffb19b;
+            cursor: auto;
+            color: black;
         }
     }
 }

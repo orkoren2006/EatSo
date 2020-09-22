@@ -59,17 +59,42 @@ function getEmptyExp() {
             'max': ''
         },
         'schedule': {
-            "at": '',
-            "duration": ''
+            'at': '',
+            'duration': '120'
         },
         'tags': [],
         'imgUrls': [],
         'location': {
             'address': '',
             'city': '',
-        }
+            'lat': 0.2,
+            'lng': 0.2,
+        },
+        'menu': {
+            'appetizers': [
+
+            ],
+            'main': [
+
+            ],
+            'desserts': [
+
+            ],
+            'drinks': [
+            ]
+        },
+        'participants': [
+        ],
+        'reviews': [
+        ],
+        'msgs': [
+        ]
+
     }
 }
+
+
+
 
 function _getExps(exps, filterBy) {
     let expsToReturn;
