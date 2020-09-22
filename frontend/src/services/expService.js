@@ -11,10 +11,11 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
+    
     const exps = await httpService.get('exp')
     let expToReturn = exps;
 
-    if (Object.keys(filterBy).length) expToReturn = _getExps(exps,filterBy)
+    if (Object.keys(filterBy).length) expToReturn = _getExps(exps, filterBy)
     return expToReturn;
 }
 
@@ -70,40 +71,38 @@ function getEmptyExp() {
     }
 }
 
-function _getExps(exps,filterBy) {
+function _getExps(exps, filterBy) {
 
     let expsToReturn;
-    // const [field, keyWord] = attr.split('-')
-    const { field, keyWord } = filterBy
+    const keys = Object.keys(filterBy)
+    const values = Object.values(filterBy)
+    const valueRegex = new RegExp(`${values[0]}`, 'i')
 
-    const keyWordRegex = new RegExp(`${keyWord}`, 'i')
-
-    // debugger
-    switch (field) {
+    switch (keys[0]) {
         case 'tag':
             expsToReturn = exps.filter(exp => {
                 return exp.tags.some(tag => {
-                    return keyWordRegex.test(tag)
+                    return valueRegex.test(tag)
                 })
             })
             break;
         case 'address':
             expsToReturn = exps.filter(exp => {
-                return keyWordRegex.test(exp.location.address)
+                return valueRegex.test(exp.location.address)
             })
             break;
         case 'owner':
             expsToReturn = exps.filter(exp => {
-                return (exp.owner._id === keyWord)
+                return (exp.owner._id === values[0])
             })
             break;
-        case 'participant':
+        case 'participants':
             expsToReturn = exps.filter(exp => {
-                return exp.participants.some(participant => participant._id === keyWord)
+                return exp.participants.some(participant => participant._id === values[0])
             })
             break;
         case 'capacity':
-            if (keyWord === 'multi') {
+            if (values[0] === 'multi') {
                 expsToReturn = exps.filter(exp => {
                     return exp.capacity.min >= 20
                 })
@@ -116,7 +115,6 @@ function _getExps(exps,filterBy) {
         default:
             break;
     }
-
     return expsToReturn;
 
     // if (filterBy.userId) {

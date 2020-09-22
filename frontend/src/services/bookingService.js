@@ -37,21 +37,26 @@ function update(booking) {
 
 function _getBookings(bookings, filterBy) {
     let bookingsToReturn;
-
-    const { field, keyWord } = filterBy
-
-    switch (field) {
-        case 'past':
+    console.log(filterBy);
+    const keys = Object.keys(filterBy)
+    const values = Object.values(filterBy)
+    // const field = (keys[0] === 'participants') ? 'guest' : 'owner'
+    // debugger
+    const valueRegex = new RegExp(`${values[0]}`, 'i')
+    switch (keys[0]) {
+        case 'participants':
             bookingsToReturn = bookings.filter(booking => {
-                return (booking.guest._id === keyWord &&
-                    booking.exp.schedule.at < Date.now() &&
+                const timeDiff = (Date.now() - booking.exp.schedule.at < 0) ? true : false; // true for upcoming, false for past
+                return (booking.guest._id === values[0] &&
+                    timeDiff === !filterBy[keys[1]] &&
                     booking.status === 'approved')
             })
             break;
+        // case 'owner':
 
         default:
             break;
     }
-
+    console.log(bookingsToReturn);
     return bookingsToReturn
 }
