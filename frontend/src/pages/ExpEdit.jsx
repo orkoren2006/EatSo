@@ -28,6 +28,7 @@ class _ExpEdit extends Component {
     onSaveExp = async () => {
         await this.props.saveExp(this.state.exp)
         // this.props.history.push('/SOMEWHERE')
+        console.log(this.state);
     }
 
     onRemoveImg = (imgIdx) => {
@@ -78,7 +79,7 @@ class _ExpEdit extends Component {
                             }
                         }
                     }
-                })
+                }, () => { console.log(this.state.exp); })
             } else if (field === 'address') {
                 this.setState(prevState => {
                     return {
@@ -91,7 +92,24 @@ class _ExpEdit extends Component {
                         }
                     }
                 })
-            } else {
+            }
+
+            else if (field === 'tags') {
+                var newTags = this.state.exp.tags;
+                if (ev.target.checked) newTags.push(value);
+                else newTags = newTags.filter(tag => tag !== value);
+                this.setState(prevState => {
+                    return {
+                        exp: {
+                            ...prevState.exp,
+                            [field]: newTags
+
+                        }
+                    }
+                }, () => console.log(this.state))
+            }
+
+            else {
                 this.setState(prevState => {
                     return {
                         exp: {
@@ -114,8 +132,8 @@ class _ExpEdit extends Component {
                     }
                 }
             })
-        }
 
+        }
     }
 
     getTimeDate() {
@@ -133,7 +151,7 @@ class _ExpEdit extends Component {
                 editMenu: false
             }
         })
-    } 
+    }
 
     onToggleMenu = () => {
         this.setState({ editMenu: !this.state.editMenu })
@@ -144,95 +162,114 @@ class _ExpEdit extends Component {
 
         return (
             <div className="edit-div flex align-center justify-center">
-                
+
                 <form className="exp-edit-form flex  justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
-                        <div className= "form-side form-left">
+                    <div className="form-side form-left">
                         <span> Name:</span>
-                    <label htmlFor="exp-name">
-                        
-                        <input type="text" id="exp-name" name="name"
-                            value={exp.name} placeholder="Enter experience name"
-                            onChange={this.handleChange} />
-                    </label>
+                        <label htmlFor="exp-name">
+
+                            <input type="text" id="exp-name" name="name"
+                                value={exp.name} placeholder="Enter experience name"
+                                onChange={this.handleChange} />
+                        </label>
                         <span> Title:</span>
-                    <label htmlFor="exp-title">
+                        <label htmlFor="exp-title">
                             <input type="text" id="exp-title" name="title"
-                            value={exp.title} placeholder="Enter experience title"
-                            onChange={this.handleChange} />
-                    </label>
+                                value={exp.title} placeholder="Enter experience title"
+                                onChange={this.handleChange} />
+                        </label>
                         <span> Capacity:</span>
-                    <label className="flex align-center" htmlFor="exp-capacity">
-                            <input className="small-field" autoComplete="off" type="number" id="exp-capacity-min" name="capacity.min" 
-                            value={exp.capacity.min} placeholder="Min Cap."
-                            onChange={this.handleChange} />
+                        <label className="flex align-center" htmlFor="exp-capacity">
+                            <input className="small-field" autoComplete="off" type="number" id="exp-capacity-min" name="capacity.min"
+                                value={exp.capacity.min} placeholder="Min Cap."
+                                onChange={this.handleChange} />
                             -
                         <input className="small-field" autoComplete="off" type="number" id="exp-capacity-max" name="capacity.max"
-                            value={exp.capacity.max} placeholder="Max Cap."
-                            onChange={this.handleChange} />
-                    </label>
-                         <span> Price:</span>
-                    <label htmlFor="exp-price">
+                                value={exp.capacity.max} placeholder="Max Cap."
+                                onChange={this.handleChange} />
+                        </label>
+                        <span> Price:</span>
+                        <label htmlFor="exp-price">
                             <input type="number" id="exp-price" name="price"
-                            value={exp.price} placeholder="Enter experience price"
-                            onChange={this.handleChange} />
-                    </label>
-                  
-                    
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
-                    </MuiPickersUtilsProvider>
+                                value={exp.price} placeholder="Enter experience price"
+                                onChange={this.handleChange} />
+                        </label>
+                        <span style={{ display: "inline" }}>Description:</span>
+                        <label htmlFor="exp-desc">
+                            <TextareaAutosize type="text" id="exp-description" name="desc"
+                                value={exp.desc} placeholder="Enter experience description"
+                                onChange={this.handleChange} />
+                        </label>
                     </div>
-                    <div className= "form-side">
-                   
-                    <span>  Duration:</span>
-                    <label htmlFor="exp-duration">
-                       
-                        <input type="number" id="exp-duration" name="duration"
+
+                    <div className="form-side">
+                        <span>  Date:</span>
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
+                            </MuiPickersUtilsProvider>
+                        <label htmlFor="exp-duration"></label>
+                        <span>  Duration:</span>
+                        <select name="duration" id="exp-duration" onChange={this.handleChange}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        {/* <input type="dropdown" id="exp-duration" name="duration"
                             value={exp.schedule.duration} placeholder="Enter experience duration"
-                            onChange={this.handleChange} />
-                    </label>
-                    <span> Address:</span>
-                    <label htmlFor="exp-address">
-                        
-                        <input type="text" id="exp-address" name="address"
-                            value={exp.location.address} placeholder="Enter experience address"
-                            onChange={this.handleChange} />
-                    </label>
-                    <span style={{ display: "inline" }}>Description:</span>
-                    <label htmlFor="exp-desc">
-                        <TextareaAutosize type="text" id="exp-description" name="desc"
-                            value={exp.desc} placeholder="Enter experience description"
-                            onChange={this.handleChange} />
-                    </label>
-                    <span>Choose your EXPERIENCE image!</span>
-                    <label> 
-                        <input className="clean-field" onChange={this.uploadImg} type="file" />
-                    </label>
-                    {exp.imgUrls && <section className="edit-gallery grid">   
+                            onChange={this.handleChange} /> */}
+
+                        <label htmlFor="exp-address">
+                            <span> Address:</span>
+
+                            <input type="text" id="exp-address" name="address"
+                                value={exp.location.address} placeholder="Enter experience address"
+                                onChange={this.handleChange} />
+                        </label>
+                        <span>Select tags for your expereince:</span>
+                        <section className="tags-form flex space-around">
+                            <div className="flex column align-center">
+                                <input type="checkbox" id="traditional" name="tags" value="traditional" onChange={this.handleChange} />
+                                <label htmlFor="traditional">Traditional</label>
+                                <input type="checkbox" id="outdoor" name="tags" value="outdoor" onChange={this.handleChange} />
+                                <label htmlFor="outdoor">Outdoor</label>
+                            </div>
+                            <div className="flex column align-center">
+                                <input type="checkbox" id="romantic" name="tags" value="romantic" onChange={this.handleChange} />
+                                <label htmlFor="romantic">Romantic</label>
+                                <input type="checkbox" id="holiday" name="tags" value="holiday" onChange={this.handleChange} />
+                                <label htmlFor="holiday">Holiday-meal</label>
+                            </div>
+                        </section>
+                        <span>Choose your EXPERIENCE image!</span>
+                        <label>
+                            <input className="clean-field" onChange={this.uploadImg} type="file" />
+                        </label>
+                        {exp.imgUrls && <section className="edit-gallery grid">
                             {exp.imgUrls.map((url, idx) => {
-                                return <li className="img-container flex align-center justify-center" 
-                                key={`img-${idx}-${exp._id}`}>
+                                return <li className="img-container flex align-center justify-center"
+                                    key={`img-${idx}-${exp._id}`}>
                                     <img src={url} alt="##" />
                                     <button className="flex" variant="contained" color="primary"
                                         onClick={() => this.onRemoveImg(idx)}>
-                                            <img className="trash" 
+                                        <img className="trash"
                                             src={require(`../assets/imgs/trash.png`)} alt="##" />
-                                            </button>
+                                    </button>
                                 </li>
                             })}
-                    </section>}
-                    <div className="form-buttons flex space-between">
-                    {this.state.editMenu &&
-                        <MenuEdit menu={this.state.exp.menu} 
-                        setMenu={this.saveMenu}/>}
-                    <Button variant="contained" color="primary" onClick={this.onToggleMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
-                    <Button variant="contained" color="primary" 
-                    onClick={this.onSaveExp}>Save</Button>
-                     </div>
-                     </div>
+                        </section>}
+                        <div className="flex space-between">
+                            {this.state.editMenu &&
+                                <MenuEdit menu={this.state.exp.menu}
+                                    setMenu={this.saveMenu} />}
+                            <Button className="left-button" variant="contained" color="primary" onClick={this.onToggleMenu}>{(this.state.editMenu) ? 'Close' : 'Edit'} Menu</Button>
+                            <Button variant="contained" color="primary"
+                                onClick={this.onSaveExp}>Save</Button>
+                        </div>
+                    </div>
                 </form>
-               
+
             </div>
         )
     }
