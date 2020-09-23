@@ -49,7 +49,7 @@ async function remove(userId) {
 async function update(user) {
     const collection = await dbService.getCollection('user')
     user._id = ObjectId(user._id);
-
+    user.updatedAt = Date.now();
     try {
         await collection.replaceOne({ "_id": user._id }, { $set: user })
         return user

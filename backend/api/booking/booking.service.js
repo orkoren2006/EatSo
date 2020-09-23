@@ -46,7 +46,7 @@ async function remove(bookingId) {
 async function update(booking) {
     const collection = await dbService.getCollection('booking')
     booking._id = ObjectId(booking._id);
-
+    booking.updatedAt = Date.now();
     try {
         await collection.replaceOne({ "_id": booking._id }, { $set: booking })
         return booking

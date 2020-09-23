@@ -32,6 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const bookingRoutes = require('./api/booking/booking.routes')
+const expRoutes = require('./api/exp/exp.routes')
 const connectSockets = require('./api/socket/socket.routes')
 
 
@@ -39,6 +40,7 @@ const connectSockets = require('./api/socket/socket.routes')
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/booking', bookingRoutes)
+app.use('/api/exp', expRoutes)
 connectSockets(io)
 
 // Make every server-side-route to match the index.html
