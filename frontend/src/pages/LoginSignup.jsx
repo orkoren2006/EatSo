@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { ExpChat } from '../cmps/ExpChat';
+import { ExpFilter } from '../cmps/ExpFilter';
 
 import {
   loadUsers,
@@ -162,7 +163,7 @@ class _LoginSignup extends Component {
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
-
+        <ExpFilter/>
         
 
       </div>
