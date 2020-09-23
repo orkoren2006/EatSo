@@ -21,8 +21,8 @@ export default function ExpContent({ exp, numOfGuests ,onNumOfGuestsChange, togg
                 </section>
 
                 <section className="exp-reviews">
-                    <ReviewList reviews={exp.reviews} />
                     <button onClick={toggleAddReviewShown}>Add review</button>
+                    <ReviewList reviews={exp.reviews} />
                     {isAddReviewShown && <ReviewEdit onHandleChange={onHandleChange} onAddReview={onAddReview} review={review} />}
                 </section>
             </div>

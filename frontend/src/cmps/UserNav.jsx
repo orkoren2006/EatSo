@@ -1,10 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export function UserNav({ navClass, onItemClick, onLogout }) {
+export function UserNav({ navClass, onItemClick, onLogout, user }) {
+    const firstName = user.fullName;
+    const i = firstName.indexOf(" ");
     return (
         // <React.Fragment>
             <nav className={navClass}>
+                <p>Welcome back {firstName.substring(0, i)}!</p>
                 <ul>
                     <li><NavLink onClick={onItemClick} to="/myexp/owner">Manage as Host</NavLink></li>
                     <li><NavLink onClick={onItemClick} to="/myexp/participant">My Experiences</NavLink></li>
