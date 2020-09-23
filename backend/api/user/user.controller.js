@@ -1,27 +1,49 @@
 const userService = require('./user.service')
 const logger = require('../../services/logger.service')
 
+
+
+
 async function getUser(req, res) {
-    const user = await userService.getById(req.params.id)
-    res.send(user)
+    try {
+        const user = await userService.getById(req.params.id)
+        res.send(user)
+    } catch (err) {
+        logger.error('Cannot get user', err);
+        res.status(500).send({ error: 'cannot get user' })
+    }
 }
-  
+
+
 async function getUsers(req, res) {
-    console.log(req.query);
-    const users = await userService.query(req.query)
-    logger.debug(users);
-    res.send(users)
+    try {
+        const users = await userService.query(req.query)
+        res.send(users)
+    } catch (err) {
+        logger.error('Cannot get users', err);
+        res.status(500).send({ error: 'cannot get users' })
+    }
 }
 
 async function deleteUser(req, res) {
-    await userService.remove(req.params.id)
-    res.end()
+    try {
+        await userService.remove(req.params.id)
+        res.end()
+    } catch (err) {
+        logger.error('Cannot delete user', err);
+        res.status(500).send({ error: 'cannot delete user' })
+    }
 }
 
 async function updateUser(req, res) {
-    const user = req.body;
-    await userService.update(user)
-    res.send(user)
+    try {
+        const user = req.body;
+        await userService.update(user)
+        res.send(user)
+    } catch (err) {
+        logger.error('Cannot update user', err);
+        res.status(500).send({ error: 'cannot update user' })
+    }
 }
 
 module.exports = {

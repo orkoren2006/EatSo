@@ -6,7 +6,6 @@ const ObjectId = require('mongodb').ObjectId
 module.exports = {
     query,
     getById,
-    getByEmail,
     remove,
     update,
     add
@@ -17,8 +16,7 @@ async function query(filterBy = {}) {
     const collection = await dbService.getCollection('user')
     try {
         const users = await collection.find(criteria).toArray();
-        // users.forEach(user => delete user.password);
-
+        users.forEach(user => delete user.password);
         return users
     } catch (err) {
         console.log('ERROR: cannot find users')
@@ -30,28 +28,10 @@ async function getById(userId) {
     const collection = await dbService.getCollection('user')
     try {
         const user = await collection.findOne({ "_id": ObjectId(userId) })
-        delete user.password
-
-        user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
-        user.givenReviews = user.givenReviews.map(review => {
-            delete review.byUser
-            return review
-        })
-
-
+        if(user) delete user.password
         return user
     } catch (err) {
         console.log(`ERROR: while finding user ${userId}`)
-        throw err;
-    }
-}
-async function getByEmail(email) {
-    const collection = await dbService.getCollection('user')
-    try {
-        const user = await collection.findOne({ email })
-        return user
-    } catch (err) {
-        console.log(`ERROR: while finding user ${email}`)
         throw err;
     }
 }
@@ -92,8 +72,8 @@ async function add(user) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
-    if (filterBy.txt) {
-        criteria.username = filterBy.txt
+    if (filterBy.userName) {
+        criteria.userName =  new RegExp(`${filterBy.userName}`, 'i') 
     }
     if (filterBy.minBalance) {
         criteria.balance = { $gte: +filterBy.minBalance }
@@ -102,3 +82,10 @@ function _buildCriteria(filterBy) {
 }
 
 
+
+
+// user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
+// user.givenReviews = user.givenReviews.map(review => {
+//     delete review.byUser
+//     return review
+// })
