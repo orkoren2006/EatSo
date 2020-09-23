@@ -1027,7 +1027,7 @@
       "fullName": "Chen Kitty",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600520891/eatso-profile/chen_rxmvr8.jpg",
       "isAdmin": false,
-      "userName": "Chenkitty",
+      "username": "Chenkitty",
       "email": "Chenkitty@email.com",
       "password": "secret",
       "desc": "Chen has been hosting in her kitchen ever since EatSo was launched. She fell in love with the concept of inviting people who are passioante about food and claims that there's nothing more fulfilling than cooking for people who share the same love with her"
@@ -1037,7 +1037,7 @@
       "fullName": "Haim Cohen",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600427097/eatso-profile/haim_unzjq3.jpg",
       "isAdmin": false,
-      "userName": "haimcohen",
+      "username": "haimcohen",
       "email": "haim@email.com",
       "password": "secret",
       "desc": "Haim has been known for his authentic oriental cuisine for years. He's an awarded top-chef in Israel and began his journey with EatSo 4 years ago"
@@ -1047,7 +1047,7 @@
       "fullName": "Michal Ansky",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809392/eatso-profile/2160755_pfogbb.jpg",
       "isAdmin": false,
-      "userName": "michala",
+      "username": "michala",
       "email": "michal_ansky@email.com",
       "password": "secret",
       "desc": "The passion of Michal for food began long time ago when she used to watch her grandmother cooking. Ever since she's been cooking herself and invite you all to an unforgattable evening in her kitchen"
@@ -1057,7 +1057,7 @@
       "fullName": "Avi Nusbaum",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600627583/eatso-profile/5534_ewpxm4.jpg",
       "isAdmin": false,
-      "userName": "avinus",
+      "username": "avinus",
       "email": "avinus@email.com",
       "password": "secret",
       "desc": ""
@@ -1067,7 +1067,7 @@
       "fullName": "Magen Rapinoe",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809391/eatso-profile/526458-PIYIVZ-879_gh8c07.jpg",
       "isAdmin": false,
-      "userName": "IAMMEGAN15",
+      "username": "IAMMEGAN15",
       "email": "megrap@uswnt.com",
       "password": "secret",
       "desc": ""
@@ -1077,7 +1077,7 @@
       "fullName": "Lucy Bronze",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809388/eatso-profile/17570_h87w71.jpg",
       "isAdmin": false,
-      "userName": "lucygold",
+      "username": "lucygold",
       "email": "lucygold@email.com",
       "password": "secret",
       "desc": ""
@@ -1087,7 +1087,7 @@
       "fullName": "Alaska Thunderfuck",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600440779/eatso-profile/queen_pcjoop.jpg",
       "isAdmin": false,
-      "userName": "theT",
+      "username": "theT",
       "email": "alaska@email.com",
       "password": "secret",
       "desc": ""
@@ -1097,7 +1097,7 @@
       "fullName": "Jimmy Faithstone",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809389/eatso-profile/40306_bonrtw.jpg",
       "isAdmin": false,
-      "userName": "POUST",
+      "username": "POUST",
       "email": "jimmy@email.com",
       "password": "secret",
       "desc": ""
@@ -1107,7 +1107,7 @@
       "fullName": "Ben Fishman",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809394/eatso-profile/3061607_co9hnb.jpg",
       "isAdmin": false,
-      "userName": "ben108",
+      "username": "ben108",
       "email": "ben@email.com",
       "password": "secret",
       "desc": ""
@@ -1117,7 +1117,7 @@
       "fullName": "Alicia Key",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809394/eatso-profile/3183888_jx9wpa.jpg",
       "isAdmin": false,
-      "userName": "Alicia",
+      "username": "Alicia",
       "email": "alicia@email.com",
       "password": "secret",
       "desc": ""
@@ -1127,7 +1127,7 @@
       "fullName": "Ruby Floyd",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809393/eatso-profile/2273599_vumuys.jpg",
       "isAdmin": false,
-      "userName": "RUBY",
+      "username": "RUBY",
       "email": "ruby@email.com",
       "password": "secret",
       "desc": ""
@@ -1137,7 +1137,7 @@
       "fullName": "Suzane Walsh",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809386/eatso-profile/796_paeuys.jpg",
       "isAdmin": false,
-      "userName": "suzy",
+      "username": "suzy",
       "email": "suzane@email.com",
       "password": "secret",
       "desc": ""
@@ -1147,7 +1147,7 @@
       "fullName": "Zach Smith",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809393/eatso-profile/4013133_f3selx.jpg",
       "isAdmin": false,
-      "userName": "zach",
+      "username": "zach",
       "email": "zach@email.com",
       "password": "secret",
       "desc": ""
@@ -1157,7 +1157,7 @@
       "fullName": "Emily Weinstein",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809392/eatso-profile/2973197_rcv2y0.jpg",
       "isAdmin": false,
-      "userName": "emily",
+      "username": "emily",
       "email": "emily@email.com",
       "password": "secret",
       "desc": ""
@@ -1167,7 +1167,7 @@
       "fullName": "Dana Cohen",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809392/eatso-profile/263756-P4T3RU-156_k1kv4r.jpg",
       "isAdmin": false,
-      "userName": "dana",
+      "username": "dana",
       "email": "dana@email.com",
       "password": "secret",
       "desc": ""
@@ -1177,7 +1177,7 @@
       "fullName": "Lidia Zhao",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809392/eatso-profile/2737326_kv1awm.jpg",
       "isAdmin": false,
-      "userName": "lidia",
+      "username": "lidia",
       "email": "lidia@email.com",
       "password": "secret",
       "desc": ""
@@ -1187,7 +1187,7 @@
       "fullName": "Ruth Parker",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809392/eatso-profile/15331_pycqxy.jpg",
       "isAdmin": false,
-      "userName": "RUTH",
+      "username": "RUTH",
       "email": "ruth@email.com",
       "password": "secret",
       "desc": ""
@@ -1197,7 +1197,7 @@
       "fullName": "Juan Cristobal",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809391/eatso-profile/526458-PIYIVZ-879_gh8c07.jpg",
       "isAdmin": false,
-      "userName": "Rjuan",
+      "username": "Rjuan",
       "email": "juan@email.com",
       "password": "secret",
       "desc": ""
@@ -1207,7 +1207,7 @@
       "fullName": "Alberto Di Marzo",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809391/eatso-profile/375969-PBFPH3-239_ww2xxb.jpg",
       "isAdmin": false,
-      "userName": "alberto",
+      "username": "alberto",
       "email": "alberto@email.com",
       "password": "secret",
       "desc": ""
@@ -1217,7 +1217,7 @@
       "fullName": "Galit Reuven",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809390/eatso-profile/407870-PD1CG5-126_vi9vmk.jpg",
       "isAdmin": false,
-      "userName": "galit",
+      "username": "galit",
       "email": "galit@email.com",
       "password": "secret",
       "desc": ""
@@ -1227,7 +1227,7 @@
       "fullName": "Maria Tenejo",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809390/eatso-profile/13924_r9wvsz.jpg",
       "isAdmin": false,
-      "userName": "maria",
+      "username": "maria",
       "email": "maria@email.com",
       "password": "secret",
       "desc": ""
@@ -1237,7 +1237,7 @@
       "fullName": "Monica Silverston",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809393/eatso-profile/2273599_vumuys.jpg",
       "isAdmin": false,
-      "userName": "monica",
+      "username": "monica",
       "email": "monica@email.com",
       "password": "secret",
       "desc": ""
@@ -1247,7 +1247,7 @@
       "fullName": "Stephanie Geller",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809389/eatso-profile/17893_emgnw9.jpg",
       "isAdmin": false,
-      "userName": "RUBY",
+      "username": "RUBY",
       "email": "stephanie@email.com",
       "password": "secret",
       "desc": ""
@@ -1257,7 +1257,7 @@
       "fullName": "Zhan Xi",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809387/eatso-profile/18324_pdswfx.jpg",
       "isAdmin": false,
-      "userName": "zhan",
+      "username": "zhan",
       "email": "zhan@email.com",
       "password": "secret",
       "desc": ""
@@ -1267,7 +1267,7 @@
       "fullName": "Ray Barbosa",
       "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809387/eatso-profile/2505_fypgjg.jpg",
       "isAdmin": false,
-      "userName": "RAY",
+      "username": "RAY",
       "email": "ray@email.com",
       "password": "secret",
       "desc": ""

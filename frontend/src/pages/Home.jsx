@@ -56,8 +56,8 @@ class _Home extends Component {
     const { exps } = this.props
     if (!exps) return <div>Load</div>
     return (
-      <section className="home full">
-        <div className="hero-image flex column">
+      <section className="home full main-container ">
+        <div className="hero-image flex column full">
 
           <h2>Experience food </h2>
           <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
@@ -82,7 +82,7 @@ class _Home extends Component {
           <ExpList exps={this.getExps('tag-traditional')} />
         </section>
 
-        <section className="tokyo-banner flex justify-center align-center">
+        <section className="tokyo-banner flex justify-center align-center full">
           <div className="width-40"></div>
           <div>
             <h2> Eat real traditional</h2>

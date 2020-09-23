@@ -117,11 +117,6 @@
     }
 }
 
-.width-1366 {
-    max-width: 1366px;
-    margin   : 16px auto;
-
-}
 
 .preview-image {
     height             : 100%;
@@ -164,9 +159,9 @@
 }
 
 .tokyo-banner {
-    padding-right: 64px;
-
-    height             : 50%;
+    // padding-right: 64px;
+    padding: 100px 64px 100px 0;
+    
     width              : 100%;
     background-position: center;
     background-size    : cover;
