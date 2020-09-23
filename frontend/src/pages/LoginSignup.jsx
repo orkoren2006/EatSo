@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { ExpChat } from '../cmps/ExpChat';
 import { ExpFilter } from '../cmps/ExpFilter';
 
 import {
@@ -144,7 +143,6 @@ class _LoginSignup extends Component {
     );
 
     const { loggedInUser } = this.props;
-    // if (loggedInUser) {const { userName } = loggedInUser}
 
     return (
       <div className="test">

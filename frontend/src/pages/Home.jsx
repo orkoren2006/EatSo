@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { ExpList } from '../cmps/ExpList';
 import { loadExps } from '../store/actions/expAction';
 import { Button } from '@material-ui/core';
