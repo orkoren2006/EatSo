@@ -4,7 +4,7 @@ import socketService from '../services/socketService.js';
 export class ExpChat extends Component {
 
     state = {
-        msg: { from: this.props.userName, txt: '' },
+        msg: { from: this.props.username, txt: '' },
         msgs: [],
         exp: null,
         typing: { user: '', isTyping: false },
@@ -36,7 +36,7 @@ export class ExpChat extends Component {
         this.setState({ typing: { isTyping: false } })
         socketService.emit('chat newMsg', this.state.msg);
         // socketService.emit('chat addMsg', this.state.msg);
-        this.setState({ msg: { from: this.props.userName, txt: '' } });
+        this.setState({ msg: { from: this.props.username, txt: '' } });
     };
 
     msgHandleChange = ev => {
@@ -53,8 +53,8 @@ export class ExpChat extends Component {
         });
     };
 
-    setUserTyping = (userName) => {
-        this.setState({ typing: { user: userName, isTyping: true } })
+    setUserTyping = (username) => {
+        this.setState({ typing: { user: username, isTyping: true } })
     }
 
     onBlur = () => {
@@ -71,7 +71,7 @@ export class ExpChat extends Component {
                 <h2>Lets Chat</h2>
                 {/* <h2>Lets Chat About {exp.name}</h2> */}
                 {(this.state.typing.user &&
-                    this.state.typing.user !== this.props.userName) &&
+                    this.state.typing.user !== this.props.username) &&
                     <h3>{this.state.typing.user} is typing...</h3>}
                 <form onSubmit={this.sendMsg}>
                     <input

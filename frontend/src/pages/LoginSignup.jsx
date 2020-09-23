@@ -23,7 +23,7 @@ class _LoginSignup extends Component {
     signupCred: {
       email: '',
       password: '',
-      userName: ''
+      username: ''
     }
   };
 
@@ -78,13 +78,13 @@ class _LoginSignup extends Component {
 
   doSignup = async ev => {
     ev.preventDefault();
-    const { email, password, userName } = this.state.signupCred;
-    if (!email || !password || !userName) {
+    const { email, password, username } = this.state.signupCred;
+    if (!email || !password || !username) {
       return this.setState({ msg: 'All inputs are required!' });
     }
-    const signupCreds = { email, password, userName };
+    const signupCreds = { email, password, username };
     this.props.signup(signupCreds);
-    this.setState({ signupCred: { email: '', password: '', userName: '' } });
+    this.setState({ signupCred: { email: '', password: '', username: '' } });
   };
 
   removeUser = userId => {
@@ -112,8 +112,8 @@ class _LoginSignup extends Component {
         <br />
         <input
           type="text"
-          name="userName"
-          value={this.state.signupCred.userName}
+          name="username"
+          value={this.state.signupCred.username}
           onChange={this.signupHandleChange}
           placeholder="Username"
         />
@@ -144,7 +144,7 @@ class _LoginSignup extends Component {
     );
 
     const { loggedInUser } = this.props;
-    // if (loggedInUser) {const { userName } = loggedInUser}
+    // if (loggedInUser) {const { username } = loggedInUser}
 
     return (
       <div className="test">
@@ -154,7 +154,7 @@ class _LoginSignup extends Component {
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
-            <h2>Welcome: {loggedInUser.userName} </h2>
+            <h2>Welcome: {loggedInUser.username} </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
         )}

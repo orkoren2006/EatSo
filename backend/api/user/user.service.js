@@ -40,6 +40,9 @@ async function getById(userId) {
 async function getByEmail(email) {
     const collection = await dbService.getCollection('user')
     try {
+        //TODO - its OK? 
+        // const emailToFind = new RegExp(`${email}`, 'i') 
+        // const user = await collection.findOne({ email: emailToFind })
         const user = await collection.findOne({ email })
         return user
     } catch (err) {
@@ -84,8 +87,8 @@ async function add(user) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
-    if (filterBy.userName) {
-        criteria.userName =  new RegExp(`${filterBy.userName}`, 'i') 
+    if (filterBy.username) {
+        criteria.username =  new RegExp(`${filterBy.username}`, 'i') 
     }
     if (filterBy.minBalance) {
         criteria.balance = { $gte: +filterBy.minBalance }
