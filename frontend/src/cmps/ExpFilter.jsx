@@ -19,10 +19,10 @@ export class _ExpFilter extends Component {
     }
 
     handleChange = (ev) => {
-        console.log('date',Date.parse(ev.target.value));
-        let field;
-        let value;
-        if (ev.target && ev.target.name !== "schedule") {
+        // console.log('date',Date.parse(ev.target.value));
+        let field = ev.target.name
+        let value = ev.target.value
+        if (ev.target && ev.target.name !== "at") {
             field = ev.target.name
             value = ev.target.value
             this.setState(prevState => {
@@ -37,8 +37,7 @@ export class _ExpFilter extends Component {
                     ...prevState,
                     schedule: {
                         ...prevState.schedule,
-                        at: Date.parse(ev.target.value)
-                        // at: Date.parse(ev)
+                        [field]: Date.parse(value)
                     }
                 }
             })
@@ -51,6 +50,7 @@ export class _ExpFilter extends Component {
     }
 
     onSearch = async () => {
+        console.log(this.state);
         await this.props.loadExps(this.state)
         console.log(this.props.exps);
     }
@@ -72,9 +72,7 @@ export class _ExpFilter extends Component {
                         id="schedule"
                         label="Select a date"
                         type="date"
-                        name="schedule"
-                        // defaultValue="2017-05-24"
-                        // value="2017-05-24"
+                        name="at"
                         placeholder="Placeholder"
                         onChange={this.handleChange}
                         InputLabelProps={{
