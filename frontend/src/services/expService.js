@@ -11,12 +11,13 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
-
-    const exps = await httpService.get('exp')
-    let expToReturn = exps;
-
-    if (Object.keys(filterBy).length) expToReturn = _getExps(exps, filterBy)
-    return expToReturn;
+    var queryParams = new URLSearchParams()
+    for (const filterType in filterBy) {
+        queryParams.set(filterType, filterBy[filterType])
+    }
+    const exps = await httpService.get(`exp/?${queryParams}`)
+    return await httpService.get(`exp/?${queryParams}`)
+    //  exps;
 }
 
 async function getExpById(expId) {
@@ -91,54 +92,4 @@ function getEmptyExp() {
         ]
 
     }
-}
-
-
-
-
-function _getExps(exps, filterBy) {
-    let expsToReturn;
-    const keys = Object.keys(filterBy)
-    const values = Object.values(filterBy)
-    const valueRegex = new RegExp(`${values[0]}`, 'i')
-
-    switch (keys[0]) {
-        case 'tag':
-            expsToReturn = exps.filter(exp => {
-                return exp.tags.some(tag => {
-                    return valueRegex.test(tag)
-                })
-            })
-            break;
-        case 'address':
-            expsToReturn = exps.filter(exp => {
-                return valueRegex.test(exp.location.address)
-            })
-            break;
-        case '_id':
-            expsToReturn = exps.filter(exp => {
-                return (exp.owner._id === values[0])
-            })
-            break;
-        case 'participants':
-            expsToReturn = exps.filter(exp => {
-                return exp.participants.some(participant => participant._id === values[0])
-            })
-            break;
-        case 'capacity':
-            if (values[0] === 'multi') {
-                expsToReturn = exps.filter(exp => {
-                    return exp.capacity.min >= 20
-                })
-            } else {
-                expsToReturn = exps.filter(exp => {
-                    return exp.capacity.max <= 20
-                })
-            }
-            break;
-        default:
-            break;
-    }
-
-    return expsToReturn;
 }

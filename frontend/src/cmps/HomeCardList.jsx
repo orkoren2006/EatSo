@@ -9,8 +9,8 @@ export class _HomeCardList extends Component {
 
     state = {
         cardsProps: [
-            { title: 'Outdoor', subtitle: 'dinner experiences', filterBy: { tag: 'scenic' } },
-            { title: 'Traditional', subtitle: 'cuisine', filterBy: { tag: 'traditional' } },
+            { title: 'Outdoor', subtitle: 'dinner experiences', filterBy: { tags: 'scenic' } },
+            { title: 'Traditional', subtitle: 'cuisine', filterBy: { tags: 'traditional' } },
             { title: 'Romantic', subtitle: 'dinners', filterBy: { capacity: 'intimacy ' } },
             { title: 'Holiday', subtitle: 'meals', filterBy: { schedule: 'holidy' } },
             { title: 'Dinner', subtitle: 'parties', filterBy: { capacity: 'multi' } },

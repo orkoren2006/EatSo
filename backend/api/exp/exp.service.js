@@ -12,6 +12,7 @@ module.exports = {
 }
 
 async function query(filterBy = {}) {
+    console.log('query', filterBy);
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('exp')
     try {
@@ -71,9 +72,15 @@ async function add(exp) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
-    if (filterBy.expName) {
-        criteria.expName =  new RegExp(`${filterBy.expName}`, 'i') 
+    for (const filterType in filterBy) {
+        if (filterBy[filterType]){
+            criteria[filterType] = (filterType === 'name') ?
+                new RegExp(`${filterBy.name}`, 'i') : filterBy[filterType]
+        }
     }
-   
+    // if (filterBy.expName) {
+    //     criteria.expName =  new RegExp(`${filterBy.expName}`, 'i') 
+    // }
+   console.log('criteria', criteria);
     return criteria;
 }

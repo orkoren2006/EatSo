@@ -11,8 +11,6 @@ export function loadUsers() {
       dispatch({ type: 'SET_USERS', users });
     } catch (err) {
       console.log('UserActions: err in loadUsers', err);
-      // example for routing - after changing the store
-      // history.push('/some/path');
     } finally {
       dispatch(doneLoading);
     }

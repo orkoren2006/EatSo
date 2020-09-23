@@ -16,6 +16,7 @@ async function getExp(req, res) {
 
 
 async function getExps(req, res) {
+    console.log('get exps',req.query);
     try {
         const exps = await expService.query(req.query)
         res.send(exps)

@@ -21,7 +21,7 @@ class _Home extends Component {
     const valueRegex = new RegExp(`${value}`, 'i')
 
     switch (field) {
-      case 'tag':
+      case 'tags':
         expsToSend = this.props.exps.filter(exp => {
           return exp.tags.some(tag => {
             return valueRegex.test(tag)
@@ -79,7 +79,7 @@ class _Home extends Component {
             <h2>Top Traditional Cuisine</h2>
             <Button className="traditional-button "><span> Show All  &gt;</span></Button>
           </section>
-          <ExpList exps={this.getExps('tag-traditional')} />
+          <ExpList exps={this.getExps('tags-traditional')} />
         </section>
 
         <section className="tokyo-banner flex justify-center align-center full">
@@ -96,7 +96,7 @@ class _Home extends Component {
             <h2>Top Scenic Meals</h2>
             <Button className="scenic-button"><span> Show All &gt;</span></Button>
           </section>
-          <ExpList exps={this.getExps('tag-scenic')} />
+          <ExpList exps={this.getExps('tags-scenic')} />
         </section>
       </section>
     );
