@@ -73,6 +73,7 @@ class _ExpEdit extends Component {
     }
 
     handleChange = (ev) => {
+        console.log(ev);
         if (ev.target) {
             let field = ev.target.name;
             const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value

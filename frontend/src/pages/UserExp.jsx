@@ -35,15 +35,8 @@ class _UserExp extends Component {
     async componentDidUpdate(prevProps, prevState) {
 
         if (prevProps === this.props) return
-        // const userId = this.props.user._id;
         const expAs = this.props.match.params.as; // gets 'owner' OR 'participant' - from url
         this.setState({ isHost: (expAs === 'owner') }, () => this.getExpsList())
-        // this.getExpsList()
-        // const field = (expAs === 'owner') ? 'owner' : 'participants';
-        // this._getUserExps(this.state.userId)
-        // this._getUserBooking(this.state.userId)
-        // this._getUserExps(userId, field)
-        // this._getUserBooking(userId, field)
     }
 
     async _getUserExps() {
@@ -62,9 +55,9 @@ class _UserExp extends Component {
     }
 
     getExpsList = () => {
-        console.log('exps', this.state.userExps, '\nBooking', this.state.userBookings);
 
         if (this.state.isHost) this.setState({ expList: this.state.userExps })
+
         else if (this.state.filter === 'pending') {
             const pendingExpArr = [];
             this.state.userBookings.forEach(booking => {
@@ -138,7 +131,6 @@ class _UserExp extends Component {
 
 const mapStateToProps = state => {
     return {
-        // exps: state.exp.exps,
         user: state.user.loggedInUser,
         bookings: state.booking
     };
