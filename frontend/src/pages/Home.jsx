@@ -63,13 +63,24 @@ class _Home extends Component {
           <h2>Experience food </h2>
           <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
         </div>
+      
         <HomeCardList />
+
+        <section className="tel-aviv">
+          <section className="preview-header">
+            <h2>Top Dinners in your Location</h2>
+            <Button className="tel-aviv-button"><span> Show All &gt;</span></Button>
+          </section>
+          <ExpList exps={this.getExps('address-tel-aviv')} />
+
+        </section>
+
         <section className="traditional">
           <section className="preview-header">
             <h2>Top Traditional Cuisine</h2>
+            <Button className="traditional-button "><span> Show All  &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tag-traditional')} />
-          <Button className="traditional-button "><span> Show More  &gt;</span></Button>
         </section>
 
         <section className="tokyo-banner flex justify-center align-center">
@@ -80,19 +91,13 @@ class _Home extends Component {
             <Button className="sushi-button" variant="contained" color="secondary">Show More</Button>
           </div>
         </section>
-        <section className="tel-aviv">
-          <section className="preview-header">
-            <h2>Top Dinners in your Location</h2>
-          </section>
-          <ExpList exps={this.getExps('address-tel-aviv')} />
-          <Button className="tel-aviv-button"><span> Show More &gt;</span></Button>
-        </section>
+
         <section className="scenic">
           <section className="preview-header">
             <h2>Top Scenic Meals</h2>
+            <Button className="scenic-button"><span> Show All &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tag-scenic')} />
-          <Button className="scenic-button"><span> Show More &gt;</span></Button>
         </section>
       </section>
     );

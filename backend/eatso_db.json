@@ -135,6 +135,23 @@
       },
       "status": "pending",
       "_id": "jCG2MRO"
+    },
+    {
+      "guest": {
+        "_id": "u101",
+        "fullName": "Chen Kitty",
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600520891/eatso-profile/chen_rxmvr8.jpg"
+      },
+      "numOfGuests": 1,
+      "exp": {
+        "_id": "e103",
+        "schedule": {
+          "at": 1601053200000,
+          "duration": 120
+        }
+      },
+      "status": "pending",
+      "_id": "4aByAAH"
     }
   ],
   "exp": [
