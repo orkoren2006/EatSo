@@ -6,6 +6,7 @@ const ObjectId = require('mongodb').ObjectId
 module.exports = {
     query,
     getById,
+    getByEmail,
     remove,
     update,
     add
@@ -32,6 +33,17 @@ async function getById(userId) {
         return user
     } catch (err) {
         console.log(`ERROR: while finding user ${userId}`)
+        throw err;
+    }
+}
+
+async function getByEmail(email) {
+    const collection = await dbService.getCollection('user')
+    try {
+        const user = await collection.findOne({ email })
+        return user
+    } catch (err) {
+        console.log(`ERROR: while finding user ${email}`)
         throw err;
     }
 }
