@@ -11,7 +11,6 @@ export default function ExpContent({ exp, numOfGuests ,onNumOfGuestsChange, togg
             <div className="exp-details">
                 <section >
                     <h6>{exp.location.city} &gt; </h6>
-
                     <h3>{exp.title}</h3>
                     <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
                     <h5>A word about the experience</h5>
