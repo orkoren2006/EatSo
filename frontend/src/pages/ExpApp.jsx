@@ -8,7 +8,6 @@ class _ExpApp extends Component {
     async componentDidMount() {
         let filterBy;
         if (this.props.match.params.field) {filterBy = {[this.props.match.params.field]:this.props.match.params.value}}
-        console.log(filterBy);
         await this.props.loadExps(filterBy);
     }
 

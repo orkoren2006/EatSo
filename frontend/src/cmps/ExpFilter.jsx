@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadExps } from "../store/actions/expAction.js";
-import { Button, TextField, Grid } from '@material-ui/core/';
-import {
-    DateTimePicker,
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns'; // choose your lib
+import { Button, TextField } from '@material-ui/core/';
 
 
 export class _ExpFilter extends Component {
@@ -19,10 +13,10 @@ export class _ExpFilter extends Component {
     }
 
     handleChange = (ev) => {
-        console.log('date',Date.parse(ev.target.value));
-        let field;
-        let value;
-        if (ev.target && ev.target.name !== "schedule") {
+        let field = ev.target.name
+        let value = ev.target.value
+
+        if (ev.target && ev.target.name !== "at") {
             field = ev.target.name
             value = ev.target.value
             this.setState(prevState => {
@@ -37,8 +31,7 @@ export class _ExpFilter extends Component {
                     ...prevState,
                     schedule: {
                         ...prevState.schedule,
-                        at: Date.parse(ev.target.value)
-                        // at: Date.parse(ev)
+                        [field]: Date.parse(value)
                     }
                 }
             })
@@ -51,6 +44,7 @@ export class _ExpFilter extends Component {
     }
 
     onSearch = async () => {
+        console.log(this.state);
         await this.props.loadExps(this.state)
         console.log(this.props.exps);
     }
@@ -72,40 +66,21 @@ export class _ExpFilter extends Component {
                         id="schedule"
                         label="Select a date"
                         type="date"
-                        name="schedule"
-                        // defaultValue="2017-05-24"
-                        // value="2017-05-24"
+                        name="at"
                         placeholder="Placeholder"
                         onChange={this.handleChange}
                         InputLabelProps={{
                             shrink: true,
-                        }}/>
-                            {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Grid container justify="space-around">
-                            <KeyboardDatePicker
-                                disableToolbar
-                                variant="inline"
-                                format="MM/dd/yyyy"
-                                margin="normal"
-                                id="date-picker-inline"
-                                label="Select a Date"
-                                value={this.getTimeDate()}
-                                onChange={this.handleChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                        </Grid>
-                    </MuiPickersUtilsProvider> */}
-                            < TextField
+                        }} />
+                    < TextField
                         id="capacity"
                         name="capacity"
                         label="Number of guests"
                         inputProps={{ 'min-width': '300px' }}
                         type="number"
                         InputLabelProps={{
-                        shrink: true,
-                    }}
+                            shrink: true,
+                        }}
                         onChange={this.handleChange}
                     />
                     <Button variant="contained" color="primary"

@@ -135,6 +135,7 @@
       },
       "status": "pending",
       "_id": "jCG2MRO"
+<<<<<<< HEAD
     },
     {
       "guest": {
@@ -203,6 +204,8 @@
       "status": "pending",
       "_id": "6PxVyMF"
 >>>>>>> 23ac39c8f8a797bcfa3f284b8259094228472c1d
+=======
+>>>>>>> backend
     }
   ],
   "exp": [
@@ -978,7 +981,11 @@
         "max": 20
       },
       "schedule": {
+<<<<<<< HEAD
         "at": 1916204012995,
+=======
+        "at": 1602084600000,
+>>>>>>> backend
         "duration": "120"
       },
       "tags": [

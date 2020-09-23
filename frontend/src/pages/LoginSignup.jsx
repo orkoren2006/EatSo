@@ -165,8 +165,6 @@ class _LoginSignup extends Component {
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
-
-
         <ExpFilter/>
         
 
