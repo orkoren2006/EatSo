@@ -7,6 +7,8 @@ import DateFnsUtils from '@date-io/date-fns'; // choose your lib
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { getExpById, saveExp } from '../store/actions/expAction';
 import { MenuEdit } from '../cmps/MenuEdit';
+import { Modal } from '../cmps/Modal';
+import { LoginSignup } from './LoginSignup';
 
 
 
@@ -14,16 +16,20 @@ import { MenuEdit } from '../cmps/MenuEdit';
 class _ExpEdit extends Component {
     state = {
         exp: expService.getEmptyExp(),
-        editMenu: false
+        editMenu: false,
+        isModalShown: true
+
     }
 
     async componentDidMount() {
         const expId = this.props.match.params.id;
+        const { loggedInUser } = this.props
+        if (!loggedInUser) return;
         if (expId) {
             const exp = await expService.getExpById(expId)
             this.setState({ exp })
         } else {
-            const {loggedInUser} = this.props 
+            const { loggedInUser } = this.props
             this.setState(
                 {
                     exp: {
@@ -51,11 +57,11 @@ class _ExpEdit extends Component {
     }
 
     uploadImg = async (ev) => {
-        
+
         const cloudinaryUrl = await cloudinaryService.uploadImg(ev)
         console.log('here', cloudinaryUrl);
         const imgUrl = cloudinaryUrl.secure_url;
-        
+
         this.setState(prevState => {
             return {
                 exp: {
@@ -63,9 +69,8 @@ class _ExpEdit extends Component {
                     imgUrls: [...this.state.exp.imgUrls, imgUrl]
                 }
             }
-        }, () => console.log('from upload', this.state.exp))
+        })
     }
-
 
     handleChange = (ev) => {
         if (ev.target) {
@@ -174,8 +179,29 @@ class _ExpEdit extends Component {
         this.setState({ editMenu: !this.state.editMenu })
     }
 
+    onCloseModal = () => {
+        this.setState({ isModalShown: false });
+        this.props.history.push('/')
+    }
+
+    onShowModal = () => {
+        this.setState({ isModalShown: true })
+    }
+
     render() {
-        const { exp } = this.state
+        const { isModalShown, exp } = this.state
+        const { loggedInUser } = this.props
+
+        if (!loggedInUser) {
+
+            return (
+                <section>
+                    <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} edit="edit" >
+                        {<LoginSignup closeModal={this.onCloseModal} edit="edit"/>}
+                    </Modal>
+                </section>
+            )
+        }
 
         return (
             <div className="edit-div flex align-center justify-center">

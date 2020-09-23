@@ -65,6 +65,7 @@ class _LoginSignup extends Component {
       this.setState({ loginCred: { email: '', password: '' } });
       this.setState({ isLoggedIn: true })
       if(this.props.onCloseModal) this.props.onCloseModal();
+      else if(this.props.edit) this.props.history.push('/exp/edit')
       else this.props.history.push('/')
     } catch (err) {
       console.log('failed to login', err);

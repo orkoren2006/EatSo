@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 export function UserPreview({ user, date }) {
+    console.log(user.imgUrl);
     return (
         <div className="user-preview-container">
             <Link to={`/host/${user._id}`}>

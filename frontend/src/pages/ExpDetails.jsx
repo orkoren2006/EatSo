@@ -118,7 +118,7 @@ class _ExpDetails extends Component {
         return (
             <div className="exp-details-container width-1366">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
-                    {<LoginSignup closeModal={this.onCloseModal} />}
+                    {<LoginSignup onCloseModal={this.onCloseModal} />}
                 </Modal>
                 <h2>{exp.name}</h2>
                 <ExpRate reviews={exp.reviews} />
