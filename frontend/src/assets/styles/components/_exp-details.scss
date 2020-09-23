@@ -1,6 +1,5 @@
 .exp-details-container {
   
-    // margin: 0 auto;
     @import "exp-gallery";
     @import "exp-booking";
 
@@ -25,5 +24,11 @@
                 float:right;
             }
         }
+    }
+
+    .google-maps {
+        margin-top: 20px;
+        padding-bottom: 200px;
+        
     }
 }

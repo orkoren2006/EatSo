@@ -29,7 +29,7 @@ class _LoginSignup extends Component {
 
 
   async componentDidMount() {
-    await this.props.loadUsers()
+    // await this.props.loadUsers()
     // console.log('from login' ,this.props.users);
     // this.setState({ users }, () => console.log(this.state.users))
   }
@@ -62,12 +62,14 @@ class _LoginSignup extends Component {
     }
     const userCreds = { email, password };
     try {
+      this.setState({isLoggedIn: true}) //switch with 66 if needed 
       await this.props.login(userCreds);
-      this.setState({ loginCred: { email: '', password: '' } });
-      this.setState({ isLoggedIn: true })
-      if(this.props.onCloseModal) this.props.onCloseModal();
-      else if(this.props.edit) this.props.history.push('/exp/edit')
-      else this.props.history.push('/')
+      // this.setState({ loginCred: { email: '', password: '' }, isLoggedIn: true }, () => {
+        if (this.props.edit) this.props.history.push('/exp/edit')
+        else if (this.props.onCloseModal) this.props.onCloseModal();
+        else this.props.history.push('/')
+      // });
+
     } catch (err) {
       console.log('failed to login', err);
       this.setState({ isLoggedIn: false })
@@ -157,14 +159,19 @@ class _LoginSignup extends Component {
           </div>
         )}
         {!loggedInUser && loginSection}
-        {!this.state.isLoggedIn && <h3>Login Fail!</h3>}
+        {!this.state.isLoggedIn && <h3>Login Failed!</h3>}
         <hr />
         <h1>
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
+<<<<<<< HEAD
+
+
+=======
         <ExpFilter/>
         
+>>>>>>> 23ac39c8f8a797bcfa3f284b8259094228472c1d
 
       </div>
     );

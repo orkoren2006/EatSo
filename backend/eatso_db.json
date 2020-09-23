@@ -135,9 +135,26 @@
       },
       "status": "pending",
       "_id": "jCG2MRO"
+<<<<<<< HEAD
     },
     {
       "guest": {
+<<<<<<< HEAD
+        "_id": "u101",
+        "fullName": "Chen Kitty",
+        "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600520891/eatso-profile/chen_rxmvr8.jpg"
+      },
+      "numOfGuests": 1,
+      "exp": {
+        "_id": "e103",
+        "schedule": {
+          "at": 1601053200000,
+          "duration": 120
+        }
+      },
+      "status": "pending",
+      "_id": "4aByAAH"
+=======
         "_id": "u120",
         "fullName": "Galit Reuven",
         "imgUrl": "https://res.cloudinary.com/orkofy/image/upload/v1600809390/eatso-profile/407870-PD1CG5-126_vi9vmk.jpg"
@@ -186,6 +203,9 @@
       },
       "status": "pending",
       "_id": "6PxVyMF"
+>>>>>>> 23ac39c8f8a797bcfa3f284b8259094228472c1d
+=======
+>>>>>>> backend
     }
   ],
   "exp": [
@@ -961,7 +981,11 @@
         "max": 20
       },
       "schedule": {
+<<<<<<< HEAD
         "at": 1916204012995,
+=======
+        "at": 1602084600000,
+>>>>>>> backend
         "duration": "120"
       },
       "tags": [

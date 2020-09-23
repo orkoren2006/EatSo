@@ -181,8 +181,9 @@ class _ExpEdit extends Component {
     }
 
     onCloseModal = () => {
-        this.setState({ isModalShown: false });
-        this.props.history.push('/')
+        this.setState({ isModalShown: false }
+            , () => {this.props.history.push('/')});
+
     }
 
     onShowModal = () => {
@@ -198,7 +199,7 @@ class _ExpEdit extends Component {
             return (
                 <section>
                     <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} edit="edit" >
-                        {<LoginSignup closeModal={this.onCloseModal} edit="edit"/>}
+                        {<LoginSignup onCloseModal={this.onCloseModal} edit="edit"/>}
                     </Modal>
                 </section>
             )

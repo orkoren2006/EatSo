@@ -1,5 +1,6 @@
 .host-exps {
     font-family: roboto;
+   
 
     p {
         color: #8f8e87;
@@ -18,4 +19,17 @@
 .host-pic {
     height: 200px;
     width: 200px;
+}
+
+.host-title {
+    h2 {
+        padding-left: 15px;
+        align-self: center;
+    }
+}
+
+.host-description {
+    margin: 20px 0;
+    width: 50%;
+    text-align: justify;
 }

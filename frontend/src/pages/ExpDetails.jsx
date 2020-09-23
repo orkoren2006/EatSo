@@ -126,8 +126,8 @@ class _ExpDetails extends Component {
                 <ExpContent exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
                     onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
                     isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
-                <div className="flex space-between ">
-                    <GoogleMap containerStyle={{ width: '50%', height: 150 }} style={{ height: 150 }} center={center} />
+                <div className="google-maps flex space-between ">
+                    <GoogleMap containerStyle={{ width: '50%', height: 350 }} style={{ height: 350 }} center={center} />
                     {user && <ExpChat userName={user.userName} />}
                 </div>
             </div>
