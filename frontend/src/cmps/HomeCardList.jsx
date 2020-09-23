@@ -18,7 +18,7 @@ export class _HomeCardList extends Component {
     }
     render() {
         return (
-            <div className="flex flex center wrap align-center preview-cards width-1366">
+            <div className="flex flex center wrap align-center preview-cards">
                 { this.state.cardsProps.map((cardProps,idx) =>
                     <HomeCard key={`card-${idx}`} propsObj={cardProps} cardIdx={idx}/>
                 )}

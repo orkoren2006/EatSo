@@ -15,7 +15,7 @@ import { UserExp } from './pages/UserExp.jsx';
 
 export function App() {
   return (
-    <div className="App">
+    <div className="app main-container">
       <Router>
         <Header /> 
         <Switch>

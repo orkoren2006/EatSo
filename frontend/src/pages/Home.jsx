@@ -57,7 +57,7 @@ class _Home extends Component {
     const { exps } = this.props
     if (!exps) return <div>Load</div>
     return (
-      <section className="home">
+      <section className="home full">
         <div className="hero-image flex column">
 
           <h2>Experience food </h2>
