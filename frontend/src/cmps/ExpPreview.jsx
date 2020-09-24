@@ -26,14 +26,16 @@ export function ExpPreview(props) {
 
                 </section>
             </Link>
-            <Link to={`/exp/owner._id/${exp.owner._id}`}>
-                <section className="host-preview">
-                    <p>Hosted by <span>{exp.owner.fullName}</span></p>&nbsp;
-                    <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
-                        <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
-                    </Image>
-                </section>
-            </Link>
+            <section className="host-preview flex align-end">
+                <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
+                    <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
+                </Image>
+
+                
+                    <p>Hosted by <Link to={`/exp/owner._id/${exp.owner._id}`}><span>{exp.owner.fullName}</span></Link></p>&nbsp;
+                
+            </section>
+
             {props.isHost &&
                 <Link to={`/exp/edit/${exp._id}`}><Button variant="contained" color="primary">
                     Edit</Button></Link>}

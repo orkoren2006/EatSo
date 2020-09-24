@@ -14,6 +14,7 @@
         margin     : 0.67em 0;
         color      : #fd7854;
         margin-left: 5px;
+        font-family: prata;
     }
 
     a {
@@ -27,13 +28,17 @@
 .main-nav {
     flex-direction  : column;
     align-items     : center;
-    position        : fixed;
-    top             : 75px;
-    right           : 60px;
+    // position        : fixed;
+    // top             : 75px;
+    // right           : 60px;
+    position        : absolute;
+    bottom             : -10px;
+    right           : 0;
     border-radius   : 15px;
+    transform: translateY(100%);
     background-color: lightgray;
     box-shadow      : -13px 3px 20px 0px rgba(0, 0, 0, 0.4);
-    z-index         : 6;
+    
     // transform: translateX(110%);
     // transition: transform 0.8s;
 
@@ -101,13 +106,15 @@
 }
 
 .header-avatar {
-    z-index         : 1;
+    // z-index         : 1;
     background-color: #FFFFFF;
     margin-right    : 10px;
     width           : 70px;
     height          : 40px;
     border-radius   : 25px;
     cursor          : pointer;
+    position: relative;
+    z-index: 6;
 
     .login-avatar {
         margin-right : 10px;

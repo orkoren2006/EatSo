@@ -18,11 +18,16 @@ export class _HomeCardList extends Component {
     }
     render() {
         return (
-            <div className="flex flex center wrap align-center preview-cards">
-                { this.state.cardsProps.map((cardProps,idx) =>
-                    <HomeCard key={`card-${idx}`} propsObj={cardProps} cardIdx={idx}/>
-                )}
-            </div>
+            <React.Fragment>
+                <div className="preview-header">
+                    <h2>Most Popular Categories</h2>
+                </div>
+                <div className="flex flex center wrap align-center preview-cards">
+                    {this.state.cardsProps.map((cardProps, idx) =>
+                        <HomeCard key={`card-${idx}`} propsObj={cardProps} cardIdx={idx} />
+                    )}
+                </div>
+            </React.Fragment>
         )
     }
 }

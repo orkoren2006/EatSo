@@ -67,29 +67,30 @@ class _Home extends Component {
 
           <h2>Experience food </h2>
           <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
+          
         </div>
 
         <HomeCardList />
 
-        <section className="home-category">
+        <section className="home-category flex column align-center">
           <section className="preview-header">
             <h2>Top Dinners in your Location</h2>
+          </section>
+          <ExpList exps={this.getExps('address-tel-aviv')} />
             <Link to="/exp/location.city/Tel-Aviv-Yafo">
               <Button className="tel-aviv-button"><span> Show All &gt;</span></Button>
             </Link>
-          </section>
-          <ExpList exps={this.getExps('address-tel-aviv')} />
 
         </section>
 
-        <section className="home-category">
+        <section className="home-category flex column align-center">
           <section className="preview-header">
             <h2>Top Traditional Cuisine</h2>
+          </section>
+          <ExpList exps={this.getExps('tags-traditional')} />
             <Link to="/exp/tags/traditional">
               <Button className="traditional-button "><span> Show All  &gt;</span></Button>
             </Link>
-          </section>
-          <ExpList exps={this.getExps('tags-traditional')} />
         </section>
 
         <section className="tokyo-banner flex justify-center align-center full">
@@ -101,14 +102,14 @@ class _Home extends Component {
           </div>
         </section>
 
-        <section className="home-category">
+        <section className="home-category flex column align-center">
           <section className="preview-header">
             <h2>Top Scenic Meals</h2>
+          </section>
+          <ExpList exps={this.getExps('tags-scenic')} />
             <Link to="/exp/tags/scenic">
               <Button className="scenic-button"><span> Show All &gt;</span></Button>
             </Link>
-          </section>
-          <ExpList exps={this.getExps('tags-scenic')} />
         </section>
       </section>
     );

@@ -14,6 +14,7 @@ import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
 
 
+<<<<<<< HEAD
 export class App extends Component {
   componentDidMount() {
     socketService.setup();
@@ -43,4 +44,25 @@ export class App extends Component {
 
     );
   }
+=======
+export function App() {
+  return (
+    <div className="app main-container">
+      <Router>
+        <Header /> 
+        <Switch>
+          <Route path="/" component={Home} exact /> 
+          <Route path="/exp/edit/:id?" component={ExpEdit} exact />
+          <Route path="/exp/:id" component={ExpDetails} exact />
+          <Route path="/owner/:id" component={HostDetails} exact />
+          <Route path="/myexp/:as" component={UserExp} exact />
+          <Route path="/exp/:field?/:value?" component={ExpApp} />
+          {/* <Route path="/exp" component={ExpApp} /> */}
+          <Route path="/about" component={About} exact />
+          <Route path="/login" component={LoginSignup} exact />
+        </Switch>
+      </Router>
+    </div>
+  );
+>>>>>>> 4a405b22d5587df6673b81d1c342b935e122be2a
 }
