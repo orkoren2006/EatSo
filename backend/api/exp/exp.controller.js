@@ -1,9 +1,6 @@
 const expService = require('./exp.service')
 const logger = require('../../services/logger.service')
 
-
-
-
 async function getExp(req, res) {
     try {
         const exp = await expService.getById(req.params.id)
