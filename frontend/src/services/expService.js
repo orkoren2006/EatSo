@@ -11,13 +11,20 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
+
+    let URL = 'exp';
+    if (Object.keys(filterBy)[0] == "owner._id" || Object.keys(filterBy)[0] == "participants._id") {
+        URL = 'myexp'
+    }
+
     var queryParams = new URLSearchParams()
     for (const filterType in filterBy) {
         queryParams.set(filterType, filterBy[filterType])
     }
-    const exps = await httpService.get(`exp/?${queryParams}`)
-    return await httpService.get(`exp/?${queryParams}`)
-    //  exps;
+
+    return await httpService.get(`${URL}/?${queryParams}`)
+    // const exps = await httpService.get(`exp/?${queryParams}`)
+    // return await httpService.get(`exp/?${queryParams}`)
 }
 
 async function getExpById(expId) {

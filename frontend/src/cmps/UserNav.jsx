@@ -10,7 +10,7 @@ export function UserNav({ navClass, onItemClick, onLogout, user }) {
                 <p>Welcome back {firstName.substring(0, i)}!</p>
                 <ul>
                     <li><NavLink onClick={onItemClick} to="/myexp/owner">Manage as Host</NavLink></li>
-                    <li><NavLink onClick={onItemClick} to="/myexp/participant">My Experiences</NavLink></li>
+                    <li><NavLink onClick={onItemClick} to="/myexp/participants">My Experiences</NavLink></li>
                     <li><NavLink onClick={onLogout} to="/">Logout</NavLink></li>
                 </ul>
             </nav>

@@ -26,7 +26,7 @@ export function ExpPreview(props) {
 
                 </section>
             </Link>
-            <Link to={`/host/${exp.owner._id}`}>
+            <Link to={`/exp/owner._id/${exp.owner._id}`}>
                 <section className="host-preview">
                     <p>Hosted by <span>{exp.owner.fullName}</span></p>&nbsp;
                     <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">

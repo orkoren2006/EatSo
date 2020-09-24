@@ -12,12 +12,13 @@ module.exports = {
 }
 
 async function query(filterBy = {}) {
-    console.log('query', filterBy);
+
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('exp')
     try {
         const exps = await collection.find(criteria).toArray();
-        exps.forEach(exp => delete exp.password);
+        // console.log('after find my exps', exps);
+        // exps.forEach(exp => delete exp.password);
         return exps
     } catch (err) {
         console.log('ERROR: cannot find exps')
@@ -72,8 +73,12 @@ async function add(exp) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
+    if (filterBy['owner._id']) filterBy['owner._id'] = ObjectId(filterBy['owner._id'])
+    if (filterBy['participants._id']) filterBy['participants._id'] = ObjectId(filterBy['participants._id'])
+    
+    console.log(filterBy);
     for (const filterType in filterBy) {
-        if (filterBy[filterType]){
+        if (filterBy[filterType]) {
             criteria[filterType] = (filterType === 'name') ?
                 new RegExp(`${filterBy.name}`, 'i') : filterBy[filterType]
         }
@@ -81,6 +86,6 @@ function _buildCriteria(filterBy) {
     // if (filterBy.expName) {
     //     criteria.expName =  new RegExp(`${filterBy.expName}`, 'i') 
     // }
-   console.log('criteria', criteria);
+    console.log('criteria myexp', criteria);
     return criteria;
 }
