@@ -24,7 +24,7 @@ class _ExpEdit extends Component {
         if (!loggedInUser) return;
         if (expId) {
             const exp = await expService.getExpById(expId)
-            this.setState({ exp },()=>console.log(this.state))
+            this.setState({ exp })
         } else {
             const { loggedInUser } = this.props
             this.setState(

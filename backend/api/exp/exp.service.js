@@ -48,8 +48,10 @@ async function remove(expId) {
 }
 
 async function update(exp) {
+    console.log('update');
     const collection = await dbService.getCollection('exp')
     exp._id = ObjectId(exp._id);
+    exp.owner._id = ObjectId(exp.owner._id)
     exp.updatedAt = Date.now();
     try {
         await collection.replaceOne({ "_id": exp._id }, { $set: exp })
@@ -61,6 +63,9 @@ async function update(exp) {
 }
 
 async function add(exp) {
+    exp._id = ObjectId(exp._id);
+    exp.owner._id = ObjectId(exp.owner._id)
+    console.log('add-service',exp.name);
     const collection = await dbService.getCollection('exp')
     try {
         await collection.insertOne(exp);
@@ -73,7 +78,6 @@ async function add(exp) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
-    console.log('fiter', filterBy);
     if (filterBy['owner._id']) filterBy['owner._id'] = ObjectId(filterBy['owner._id'])
     if (filterBy['participants._id']) filterBy['participants._id'] = ObjectId(filterBy['participants._id'])
     

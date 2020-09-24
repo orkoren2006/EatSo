@@ -49,9 +49,8 @@ class _UserExp extends Component {
     }
 
     async _getUserExps(expAs) {
-        console.log('_id', expAs,this.props.user._id);
         const userExps = await expService.getExps({ [`${expAs}._id`]: this.props.user._id })
-        this.setState({ userExps }, ()=> console.log(this.state))
+        this.setState({ userExps })
     }
 
     async _getUserBooking() {
@@ -65,7 +64,7 @@ class _UserExp extends Component {
     }
 
     getExpsList = () => {
-        console.log(this.state.userExps, 'booking' ,this.state.userBookings);
+        // console.log(this.state.userExps, 'booking' ,this.state.userBookings);
         if (this.state.isHost) this.setState({ expList: this.state.userExps })
         
         else if (this.state.filter === 'pending') {
@@ -114,7 +113,6 @@ class _UserExp extends Component {
         if (!user) return <div>Itay Loading...</div>
         return (
             <section className="user-exp-div">
-                ITAY
                 <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
                 {!this.state.isHost && <section className="user-exp-navbar">
                     <ul className="user-exp-navbar-list flex">
