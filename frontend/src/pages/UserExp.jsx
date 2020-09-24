@@ -7,6 +7,7 @@ import { ExpList } from "../cmps/ExpList";
 import { Button } from '@material-ui/core';
 import { loadBookings } from '../store/actions/bookingAction';
 import bookingService from '../services/bookingService';
+import { socketService } from '../services/socketService';
 
 class _UserExp extends Component {
 
@@ -24,6 +25,8 @@ class _UserExp extends Component {
         await this._getUserExps(expAs)
         await this._getUserBooking()
         this.getExpsList()
+        // socketService.setup();
+        // socketService.on('new booking', this.newBookNotification)
     }
 
     async componentDidUpdate(prevProps, prevState) {
@@ -31,6 +34,16 @@ class _UserExp extends Component {
         if (prevProps === this.props) return
         const expAs = this.props.match.params.as; // gets 'owner' OR 'participants' - from url
         this.setState({ isHost: (expAs === 'owner') }, () => this.getExpsList())
+    }
+
+    componentWillUnmount() {
+        // socketService.off('new booking', this.newBookNotification)
+        // socketService.terminate();
+    }
+    
+
+    newBookNotification = (booking) => {
+        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA',booking);
     }
 
     async _getUserExps(expAs) {

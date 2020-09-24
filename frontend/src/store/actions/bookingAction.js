@@ -52,11 +52,7 @@ export function saveBooking(booking) {
     try {
       const bookingObj = await bookingService.save(booking);
       dispatch({ type: 'SAVE_BOOKING', booking: bookingObj.booking, isNew: bookingObj.isNew })
-      // const notificationTxt = (bookingObj.isNew) ? 'Toy Added' : 'Toy Updated'
-      // dispatch({ type: 'SEND_NOTIFICATION', notification: notificationTxt })
-      // setTimeout(() => {
-      //   dispatch({ type: 'CLEAR_NOTIFICATION' })
-      // }, 2000);
+
     } catch (err) {
       console.log('BookingsActions: err in SaveBooking', err);
     }
