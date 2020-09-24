@@ -1,4 +1,5 @@
 import { httpService } from './httpService'
+const ObjectId = require('mongodb').ObjectId
 
 export const expService = {
     getExps,
@@ -36,6 +37,8 @@ function remove(expId) {
 }
 
 async function save(exp) {
+    exp.owner._id = ObjectId(exp.owner._id)
+    console.log(exp.owner._id);
     if (exp._id) {
         exp.updatedAt = Date.now();
         // return httpService.put(`exp/${exp._id}`, exp)

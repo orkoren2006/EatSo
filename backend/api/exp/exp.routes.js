@@ -10,6 +10,7 @@ router.get('/', getExps)
 // router.get('/', getExps)
 router.get('/:id', getExp)
 router.put('/:id',  requireAuth, updateExp)
+router.post('/:id',  requireAuth, updateExp)
 router.delete('/:id',  requireAuth, requireAdmin, deleteExp)
 
 module.exports = router

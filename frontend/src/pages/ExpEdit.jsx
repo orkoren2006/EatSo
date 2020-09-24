@@ -10,9 +10,6 @@ import { MenuEdit } from '../cmps/MenuEdit';
 import { Modal } from '../cmps/Modal';
 import { LoginSignup } from './LoginSignup';
 
-
-
-
 class _ExpEdit extends Component {
     state = {
         exp: expService.getEmptyExp(),
@@ -27,7 +24,7 @@ class _ExpEdit extends Component {
         if (!loggedInUser) return;
         if (expId) {
             const exp = await expService.getExpById(expId)
-            this.setState({ exp })
+            this.setState({ exp },()=>console.log(this.state))
         } else {
             const { loggedInUser } = this.props
             this.setState(
@@ -48,7 +45,7 @@ class _ExpEdit extends Component {
     onSaveExp = async () => {
         await this.props.saveExp(this.state.exp)
         // this.props.history.push('/SOMEWHERE')
-        console.log(this.state);
+        // console.log(this.state);
     }
 
     onRemoveImg = (imgIdx) => {
@@ -73,7 +70,6 @@ class _ExpEdit extends Component {
     }
 
     handleChange = (ev) => {
-        console.log(ev);
         if (ev.target) {
             let field = ev.target.name;
             const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value
