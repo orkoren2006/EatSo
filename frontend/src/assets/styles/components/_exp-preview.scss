@@ -5,15 +5,16 @@ ul {
 }
 
 .exp-card {
-    box-shadow: 0px 3px 3px 0px #0000004d;
+    box-shadow: 0px 0px 10px 0px #0000004d;
     font-family: roboto;
     flex: 1;
     margin: 0 8px 12px;
     border-radius: 16px;
+    overflow: hidden;
 
     p {
         color: #8f8e87;
-        padding-left: 5px;
+        // padding-left: 5px;
     }
 
     span {
@@ -25,7 +26,10 @@ ul {
         text-decoration: none;
     }
 
-  
+  h3 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  }
 }
 
 // .exp-card:hover {
@@ -41,11 +45,20 @@ ul {
 }
 
 .exp-card-desc {
-    padding-left: 5px;
+    padding-left: 6px;
     h3 {
         font-size: 20px;
-        height: 40px;
+        // height: 40px;
     }
+}
+
+.exp-card-desc:after {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 95%; /* Change this to whatever width you want. */
+    padding-top: 20px; /* This creates some space between the element and the border. */
+    border-bottom: 0.2px solid  lightgray; /* This creates the border. Replace black with whatever color you want. */
 }
 
 .img-in-div {
@@ -59,7 +72,11 @@ ul {
     transition: transform 0.8s ease;
 }
 
-.exp-card-cont:hover > img{
+// .exp-card-cont:hover > img{
+//     transform: scale(1.2);
+// }
+
+.exp-card a:hover img:first-child {
     transform: scale(1.2);
 }
 
@@ -80,6 +97,15 @@ ul {
     width: 50px;
     height: 50px;
     // border-radius: 50%;
+}
+
+
+.host-preview {
+    padding-top: 6px;
+    img, p {
+        padding-left: 6px;
+        padding-bottom: 6px;
+    }
 }
 
 
