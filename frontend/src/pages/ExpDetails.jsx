@@ -116,7 +116,7 @@ class _ExpDetails extends Component {
         if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
-            <div className="exp-details-container">
+            <div className="exp-details-container main-container">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
                     {<LoginSignup onCloseModal={this.onCloseModal} />}
                 </Modal>
@@ -126,7 +126,7 @@ class _ExpDetails extends Component {
                 <ExpContent exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
                     onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
                     isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
-                <div className="google-maps flex space-between full">
+                <div className="google-maps flex space-between">
                     <GoogleMap containerStyle={{ width: '50%', height: 350 }} style={{ height: 350 }} center={center} />
                     {user && <ExpChat username={user.username} />}
                 </div>

@@ -65,7 +65,7 @@ class _Home extends Component {
       
         <HomeCardList />
 
-        <section className="tel-aviv">
+        <section className="home-category">
           <section className="preview-header">
             <h2>Top Dinners in your Location</h2>
             <Button className="tel-aviv-button"><span> Show All &gt;</span></Button>
@@ -74,7 +74,7 @@ class _Home extends Component {
 
         </section>
 
-        <section className="traditional">
+        <section className="home-category">
           <section className="preview-header">
             <h2>Top Traditional Cuisine</h2>
             <Button className="traditional-button "><span> Show All  &gt;</span></Button>
@@ -83,7 +83,7 @@ class _Home extends Component {
         </section>
 
         <section className="tokyo-banner flex justify-center align-center full">
-          <div className="width-40"></div>
+          <div className="width-50"></div>
           <div>
             <h2> Eat real traditional</h2>
             <h2> sushi in <span>Tokyo</span></h2>
@@ -91,7 +91,7 @@ class _Home extends Component {
           </div>
         </section>
 
-        <section className="scenic">
+        <section className="home-category">
           <section className="preview-header">
             <h2>Top Scenic Meals</h2>
             <Button className="scenic-button"><span> Show All &gt;</span></Button>
