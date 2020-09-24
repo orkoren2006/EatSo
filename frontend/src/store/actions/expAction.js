@@ -48,7 +48,7 @@ export function removeExp(expId) {
 }
 
 export function saveExp(exp) {
-  console.log(exp);
+  // debugger
   return async dispatch => {
     try {
       const expObj = await expService.save(exp);

@@ -19,9 +19,9 @@ export class _HomeCardList extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="preview-header">
+                {/* <div className="preview-header">
                     <h2>Most Popular Categories</h2>
-                </div>
+                </div> */}
                 <div className="flex flex center wrap align-center preview-cards">
                     {this.state.cardsProps.map((cardProps, idx) =>
                         <HomeCard key={`card-${idx}`} propsObj={cardProps} cardIdx={idx} />

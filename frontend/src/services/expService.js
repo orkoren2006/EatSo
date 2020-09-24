@@ -37,18 +37,16 @@ function remove(expId) {
 }
 
 async function save(exp) {
-    exp.owner._id = ObjectId(exp.owner._id)
-    console.log(exp.owner._id);
+    
     if (exp._id) {
         exp.updatedAt = Date.now();
-        // return httpService.put(`exp/${exp._id}`, exp)
         const updateExp = await httpService.put(`exp/${exp._id}`, exp)
-        return { exp: updateExp, isNew: false }
+        return { exp: updateExp}
     } else {
         // exp.createdAt = Date.now();
         // return httpService.post('exp', exp)
         const updateExp = await httpService.post('exp', exp)
-        return { exp: updateExp, isNew: true }
+        return { exp: updateExp}
     }
 }
 

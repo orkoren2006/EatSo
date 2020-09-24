@@ -37,10 +37,11 @@ async function deleteExp(req, res) {
 }
 
 async function updateExp(req, res) {
+    
     try {
         const exp = req.body;
         await expService.update(exp)
-        res.send(exp)
+        res.json(exp)
     } catch (err) {
         logger.error('Cannot update exp', err);
         res.status(500).send({ error: 'cannot update exp' })
@@ -50,8 +51,9 @@ async function updateExp(req, res) {
 async function addExp(req, res) {
     try {
         const exp = req.body;
-        await exp.add(exp)
-        res.send(exp)
+        console.log('Controller');
+        await expService.add(exp)
+        res.json(exp)
     } catch (err) {
         logger.error('Cannot add exp', err);
         res.status(500).send({ error: 'cannot add exp' })
@@ -63,5 +65,5 @@ module.exports = {
     getExps,
     deleteExp,
     updateExp,
-    addExp 
+    addExp
 }
