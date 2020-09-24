@@ -19,8 +19,10 @@ class _HostDetails extends Component {
         const host = await hostService.getById(id);
         if (!host) return;
         this.setState({ host })
-        await this.props.loadExps() //it seems a bit crooked, should it be like this ???
-        const exps = this.props.exps.filter(exp => exp.owner._id === id)
+        // await this.props.loadExps() //it seems a bit crooked, should it be like this ???
+        // const exps = this.props.exps.filter(exp => exp.owner._id === id)
+        const exps = await this.props.loadExps() //it seems a bit crooked, should it be like this ???
+        // const exps = this.props.exps.filter(exp => exp.owner._id === id)
         this.setState({ exps })
     }
 

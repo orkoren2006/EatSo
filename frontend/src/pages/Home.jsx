@@ -4,9 +4,7 @@ import { ExpList } from '../cmps/ExpList';
 import { loadExps } from '../store/actions/expAction';
 import { Button } from '@material-ui/core';
 import { HomeCardList } from '../cmps/HomeCardList';
-
-
-
+import { Link } from 'react-router-dom';
 
 
 class _Home extends Component {
@@ -51,9 +49,17 @@ class _Home extends Component {
     return expsToSend;
   }
 
+  onShowAll = (ev) => {
+    console.log(ev.target.name);
+  }
+
+
+
+
 
   render() {
     const { exps } = this.props
+    // console.log(this.state.userBooking);
     if (!exps) return <div>Load</div>
     return (
       <section className="home full main-container ">
@@ -62,13 +68,15 @@ class _Home extends Component {
           <h2>Experience food </h2>
           <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
         </div>
-      
+
         <HomeCardList />
 
         <section className="tel-aviv">
           <section className="preview-header">
             <h2>Top Dinners in your Location</h2>
-            <Button className="tel-aviv-button"><span> Show All &gt;</span></Button>
+            <Link to="/exp/location.city/Tel-Aviv-Yafo">
+              <Button className="tel-aviv-button"><span> Show All &gt;</span></Button>
+            </Link>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
 
@@ -77,7 +85,9 @@ class _Home extends Component {
         <section className="traditional">
           <section className="preview-header">
             <h2>Top Traditional Cuisine</h2>
-            <Button className="traditional-button "><span> Show All  &gt;</span></Button>
+            <Link to="/exp/tags/traditional">
+              <Button className="traditional-button "><span> Show All  &gt;</span></Button>
+            </Link>
           </section>
           <ExpList exps={this.getExps('tags-traditional')} />
         </section>
@@ -94,7 +104,9 @@ class _Home extends Component {
         <section className="scenic">
           <section className="preview-header">
             <h2>Top Scenic Meals</h2>
-            <Button className="scenic-button"><span> Show All &gt;</span></Button>
+            <Link to="/exp/tags/scenic">
+              <Button className="scenic-button"><span> Show All &gt;</span></Button>
+            </Link>
           </section>
           <ExpList exps={this.getExps('tags-scenic')} />
         </section>

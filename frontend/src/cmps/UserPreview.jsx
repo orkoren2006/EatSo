@@ -7,7 +7,7 @@ export function UserPreview({ user, date }) {
     console.log(user.imgUrl);
     return (
         <div className="user-preview-container">
-            <Link to={`/host/${user._id}`}>
+            <Link to={`exp/owner._id/${user._id}`}>
                 <section className="user-preview">
                     <Image className="preview-avatar" cloudName="orkofy" publicId={user.imgUrl} type="fetch">
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />

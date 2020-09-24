@@ -21,10 +21,10 @@ class _UserExp extends Component {
     async componentDidMount() {
         // console.log(this.props.user._id);
         // this.setState({userId: this.props.user._id});
-        const expAs = this.props.match.params.as; // gets 'host' OR 'participant' - from url
+        const expAs = this.props.match.params.as; // gets 'host' OR 'participants' - from url
         this.setState({ isHost: (expAs === 'owner') })
         // const field = (expAs === 'owner') ? 'owner' : 'participants';
-        await this._getUserExps()
+        await this._getUserExps(expAs)
         await this._getUserBooking()
         this.getExpsList()
         // this._getUserExps(userId, field)
@@ -35,13 +35,14 @@ class _UserExp extends Component {
     async componentDidUpdate(prevProps, prevState) {
 
         if (prevProps === this.props) return
-        const expAs = this.props.match.params.as; // gets 'owner' OR 'participant' - from url
+        const expAs = this.props.match.params.as; // gets 'owner' OR 'participants' - from url
         this.setState({ isHost: (expAs === 'owner') }, () => this.getExpsList())
     }
 
-    async _getUserExps() {
-        const userExps = await expService.getExps({ _id: this.props.user._id })
-        this.setState({ userExps })
+    async _getUserExps(expAs) {
+        console.log('_id', expAs,this.props.user._id);
+        const userExps = await expService.getExps({ [`${expAs}._id`]: this.props.user._id })
+        this.setState({ userExps }, ()=> console.log(this.state))
     }
 
     async _getUserBooking() {
@@ -55,9 +56,9 @@ class _UserExp extends Component {
     }
 
     getExpsList = () => {
-
+        console.log(this.state.userExps, 'booking' ,this.state.userBookings);
         if (this.state.isHost) this.setState({ expList: this.state.userExps })
-
+        
         else if (this.state.filter === 'pending') {
             const pendingExpArr = [];
             this.state.userBookings.forEach(booking => {
@@ -104,6 +105,7 @@ class _UserExp extends Component {
         if (!user) return <div>Itay Loading...</div>
         return (
             <section className="user-exp-div">
+                ITAY
                 <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
                 {!this.state.isHost && <section className="user-exp-navbar">
                     <ul className="user-exp-navbar-list flex">
