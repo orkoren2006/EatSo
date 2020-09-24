@@ -65,9 +65,9 @@ class _Home extends Component {
       <section className="home full main-container ">
         <div className="hero-image flex column full">
 
-          <h2>Experience food </h2>
-          <h1>differently<span className="animate__animated animate__bounce">.</span></h1>
-          
+          <h2>Change your food </h2>
+          <h1>experience<span className="animate__animated animate__bounce">.</span></h1>
+          <p>Discover nearby unique places to dine out.</p>
         </div>
 
         <HomeCardList />
