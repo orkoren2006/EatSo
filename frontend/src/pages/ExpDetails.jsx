@@ -69,7 +69,7 @@ class _ExpDetails extends Component {
         // TODO: booked successfully, please wait to host for approving
         // DONE? make sense?: re-render the exp-booking section
         await this.props.loadBookings();
-        socketService.emit('booking exp', booking)
+        socketService.emit('booking exp', {booking, ownerId: exp.owner._id})
     }
 
     onCloseModal = () => {
