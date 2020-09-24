@@ -48,10 +48,13 @@ export function removeExp(expId) {
 }
 
 export function saveExp(exp) {
+  console.log(exp);
   return async dispatch => {
     try {
       const expObj = await expService.save(exp);
-      dispatch({ type: 'SAVE_EXP', exp: expObj.exp, isNew: expObj.isNew })
+      if (exp._id) dispatch({ type: 'UPDATE_EXP', exp: expObj.exp})
+      else dispatch({ type: 'ADD_EXP', exp: expObj.exp})
+      // dispatch({ type: 'SAVE_EXP', exp: expObj.exp, isNew: expObj.isNew })
       // const notificationTxt = (expObj.isNew) ? 'Toy Added' : 'Toy Updated'
       // dispatch({ type: 'SEND_NOTIFICATION', notification: notificationTxt })
       // setTimeout(() => {

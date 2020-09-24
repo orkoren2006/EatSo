@@ -20,11 +20,8 @@ class _UserExp extends Component {
     }
 
     async componentDidMount() {
-        // console.log(this.props.user._id);
-        // this.setState({userId: this.props.user._id});
         const expAs = this.props.match.params.as; // gets 'host' OR 'participants' - from url
         this.setState({ isHost: (expAs === 'owner') })
-        // const field = (expAs === 'owner') ? 'owner' : 'participants';
         await this._getUserExps(expAs)
         await this._getUserBooking()
         this.getExpsList()
@@ -112,6 +109,7 @@ class _UserExp extends Component {
     render() {
         const { user } = this.props;
         const { expList } = this.state
+        console.log('expList',expList);
         if (!user) return <div>Itay Loading...</div>
         return (
             <section className="user-exp-div">
