@@ -1,6 +1,7 @@
 
 module.exports = connectSockets
 
+const socketMap = {};
 function connectSockets(io) {
     io.on('connection', socket => {
 
@@ -21,20 +22,17 @@ function connectSockets(io) {
             io.to(socket._id).emit('chat addMsg', msg)
         })
 
-        socket.on('user notification', userId => {
+        socket.on('user login', userId => {
             // console.log('userId', userId)
-            
-            if (socket.userId) {
-                socket.leave(socket.userId)
-            }
-            socket.join(userId)
+
+            socketMap[userId] = socket;
             socket.userId = userId;
         })
-        socket.on('booking exp', booking => {
+        socket.on('booking exp', ({ booking, ownerId }) => {
             // console.log('booked!')
-             console.log('socket.userId', socket.userId)
-             
-            io.to(socket.userId).emit('new booking', booking)
+            const ownerSocket = socketMap[ownerId];
+            console.log('socket.userId', socket.userId);
+            if (ownerSocket) ownerSocket.emit('new booking', booking);
         })
 
     })
