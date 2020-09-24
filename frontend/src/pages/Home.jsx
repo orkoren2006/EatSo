@@ -67,7 +67,7 @@ class _Home extends Component {
 
           <h2>Change your food </h2>
           <h1>experience<span className="animate__animated animate__bounce">.</span></h1>
-          <p>Discover nearby unique places to dine out.</p>
+          <p>Discover new ways to dine out all around the world.</p>
         </div>
 
         <HomeCardList />

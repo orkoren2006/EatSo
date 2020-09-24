@@ -9,7 +9,7 @@ ul {
     font-family: roboto;
     flex: 1;
     margin: 0 8px 12px;
-    border-radius: 16px;
+    // border-radius: 8px;
     overflow: hidden;
 
     p {
@@ -39,7 +39,7 @@ ul {
 .exp-card-cont {
     justify-content: flex-end;
     overflow       : hidden;
-        border-radius: 16px 16px 0 0;
+        // border-radius: 8px 8px 0 0;
         
     
 }
