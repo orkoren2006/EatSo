@@ -47,9 +47,21 @@ async function updateExp(req, res) {
     }
 }
 
+async function addExp(req, res) {
+    try {
+        const exp = req.body;
+        await exp.add(exp)
+        res.send(exp)
+    } catch (err) {
+        logger.error('Cannot add exp', err);
+        res.status(500).send({ error: 'cannot add exp' })
+    }
+}
+
 module.exports = {
     getExp,
     getExps,
     deleteExp,
-    updateExp
+    updateExp,
+    addExp 
 }

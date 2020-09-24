@@ -46,9 +46,22 @@ async function updateUser(req, res) {
     }
 }
 
+
+async function addUser(req, res) {
+    try {
+        const user = req.body;
+        await userService.add(user)
+        res.send(user)
+    } catch (err) {
+        logger.error('Cannot add user', err);
+        res.status(500).send({ error: 'cannot add user' })
+    }
+}
+
 module.exports = {
     getUser,
     getUsers,
     deleteUser,
-    updateUser
+    updateUser,
+    addUser
 }

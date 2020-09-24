@@ -46,9 +46,21 @@ async function updateBooking(req, res) {
     }
 }
 
+async function addBooking(req, res) {
+    try {
+        const booking = req.body;
+        await bookingService.add(booking)
+        res.send(booking)
+    } catch (err) {
+        logger.error('Cannot add booking', err);
+        res.status(500).send({ error: 'cannot add booking' })
+    }
+}
+
 module.exports = {
     getBooking,
     getBookings,
     deleteBooking,
-    updateBooking
+    updateBooking,
+    addBooking
 }

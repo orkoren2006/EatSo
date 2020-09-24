@@ -46,6 +46,8 @@ async function save(booking) {
         const updateBooking = await httpService.put(`booking/${booking._id}`, booking)
         return { booking: updateBooking, isNew: false }
     } else {
+        console.log('booking 111', booking)
+        
         const updateBooking = await httpService.post('booking', booking)
         return { booking: updateBooking, isNew: true }
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { ExpFilter } from '../cmps/ExpFilter';
+import { socketService } from '../services/socketService';
 
 import {
   loadUsers,
@@ -31,6 +32,7 @@ class _LoginSignup extends Component {
     // await this.props.loadUsers()
     // console.log('from login' ,this.props.users);
     // this.setState({ users }, () => console.log(this.state.users))
+    // socketService.setup();
   }
 
   loginHandleChange = ev => {
@@ -63,6 +65,7 @@ class _LoginSignup extends Component {
     try {
       this.setState({isLoggedIn: true}) //switch with 66 if needed 
       await this.props.login(userCreds);
+      // socketService.emit('user notification', this.props.loggedInUser._id)
       // this.setState({ loginCred: { email: '', password: '' }, isLoggedIn: true }, () => {
         if (this.props.edit) this.props.history.push('/exp/edit')
         else if (this.props.onCloseModal) this.props.onCloseModal();

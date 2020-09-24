@@ -14,6 +14,7 @@ import ExpContent from '../cmps/ExpContent';
 import { ExpChat } from '../cmps/ExpChat';
 import bookingService from '../services/bookingService';
 import { loadBookings, saveBooking } from '../store/actions/bookingAction';
+import { socketService } from '../services/socketService';
 class _ExpDetails extends Component {
 
     state = {
@@ -34,6 +35,7 @@ class _ExpDetails extends Component {
         this.setState({ exp })
         if (!this.props.exps) await this.props.loadExps();
         if (!this.props.bookings.length) await this.props.loadBookings();
+        // socketService.setup();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -42,6 +44,10 @@ class _ExpDetails extends Component {
         }
     }
 
+    componentWillUnmount() {
+        
+        // socketService.terminate();
+    }
 
     onBookClick = async () => {
         if (!this.props.user) return this.onShowModal();
@@ -59,11 +65,12 @@ class _ExpDetails extends Component {
             schedule: exp.schedule
         };
         booking.status = 'pending';
+        console.log('bookingggggggggggggg', booking);
         await this.props.saveBooking(booking);
         // TODO: booked successfully, please wait to host for approving
         // DONE? make sense?: re-render the exp-booking section
         await this.props.loadBookings();
-        // this.setState({numOfGuests: 1})
+        // socketService.emit('booking exp', booking)
     }
 
     onCloseModal = () => {

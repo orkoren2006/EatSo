@@ -76,7 +76,7 @@ function _buildCriteria(filterBy) {
     if (filterBy['owner._id']) filterBy['owner._id'] = ObjectId(filterBy['owner._id'])
     if (filterBy['participants._id']) filterBy['participants._id'] = ObjectId(filterBy['participants._id'])
     
-    console.log(filterBy);
+    // console.log(filterBy);
     for (const filterType in filterBy) {
         if (filterBy[filterType]) {
             criteria[filterType] = (filterType === 'name') ?
@@ -86,6 +86,6 @@ function _buildCriteria(filterBy) {
     // if (filterBy.expName) {
     //     criteria.expName =  new RegExp(`${filterBy.expName}`, 'i') 
     // }
-    console.log('criteria myexp', criteria);
+    // console.log('criteria myexp', criteria);
     return criteria;
 }
