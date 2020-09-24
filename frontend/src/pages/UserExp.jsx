@@ -14,7 +14,7 @@ class _UserExp extends Component {
     state = {
         userExps: [], // for exps as a host
         userBookings: [], // for exps as a participants
-        filter: 'past',
+        filter: 'pending',
         isHost: false,
         expList: null
     }
@@ -42,10 +42,10 @@ class _UserExp extends Component {
         socketService.off('new booking', this.newBookNotification)
         // socketService.terminate();
     }
-    
+
 
     newBookNotification = (booking) => {
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA',booking);
+        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA', booking);
     }
 
     async _getUserExps(expAs) {
@@ -64,9 +64,9 @@ class _UserExp extends Component {
     }
 
     getExpsList = () => {
-        // console.log(this.state.userExps, 'booking' ,this.state.userBookings);
+        console.log(this.state.userExps, 'booking' ,this.state.userBookings);
         if (this.state.isHost) this.setState({ expList: this.state.userExps })
-        
+
         else if (this.state.filter === 'pending') {
             const pendingExpArr = [];
             this.state.userBookings.forEach(booking => {
@@ -125,8 +125,8 @@ class _UserExp extends Component {
                     </ul>
                 </section>
                 }
-                <Link to="/exp/edit"><Button variant="contained" color="primary">
-                    Add Experience</Button></Link>
+                {this.state.isHost && <Link to="/exp/edit"><Button variant="contained" color="primary">
+                    Add Experience</Button></Link>}
 
                 <section className="user-exp-list">
                     {this.state.userExps &&
