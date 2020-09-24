@@ -133,7 +133,7 @@ class _ExpDetails extends Component {
                     onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
                     isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
                 <div className="google-maps flex space-between">
-                    <GoogleMap containerStyle={{ width: '50%', height: 350 }} style={{ height: 350 }} center={center} />
+                    <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
                     {user && <ExpChat username={user.username} expId={exp._id}/>}
                 </div>
             </div>
