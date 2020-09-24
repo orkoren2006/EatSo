@@ -11,7 +11,6 @@ export class ExpChat extends Component {
     };
 
     componentDidMount() {
-        socketService.setup();
         this.setState({ exp: this.props.exp },
             () => socketService.emit('chat exp', this.props.expId))
         socketService.on('chat addMsg', this.addMsg);
@@ -22,7 +21,6 @@ export class ExpChat extends Component {
 
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
-        socketService.terminate();
     }
 
     addMsg = newMsg => {
