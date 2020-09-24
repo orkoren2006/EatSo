@@ -78,6 +78,10 @@ async function add(exp) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
+<<<<<<< HEAD
+    // console.log('fiter', filterBy);
+=======
+>>>>>>> ba0d8aebd17b8d5a33b5c3f9960a0a294416aad0
     if (filterBy['owner._id']) filterBy['owner._id'] = ObjectId(filterBy['owner._id'])
     if (filterBy['participants._id']) filterBy['participants._id'] = ObjectId(filterBy['participants._id'])
     

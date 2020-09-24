@@ -65,12 +65,11 @@ class _ExpDetails extends Component {
             schedule: exp.schedule
         };
         booking.status = 'pending';
-        console.log('bookingggggggggggggg', booking);
         await this.props.saveBooking(booking);
         // TODO: booked successfully, please wait to host for approving
         // DONE? make sense?: re-render the exp-booking section
         await this.props.loadBookings();
-        // socketService.emit('booking exp', booking)
+        socketService.emit('booking exp', booking)
     }
 
     onCloseModal = () => {
