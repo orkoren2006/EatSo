@@ -48,6 +48,6 @@ export function signup(userCreds) {
 export function logout() {
   return async dispatch => {
     await userService.logout();
-    dispatch({ type: 'SET_USER', user: null });
+    dispatch({ type: 'LOGOUT' });
   };
 }
