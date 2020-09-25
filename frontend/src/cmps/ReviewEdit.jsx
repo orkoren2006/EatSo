@@ -15,7 +15,7 @@ export function ReviewEdit({ review, onHandleChange, onAddReview, user }) {
 
                 </div>
                 <div className="add-review-text flex space-between">
-                    <Image className="preview-avatar" cloudName="orkofy" publicId={user.imgUrl} type="fetch">
+                    <Image className="preview-avatar" cloudName="orkofy" publicId={!user ? `https://res.cloudinary.com/orkofy/image/upload/v1600666498/eatso-profile/user_bqaypc.jpg` : user.imgUrl} type="fetch">
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                     </Image>
                     <StyledRating defaultValue={1} name="rate" onChange={onHandleChange} value={review.rate} />

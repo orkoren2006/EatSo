@@ -114,7 +114,7 @@ class _UserExp extends Component {
         if (!user) return <div>Itay Loading...</div>
         return (
             <section className="user-exp-div">
-                <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
+                <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participant"} </h3>
                 {!this.state.isHost && <section className="user-exp-navbar">
                     <ul className="user-exp-navbar-list flex">
                         <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
