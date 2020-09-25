@@ -1,5 +1,7 @@
 .host-exps {
     font-family: roboto;
+      margin-bottom: 16px;
+       
    
 
     p {
@@ -8,7 +10,9 @@
     }
 
     span {
-        color: #fd7854;
+        margin-left: 16px;
+        color: #4f3a65;
+        font-size: 16px;
     }
 
     a {

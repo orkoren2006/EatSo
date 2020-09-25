@@ -10,6 +10,7 @@ html {
 
 }
 
+
 body {
     font-size: rem(18px);
     // width: 90vw;
@@ -21,9 +22,15 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1;
 }
 
+button{
+    outline: none;
+    cursor: pointer;
+}
+
+
 // h1 {
 //     font-size: rem(25px);
-//     color: #fd7854;
+//     color: $clr1;
 // }
 
 img {

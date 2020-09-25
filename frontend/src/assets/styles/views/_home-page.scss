@@ -23,15 +23,17 @@
         font-size: rem(90px);
         line-height: 1;
         color: #fbf9ee;
-        font-family: "prata";
+        // font-family: "prata";
         margin-bottom: 24px;
     }
 
     h2 {
         font-size: rem(45px);
-        font-family: "prata";
+        // font-family: "prata";
         color: #fbf9ee;
-        margin-bottom: 16px;
+        font-weight: 500;
+        margin-bottom: 0;
+        
     }
 
     p {
@@ -41,7 +43,7 @@
     }
 
     span {
-        color: #fd7854;
+        color: $clr1;
     }
 }
 
@@ -49,8 +51,10 @@
     text-align: center;
 
     h2 {
-        font-size: 40px;
-        font-family: "prata";
+        font-size: rem(45px);
+        margin-bottom: rem(48px);
+        font-weight: 500;
+        // font-family: "prata";
     }
 }
 
@@ -134,8 +138,8 @@
     }
 }
 
-.width-50 {
-    width: 50%;
+.width-40 {
+    width: 40%;
 }
 
 .tokyo-banner {
@@ -149,13 +153,15 @@
     background-image: url("https://res.cloudinary.com/orkofy/image/upload/v1600550880/eatso/3027583_hhubqy.jpg");
 
     h2 {
-        font-family: "prata";
         color: #fff;
-        font-size: 60px;
+        font-size: 38px;
         line-height: 0.8;
+        margin-bottom: 24px;
 
-        span {
-            color: #ffff57;
+    span {
+        font-family: 'japan';
+        letter-spacing: 0.05em;
+        font-size: 150px;
         }
     }
 

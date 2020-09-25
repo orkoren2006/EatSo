@@ -156,7 +156,7 @@ class _ExpDetails extends Component {
 
                 <h3>{exp.title}</h3>
 
-                <h5>A word about the experience</h5>
+                
                 <p>{exp.desc}</p>
                 <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
                     onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}

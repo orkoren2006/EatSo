@@ -15,4 +15,4 @@ export function ReviewPreview({ review }) {
     )
 }
 
-const StyledRating = withStyles({ iconFilled: { color: '#fd7854' } })(Rating);
+const StyledRating = withStyles({ iconFilled: { color: '$clr1' } })(Rating);

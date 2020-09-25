@@ -96,10 +96,10 @@ class _Home extends Component {
         </section>
 
         <section className="tokyo-banner flex justify-center align-center full">
-          <div className="width-50"></div>
+          <div className="width-40"></div>
           <div>
-            <h2> Eat real traditional</h2>
-            <h2> sushi in <span>Tokyo</span></h2>
+            <h2> Eat real traditional sushi in</h2>
+            <h2><span>Tokyo</span></h2>
             <Button className="sushi-button" variant="contained" color="secondary">Show More</Button>
           </div>
         </section>
