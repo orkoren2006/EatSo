@@ -81,6 +81,16 @@ ul {
     font-weight: 700;
     margin: 5px;
     padding: 5px;
+    // z-index: 2;
+    position: absolute;
+    align-self: flex-end;
+}
+
+.price-in-image {
+    background-color: white;
+    font-weight: 700;
+    margin: 5px;
+    padding: 5px;
     z-index: 2;
     position: absolute;
     align-self: flex-end;

@@ -10,7 +10,26 @@
         box-shadow: 0 0 4px 0px #6d6d6d;
         margin-bottom: 5px;
         position: relative;
+        flex: 1;
+        
+        box-shadow: none;
+        
+        .exp-booking{
+            width: 100%;
+             padding: 24px;
 
+            button{
+                 height: 48px;
+                 font-weight: 700;
+                 font-size:12px;
+                 letter-spacing: 0.3em;
+                background-color: #FFBB00;
+                color: #402F00;
+                text-transform: uppercase;
+                
+
+                }
+        }
         
         .exp-details {
             width: 65%;

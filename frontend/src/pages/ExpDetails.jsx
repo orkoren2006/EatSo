@@ -13,7 +13,7 @@ import { loadExps, saveExp } from '../store/actions/expAction';
 import { ExpGallery } from '../cmps/ExpGallery';
 import ExpContent from '../cmps/ExpContent';
 import { ExpChat } from '../cmps/ExpChat';
-import {bookingService} from '../services/bookingService';
+import { bookingService } from '../services/bookingService';
 import { loadBookings, saveBooking } from '../store/actions/bookingAction';
 import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';
@@ -32,7 +32,7 @@ class _ExpDetails extends Component {
             rate: 5
         },
         numOfGuests: 1
-    
+
     }
     async componentDidMount() {
         const id = this.props.match.params.id;
@@ -122,8 +122,8 @@ class _ExpDetails extends Component {
         this.props.saveExp(exp);
         this.toggleAddReviewShown();
     }
-    
-  
+
+
     render() {
         const { exp, review, isModalShown, isAddReviewShown, numOfGuests } = this.state;
         const { user } = this.props;
@@ -145,23 +145,29 @@ class _ExpDetails extends Component {
                 </div>
 
                 <ExpGallery imgUrls={exp.imgUrls} />
+                <section className="flex">
+                    <div className ="flex column flex-2">
                 <div className="exp-details-host-avatar align-center flex ">
-                        <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
-                            <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
-                        </Image>
-                        <h6>Hosted by <Link className="owner" to={`exp/owner._id/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
+                    <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
+                        <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
+                    </Image>
+                    <h6>Hosted by <Link className="owner" to={`exp/owner._id/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
+                </div>
+
+                <h3>{exp.title}</h3>
+
+                <h5>A word about the experience</h5>
+                <p>{exp.desc}</p>
+                <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                    onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
+                    isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
                     </div>
                     
-                    <h3>{exp.title}</h3>
-
-                    <h5>A word about the experience</h5>
-                    <p>{exp.desc}</p>
-                    <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                     <ExpContent user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
                     onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
-                    isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange}/>
-                {/* <ExpContent user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
-                    onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
-                    isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} /> */}
+                    isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+                    
+                </section>
                 <div className="google-maps flex space-between">
                     <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
                     {user && <ExpChat username={user.username} expId={exp._id} />}

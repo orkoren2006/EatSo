@@ -6,7 +6,7 @@ import { ExpRate } from './ExpRate'
 function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, bookings, user, ...props }) {
     const isAlreadyBooked = user && bookings.find(booking => booking.guest._id === user._id && booking.exp.schedule.at > Date.now() && booking.exp._id === exp._id)
     const className = isAlreadyBooked ? 'disable' : ''
-    const txtBtn = isAlreadyBooked ? 'You\'re already booked to this experience' : 'Book!';
+    const txtBtn = isAlreadyBooked ? 'You\'re already booked to this experience' : 'Save your spot now';
 
     return ((!user || (user && exp.owner._id !== user._id)) &&
         <section className="exp-booking">
