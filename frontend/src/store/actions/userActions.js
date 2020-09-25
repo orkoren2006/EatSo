@@ -33,6 +33,10 @@ export function login(userCreds) {
     try {
       const user = await userService.login(userCreds);
       dispatch({ type: 'SET_USER', user });
+      dispatch({ type: 'SEND_NOTIFICATION', notification: 'Login succsessfully' });
+      setTimeout(() => {
+        dispatch({ type: 'CLEAR_NOTIFICATION' })
+    }, 1500);
     } catch (err) {
       console.log('UserActions: err in Login', err);
       throw Error(err);
@@ -49,5 +53,9 @@ export function logout() {
   return async dispatch => {
     await userService.logout();
     dispatch({ type: 'LOGOUT' });
+    dispatch({ type: 'SEND_NOTIFICATION', notification: `Logout succsessfully \nHope to see you soon` });
+      setTimeout(() => {
+        dispatch({ type: 'CLEAR_NOTIFICATION' })
+    }, 1500);
   };
 }

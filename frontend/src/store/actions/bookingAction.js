@@ -1,61 +1,56 @@
-import bookingService from '../../services/bookingService';
+import {bookingService} from '../../services/bookingService';
 import { loading, doneLoading } from './systemActions';
 
 // THUNK
 export function loadBookings(filterBy) {
   return async dispatch => {
     try {
-      // example for loading
       dispatch(loading);
-      const bookings = await bookingService.getBookings(filterBy);
+      const bookings = await bookingService.query(filterBy);      
       dispatch({ type: 'SET_BOOKINGS', bookings });
     } catch (err) {
       console.log('BookingActions: err in loadBookings', err);
-      // example for routing - after changing the store
-      // history.push('/some/path');
     } finally {
       dispatch(doneLoading);
     }
   };
 
 }
-export function getById(bookingId) {
-  return async dispatch => {
-    try {
-      // example for loading
-      dispatch(loading);
-      const booking = await bookingService.getById(bookingId);
-      dispatch({ type: 'SET_BOOKING', booking });
-    } catch (err) {
-      console.log('BookingActions: err in loadBookings', err);
-      // example for routing - after changing the store
-      // history.push('/some/path');
-    } finally {
-      dispatch(doneLoading);
-    }
-  };
-}
+
 // THUNK
 export function removeBooking(bookingId) {
   return async dispatch => {
     try {
       await bookingService.remove(bookingId);
-      dispatch({ type: 'BOOKING_REMOVE', bookingId });
+      dispatch({ type: 'REMOVE_BOOKING', bookingId });
     } catch (err) {
       console.log('BookingActions: err in removeBooking', err);
     }
   };
 }
 
-export function saveBooking(booking) {
+export function saveBooking(_booking) {
+  const type = _booking._id ? 'EDIT_BOOKING' : 'ADD_BOOKING'
   return async dispatch => {
     try {
-      const bookingObj = await bookingService.save(booking);
-      dispatch({ type: 'SAVE_BOOKING', booking: bookingObj.booking, isNew: bookingObj.isNew })
-
+      const booking = await bookingService.save(_booking);
+      dispatch({ type, booking})
     } catch (err) {
       console.log('BookingsActions: err in SaveBooking', err);
     }
   };
 }
 
+// export function getById(bookingId) {
+//   return async dispatch => {
+//     try {
+//       dispatch(loading);
+//       const booking = await bookingService.getById(bookingId);
+//       dispatch({ type: 'SET_BOOKING', booking });
+//     } catch (err) {
+//       console.log('BookingActions: err in loadBookings', err);
+//     } finally {
+//       dispatch(doneLoading);
+//     }
+//   };
+// }

@@ -10,10 +10,10 @@ import { ExpDetails } from './pages/ExpDetails.jsx';
 import { ExpEdit } from './pages/ExpEdit.jsx';
 import { Header } from './cmps/Header.jsx';
 import { Footer } from './cmps/Footer.jsx';
+import { Notification } from './cmps/Notification';
 import { HostDetails } from './pages/HostDetails.jsx';
 import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
-
 
 export class App extends Component {
   componentDidMount() {
@@ -28,6 +28,7 @@ export class App extends Component {
       <div className="app main-container">
         <Router>
           <Header />
+          <Notification />
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/exp/edit/:id?" component={ExpEdit} exact />

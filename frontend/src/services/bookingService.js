@@ -1,11 +1,10 @@
 
-import storageService from './asyncStorageService'
-import { expService } from './expService';
+
 import { httpService } from './httpService'
 
 
-const bookingService = {
-    getBookings,
+export const bookingService = {
+    query,
     getById,
     remove,
     update,
@@ -13,42 +12,31 @@ const bookingService = {
     save
 }
 
-window.bookingService = bookingService;
-export default bookingService;
 
-async function getBookings(filterBy = {}) {
+async function query(filterBy = {}) {
     const bookings = await httpService.get('booking')
     let bookingsToReturn = bookings;
-
     if (Object.keys(filterBy).length) bookingsToReturn = _getBookings(bookings, filterBy)
     return bookingsToReturn;
-    // return storageService.query('booking')
 }
 
 function getById(bookingId) {
-    // return httpService.get(`booking/${bookingId}`)
-    return storageService.get('booking', bookingId)
+    return httpService.get(`booking/${bookingId}`)
 }
 function remove(bookingId) {
-    // return httpService.delete(`booking/${bookingId}`)
-    return storageService.remove('booking', bookingId)
+    return httpService.delete(`booking/${bookingId}`)
 }
 
 function update(booking) {
-    return storageService.put('booking', booking)
-    // return httpService.put(`booking/${booking._id}`, booking)
+    return httpService.put(`booking/${booking._id}`, booking)
 }
 
-async function save(booking) {
+function save(booking) {
     if (booking._id) {
         booking.updatedAt = Date.now();
-        // return httpService.put(`booking/${booking._id}`, booking)
-        const updateBooking = await httpService.put(`booking/${booking._id}`, booking)
-        return { booking: updateBooking, isNew: false }
-    } else {
-        
-        const updateBooking = await httpService.post('booking', booking)
-        return { booking: updateBooking, isNew: true }
+        return httpService.put(`booking/${booking._id}`, booking)
+    } else { 
+        return httpService.post('booking', booking)
     }
 }
 

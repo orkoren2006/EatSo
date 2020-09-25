@@ -13,7 +13,7 @@ import { loadExps, saveExp } from '../store/actions/expAction';
 import { ExpGallery } from '../cmps/ExpGallery';
 import ExpContent from '../cmps/ExpContent';
 import { ExpChat } from '../cmps/ExpChat';
-import bookingService from '../services/bookingService';
+import {bookingService} from '../services/bookingService';
 import { loadBookings, saveBooking } from '../store/actions/bookingAction';
 import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';

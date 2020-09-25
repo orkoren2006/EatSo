@@ -8,7 +8,7 @@ export class _ExpFilter extends Component {
 
     state = {
         freeTxt: '',
-        schedule: { at: Date.now() },
+        'schedule.at': '',
         capacity: '',
     }
 
@@ -29,10 +29,7 @@ export class _ExpFilter extends Component {
             this.setState(prevState => {
                 return {
                     ...prevState,
-                    schedule: {
-                        ...prevState.schedule,
-                        [field]: Date.parse(value)
-                    }
+                    'schedule.at': Date.parse(value)
                 }
             })
         }
@@ -47,6 +44,7 @@ export class _ExpFilter extends Component {
         console.log(this.state);
         await this.props.loadExps(this.state)
         console.log(this.props.exps);
+        // this.props.history.push('/exp/edit')
     }
 
     render() {
