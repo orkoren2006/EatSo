@@ -12,13 +12,12 @@ module.exports = {
 }
 
 async function query(filterBy = {}) {
-
+    let exps;
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('exp')
     try {
-        const exps = await collection.find(criteria).toArray();
-        // console.log('after find my exps', exps);
-        // exps.forEach(exp => delete exp.password);
+        if (criteria.length) exps = await collection.find({ $and: criteria }).toArray();
+        else exps = await collection.find().toArray();
         return exps
     } catch (err) {
         console.log('ERROR: cannot find exps')
@@ -65,7 +64,7 @@ async function update(exp) {
 async function add(exp) {
     exp._id = ObjectId(exp._id);
     exp.owner._id = ObjectId(exp.owner._id)
-    console.log('add-service',exp.name);
+    console.log('add-service', exp.name);
     const collection = await dbService.getCollection('exp')
     try {
         await collection.insertOne(exp);
@@ -77,20 +76,62 @@ async function add(exp) {
 }
 
 function _buildCriteria(filterBy) {
-    const criteria = {};
-    if (filterBy['owner._id']) filterBy['owner._id'] = ObjectId(filterBy['owner._id'])
-    if (filterBy['participants._id']) filterBy['participants._id'] = ObjectId(filterBy['participants._id'])
-    
-    // console.log(filterBy);
+    // const criteria = {};
+    const criteriaArr = [];
+    let criteriaToReturn = [];
+
+    // for free text search - find in 'name' OR 'city' OR 'tags'
+    if (filterBy['freeTxt']) {
+        const value = filterBy['freeTxt'];
+        freeTxtFilter = {};
+        freeTxtFilter.name = value;
+        freeTxtFilter['location.city'] = new RegExp(`${value}`, 'i')
+        freeTxtFilter.tags = value
+
+        for (const filterType in freeTxtFilter) {
+            if (freeTxtFilter[filterType]) {
+                criteriaArr.push({ [filterType]: freeTxtFilter[filterType] })
+            }
+        }
+        criteriaToReturn.push({ '$or': criteriaArr })
+        filterBy['freeTxt'] = ''
+    }
+
+    if (filterBy['capacity']) {
+        filterBy['capacity.max'] = { $gt: +filterBy['capacity'] }
+        filterBy['capacity.min'] = { $lt: +filterBy['capacity'] }
+        filterBy['capacity'] = '';
+    }
+
+    if (filterBy['schedule.at']) {
+        const scheduleInMs = +filterBy['schedule.at'];
+        filterBy['schedule.at'] = { $gte: scheduleInMs }
+        criteriaToReturn.push({ 'schedule.at': { $gte: (scheduleInMs - 1000*60*60*3) } }, { 'schedule.at': { $lt: (scheduleInMs + 1000 * 60 * 60 * 21) } })
+        filterBy['schedule.at'] = '';
+    }
+
     for (const filterType in filterBy) {
+        switch (filterType) {
+            case 'owner._id':
+                filterBy['owner._id'] = ObjectId(filterBy['owner._id'])
+                break;
+            case 'participants._id':
+                filterBy['participants._id'] = ObjectId(filterBy['participants._id'])
+                break;
+            case 'name':
+                filterBy['name'] = new RegExp(`${filterBy.name}`, 'i')
+                break;
+            case 'location.city':
+                filterBy['location.city'] = new RegExp(`${filterBy['location.city']}`, 'i')
+                break;
+
+            default:
+                break;
+        }
+
         if (filterBy[filterType]) {
-            criteria[filterType] = (filterType === 'name') ?
-                new RegExp(`${filterBy.name}`, 'i') : filterBy[filterType]
+            criteriaToReturn.push({ [filterType]: filterBy[filterType] })
         }
     }
-    // if (filterBy.expName) {
-    //     criteria.expName =  new RegExp(`${filterBy.expName}`, 'i') 
-    // }
-    // console.log('criteria myexp', criteria);
-    return criteria;
+    return criteriaToReturn;
 }
