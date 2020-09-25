@@ -11,12 +11,12 @@ module.exports = {
     add
 }
 
-async function query(filterBy = {}) {
+async function query(filterBy = {},numOfExps = 0) {
     let exps;
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('exp')
     try {
-        if (criteria.length) exps = await collection.find({ $and: criteria }).toArray();
+        if (criteria.length) exps = await collection.find({ $and: criteria }).limit(numOfExps).toArray();
         else exps = await collection.find().toArray();
         return exps
     } catch (err) {

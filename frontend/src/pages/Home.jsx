@@ -45,7 +45,7 @@ class _Home extends Component {
       default:
         break;
     }
-
+    expsToSend = expsToSend.splice(0,4)
     return expsToSend;
   }
 
@@ -59,7 +59,6 @@ class _Home extends Component {
 
   render() {
     const { exps } = this.props
-    // console.log(this.state.userBooking);
     if (!exps) return <div>Load</div>
     return (
       <section className="home full main-container ">
