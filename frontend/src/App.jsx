@@ -14,15 +14,28 @@ import { Notification } from './cmps/Notification';
 import { HostDetails } from './pages/HostDetails.jsx';
 import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
+import { clearNotification, sendNotification } from './store/actions/systemActions.js';
+import { connect } from 'react-redux';
 
-export class App extends Component {
+class _App extends Component {
   componentDidMount() {
     socketService.setup();
+    socketService.on('booking status msg', this.onBookingStatusChange);
+    console.log(this.props);
+
   }
   componentWillUnmount() {
+    socketService.off('booking status msg', this.onBookingStatusChange);
     socketService.terminate();
   }
-  
+
+  onBookingStatusChange = (booking) => {
+    console.log('onBookingStatusChange in App.jsx');
+    const msg = `booking ${booking._id} ${booking.status}\nCheck it in your private zone`
+    this.props.sendNotification(msg);
+    setTimeout(this.props.clearNotification, 3000) ;
+  }
+
   render() {
     return (
       <div className="app main-container">
@@ -47,3 +60,16 @@ export class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+
+  };
+};
+
+const mapDispatchToProps = {
+  sendNotification,
+  clearNotification
+};
+
+export const App = connect(mapStateToProps, mapDispatchToProps)(_App);
