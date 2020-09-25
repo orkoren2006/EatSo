@@ -17,12 +17,17 @@ export function ExpPreview(props) {
                 <section className="exp-card-cont flex">
                     <Image className="img-in-div" cloudName="orkofy" publicId={exp.imgUrls[0]} type="fetch">
                     </Image>
-                    <div className="div-in-image">${exp.price}</div>
+                    {/* <div className="div-in-image">${exp.price}</div> */}
+                    <div className="price-in-image"><ExpRate reviews={exp.reviews} /></div>
                 </section>
                 <section className="exp-card-desc">
+                    <div className="flex space-between">
                     <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
+                    <h5>${exp.price}</h5>
+                    </div>
                     <h3>{exp.name}</h3>
-                    <ExpRate reviews={exp.reviews} />
+                    <h4>{exp.title}</h4>
+                    
 
                 </section>
             </Link>

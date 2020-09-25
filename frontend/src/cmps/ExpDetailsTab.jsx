@@ -46,9 +46,6 @@ export function ExpDetailsTab({ user, exp, numOfGuests, onNumOfGuestsChange, tog
                 <TabPanel value="3"><ExpParticipantsList participants={exp.participants} /></TabPanel>
             </TabContext>
         </div>
-        <div>
-        <ExpBooking exp={exp} onBookClick={onBookClick} numOfGuests={numOfGuests} onNumOfGuestsChange={onNumOfGuestsChange} />
-        </div>
         </section>
     );
 }

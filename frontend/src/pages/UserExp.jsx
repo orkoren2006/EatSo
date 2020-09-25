@@ -36,9 +36,9 @@ class _UserExp extends Component {
         const toApproveBookings = this.props.bookings.filter(booking => booking.status === 'pending' && booking.exp.owner._id === this.props.user._id)
         this.setState({ toApproveBookings })
     }
-    
+
     async componentDidUpdate(prevProps, prevState) {
-        
+
         if (prevProps === this.props) return
         const expAs = this.props.match.params.as; // gets 'owner' OR 'participants' - from url
         this.setState({ isHost: (expAs === 'owner') }, () => this.getExpsList())
@@ -48,19 +48,19 @@ class _UserExp extends Component {
 
     componentWillUnmount() {
         socketService.off('new booking', this.newBookNotification)
-        
+
     }
 
 
     newBookNotification = (booking) => {
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA', booking);
         this.props.loadBookings()
     }
 
-     onChangeStatusBooking = async (bookingId, newStatus) => {
+    onChangeStatusBooking = async (bookingId, newStatus) => {
         const booking = await bookingService.getById(bookingId);
         booking.status = newStatus;
         this.props.saveBooking(booking)
+        socketService.emit('booking status change',  booking )
     }
 
     async _getUserExps(expAs) {
