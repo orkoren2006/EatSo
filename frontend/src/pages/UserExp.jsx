@@ -49,6 +49,7 @@ class _UserExp extends Component {
     }
 
     async _getUserExps(expAs) {
+        console.log('getUserExp',expAs);
         const userExps = await expService.getExps({ [`${expAs}._id`]: this.props.user._id })
         this.setState({ userExps })
     }
