@@ -1,7 +1,5 @@
-
 ul {
     padding-inline-start: 0;
-
 }
 
 .exp-card {
@@ -22,14 +20,14 @@ ul {
     }
 
     a {
-        color          : inherit;
+        color: inherit;
         text-decoration: none;
     }
 
-  h3 {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-  }
+    h3 {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 // .exp-card:hover {
@@ -38,10 +36,8 @@ ul {
 
 .exp-card-cont {
     justify-content: flex-end;
-    overflow       : hidden;
-        // border-radius: 8px 8px 0 0;
-        
-    
+    overflow: hidden;
+    // border-radius: 8px 8px 0 0;
 }
 
 .exp-card-desc {
@@ -53,16 +49,16 @@ ul {
 }
 
 .exp-card-desc:after {
-    content: ""; /* This is necessary for the pseudo element to work. */ 
+    content: ""; /* This is necessary for the pseudo element to work. */
     display: block; /* This will put the pseudo element on its own line. */
     margin: 0 auto; /* This will center the border. */
     width: 95%; /* Change this to whatever width you want. */
     padding-top: 20px; /* This creates some space between the element and the border. */
-    border-bottom: 0.2px solid  lightgray; /* This creates the border. Replace black with whatever color you want. */
+    border-bottom: 0.2px solid lightgray; /* This creates the border. Replace black with whatever color you want. */
 }
 
 .img-in-div {
-    z-index : 1;
+    z-index: 1;
     position: relative;
     height: 200px;
     object-fit: cover;
@@ -82,15 +78,13 @@ ul {
 
 .div-in-image {
     background-color: white;
-    font-weight     : 700;
-    margin          : 5px;
-    padding         : 5px;
-    z-index         : 2;
-    position        : absolute;
-    align-self      : flex-end;
+    font-weight: 700;
+    margin: 5px;
+    padding: 5px;
+    z-index: 2;
+    position: absolute;
+    align-self: flex-end;
 }
-
-
 
 .preview-avatar {
     // vertical-align: middle;
@@ -99,15 +93,14 @@ ul {
     // border-radius: 50%;
 }
 
-
 .host-preview {
     padding-top: 6px;
-    img, p {
+    img,
+    p {
         padding-left: 6px;
-        padding-bottom: 6px;
+        padding-bottom: 0px;
     }
 }
-
 
 @media (max-width: 580px) {
     .grid-container {
@@ -115,5 +108,5 @@ ul {
         margin-top: 10px;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      }
+    }
 }

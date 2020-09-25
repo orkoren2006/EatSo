@@ -9,6 +9,7 @@ import { ExpApp } from './pages/ExpApp.jsx';
 import { ExpDetails } from './pages/ExpDetails.jsx';
 import { ExpEdit } from './pages/ExpEdit.jsx';
 import { Header } from './cmps/Header.jsx';
+import { Footer } from './cmps/Footer.jsx';
 import { HostDetails } from './pages/HostDetails.jsx';
 import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
@@ -38,6 +39,7 @@ export class App extends Component {
             <Route path="/about" component={About} exact />
             <Route path="/login" component={LoginSignup} exact />
           </Switch>
+          <Footer />
         </Router>
       </div>
 

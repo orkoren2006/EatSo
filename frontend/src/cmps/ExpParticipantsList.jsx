@@ -3,7 +3,7 @@ import { Image, Transformation } from 'cloudinary-react';
 
 export function ExpParticipantsList({ participants }) {
     return (
-        <div>
+        <div className="parts-list">
             <h4>Your Experience Friends</h4>
             {/* <ul> */}
             {participants.map(part => {

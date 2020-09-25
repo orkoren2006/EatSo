@@ -10,9 +10,10 @@
         box-shadow: 0 0 4px 0px #6d6d6d;
         margin-bottom: 5px;
         position: relative;
+
         
         .exp-details {
-            width: 60%;
+            width: 65%;
             .owner {
                 color:  #fd7854;
                 text-decoration: none;
@@ -37,4 +38,27 @@
     li {
         margin-left: 15px;
     }
+}
+
+.exp-title-location {
+    h6 {
+        margin-bottom: 0;
+        margin-left: 16px;
+    }
+}
+
+.exp-details-host-avatar {
+    padding-bottom: 8px;
+    h6 {
+        margin-bottom: 0;
+        margin-left: 12px;
+    }
+} 
+
+.parts-list {
+    margin-top: 10px;
+}
+
+.add-review-text {
+    width: 50%;
 }

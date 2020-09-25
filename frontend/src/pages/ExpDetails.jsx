@@ -15,6 +15,9 @@ import { ExpChat } from '../cmps/ExpChat';
 import bookingService from '../services/bookingService';
 import { loadBookings, saveBooking } from '../store/actions/bookingAction';
 import { socketService } from '../services/socketService';
+import { Image, Transformation } from 'cloudinary-react';
+import { Link } from 'react-router-dom';
+
 class _ExpDetails extends Component {
 
     state = {
@@ -45,7 +48,7 @@ class _ExpDetails extends Component {
     }
 
     componentWillUnmount() {
-        
+
         // socketService.terminate();
     }
 
@@ -69,7 +72,7 @@ class _ExpDetails extends Component {
         // TODO: booked successfully, please wait to host for approving
         // DONE? make sense?: re-render the exp-booking section
         await this.props.loadBookings();
-        socketService.emit('booking exp', {booking, ownerId: exp.owner._id})
+        socketService.emit('booking exp', { booking, ownerId: exp.owner._id })
     }
 
     onCloseModal = () => {
@@ -126,15 +129,23 @@ class _ExpDetails extends Component {
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
                     {<LoginSignup onCloseModal={this.onCloseModal} />}
                 </Modal>
-                <h2>{exp.name}</h2>
-                <ExpRate reviews={exp.reviews} />
+                <div className="exp-title flex column">
+                    <div className="exp-title-name">
+                        <h2>{exp.name}</h2>
+                    </div>
+                    <div className="exp-title-location flex align-base">
+                        <ExpRate reviews={exp.reviews} />
+                        <h6>{exp.location.city} &gt; </h6>
+                    </div>
+                </div>
+
                 <ExpGallery imgUrls={exp.imgUrls} />
-                <ExpContent exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                <ExpContent user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
                     onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
                     isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
                 <div className="google-maps flex space-between">
                     <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
-                    {user && <ExpChat username={user.username} expId={exp._id}/>}
+                    {user && <ExpChat username={user.username} expId={exp._id} />}
                 </div>
             </div>
         )

@@ -28,6 +28,9 @@
     &.justify-start {
         justify-content: flex-start;
     }
+    &.justify-end {
+        justify-content: flex-end;
+    }
     &.align-center {
         align-items: center;
     }
@@ -37,6 +40,9 @@
     &.align-start {
         align-items: flex-start;
     }
+    &.align-base {
+        align-items: baseline;
+    }
     &.space-between {
         justify-content: space-between;
     }
@@ -45,6 +51,12 @@
     }
     &.space-around {
         justify-content: space-around;
+    }
+    &.align-content-center {
+        align-content: center;
+    }
+    &.align-content-end {
+        align-content: end;
     }
 
 }

@@ -61,7 +61,7 @@ export class ExpChat extends Component {
     render() {
         return (
             <div className="exp-chat">
-                <h1>Exp's Chat</h1>
+                <h2>Tell us</h2>
                 <h2>What's on your Plate?</h2>
                 {/* <h2>Lets Chat About {exp.name}</h2> */}
                 {(this.state.typing.user &&
