@@ -175,7 +175,11 @@ class _LoginSignup extends Component {
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
+<<<<<<< HEAD
         <ExpFilter />
+=======
+        <ExpFilter/>
+>>>>>>> 3e1f484220c68d87db6d9d284cba6a24b8cb264f
       </div>
     );
   }
