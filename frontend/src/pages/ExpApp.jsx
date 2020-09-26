@@ -6,8 +6,14 @@ import { ExpList } from '../cmps/ExpList';
 class _ExpApp extends Component {
 
     async componentDidMount() {
-        let filterBy;
-        if (this.props.match.params.field) {filterBy = {[this.props.match.params.field]:this.props.match.params.value}}
+
+        let filterBy = {};
+        const qParams = new URLSearchParams(this.props.location.search)
+        // if (this.props.match.params.field) {filterBy = {[this.props.match.params.field]:this.props.match.params.value}}
+        for (const [key, value] of qParams.entries()) {
+            filterBy[key] = value;
+        }
+
         await this.props.loadExps(filterBy);
     }
 

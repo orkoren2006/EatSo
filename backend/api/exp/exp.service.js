@@ -83,9 +83,10 @@ function _buildCriteria(filterBy) {
     if (filterBy['freeTxt']) {
         const value = filterBy['freeTxt'];
         freeTxtFilter = {};
-        freeTxtFilter.name = value;
+        freeTxtFilter.name = new RegExp(`${value}`, 'i')
+        freeTxtFilter.title = new RegExp(`${value}`, 'i')
         freeTxtFilter['location.city'] = new RegExp(`${value}`, 'i')
-        freeTxtFilter.tags = value
+        freeTxtFilter.tags = new RegExp(`${value}`, 'i')
 
         for (const filterType in freeTxtFilter) {
             if (freeTxtFilter[filterType]) {
@@ -109,11 +110,16 @@ function _buildCriteria(filterBy) {
         filterBy['schedule.at'] = '';
     }
 
-    if (filterBy['price1'] || filterBy['price1']) {
-        const max = (filterBy.price1 > filterBy.price2) ? +filterBy.price1 : +filterBy.price2;
-        const min = (filterBy.price1 < filterBy.price2) ? +filterBy.price1 : +filterBy.price2;
+    if (filterBy['price1'] || filterBy['price2']) {
+        let price1 = +filterBy.price1;
+        let price2 = +filterBy.price2;
 
-        // const scheduleInMs = +filterBy['schedule.at'];
+        if (!price1 || !price2){
+            price1 = price1 || 0
+            price2 = price2 || Infinity
+        }
+        let max = (price1 > price2) ? price1 : price2;
+        let min = (price1 < price2) ? price1 : price2;
         criteriaToReturn.push({ 'price': { $gte: min } }, { 'price': { $lte: max } })
         filterBy['price1'] = '';
         filterBy['price2'] = '';
@@ -142,6 +148,7 @@ function _buildCriteria(filterBy) {
             criteriaToReturn.push({ [filterType]: filterBy[filterType] })
         }
     }
+    console.log(criteriaToReturn);
 
     return criteriaToReturn;
 }
