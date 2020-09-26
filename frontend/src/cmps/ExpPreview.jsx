@@ -38,7 +38,7 @@ export function ExpPreview(props) {
                 </Image>
 
                 
-                    <p>Hosted by <Link to={`/exp/owner._id/${exp.owner._id}`}><span>{exp.owner.fullName}</span></Link></p>&nbsp;
+                    <p>Hosted by <Link to={`/host/${exp.owner._id}`}><span>{exp.owner.fullName}</span></Link></p>&nbsp;
                 
             </section>
 

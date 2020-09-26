@@ -11,7 +11,8 @@ module.exports = {
     add
 }
 
-async function query(filterBy = {},numOfExps = 0) {
+async function query(filterBy = {}, numOfExps = 0) {
+
     let exps;
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('exp')
@@ -47,7 +48,6 @@ async function remove(expId) {
 }
 
 async function update(exp) {
-    console.log('update');
     const collection = await dbService.getCollection('exp')
     exp._id = ObjectId(exp._id);
     exp.owner._id = ObjectId(exp.owner._id)
@@ -79,7 +79,6 @@ function _buildCriteria(filterBy) {
     // const criteria = {};
     const criteriaArr = [];
     let criteriaToReturn = [];
-
     // for free text search - find in 'name' OR 'city' OR 'tags'
     if (filterBy['freeTxt']) {
         const value = filterBy['freeTxt'];
@@ -106,8 +105,18 @@ function _buildCriteria(filterBy) {
     if (filterBy['schedule.at']) {
         const scheduleInMs = +filterBy['schedule.at'];
         filterBy['schedule.at'] = { $gte: scheduleInMs }
-        criteriaToReturn.push({ 'schedule.at': { $gte: (scheduleInMs - 1000*60*60*3) } }, { 'schedule.at': { $lt: (scheduleInMs + 1000 * 60 * 60 * 21) } })
+        criteriaToReturn.push({ 'schedule.at': { $gte: (scheduleInMs - 1000 * 60 * 60 * 3) } }, { 'schedule.at': { $lt: (scheduleInMs + 1000 * 60 * 60 * 21) } })
         filterBy['schedule.at'] = '';
+    }
+
+    if (filterBy['price1'] || filterBy['price1']) {
+        const max = (filterBy.price1 > filterBy.price2) ? +filterBy.price1 : +filterBy.price2;
+        const min = (filterBy.price1 < filterBy.price2) ? +filterBy.price1 : +filterBy.price2;
+
+        // const scheduleInMs = +filterBy['schedule.at'];
+        criteriaToReturn.push({ 'price': { $gte: min } }, { 'price': { $lte: max } })
+        filterBy['price1'] = '';
+        filterBy['price2'] = '';
     }
 
     for (const filterType in filterBy) {
@@ -133,5 +142,6 @@ function _buildCriteria(filterBy) {
             criteriaToReturn.push({ [filterType]: filterBy[filterType] })
         }
     }
+
     return criteriaToReturn;
 }

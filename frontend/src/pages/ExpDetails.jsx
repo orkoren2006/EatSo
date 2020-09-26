@@ -151,7 +151,7 @@ class _ExpDetails extends Component {
                     <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                     </Image>
-                    <h6>Hosted by <Link className="owner" to={`exp/owner._id/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
+                    <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
                 </div>
 
                 <h3>{exp.title}</h3>

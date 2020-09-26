@@ -12,7 +12,6 @@ export const expService = {
 }
 
 async function getExps(filterBy = {}) {
-
     let URL = 'exp';
     if (Object.keys(filterBy)[0] == "owner._id" || Object.keys(filterBy)[0] == "participants._id") {
         URL = 'myexp'

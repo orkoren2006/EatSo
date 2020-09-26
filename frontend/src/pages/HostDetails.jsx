@@ -15,26 +15,23 @@ class _HostDetails extends Component {
     }
 
     async componentDidMount() {
-        const id = this.props.match.params.id;
-        const host = await hostService.getById(id);
+        const hostId = this.props.match.params.id;
+        const host = await hostService.getById(hostId);
         if (!host) return;
         this.setState({ host })
-        // await this.props.loadExps() //it seems a bit crooked, should it be like this ???
-        // const exps = this.props.exps.filter(exp => exp.owner._id === id)
-        const exps = await this.props.loadExps() //it seems a bit crooked, should it be like this ???
-        // const exps = this.props.exps.filter(exp => exp.owner._id === id)
-        this.setState({ exps })
+        await this.props.loadExps({ 'owner._id': hostId })
     }
 
     render() {
-        const { host, exps } = this.state;
+        const { host } = this.state;
+        const { exps } = this.props;
         if (!host) return <div>Loading...</div>
         if (!exps) return <div>Loading...</div>
         return (
 
-                <section>
-                    {exps.map(exp => <HostList key={exp._id} exp={exp} host={host} />)}
-                </section>
+            <section>
+                {exps.map(exp => <HostList key={exp._id} exp={exp} host={host} />)}
+            </section>
         )
     }
 }

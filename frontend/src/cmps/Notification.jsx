@@ -5,12 +5,24 @@ import { clearNotification } from '../store/actions/systemActions.js'
 
 export class _Notification extends Component {
 
+    getClass = (notification) => {
+        const notificationVisibility = (notification) ? 'visible' : 'hidden'
+        if (notification.isSuccessed) {
+            const notificationType = (notification.isSuccessed) ? 'successed' : 'failed'
+        }
+        return `user-msg ${notificationVisibility } ${notificationType || ''}`
+    }
+    getMsg = (notification) => {
+        const notificationMsg = (notification) ? notification.msg : ''
+        return notificationMsg
+    }
+
     render() {
         const notification = this.props.notification || ''
-        const notificationClass = (notification) ? 'visible' : 'hidden'
+
         return notification &&
-            <div className={`user-msg ${notificationClass}`} >
-                <pre>{notification}</pre>
+            <div className={this.getClass(notification)} >
+                <pre>{this.getMsg(notification)}</pre>
                 <button onClick={this.props.clearNotification}>Close</button>
             </div>
     }

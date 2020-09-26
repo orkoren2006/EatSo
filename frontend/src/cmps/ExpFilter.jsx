@@ -12,26 +12,38 @@ export class _ExpFilter extends Component {
         freeTxt: '',
         'schedule.at': '',
         capacity: '',
-        price: {
-            num1: 0,
-            num2: 250
-        }
+        price1: 0,
+        price2: ''
+        // price: {
+        //     num1: 0,
+        //     num2: 250
+        // }
     }
 
     componentDidMount(){
     }
 
     handleChange = (ev, newVal) => {
-        
-        console.log(newVal);
+    
         let field = ev.target.name
         let value = ev.target.value
-        if (newVal) {
-            field = 'price';
-            value = newVal;
+
+        switch (field) {
+            case 'schedule.at':
+                value = Date.parse(value)
+                break;
+            default:
+                break;
         }
 
-        if (ev.target && ev.target.name !== "at") {
+        // for UI slider - should check it again
+        // console.log(value);
+        // if (newVal) {
+        //     field = 'price';
+        //     value = newVal;
+        // }
+
+        if (ev.target) {
             field = ev.target.name
             value = ev.target.value
             this.setState(prevState => {
@@ -39,16 +51,19 @@ export class _ExpFilter extends Component {
                     ...prevState,
                     [field]: value
                 }
-            }, ()=>console.log(this.state))
+            })
         } 
-        // else {
-        //     this.setState(prevState => {
-        //         return {
-        //             ...prevState,
-        //             'schedule.at': Date.parse(value)
-        //         }
-        //     })
-        // }
+        else {
+            this.setState(prevState => {
+                return {
+                    ...prevState,
+                    'price': {
+                        ...prevState.price,
+                        [field]: value
+                    }
+                }
+            })
+        }
     }
 
     getTimeDate() {
@@ -82,7 +97,7 @@ export class _ExpFilter extends Component {
                         id="schedule"
                         label="Select a date"
                         type="date"
-                        name="at"
+                        name="schedule.at"
                         placeholder="Placeholder"
                         onChange={this.handleChange}
                         InputLabelProps={{
@@ -99,11 +114,11 @@ export class _ExpFilter extends Component {
                         }}
                         onChange={this.handleChange}
                     />
-                    <input type="number" id="price" name="price.num1" min="0" max="1000"
-                        value={this.state.price.num1}
+                    <input type="number" id="price" name="price1" min="0" max="1000"
+                        value={this.state.price1} placeholder="min"
                         onChange={(ev) => this.handleChange(ev)} />
-                    <input type="number" id="price" name="price.num2" min="0" max="1000"
-                        value={this.state.price.num2}
+                    <input type="number" id="price" name="price2" min="0" max="1000"
+                        value={this.state.price2} placeholder="max"
                         onChange={(ev) => this.handleChange(ev)} />
 
                     {/* <Slider
