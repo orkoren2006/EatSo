@@ -149,8 +149,8 @@ class _ExpDetails extends Component {
                 </div>
 
                 <ExpGallery imgUrls={exp.imgUrls} />
-                <section className="flex">
-                    <div className="flex column flex-2">
+                <section className="flex ">
+                    <div className="flex column flex-2 exp-opening">
                         <div className="exp-details-host-avatar align-center flex space-between ">
                             <div>
                             <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
@@ -159,7 +159,7 @@ class _ExpDetails extends Component {
                             <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
                             </div>
                         
-                        <section className="flex exps-icons">
+                        <section className="grid-icons exps-icons">
                             <div className="flex column align-center">
                                 <div className="flex">
                             <FontAwesomeIcon className="male-icon" icon={faMale} />

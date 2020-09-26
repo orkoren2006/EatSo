@@ -77,7 +77,7 @@ class _Home extends Component {
         <HomeCardList />
 
         <section className="home-category flex column space-between">
-          <section className="preview-header flex ">
+          <section className="preview-header flex space-between align-start">
             <h2>Top Dinners in your Location</h2>
             <Button onClick={() => this.onShowAllBtn({ 'location.city': 'Tel-Aviv-Yafo' })}
               className="tel-aviv-button"><span> Show All &gt;</span></Button>
@@ -88,7 +88,7 @@ class _Home extends Component {
         </section>
 
         <section className="home-category flex column space-between">
-          <section className="preview-header flex">
+          <section className="preview-header flex space-between align-start">
             <h2>Top Traditional Cuisine</h2>
             <Button onClick={() => this.onShowAllBtn({ tags: 'traditional' })} className="traditional-button "><span> Show All  &gt;</span></Button>
           </section>
@@ -106,7 +106,7 @@ class _Home extends Component {
         </section>
 
         <section className="home-category flex column space-between">
-          <section className="preview-header flex">
+          <section className="preview-header flex space-between align-start">
             <h2>Top Outdoor Meals</h2>
             <Button onClick={() => this.onShowAllBtn({ tags: 'outdoor' })}
               className="outdoor-button"><span> Show All &gt;</span></Button>

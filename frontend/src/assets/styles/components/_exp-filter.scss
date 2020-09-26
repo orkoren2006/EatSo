@@ -1,13 +1,31 @@
 .exp-filter {
-    background-color: white;
-    max-width: 55%;
+    background-color: $clr6;
+    width: 850px;
     margin: 24px 0 0 0;
-    border-radius: 32px;
-    height: 65px;
+    border-radius: 40px;
+    height: 88px;
 
 .MuiInput-underline:before{
     width: 95%;
 }
+.MuiFormControl-root{
+    border-right: 1px solid lightgrey;
+    margin-left: 8px;
+}
 
+input#price{
+    margin-left:8px;
+}
+
+.MuiButton-containedPrimary{
+    margin-left: 16px;
+    border-radius: 50%;
+    padding: 24px 0;
+    background-color: $clr1;
+}
+.svg-inline--fa.fa-w-16{
+    color: #0C0409;
+    font-size: 18px;
+}
 
 }

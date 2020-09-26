@@ -1,8 +1,3 @@
-.home {
-    // height     : 100vh;
-    font-family: roboto;
-}
-
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
         url("https://res.cloudinary.com/orkofy/image/upload/v1600615140/eatso/hero-friends_r4vyhs.jpg");
@@ -22,7 +17,7 @@
     h1 {
         font-size: rem(90px);
         line-height: 1;
-        color: #fbf9ee;
+        color: $clr6;
         // font-family: "prata";
         margin-bottom: 24px;
     }
@@ -30,7 +25,7 @@
     h2 {
         font-size: rem(45px);
         // font-family: "prata";
-        color: #fbf9ee;
+        color: $clr6;
         font-weight: 500;
         margin-bottom: 0;
         
@@ -38,8 +33,8 @@
 
     p {
         font-size: rem(22px);
-        font-family: "roboto";
-        color: #fbf9ee;
+        
+        color: $clr6;
     }
 
     span {
@@ -48,12 +43,12 @@
 }
 
 .preview-header {
-    text-align: center;
+    // justify-content: space-between;
 
     h2 {
         font-size: rem(45px);
-        margin-bottom: rem(48px);
-        font-weight: 500;
+        margin-bottom: rem(56px);
+        font-weight: 600;
         // font-family: "prata";
     }
 }
@@ -64,9 +59,7 @@
 }
 
 .preview-cards {
-    // margin-top: 8px;
-    // height       : 35vh;
-    // margin-bottom: 360px !important;
+  
 
     a {
         color: inherit;
@@ -74,16 +67,16 @@
     }
 
     h3 {
-        font-size: 45px;
-        color: #fbf9ee;
+        font-size: rem(45px);
+        color: $clr6;
 
         line-height: 0.3;
         letter-spacing: 0.02em;
     }
 
     h4 {
-        font-size: 20px;
-        color: #fbf9ee;
+        font-size: rem(20px);
+        color: $clr6;
         font-weight: 400;
         letter-spacing: 0.5em;
     }
@@ -92,6 +85,7 @@
         height: 100%;
         padding: 8px 8px;
         height: 300px;
+        cursor: pointer;        
     }
 
     .home-card-1 {
@@ -154,7 +148,7 @@
     }
 
     h2 {
-        color: #fff;
+        color: $clr6;
         font-size: rem(38px);
         line-height: 0.8;
         margin-bottom: 24px;
@@ -168,19 +162,22 @@
 
     .sushi-button {
         margin-top: 24px;
-        font-size: rem(16px);
+        font-size: rem(14px);
         border-radius: 24px;
         min-width: 220px;
         height: 48px;
-        color: #4f3a65;
-        background-color: #ffffff;
-        font-weight: 600;
+        color: $clr2;
+        background-color: $clr6;
+        color: #d83040;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        transition: 0.5s;
+        
     }
 
     .sushi-button:hover {
-        background-color: #d83040;
+        background-color: transparent;
+        border: 1px solid $clr6;
+        color: $clr6;
     }
-}
-.preview-header {
-    justify-content: space-between;
 }
