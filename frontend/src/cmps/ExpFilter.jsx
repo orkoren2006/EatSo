@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
 import { loadExps } from "../store/actions/expAction.js";
 import { Button, TextField, Slider } from '@material-ui/core/';
+// import Slider, { Range } from 'rc-slider';
+
 
 
 export class _ExpFilter extends Component {
@@ -10,19 +12,25 @@ export class _ExpFilter extends Component {
         freeTxt: '',
         'schedule.at': '',
         capacity: '',
-        price: ''
+        price: {
+            num1: 0,
+            num2: 250
+        }
     }
 
-    handleChange = (ev) => {
-        console.log(ev.target.value);
+    componentDidMount(){
+    }
+
+    handleChange = (ev, newVal) => {
+        
+        console.log(newVal);
         let field = ev.target.name
         let value = ev.target.value
-        // if (newVal) {
-        //     field = 'price';
-        //     value = newVal;
-        // }
-        // console.log(newVal);
-        // setValue(newValue);
+        if (newVal) {
+            field = 'price';
+            value = newVal;
+        }
+
         if (ev.target && ev.target.name !== "at") {
             field = ev.target.name
             value = ev.target.value
@@ -31,15 +39,16 @@ export class _ExpFilter extends Component {
                     ...prevState,
                     [field]: value
                 }
-            })
-        } else {
-            this.setState(prevState => {
-                return {
-                    ...prevState,
-                    'schedule.at': Date.parse(value)
-                }
-            })
-        }
+            }, ()=>console.log(this.state))
+        } 
+        // else {
+        //     this.setState(prevState => {
+        //         return {
+        //             ...prevState,
+        //             'schedule.at': Date.parse(value)
+        //         }
+        //     })
+        // }
     }
 
     getTimeDate() {
@@ -55,6 +64,8 @@ export class _ExpFilter extends Component {
     }
 
     render() {
+        // const [priceValue, setValue] = React.useState([20, 37]);
+        // const newVal = this.state.price;
         return (
             <section className="exp-filter flex column align-center justify-center" >
                 <h2>Exp Filter</h2>
@@ -88,18 +99,22 @@ export class _ExpFilter extends Component {
                         }}
                         onChange={this.handleChange}
                     />
-                    <input type="range" id="price" name="price" min="0" max="1000"
-                        value={this.state.price}
+                    <input type="number" id="price" name="price.num1" min="0" max="1000"
+                        value={this.state.price.num1}
                         onChange={(ev) => this.handleChange(ev)} />
+                    <input type="number" id="price" name="price.num2" min="0" max="1000"
+                        value={this.state.price.num2}
+                        onChange={(ev) => this.handleChange(ev)} />
+
                     {/* <Slider
-                        id="price"
-                        name="price"
-                        value={this.state.price}
-                        onChange={this.handleChange}
-                        // valueLabelDisplay="auto"
+                        value={[this.state.price.num1, this.state.price.num2]}
+                        onChange={(ev, newValue) => this.handleChange(ev, newValue)}
+                        valueLabelDisplay="auto"
                         aria-labelledby="range-slider"
-                        // getAriaValueText={this.state.price}
+                        // getAriaValueText={valuetext}
                     /> */}
+                    {/* <Slider />
+                    <Range /> */}
                     <Button variant="contained" color="primary"
                         onClick={this.onSearch}>Search</Button>
                 </section>
