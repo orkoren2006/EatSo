@@ -6,9 +6,10 @@ import { clearNotification } from '../store/actions/systemActions.js'
 export class _Notification extends Component {
 
     getClass = (notification) => {
+
         let notificationType = '';
         const notificationVisibility = (notification) ? 'visible' : 'hidden'
-        if (notification.isSuccessed) {
+        if (Object.keys(notification).includes('isSuccessed')) {
             notificationType = (notification.isSuccessed) ? 'successed' : 'failed'
         }
         return `user-msg ${notificationVisibility } ${notificationType}`
