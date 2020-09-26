@@ -19,6 +19,13 @@
         color          : inherit;
         text-decoration: none;
     }
+
+    // .exp-card-desc {
+    //     padding-top: 8px;
+    //     p{
+    //         padding-left: 0
+    //     }
+    // }
 }
 
 .host-pic {
@@ -37,4 +44,8 @@
     margin: 20px 0;
     width: 50%;
     text-align: justify;
+
+    p{
+        font-size: 16px;
+    }
 }

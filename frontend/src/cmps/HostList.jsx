@@ -7,6 +7,8 @@ import { Image, Transformation } from 'cloudinary-react';
 
 export function HostList(props) {
     const { exp, host } = props
+    const firstName = host.fullName;
+    const i = firstName.indexOf(" ");
     return (
         <React.Fragment>
 
@@ -23,6 +25,7 @@ export function HostList(props) {
                 <div className="host-description">
                 <p>{host.desc}</p>
                 </div>
+                <h3>{firstName.substring(0, i)}'s experiences </h3>
 
                 <div className="host-exps card-grid">
                     <Link to={`/exp/${exp._id}`}>
