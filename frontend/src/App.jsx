@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom'
 
 import { Home } from './pages/Home.jsx';
 import { LoginSignup } from './pages/LoginSignup.jsx';
@@ -16,6 +15,7 @@ import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
 import { clearNotification, sendNotification } from './store/actions/systemActions.js';
 import { connect } from 'react-redux';
+import { ExpEditTest } from './pages/ExpEditTest.jsx';
 
 class _App extends Component {
   componentDidMount() {
@@ -52,6 +52,7 @@ class _App extends Component {
           <Notification />
           <Switch>
             <Route path="/" component={Home} exact />
+            <Route path="/test" component={ExpEditTest} exact />
             <Route path="/exp/edit/:id?" component={ExpEdit} exact />
             <Route path="/exp/:id" component={ExpDetails} exact />
             <Route path="/host/:id" component={HostDetails} exact />

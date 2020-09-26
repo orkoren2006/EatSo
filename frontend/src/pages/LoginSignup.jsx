@@ -11,6 +11,7 @@ import {
   logout,
   signup
 } from '../store/actions/userActions';
+import { ExpEditTest } from './ExpEditTest';
 
 class _LoginSignup extends Component {
   state = {
@@ -175,7 +176,7 @@ class _LoginSignup extends Component {
           Sign Up
         </h1>
         {!loggedInUser && signupSection}
-        <ExpFilter />
+        {/* <ExpEditTest/> */}
       </div>
     );
   }
