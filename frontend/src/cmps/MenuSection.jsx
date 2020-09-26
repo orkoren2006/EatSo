@@ -6,7 +6,8 @@ export function MenuSection({ title, list, type }) {
             <h5>{title}</h5>
             <ul>
                 {
-                    list.map((item, idx) => <li key={`${type}-${idx}`}>{item.title}</li>)
+                    list.map((item, idx) => <li key={`${type}-${idx}`}><h1>{item.title}</h1><h2>{item.desc}</h2></li>)
+                    
                 }
             </ul>
         </div>

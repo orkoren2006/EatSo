@@ -1,6 +1,15 @@
 .exp-rate {
     font-size: rem(14px);
     .star-icon {
-        color: #fd7854;
+        color: $clr1;
     }
+}
+
+.exp-rate-big {
+    font-size: rem(24px);
+    .star-icon {
+        color: $clr1;
+    }
+    margin-bottom: 40px;
+
 }

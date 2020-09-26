@@ -23,10 +23,11 @@ export function ExpPreview(props) {
                 <section className="exp-card-desc">
                     <div className="flex space-between">
                     <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
-                    <h5>${exp.price}</h5>
+                    
                     </div>
                     <h3>{exp.name}</h3>
                     <h4>{exp.title}</h4>
+                    <h5>${exp.price}</h5>
                     
 
                 </section>

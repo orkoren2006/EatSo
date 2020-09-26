@@ -10,15 +10,18 @@ export function ReviewEdit({ review, onHandleChange, onAddReview, user }) {
 
                 {/* <input autoComplete="off" name="txt" onChange={onHandleChange} value={review.txt} type="text" /> */}
                 <div className="add-review-text">
+                    <div className="rate-line flex space-between">
+                    <h4> Rate this experience </h4> 
+                    <StyledRating defaultValue={1} name="rate" onChange={onHandleChange} value={review.rate} />
+                    </div>
                     <textarea className="message-input" onChange={onHandleChange} value={review.txt}
-                        rows="5" cols="60" name="txt" form="usrform"></textarea>
+                        rows="5" cols="60" name="txt" form="usrform" placeholder="Write something about this experience"></textarea>
 
                 </div>
-                <div className="add-review-text flex space-between">
+                <div className="add-review-text flex space-between align-center">
                     <Image className="preview-avatar" cloudName="orkofy" publicId={!user ? `https://res.cloudinary.com/orkofy/image/upload/v1600666498/eatso-profile/user_bqaypc.jpg` : user.imgUrl} type="fetch">
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                     </Image>
-                    <StyledRating defaultValue={1} name="rate" onChange={onHandleChange} value={review.rate} />
                     <button>Send</button>
                 </div>
 
@@ -27,4 +30,4 @@ export function ReviewEdit({ review, onHandleChange, onAddReview, user }) {
     )
 }
 
-const StyledRating = withStyles({ iconFilled: { color: '#fd7854' } })(Rating);
+const StyledRating = withStyles({ iconFilled: { color: '$clr1' } })(Rating);
