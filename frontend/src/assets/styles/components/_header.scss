@@ -4,9 +4,9 @@
     // border-bottom: 1px solid black ;
     margin-bottom: 5px;
     // padding: 0 100px;
-    // position: fixed;
-    // top: 0;
-    // z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     // background-color: black;
 
     h1 {
@@ -22,6 +22,10 @@
         text-decoration: none;
         z-index: 1;
     }
+}
+
+.header.active {
+    background-color: white;
 }
 
 .main-nav {
@@ -140,4 +144,8 @@
     h3:hover {
         color: lightgray;
     }
+}
+
+.middle-navbar.active {
+    color:black;
 }
