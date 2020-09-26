@@ -53,7 +53,6 @@ export class _ExpFilter extends Component {
     render() {
         return (
             <section className="exp-filter flex column align-center justify-center" >
-                <h2>Exp Filter</h2>
                 <section className="filter-fields flex align-center">
                     <label >
                         <TextField type="text" name="freeTxt" autoComplete="off"
