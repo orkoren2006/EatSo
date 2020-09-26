@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
 import { loadExps } from "../store/actions/expAction.js";
 import { Button, TextField, Slider } from '@material-ui/core/';
+import { withRouter } from 'react-router-dom';
 // import Slider, { Range } from 'rc-slider';
 
 
@@ -12,55 +13,21 @@ export class _ExpFilter extends Component {
         freeTxt: '',
         'schedule.at': '',
         capacity: '',
-        price1: 0,
+        price1: '',
         price2: ''
-        // price: {
-        //     num1: 0,
-        //     num2: 250
-        // }
     }
 
-    componentDidMount(){
-    }
-
-    handleChange = (ev, newVal) => {
+    handleChange = (ev) => {
     
         let field = ev.target.name
         let value = ev.target.value
 
-        switch (field) {
-            case 'schedule.at':
-                value = Date.parse(value)
-                break;
-            default:
-                break;
-        }
-
-        // for UI slider - should check it again
-        // console.log(value);
-        // if (newVal) {
-        //     field = 'price';
-        //     value = newVal;
-        // }
-
+        if (field === 'schedule.at') value = Date.parse(value)
         if (ev.target) {
-            field = ev.target.name
-            value = ev.target.value
             this.setState(prevState => {
                 return {
                     ...prevState,
                     [field]: value
-                }
-            })
-        } 
-        else {
-            this.setState(prevState => {
-                return {
-                    ...prevState,
-                    'price': {
-                        ...prevState.price,
-                        [field]: value
-                    }
                 }
             })
         }
@@ -72,15 +39,18 @@ export class _ExpFilter extends Component {
     }
 
     onSearch = async () => {
-        console.log(this.state);
-        await this.props.loadExps(this.state)
-        console.log(this.props.exps);
-        // this.props.history.push('/exp/edit')
+        const filterBy = this.state;
+        
+        let URL = 'exp?';
+
+        for (const key in filterBy){
+            if (filterBy[key]) URL += `${key}=${filterBy[key]}&`
+        }
+        URL = URL.slice(0, -1)        
+        this.props.history.push(URL)
     }
 
     render() {
-        // const [priceValue, setValue] = React.useState([20, 37]);
-        // const newVal = this.state.price;
         return (
             <section className="exp-filter flex column align-center justify-center" >
                 <h2>Exp Filter</h2>
@@ -148,4 +118,4 @@ const mapDispatchToProps = {
     loadExps
 }
 
-export const ExpFilter = connect(mapStateToProps, mapDispatchToProps)(_ExpFilter) 
+export const ExpFilter = withRouter(connect(mapStateToProps, mapDispatchToProps)(_ExpFilter)) 

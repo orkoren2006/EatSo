@@ -21,8 +21,6 @@ class _App extends Component {
   componentDidMount() {
     socketService.setup();
     socketService.on('booking status msg', this.onBookingStatusChange);
-    console.log(this.props);
-
   }
   componentWillUnmount() {
     socketService.off('booking status msg', this.onBookingStatusChange);

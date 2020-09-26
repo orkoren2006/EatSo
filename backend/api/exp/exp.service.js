@@ -111,11 +111,15 @@ function _buildCriteria(filterBy) {
     }
 
     if (filterBy['price1'] || filterBy['price2']) {
-        const price1 = +filterBy.price1;
-        const price2 = +filterBy.price2;
-        const max = (price1 > price2) ? price1 : price2;
-        const min = (price1 < price2) ? price1 : price2;
+        let price1 = +filterBy.price1;
+        let price2 = +filterBy.price2;
 
+        if (!price1 || !price2){
+            price1 = price1 || 0
+            price2 = price2 || Infinity
+        }
+        let max = (price1 > price2) ? price1 : price2;
+        let min = (price1 < price2) ? price1 : price2;
         criteriaToReturn.push({ 'price': { $gte: min } }, { 'price': { $lte: max } })
         filterBy['price1'] = '';
         filterBy['price2'] = '';

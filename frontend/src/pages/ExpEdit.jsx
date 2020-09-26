@@ -70,6 +70,7 @@ class _ExpEdit extends Component {
     }
 
     handleChange = (ev) => {
+        console.log(ev.target.value);
         if (ev.target) {
             let field = ev.target.name;
             const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value
@@ -112,7 +113,6 @@ class _ExpEdit extends Component {
                     }
                 })
             }
-
             else if (field === 'tags') {
                 var newTags = this.state.exp.tags;
                 if (ev.target.checked) newTags.push(value);
@@ -126,8 +126,21 @@ class _ExpEdit extends Component {
                         }
                     }
                 }, () => console.log(this.state))
+            } else if (field === 'schedule') {
+                debugger
+                const time = Date.parse(value)
+                this.setState(prevState => {
+                    return {
+                        exp: {
+                            ...prevState.exp,
+                            schedule: {
+                                ...prevState.exp.schedule,
+                                ['at']: time
+                            }
+                        }
+                    }
+                }, ()=> console.log(this.state))
             }
-
             else {
                 this.setState(prevState => {
                     return {
@@ -138,21 +151,7 @@ class _ExpEdit extends Component {
                     }
                 })
             }
-        } else { // for time and date picker
-            const time = Date.parse(ev)
-            this.setState(prevState => {
-                return {
-                    exp: {
-                        ...prevState.exp,
-                        schedule: {
-                            ...prevState.exp.schedule,
-                            ['at']: time
-                        }
-                    }
-                }
-            })
-
-        }
+        } 
     }
 
     getTimeDate() {
@@ -178,7 +177,7 @@ class _ExpEdit extends Component {
 
     onCloseModal = () => {
         this.setState({ isModalShown: false }
-            , () => {this.props.history.push('/')});
+            , () => { this.props.history.push('/') });
 
     }
 
@@ -195,7 +194,7 @@ class _ExpEdit extends Component {
             return (
                 <section>
                     <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} edit="edit" >
-                        {<LoginSignup onCloseModal={this.onCloseModal} edit="edit"/>}
+                        {<LoginSignup onCloseModal={this.onCloseModal} edit="edit" />}
                     </Modal>
                 </section>
             )
@@ -238,7 +237,7 @@ class _ExpEdit extends Component {
                         </label>
                         <span style={{ display: "inline" }}>Description:</span>
                         <label htmlFor="exp-desc">
-                            <TextareaAutosize type="text" id="exp-description" name="desc"
+                            <TextareaAutosize rowsMin={5} type="text" id="exp-description" name="desc"
                                 value={exp.desc} placeholder="Enter experience description"
                                 onChange={this.handleChange} />
                         </label>
@@ -246,23 +245,20 @@ class _ExpEdit extends Component {
 
                     <div className="form-side">
                         <span> Date:</span>
-                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <DateTimePicker value={this.getTimeDate()} onChange={this.handleChange} />
-                        </MuiPickersUtilsProvider>
-                        {/* <label htmlFor="exp-duration"></label>
-                        <span>  Duration:</span>
-                        <select name="duration" id="exp-duration" onChange={this.handleChange}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select> */}
-                        {/* <input type="dropdown" id="exp-duration" name="duration"
-                            value={exp.schedule.duration} placeholder="Enter experience duration"
-                            onChange={this.handleChange} /> */}
-
+                        <label htmlFor="exp-date">
+                            <TextField
+                                id="exp-date"
+                                name="schedule"
+                                type="datetime-local"
+                                defaultValue="2017-05-24T10:30"
+                                onChange={this.handleChange}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />
+                        </label>
+                        <span> Address:</span>
                         <label htmlFor="exp-address">
-                            <span> Address:</span>
 
                             <input type="text" id="exp-address" name="address"
                                 value={exp.location.address} placeholder="Enter experience address"

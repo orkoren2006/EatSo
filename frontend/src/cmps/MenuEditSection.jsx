@@ -2,6 +2,7 @@ import { Button, TextField } from '@material-ui/core'
 import React from 'react'
 
 export  function MenuEditSection({type, menuItems, handleChange, addInputCourse}) {
+
     return ( 
         <div className="menu-edit-section">
             <span style={{textTransform: "capitalize"}}>{type}</span>
