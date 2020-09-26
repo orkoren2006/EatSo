@@ -15,7 +15,6 @@ class _ExpEdit extends Component {
         exp: expService.getEmptyExp(),
         editMenu: false,
         isModalShown: true
-
     }
 
     async componentDidMount() {

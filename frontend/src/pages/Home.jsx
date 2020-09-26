@@ -107,11 +107,11 @@ class _Home extends Component {
 
         <section className="home-category flex column space-between">
           <section className="preview-header flex">
-            <h2>Top Scenic Meals</h2>
-            <Button onClick={() => this.onShowAllBtn({ tags: 'scenic' })}
-              className="scenic-button"><span> Show All &gt;</span></Button>
+            <h2>Top Outdoor Meals</h2>
+            <Button onClick={() => this.onShowAllBtn({ tags: 'outdoor' })}
+              className="outdoor-button"><span> Show All &gt;</span></Button>
           </section>
-          <ExpList exps={this.getExps('tags-scenic')} />
+          <ExpList exps={this.getExps('tags-outdoor')} />
 
         </section>
       </section>
