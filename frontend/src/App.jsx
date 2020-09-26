@@ -20,7 +20,8 @@ import { connect } from 'react-redux';
 class _App extends Component {
   componentDidMount() {
     socketService.setup();
-    socketService.on('booking status msg', this.onBookingStatusChange);
+    socketService.on('booking status msg', this.onBookingStatusChange); // after host of exp approved/rejected the booking - notification to the user
+    socketService.on('new booking', this.onNewBooking) // after user booked to exp - notification to the host
     console.log(this.props);
 
   }
@@ -32,8 +33,15 @@ class _App extends Component {
   onBookingStatusChange = (booking) => {
     console.log('onBookingStatusChange in App.jsx');
     const msg = `booking ${booking._id} ${booking.status}\nCheck it in your private zone`
-    this.props.sendNotification(msg);
+    this.props.sendNotification({msg, isSuccessed: booking.status === 'approved'});
     setTimeout(this.props.clearNotification, 3000) ;
+  }
+
+  onNewBooking = () => {
+    console.log('onNewBooking in App.jsx');
+    const msg = 'new booking is pending\nCheck it in your private zone'
+    this.props.sendNotification({msg});
+    setTimeout(this.props.clearNotification, 3000) 
   }
 
   render() {

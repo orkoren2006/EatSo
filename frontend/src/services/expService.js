@@ -2,8 +2,8 @@ import { httpService } from './httpService'
 const ObjectId = require('mongodb').ObjectId
 
 export const expService = {
-    getExps,
-    getExpById,
+    query,
+    getById,
     remove,
     // update,
     // add,
@@ -11,7 +11,7 @@ export const expService = {
     save,
 }
 
-async function getExps(filterBy = {}) {
+async function query(filterBy = {}) {
     let URL = 'exp';
     if (Object.keys(filterBy)[0] == "owner._id" || Object.keys(filterBy)[0] == "participants._id") {
         URL = 'myexp'
@@ -27,9 +27,9 @@ async function getExps(filterBy = {}) {
     // return await httpService.get(`exp/?${queryParams}`)
 }
 
-async function getExpById(expId) {
-    const exp = await httpService.get(`exp/${expId}`)
-    return Promise.resolve(exp)
+function getById(expId) {
+    return httpService.get(`exp/${expId}`)
+ 
 }
 function remove(expId) {
     return httpService.delete(`exp/${expId}`)

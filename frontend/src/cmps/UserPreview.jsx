@@ -13,7 +13,7 @@ export function UserPreview({ user, date }) {
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                     </Image>
                     <div className="user-name">{user.fullName}</div>
-                    <div className="user-date">{new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toDateString()}</div>
+                    {date && <div className="user-date">{new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toDateString()}</div>}
                 </section>
             </Link>
         </div>

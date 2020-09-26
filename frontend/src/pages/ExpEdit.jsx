@@ -23,7 +23,7 @@ class _ExpEdit extends Component {
         const { loggedInUser } = this.props
         if (!loggedInUser) return;
         if (expId) {
-            const exp = await expService.getExpById(expId)
+            const exp = await expService.getById(expId)
             this.setState({ exp })
         } else {
             const { loggedInUser } = this.props

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { expService } from '../services/expService';
-import { getExpById, loadExps, removeExp } from '../store/actions/expAction'
+import { getExpById, loadExps, removeExp, saveExp } from '../store/actions/expAction'
 import { ExpList } from "../cmps/ExpList";
 import { Button } from '@material-ui/core';
 import { loadBookings, saveBooking } from '../store/actions/bookingAction';
@@ -60,12 +60,17 @@ class _UserExp extends Component {
         const booking = await bookingService.getById(bookingId);
         booking.status = newStatus;
         this.props.saveBooking(booking)
-        socketService.emit('booking status change',  booking )
+        if (newStatus === 'approved') {
+            const exp = await expService.getById(booking.exp._id)
+            exp.participants.push(booking.guest);
+            this.props.saveExp(exp)
+        }
+        socketService.emit('booking status change', booking)
     }
 
     async _getUserExps(expAs) {
         // console.log('getUserExp', expAs);
-        const userExps = await expService.getExps({ [`${expAs}._id`]: this.props.user._id })
+        const userExps = await expService.query({ [`${expAs}._id`]: this.props.user._id })
         this.setState({ userExps })
     }
 
@@ -86,7 +91,7 @@ class _UserExp extends Component {
             const pendingExpArr = [];
             this.state.userBookings.forEach(booking => {
                 if (booking.status === 'pending' && booking.exp.schedule.at > Date.now()) {
-                    const item = expService.getExpById(booking.exp._id)
+                    const item = expService.getById(booking.exp._id)
                     pendingExpArr.push(item)
                 }
             })
@@ -101,14 +106,14 @@ class _UserExp extends Component {
             if (this.state.filter === 'past') {
                 approvedBookings.forEach((booking) => {
                     if (booking.exp.schedule.at < Date.now()) {
-                        const exp = expService.getExpById(booking.exp._id)
+                        const exp = expService.getById(booking.exp._id)
                         pastExpArr.push(exp)
                     }
                 })
             } else {
                 approvedBookings.forEach((booking) => {
                     if (booking.exp.schedule.at > Date.now()) {
-                        const exp = expService.getExpById(booking.exp._id)
+                        const exp = expService.getById(booking.exp._id)
                         pastExpArr.push(exp)
                     }
                 })
@@ -172,7 +177,8 @@ const mapDispatchToProps = {
     removeExp,
     loadBookings,
     getExpById,
-    saveBooking
+    saveBooking,
+    saveExp
 };
 
 export const UserExp = connect(mapStateToProps, mapDispatchToProps)(_UserExp);

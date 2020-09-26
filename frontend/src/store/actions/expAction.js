@@ -7,7 +7,7 @@ export function loadExps(filterBy,numOfExps) {
   return async dispatch => {
     try {
       dispatch(loading);
-      const exps = await expService.getExps(filterBy,numOfExps);
+      const exps = await expService.query(filterBy,numOfExps);
       dispatch({ type: 'SET_EXPS', exps });
     } catch (err) {
       console.log('ExpActions: err in loadExps', err);
@@ -20,7 +20,7 @@ export function getExpById(expId) {
   return async dispatch => {
     try {
       dispatch(loading);
-      const exp = await expService.getExpById(expId);
+      const exp = await expService.getById(expId);
       dispatch({ type: 'SET_EXP', exp });
     } catch (err) {
       console.log('ExpActions: err in loadExps', err);
