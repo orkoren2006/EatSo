@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { GoogleMap } from '../cmps/GoogleMap';
 import { ExpDetailsTab } from '../cmps/ExpDetailsTab';
 import { expService } from '../services/expService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMale, faFemale, faClock, faCalendarAlt, faWheelchair } from '@fortawesome/free-solid-svg-icons';
 
 import { Modal } from '../cmps/Modal';
 import { ExpRate } from '../cmps/ExpRate';
@@ -19,6 +21,7 @@ import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';
 import { Link } from 'react-router-dom';
 
+const ObjectId = require('mongodb').ObjectId
 
 class _ExpDetails extends Component {
 
@@ -61,13 +64,13 @@ class _ExpDetails extends Component {
         const { user } = this.props;
         const booking = await bookingService.getEmpty();
         booking.guest = {
-            _id: user._id,
+            _id: ObjectId(user._id),
             fullName: user.fullName,
             imgUrl: user.imgUrl
         };
         booking.numOfGuests = this.state.numOfGuests;
         booking.exp = {
-            _id: exp._id,
+            _id: ObjectId(exp._id),
             schedule: exp.schedule,
             owner: exp.owner
         };
@@ -127,6 +130,7 @@ class _ExpDetails extends Component {
     render() {
         const { exp, review, isModalShown, isAddReviewShown, numOfGuests } = this.state;
         const { user } = this.props;
+        // const date = exp.schedule.at
         if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
@@ -146,27 +150,51 @@ class _ExpDetails extends Component {
 
                 <ExpGallery imgUrls={exp.imgUrls} />
                 <section className="flex">
-                    <div className ="flex column flex-2">
-                <div className="exp-details-host-avatar align-center flex ">
-                    <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
-                        <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
-                    </Image>
-                    <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
-                </div>
+                    <div className="flex column flex-2">
+                        <div className="exp-details-host-avatar align-center flex space-between ">
+                            <div>
+                            <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
+                                <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
+                            </Image>
+                            <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
+                            </div>
+                        
+                        <section className="flex exps-icons">
+                            <div className="flex column align-center">
+                                <div className="flex">
+                            <FontAwesomeIcon className="male-icon" icon={faMale} />
+                            <FontAwesomeIcon className="female-icon" icon={faFemale} /> 
+                            </div>
+                            <p>2-12</p>
+                            </div>
+                            <div className="flex column align-center">
+                            <FontAwesomeIcon className="clock-icon" icon={faClock} /> 
+                            <p>7pm-9pm</p>
+                            </div>
+                            <div className="flex column align-center">
+                            <FontAwesomeIcon className="calendar-icon" icon={faCalendarAlt} />
+                            <p>{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</p>
+                            </div>
+                            <div className="flex column align-center">
+                            <FontAwesomeIcon className="wheelchair-icon" icon={faWheelchair} />
+                            <p>Accesible</p>
+                            </div>
+                        </section>
+                        </div>
 
-                <h3>{exp.title}</h3>
+                        <h3>{exp.title}</h3>
 
-                
-                <p>{exp.desc}</p>
-                <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
-                    onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
-                    isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+
+                        <p>{exp.desc}</p>
+                        <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                            onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
+                            isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
                     </div>
-                    
-                     <ExpContent user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
-                    onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
-                    isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
-                    
+
+                    <ExpContent user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                        onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
+                        isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+
                 </section>
                 <div className="google-maps flex space-between">
                     <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />

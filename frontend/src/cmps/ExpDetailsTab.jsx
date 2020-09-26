@@ -32,7 +32,7 @@ export function ExpDetailsTab({ user, exp, numOfGuests, onNumOfGuestsChange, tog
             <div className="exp-details">
                 <TabContext value={value}>
                     <AppBar position="static">
-                        <TabList onChange={handleChange} aria-label="simple tabs example">
+                        <TabList onChange={handleChange} TabIndicatorProps={{ style: { background: "#FFBB00" } }}>
                             <Tab label="Menu" value="1" />
                             <Tab label="Reviews" value="2" />
                             <Tab label="Guest list" value="3" />
@@ -45,8 +45,8 @@ export function ExpDetailsTab({ user, exp, numOfGuests, onNumOfGuestsChange, tog
                         
                         <button onClick={toggleAddReviewShown}>Add review</button>
                         </div>
-                        <ReviewList reviews={exp.reviews} />
                         {isAddReviewShown && <ReviewEdit onHandleChange={onHandleChange} onAddReview={onAddReview} review={review} user={user} />}
+                        <ReviewList reviews={exp.reviews} />
                     </section></TabPanel>
                     <TabPanel value="3"><ExpParticipantsList participants={exp.participants} /></TabPanel>
                 </TabContext>

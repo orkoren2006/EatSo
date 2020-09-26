@@ -5,6 +5,7 @@ import { loadExps } from '../store/actions/expAction';
 import { Button } from '@material-ui/core';
 import { HomeCardList } from '../cmps/HomeCardList';
 import { Link } from 'react-router-dom';
+import { ExpFilter } from '../cmps/ExpFilter';
 
 
 class _Home extends Component {
@@ -70,6 +71,7 @@ class _Home extends Component {
           <h2>Change your food </h2>
           <h1>experience<span className="animate__animated animate__bounce">.</span></h1>
           <p>Discover exciting ways to dine out anywhere you like.</p>
+          <ExpFilter />
         </div>
 
         <HomeCardList />
