@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export function UserNav({ navClass, onItemClick, onLogout, user }) {
     const firstName = user.fullName;
-    const i = firstName.indexOf(" ");
+    const i = firstName.indexOf(' ');
     return (
         // <React.Fragment>
             <nav className={navClass}>

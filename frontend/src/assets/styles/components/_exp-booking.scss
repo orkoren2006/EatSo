@@ -6,7 +6,7 @@
     height: 300px;
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -19,25 +19,35 @@
             font-size: 0.8em;
         }
     }
-    .exp-rate, .exp-date {
+    .exp-rate,
+    .exp-date {
         font-size: 0.8em;
     }
-     
+
+    .already-booked-txt {
+        background-color: transparent;
+            font-size: 14px;
+            text-transform: none;
+            font-weight: 600;
+            cursor: auto;
+            color: #3d7300;
+            line-height: 1.5;
+            letter-spacing: normal;
+    }
     button {
         cursor: pointer;
         height: 48px;
         font-weight: 700;
-        font-size:12px;
+        font-size: 12px;
         letter-spacing: 0.3em;
-       background-color: $clr1;
-       color: #4f3a65;
-       text-transform: uppercase;
-        border: none;      
+        background-color: $clr1;
+        color: #4f3a65;
+        text-transform: uppercase;
+        border: none;
         padding: 10px;
         border-radius: 16px;
-        
-        
-        transition: .5s;
+
+        transition: 0.5s;
         margin-top: 10px;
         &:hover:not(.disable) {
             background-color: $clr6;
@@ -46,11 +56,11 @@
         }
         &.disable {
             background-color: transparent;
-            font-size:14px;
+            font-size: 14px;
             text-transform: none;
             font-weight: 600;
             cursor: auto;
-            color:#3D7300;
+            color: #3d7300;
             line-height: 1.5;
             letter-spacing: normal;
         }

@@ -13,10 +13,6 @@ export const expService = {
 
 async function query(filterBy = {}) {
     let URL = 'exp';
-    if (Object.keys(filterBy)[0] == "owner._id" || Object.keys(filterBy)[0] == "participants._id") {
-        URL = 'myexp'
-    }
-
     var queryParams = new URLSearchParams()
     for (const filterType in filterBy) {
         queryParams.set(filterType, filterBy[filterType])
