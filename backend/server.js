@@ -40,7 +40,6 @@ const connectSockets = require('./api/socket/socket.routes')
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/booking', bookingRoutes)
-app.use('/api/myexp', expRoutes)
 app.use('/api/exp', expRoutes)
 connectSockets(io)
 

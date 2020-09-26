@@ -24,26 +24,27 @@ class _UserExp extends Component {
     async componentDidMount() {
         // console.log(this.props.user._id);
         // this.setState({userId: this.props.user._id});
-        const expAs = this.props.match.params.as; // gets 'host' OR 'participants' - from url
-        this.setState({ isHost: (expAs === 'owner') })
-        // const field = (expAs === 'owner') ? 'owner' : 'participants';
-        await this.props.loadBookings();
-        await this._getUserExps(expAs)
-        await this._getUserBooking()
-        await this.getExpsList()
-        socketService.on('new booking', this.newBookNotification)
-
         const toApproveBookings = this.props.bookings.filter(booking => booking.status === 'pending' && booking.exp.owner._id === this.props.user._id)
-        this.setState({ toApproveBookings })
+        const expAs = this.props.match.params.as; // gets 'host' OR 'participants' - from url
+        this.setState({ isHost: (expAs === 'owner'), toApproveBookings }, async () => {
+            await this.props.loadBookings();
+            await this._getUserExps()
+            await this._getUserBooking()
+            await this.getExpsList()
+            socketService.on('new booking', this.newBookNotification)
+    
+        })
+        // const field = (expAs === 'owner') ? 'owner' : 'participants';
     }
 
     async componentDidUpdate(prevProps, prevState) {
 
         if (prevProps === this.props) return
-        const expAs = this.props.match.params.as; // gets 'owner' OR 'participants' - from url
-        this.setState({ isHost: (expAs === 'owner') }, () => this.getExpsList())
         const toApproveBookings = this.props.bookings.filter(booking => booking.status === 'pending' && booking.exp.owner._id === this.props.user._id)
-        this.setState({ toApproveBookings })
+        const expAs = this.props.match.params.as; // gets 'owner' OR 'participants' - from url
+        this.setState({ isHost: (expAs === 'owner'), toApproveBookings }, () => {
+            this.getExpsList()
+        })
     }
 
     componentWillUnmount() {
@@ -68,9 +69,10 @@ class _UserExp extends Component {
         socketService.emit('booking status change', booking)
     }
 
-    async _getUserExps(expAs) {
+    async _getUserExps() {
         // console.log('getUserExp', expAs);
-        const userExps = await expService.query({ [`${expAs}._id`]: this.props.user._id })
+        const exps = await expService.query()
+        const userExps = exps.filter(exp => exp.owner._id === this.props.user._id)
         this.setState({ userExps })
     }
 
