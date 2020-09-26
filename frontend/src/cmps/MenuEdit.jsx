@@ -7,17 +7,12 @@ export class MenuEdit extends Component {
         menu: this.props.menu
     }
 
-    componentDidMount() {
-        console.log(this.state.menu);
-    }
-
     onSaveMenu = () => {
         this.props.setMenu(this.state.menu)
     }
 
     addInputCourse = (field) => {
         const newField = [...this.state.menu[field], { 'title': '', 'desc': '' }];
-        console.log(newField);
         this.setState(prevState => {
             return {
                 menu: {

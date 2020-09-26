@@ -46,12 +46,15 @@ class _Home extends Component {
       default:
         break;
     }
-    expsToSend = expsToSend.splice(0,4)
+    expsToSend = expsToSend.splice(0, 4)
     return expsToSend;
   }
 
-  onShowAll = (ev) => {
-    console.log(ev.target.name);
+  onShowAllBtn = (filterBy) => {
+    const key = Object.keys(filterBy)[0]
+    const value = Object.values(filterBy)[0]
+    
+    this.props.history.push(`/exp?${key}=${value}`)
   }
 
 
@@ -76,24 +79,21 @@ class _Home extends Component {
         <section className="home-category flex column space-between">
           <section className="preview-header flex ">
             <h2>Top Dinners in your Location</h2>
-            <Link to="/exp/location.city/Tel-Aviv-Yafo">
-              <Button className="tel-aviv-button"><span> Show All &gt;</span></Button>
-            </Link>
+            <Button onClick={() => this.onShowAllBtn({ 'location.city': 'Tel-Aviv-Yafo' })}
+              className="tel-aviv-button"><span> Show All &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
-           
+
 
         </section>
 
         <section className="home-category flex column space-between">
           <section className="preview-header flex">
             <h2>Top Traditional Cuisine</h2>
-            <Link to="/exp/tags/traditional">
-              <Button className="traditional-button "><span> Show All  &gt;</span></Button>
-            </Link>
+            <Button onClick={() => this.onShowAllBtn({ tags: 'traditional' })} className="traditional-button "><span> Show All  &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tags-traditional')} />
-            
+
         </section>
 
         <section className="tokyo-banner flex justify-center align-center full">
@@ -108,12 +108,11 @@ class _Home extends Component {
         <section className="home-category flex column space-between">
           <section className="preview-header flex">
             <h2>Top Scenic Meals</h2>
-            <Link to="/exp/tags/scenic">
-              <Button className="scenic-button"><span> Show All &gt;</span></Button>
-            </Link>
+            <Button onClick={() => this.onShowAllBtn({ tags: 'scenic' })}
+              className="scenic-button"><span> Show All &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('tags-scenic')} />
-           
+
         </section>
       </section>
     );

@@ -36,16 +36,16 @@ function remove(expId) {
 }
 
 async function save(exp) {
-    
+
     if (exp._id) {
         exp.updatedAt = Date.now();
         const updateExp = await httpService.put(`exp/${exp._id}`, exp)
-        return { exp: updateExp}
+        return { exp: updateExp }
     } else {
         // exp.createdAt = Date.now();
         // return httpService.post('exp', exp)
         const updateExp = await httpService.post('exp', exp)
-        return { exp: updateExp}
+        return { exp: updateExp }
     }
 }
 
@@ -78,18 +78,28 @@ function getEmptyExp() {
             'lat': 0.2,
             'lng': 0.2,
         },
-        'menu': {
+        'menu':
+        {
             'appetizers': [
-
-            ],
+                {
+                    title: '',
+                    desc: ''
+                }],
             'main': [
-
-            ],
+                {
+                    title: '',
+                    desc: ''
+                }],
             'desserts': [
-
-            ],
+                {
+                    title: '',
+                    desc: ''
+                }],
             'drinks': [
-            ]
+                {
+                    title: '',
+                    desc: ''
+                }]
         },
         'participants': [
         ],

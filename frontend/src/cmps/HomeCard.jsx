@@ -1,17 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-export function HomeCard({ propsObj, cardIdx }) {
+// function _HomeCard({ propsObj, cardIdx }) {
+function _HomeCard(props) {
+
+    function onCardClick(filterBy) {
+        const key = Object.keys(filterBy)[0]
+        const value = Object.values(filterBy)[0]
+        // console.log(props.);
+        props.history.push(`/exp?${key}=${value}`)
+    }
 
     // building filter for url
-    const filterBy = {};
-    filterBy.field = Object.keys(propsObj.filterBy)[0];
-    filterBy.value = Object.values(propsObj.filterBy)[0];
+    const field = Object.keys(props.propsObj.filterBy)[0];
+    const value = Object.values(props.propsObj.filterBy)[0];
+
 
     return (
-        <div className={`home-card home-card-${(cardIdx === 0) ? 1 : 2}`}>
-            <Link to={`/exp/${filterBy.field}/${filterBy.value}`}><div className={`preview-image img-${cardIdx + 1} flex column align-start justify-start`}>
-                <h3>{propsObj.title}</h3><h4>{propsObj.subtitle}</h4></div></Link>
+        <div onClick={() => onCardClick({ [field]: value })}
+            className={`home-card home-card-${(props.cardIdx === 0) ? 1 : 2}`}>
+            <div className={`preview-image img-${props.cardIdx + 1} flex column align-start justify-start`}>
+                <h3>{props.propsObj.title}</h3><h4>{props.propsObj.subtitle}</h4></div>
         </div>
     )
 }
+
+export const HomeCard = withRouter(_HomeCard)
