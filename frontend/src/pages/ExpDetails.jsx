@@ -20,6 +20,8 @@ import { loadBookings, saveBooking } from '../store/actions/bookingAction';
 import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';
 import { Link } from 'react-router-dom';
+import { CarouselGallery } from '../cmps/CarouselGallery';
+
 
 const ObjectId = require('mongodb').ObjectId
 
@@ -72,7 +74,8 @@ class _ExpDetails extends Component {
         booking.exp = {
             _id: ObjectId(exp._id),
             schedule: exp.schedule,
-            owner: exp.owner
+            owner: exp.owner,
+            name: exp.name
         };
         booking.status = 'pending';
         await this.props.saveBooking(booking);
@@ -147,39 +150,39 @@ class _ExpDetails extends Component {
                         <h6>{exp.location.city} &gt; </h6>
                     </div>
                 </div>
-
+                <CarouselGallery />
                 <ExpGallery imgUrls={exp.imgUrls} />
                 <section className="flex ">
                     <div className="flex column flex-2 exp-opening">
                         <div className="exp-details-host-avatar align-center flex space-between ">
                             <div>
-                            <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
-                                <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
-                            </Image>
-                            <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
+                                <Image className="preview-avatar" cloudName="orkofy" publicId={exp.owner.imgUrl} type="fetch">
+                                    <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
+                                </Image>
+                                <h6>Hosted by <Link className="owner" to={`/host/${exp.owner._id}`}>{exp.owner.fullName}</Link></h6>
                             </div>
-                        
-                        <section className="grid-icons exps-icons">
-                            <div className="flex column align-center">
-                                <div className="flex">
-                            <FontAwesomeIcon className="male-icon" icon={faMale} />
-                            <FontAwesomeIcon className="female-icon" icon={faFemale} /> 
-                            </div>
-                            <p>2-12</p>
-                            </div>
-                            <div className="flex column align-center">
-                            <FontAwesomeIcon className="clock-icon" icon={faClock} /> 
-                            <p>7pm-9pm</p>
-                            </div>
-                            <div className="flex column align-center">
-                            <FontAwesomeIcon className="calendar-icon" icon={faCalendarAlt} />
-                            <p>{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</p>
-                            </div>
-                            <div className="flex column align-center">
-                            <FontAwesomeIcon className="wheelchair-icon" icon={faWheelchair} />
-                            <p>Accesible</p>
-                            </div>
-                        </section>
+
+                            <section className="grid-icons exps-icons">
+                                <div className="flex column align-center">
+                                    <div className="flex">
+                                        <FontAwesomeIcon className="male-icon" icon={faMale} />
+                                        <FontAwesomeIcon className="female-icon" icon={faFemale} />
+                                    </div>
+                                    <p>2-12</p>
+                                </div>
+                                <div className="flex column align-center">
+                                    <FontAwesomeIcon className="clock-icon" icon={faClock} />
+                                    <p>7pm-9pm</p>
+                                </div>
+                                <div className="flex column align-center">
+                                    <FontAwesomeIcon className="calendar-icon" icon={faCalendarAlt} />
+                                    <p>{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</p>
+                                </div>
+                                <div className="flex column align-center">
+                                    <FontAwesomeIcon className="wheelchair-icon" icon={faWheelchair} />
+                                    <p>Accesible</p>
+                                </div>
+                            </section>
                         </div>
 
                         <h3>{exp.title}</h3>

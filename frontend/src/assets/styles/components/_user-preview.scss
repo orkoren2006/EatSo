@@ -4,8 +4,8 @@
         color: black;
         .user-preview {
             display: grid;
-            grid-template-columns: 50px 200px;
-            grid-template-rows: 1em 1em 0.7em;
+            grid-template-columns: 50px auto;
+            // grid-template-rows: 1em 1em 0.7em;
             align-items: center;
             gap: 5px;
             font-size: 1rem;

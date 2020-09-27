@@ -33,7 +33,7 @@ function connectSockets(io) {
             if (ownerSocket) ownerSocket.emit('new booking', booking);
         })
         socket.on('booking status change',  booking => {
-            console.log('booking', booking)
+            // console.log('booking', booking)
             
             const ownerSocket = socketMap[booking.guest._id];
             if (ownerSocket) ownerSocket.emit('booking status msg', booking);
