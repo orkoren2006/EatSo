@@ -150,3 +150,8 @@
 .middle-navbar.active {
     color:black;
 }
+
+.app-logo {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
+        url("../../imgs/appetizer-logo-white.png");
+}

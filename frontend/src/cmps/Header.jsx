@@ -79,7 +79,7 @@ class _Header extends Component {
             <React.Fragment>
                 <div className={toggleScreen} onClick={this.toggleMenu}> </div>
                 <div className="header flex align-center space-between full">
-                    <Link to="/"><h1>HostEat!</h1></Link>
+                    <Link to="/"><div className="app-logo"></div></Link>
 
                     <div className="middle-navbar flex">
                         <Link to="/exp"><h3>All Experiences</h3></Link> |
