@@ -9,7 +9,7 @@ function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, booki
     const isAlreadyBooked = user && bookings.find(booking => booking.guest._id === user._id && booking.exp.schedule.at > Date.now() && booking.exp._id === exp._id)
     const className = isAlreadyBooked ? 'disable' : ''
     const txtBtn = isAlreadyBooked ? 'You\'re already booked to this experience' : 'Save your table now';
-
+    const booking = isAlreadyBooked;
     return ((!user || (user && exp.owner._id !== user._id)) && (
         (!isAlreadyBooked &&
             <section className="exp-booking">
@@ -27,10 +27,10 @@ function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, booki
         || (isAlreadyBooked &&
             <section className="exp-booking">
                 <div className="already-booked-txt" >{txtBtn}</div>
-                
+
                 <div className="exp-date">On {new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
 
-                <Link to="/myexp/participants"><button>Modify your booking</button></Link>
+                <Link to={`/myexp/participants?status=${booking.status}`}><button>Modify your booking</button></Link>
             </section>)
     ))
 }

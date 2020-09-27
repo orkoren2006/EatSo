@@ -15,26 +15,25 @@ class _UserExp extends Component {
     state = {
         userExps: [], // for exps as a host
         userBookings: [], // for exps as a participants
-        filter: 'pending',
+        filter: 'approved',
         isHost: false,
         expList: null,
         toApproveBookings: null,
     }
 
     async componentDidMount() {
-        // console.log(this.props.user._id);
-        // this.setState({userId: this.props.user._id});
         const toApproveBookings = this.props.bookings.filter(booking => booking.status === 'pending' && booking.exp.owner._id === this.props.user._id)
         const expAs = this.props.match.params.as; // gets 'host' OR 'participants' - from url
+        const filter = new URLSearchParams(this.props.location.search).get('status')
         this.setState({ isHost: (expAs === 'owner'), toApproveBookings }, async () => {
+            this.setState({ filter: filter ? filter : 'approved' })
             await this.props.loadBookings();
             await this._getUserExps()
             await this._getUserBooking()
             await this.getExpsList()
             socketService.on('new booking', this.newBookNotification)
-    
         })
-        // const field = (expAs === 'owner') ? 'owner' : 'participants';
+
     }
 
     async componentDidUpdate(prevProps, prevState) {
@@ -139,8 +138,8 @@ class _UserExp extends Component {
                         <ul className="user-exp-navbar-list flex">
                             <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
                                 id="past" onClick={this.onExpTimeFilter}>Past</li>
-                            <li key="future-exps" className={(this.state.filter === 'future') ? 'clicked' : ''}
-                                id="future" onClick={this.onExpTimeFilter}>Upcoming</li>
+                            <li key="approved-exps" className={(this.state.filter === 'approved') ? 'clicked' : ''}
+                                id="approved" onClick={this.onExpTimeFilter}>Upcoming</li>
                             <li key="pending-exps" className={(this.state.filter === 'pending') ? 'clicked' : ''}
                                 id="pending" onClick={this.onExpTimeFilter}>Pending</li>
                         </ul>

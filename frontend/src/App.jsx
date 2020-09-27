@@ -22,8 +22,6 @@ class _App extends Component {
     socketService.setup();
     socketService.on('booking status msg', this.onBookingStatusChange); // after host of exp approved/rejected the booking - notification to the user
     socketService.on('new booking', this.onNewBooking) // after user booked to exp - notification to the host
-    console.log(this.props);
-
   }
   componentWillUnmount() {
     socketService.off('booking status msg', this.onBookingStatusChange);
