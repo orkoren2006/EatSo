@@ -2,6 +2,8 @@ import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
 import { loadExps } from "../store/actions/expAction.js";
 import { Button, TextField, Slider } from '@material-ui/core/';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { withRouter } from 'react-router-dom';
 // import Slider, { Range } from 'rc-slider';
 
@@ -100,7 +102,7 @@ export class _ExpFilter extends Component {
                     {/* <Slider />
                     <Range /> */}
                     <Button variant="contained" color="primary"
-                        onClick={this.onSearch}>Search</Button>
+                        onClick={this.onSearch}><FontAwesomeIcon className="search-icon" icon={faSearch} /></Button>
                 </section>
             </section >
         )

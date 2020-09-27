@@ -18,7 +18,7 @@ export function ReviewEdit({ review, onHandleChange, onAddReview, user }) {
                         rows="5" cols="60" name="txt" form="usrform" placeholder="Write something about this experience"></textarea>
 
                 </div>
-                <div className="add-review-text flex space-between align-center">
+                <div className="add-review-text avatar-line flex space-between align-center">
                     <Image className="preview-avatar" cloudName="orkofy" publicId={!user ? `https://res.cloudinary.com/orkofy/image/upload/v1600666498/eatso-profile/user_bqaypc.jpg` : user.imgUrl} type="fetch">
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                     </Image>

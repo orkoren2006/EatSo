@@ -16,6 +16,7 @@ function DynamicCmp(props) {
     }
 }
 
+
 class _Header extends Component {
 
     state = {
@@ -25,8 +26,23 @@ class _Header extends Component {
     }
 
     componentDidMount() {
-
+        window.addEventListener('scroll', this.handleScroll);
     }
+    
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    handleScroll = () => {
+        if (window.scrollY > 30) {
+          document.querySelector(".header").className = "header active flex align-center space-between full";
+          document.querySelector(".middle-navbar").className = "middle-navbar flex active";
+        } else {
+          document.querySelector(".header").className = "header flex align-center space-between full";
+          document.querySelector(".middle-navbar").className = "middle-navbar flex";
+        }
+      };
+   
 
     toggleMenu = () => {
         this.setState({ navbar: !this.state.navbar })
@@ -46,8 +62,8 @@ class _Header extends Component {
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
-                <div className={toggleScreen} onClick={this.toggleMenu}></div>
-                <div className="header flex align-center space-between full">
+                <div className={toggleScreen} onClick={this.toggleMenu} onScroll={this.popo}> </div>
+                <div className="header active flex align-center space-between full">
                     <Link to="/"><h1>EatSo!</h1></Link>
 
                     <div className="middle-navbar flex">
