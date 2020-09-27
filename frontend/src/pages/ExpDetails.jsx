@@ -153,7 +153,7 @@ class _ExpDetails extends Component {
             <div className="exp-details-container main-container">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
                     {login && <LoginSignup onCloseModal={this.onCloseModal} />}
-                    {gallery.isShown && <CarouselGallery images={exp.imgUrls} startIdx={gallery.idx} />}
+                    {gallery.isShown && <CarouselGallery  images={exp.imgUrls} startIdx={gallery.idx} />}
                 </Modal>
                 <div className="exp-title flex column">
                     <div className="exp-title-name">
