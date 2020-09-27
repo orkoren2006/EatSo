@@ -1,16 +1,14 @@
 .exp-details-container {
-  
     @import "exp-gallery";
     @import "exp-booking";
 
-    h2{
+    h2 {
         margin: 8px 0;
         font-size: rem(45px);
         font-weight: 500;
-        
     }
 
-    .exp-title-location{
+    .exp-title-location {
         margin-bottom: 24px;
     }
 
@@ -22,127 +20,106 @@
         margin-bottom: 5px;
         position: relative;
         flex: 1;
-        
+
         box-shadow: none;
-        
-       
-        .MuiTab-wrapper{
+
+        .MuiTab-wrapper {
             font-size: rem(16px);
         }
-       .MuiTab-root{
-           min-width: 200px;
+        .MuiTab-root {
+            min-width: 200px;
+        }
 
-       }
-
-     
-    
-        .MuiAppBar-colorPrimary{
+        .MuiAppBar-colorPrimary {
             background-color: transparent;
-            color:$clr2;
+            color: $clr2;
             box-shadow: none;
         }
 
-      
-        
         .exp-details {
             flex: 1;
             margin: 0 56px 0 0;
-        
-        .owner {
-                color:  $clr1;
+
+            .owner {
+                color: $clr1;
                 text-decoration: none;
             }
-           
-          
         }
 
         .exp-reviews {
-            .review-preview{
+            .review-preview {
                 box-shadow: none;
-                
             }
             button {
                 width: 25%;
                 height: 40px;
                 font-weight: 700;
-                font-size:12px;
+                font-size: 12px;
                 letter-spacing: 0.3em;
-               background-color: transparent;
-               color: $clr2;
-               text-transform: uppercase;
-               border: solid 1px  $clr2;
-               border-radius: 16px;
-              
+                background-color: transparent;
+                color: $clr2;
+                text-transform: uppercase;
+                border: solid 1px $clr2;
+                border-radius: 16px;
             }
-            
         }
     }
-    h3{
+    h3 {
         font-size: rem(28px);
         font-weight: 500;
         margin: 40px 0 24px 0;
     }
 
-    p{
+    p {
         font-size: rem(16px);
         margin-bottom: 40px;
         line-height: 1.6;
-        
     }
     .google-maps {
+        min-height: 350px;
         margin-top: 20px;
         padding-bottom: 200px;
-        
+        padding-left: 10px;
     }
 }
 
 .exp-menu {
-    
-        border: solid 1px #C1C1C1;
-        border-radius: 16px;
-        margin-left: -24px;
-        padding: 16px 0;
-        
-    
+    border: solid 1px #c1c1c1;
+    border-radius: 16px;
+    margin-left: -24px;
+    padding: 16px 0;
+
     li {
-        
         display: inline;
     }
 
-    h5{
+    h5 {
         font-size: rem(18px);
         text-transform: uppercase;
         letter-spacing: 0.4em;
         margin-top: 64px;
         margin-bottom: 32px;
-              
-        
     }
 
-
-    
-    h1{
+    h1 {
         font-size: rem(16px);
         // text-transform: uppercase;
         line-height: 1.3;
         margin-top: 16px;
     }
-    h2{
+    h2 {
         font-size: rem(12px);
         line-height: 1.3;
         margin-bottom: 16px;
         font-weight: 400;
         color: $clr4;
     }
-    .side-menu{
+    .side-menu {
         padding: 0 40px 0 0;
         margin-top: -40px;
         text-align: center;
     }
-   
-
 }
-
 
 .exp-title-location {
     h6 {
@@ -157,7 +134,7 @@
         margin-bottom: 0;
         // margin-left: 12px;
     }
-} 
+}
 
 .parts-list {
     margin-top: 10px;
@@ -166,45 +143,47 @@
 .add-review-text {
     width: 65%;
 
-    textarea{
-    border-radius: 16px;
-    padding: 16px;
-    font-size: rem(14px);
-    font-family: 'Roboto';
-    border-color: #C1C1C1;
-    } 
-    .rate-line{
+    textarea {
+        border-radius: 16px;
+        padding: 16px;
+        font-size: rem(14px);
+        font-family: "Roboto";
+        border-color: #c1c1c1;
+        outline: none;
+    }
+    .rate-line {
         margin-bottom: 8px;
     }
-    h4{
+    h4 {
         font-weight: 500;
     }
-      
 }
 
-.avatar-line{
+.avatar-line {
     margin-bottom: 40px;
 }
-.exp-opening{
+.exp-opening {
     margin-top: 15px;
     padding-right: 48px;
 
-
-.grid-icons{
-    display: grid;
-    grid-template-columns: repeat(4, 90px);
-    grid-column-gap: 8px;
-
-
-
-}
-.exps-icons{
-    p{
-        font-size: rem(12px);
-        margin: 8px 0;
+    .grid-icons {
+        display: grid;
+        grid-template-columns: repeat(4, 90px);
+        grid-column-gap: 8px;
+    }
+    .exps-icons {
+        p {
+            font-size: rem(12px);
+            margin: 8px 0;
+        }
     }
 }
+
+.image-gallery-icon:hover {
+    color: #FFBB00 !important;
 }
 
-
-
+.image-gallery-thumbnail.active, .image-gallery-thumbnail:hover, .image-gallery-thumbnail:focus {
+    outline: none !important;
+    border: 4px solid  #FFBB00 !important;;
+}

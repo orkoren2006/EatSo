@@ -124,7 +124,10 @@ class _ExpDetails extends Component {
 
     onAddReview = (ev) => {
         ev.preventDefault();
-        if (!this.props.user) return this.onShowModal();
+        if (!this.props.user){
+            this.setState({login: true, gallery: {...this.state.gallery, isShown: false}})
+            return this.onShowModal();
+        } 
         const reviewToAdd = this.state.review;
         const { user } = this.props;
 
