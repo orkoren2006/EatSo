@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/actions/userActions';
 import { UserNav } from './UserNav';
@@ -27,22 +27,37 @@ class _Header extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        this.setHeaderStyle();
     }
-    
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.setHeaderStyle();
+        }
+    }
+
+    setHeaderStyle = () => {
+        if (this.props.location.pathname !== '/') {
+            console.log('not in home');
+        } else {
+            console.log('in home');
+        }
+    }
+
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
     }
 
     handleScroll = () => {
         if (window.scrollY > 30) {
-          document.querySelector(".header").className = "header active flex align-center space-between full";
-          document.querySelector(".middle-navbar").className = "middle-navbar flex active";
+            document.querySelector(".header").className = "header active flex align-center space-between full";
+            document.querySelector(".middle-navbar").className = "middle-navbar flex active";
         } else {
-          document.querySelector(".header").className = "header flex align-center space-between full";
-          document.querySelector(".middle-navbar").className = "middle-navbar flex";
+            document.querySelector(".header").className = "header flex align-center space-between full";
+            document.querySelector(".middle-navbar").className = "middle-navbar flex";
         }
-      };
-   
+    };
+
 
     toggleMenu = () => {
         this.setState({ navbar: !this.state.navbar })
@@ -62,9 +77,9 @@ class _Header extends Component {
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
-                <div className={toggleScreen} onClick={this.toggleMenu} onScroll={this.popo}> </div>
-                <div className="header active flex align-center space-between full">
-                    <Link to="/"><h1>EatSo!</h1></Link>
+                <div className={toggleScreen} onClick={this.toggleMenu}> </div>
+                <div className="header flex align-center space-between full">
+                    <Link to="/"><h1>HostEat!</h1></Link>
 
                     <div className="middle-navbar flex">
                         <Link to="/exp"><h3>All Experiences</h3></Link> |
@@ -95,4 +110,4 @@ const mapDispatchToProps = {
     logout,
 };
 
-export const Header = connect(mapStateToProps, mapDispatchToProps)(_Header);
+export const Header = connect(mapStateToProps, mapDispatchToProps)(withRouter(_Header));
