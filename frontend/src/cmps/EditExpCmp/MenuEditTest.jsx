@@ -50,7 +50,7 @@ export class MenuEditTest extends Component {
         if (!menu) return <div>Load</div>
 
         return (
-            <div className="menu-edit-form" onSubmit={this.onSaveMenu}>
+            <div>
                 {
                     Object.keys(menu).map(key =>
                         <MenuEditSectionTest key={key} type={key} menuItems={menu[key]}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { ExpFilter } from '../cmps/ExpFilter';
 import { socketService } from '../services/socketService';
 
 import {
@@ -11,7 +10,7 @@ import {
   logout,
   signup
 } from '../store/actions/userActions';
-import { ExpEditTest } from './ExpEditTest';
+import { ExpEditTest } from './ExpEdit';
 
 class _LoginSignup extends Component {
   state = {

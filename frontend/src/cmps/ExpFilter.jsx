@@ -20,7 +20,7 @@ export class _ExpFilter extends Component {
     }
 
     handleChange = (ev) => {
-    
+
         let field = ev.target.name
         let value = ev.target.value
 
@@ -42,13 +42,13 @@ export class _ExpFilter extends Component {
 
     onSearch = async () => {
         const filterBy = this.state;
-        
+
         let URL = 'exp?';
 
-        for (const key in filterBy){
+        for (const key in filterBy) {
             if (filterBy[key]) URL += `${key}=${filterBy[key]}&`
         }
-        URL = URL.slice(0, -1)        
+        URL = URL.slice(0, -1)
         this.props.history.push(URL)
     }
 
@@ -88,13 +88,17 @@ export class _ExpFilter extends Component {
                         }}
                         onChange={this.handleChange}
                     />
-                    <span >Price Range:</span>
-                    <input type="number" id="price" name="price1" min="0" max="1000"
-                        value={this.state.price1} placeholder="min"
-                        onChange={(ev) => this.handleChange(ev)} />
-                    <input type="number" id="price" name="price2" min="0" max="1000"
-                        value={this.state.price2} placeholder="max"
-                        onChange={(ev) => this.handleChange(ev)} />
+                    <section className="price-range flex column">
+                        <span className="price-title">Price Range:</span>
+                        <section className="price-inputs">
+                            <input type="number" id="price" name="price1" min="0" max="1000"
+                                value={this.state.price1} placeholder="min"
+                                onChange={(ev) => this.handleChange(ev)} />
+                            <input type="number" id="price" name="price2" min="0" max="1000"
+                                value={this.state.price2} placeholder="max"
+                                onChange={(ev) => this.handleChange(ev)} />
+                        </section>
+                    </section>
                     <Button variant="contained" color="primary"
                         onClick={this.onSearch}><FontAwesomeIcon className="search-icon" icon={faSearch} /></Button>
                 </section>
