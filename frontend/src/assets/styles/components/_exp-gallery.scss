@@ -6,6 +6,7 @@
     // min-height: 220px;
     img {
         object-fit: cover;
+        cursor: pointer;
         // height: 100%;
         &:first-child {
             grid-row: 1/3;

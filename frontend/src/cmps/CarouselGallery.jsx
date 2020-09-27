@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
 import ImageGallery from 'react-image-gallery';
- 
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/1000/600/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/1000/600/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/1000/600/',
-  },
-];
- 
+
+
+
 export class CarouselGallery extends Component {
-  render() {
-    return <ImageGallery items={images} sizes={{maxWidth: 100}} />;
-  }
+    state = {
+        images: null
+    }
+    componentDidMount() {
+        const { startIdx } = this.props;
+        const images = this.props.images.map(img => ({ original: img, thumbnail: img }));
+        var temp = images[0];
+        images[0] = images[startIdx];
+        images[startIdx] = temp;
+        this.setState({ images });
+    }
+
+    render() {
+        const { images } = this.state;
+        if (!images) return <div></div>
+        return <ImageGallery items={images} />;
+    }
 }
