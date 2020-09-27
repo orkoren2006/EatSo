@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image, Transformation } from 'cloudinary-react';
+import { Link } from 'react-router-dom';
 
 export function ExpParticipantsList({ participants }) {
     return (
@@ -13,7 +14,7 @@ export function ExpParticipantsList({ participants }) {
                     <Image className="preview-avatar" cloudName="orkofy" publicId={part.imgUrl} type="fetch">
                         <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                     </Image>
-                    <span>{part.fullName}</span>
+                    <span><Link to={`/host/${part._id}`}>{part.fullName}</Link></span>
                 </section>
                 // </li>
             })}

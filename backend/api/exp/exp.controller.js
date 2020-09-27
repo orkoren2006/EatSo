@@ -48,7 +48,6 @@ async function updateExp(req, res) {
 async function addExp(req, res) {
     try {
         const exp = req.body;
-        console.log('Controller');
         await expService.add(exp)
         res.json(exp)
     } catch (err) {

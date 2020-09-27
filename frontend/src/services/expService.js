@@ -32,7 +32,7 @@ function remove(expId) {
 }
 
 async function save(exp) {
-
+    console.log('from service', exp);
     if (exp._id) {
         exp.updatedAt = Date.now();
         const updateExp = await httpService.put(`exp/${exp._id}`, exp)
@@ -65,6 +65,11 @@ function getEmptyExp() {
         'schedule': {
             'at': '',
             'duration': '120'
+        },
+        "owner": {
+            "_id": "",
+            "fullName": "",
+            "imgUrl": ""
         },
         'tags': [],
         'imgUrls': [],

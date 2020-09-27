@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { expService } from '../services/expService';
-import { Stepper, Button, Step, StepLabel } from '@material-ui/core';
-import { cloudinaryService } from '../services/cloudinary-service';
+import { Stepper, Step, StepLabel } from '@material-ui/core';
 import { getExpById, saveExp } from '../store/actions/expAction';
 import { Modal } from '../cmps/Modal';
 import { LoginSignup } from './LoginSignup';
 import { ExpInfo } from '../cmps/EditExpCmp/ExpInfo';
 import { ExpComplementaryInfo } from '../cmps/EditExpCmp/ExpComplementaryInfo';
 import { MenuEditTest } from "../cmps/EditExpCmp/MenuEditTest";
+import { ExpGalleryEdit } from '../cmps/EditExpCmp/ExpGalleryEdit';
 
 function DynamicCmp(props) {
+    console.log('from dynCmp', props);
     switch (props.step) {
         case 0:
             return <ExpInfo {...props} />
@@ -21,6 +22,9 @@ function DynamicCmp(props) {
         case 2:
             return <MenuEditTest {...props} />
             break;
+        case 3:
+            return <ExpGalleryEdit {...props} />
+            break;
         default:
             break;
     }
@@ -30,25 +34,53 @@ class _ExpEditTest extends Component {
     state = {
         exp: expService.getEmptyExp(),
         activeStep: 0,
+        editMenu: false,
+        isModalShown: true,
+        isMount: false
     }
 
     async componentDidMount() {
-
+        const expId = this.props.match.params.id;
+        const { loggedInUser } = this.props
+        if (!loggedInUser) return;
+        if (expId) {
+            const exp = await expService.getById(expId)
+            this.setState({ exp, isMount: true })
+        } else {
+            this.setState({isMount: true})
+        }
     }
 
-    handleStepChange = (sectionState, diff) => {
-        console.log(sectionState, diff);
+    handleStepChange = (sectionState, stepDiff) => {
         this.setState(
             {
-                activeStep: this.state.activeStep + diff,
+                activeStep: this.state.activeStep + stepDiff,
                 exp: sectionState
-            },()=> console.log('from test', this.state))
+            })
+    }
+
+    saveExp = async (sectionState) => {
+        const { loggedInUser } = this.props
+        sectionState.owner = {
+            _id: loggedInUser._id,
+            fullName: loggedInUser.fullName,
+            imgUrl: loggedInUser.imgUrl
+        }
+        this.setState(
+            {
+                exp: sectionState,
+            }, async () => {
+                console.log('from save exp', this.state.exp)
+                await this.props.saveExp(this.state.exp)
+            })
+
+
     }
 
     render() {
         const { exp, activeStep } = this.state
         const steps = ['Info', 'Complementary Info', 'Menu', 'Gallery'];
-
+        console.log('from render', exp);
         return (
             <div>
                 <Stepper activeStep={activeStep} alternativeLabel>
@@ -59,7 +91,11 @@ class _ExpEditTest extends Component {
                     ))}
                 </Stepper>
                 <DynamicCmp exp={exp} step={activeStep}
-                    onNextStep={this.handleStepChange} />
+                    onNextStep={this.handleStepChange}
+                    onSaveBtn={this.saveExp} />
+                {/* {this.state.isMount && <DynamicCmp exp={exp} step={activeStep}
+                    onNextStep={this.handleStepChange}
+                    onSaveBtn={this.saveExp} />} */}
                 {/* <div>
                     {activeStep === steps.length ? (
                         <div>

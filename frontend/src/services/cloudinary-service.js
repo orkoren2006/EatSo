@@ -1,5 +1,4 @@
 async function uploadImg(ev) {
-    console.log('cloudinary');
     const CLOUD_NAME = "orkofy"
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload/`
 
