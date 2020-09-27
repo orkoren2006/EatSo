@@ -6,6 +6,7 @@ export  function MenuEditSectionTest({type, menuItems, handleChange, addInputCou
     return ( 
         <div className="menu-edit-section">
             <span style={{textTransform: "capitalize"}}>{type}</span>
+                <div className="add-line-menu">
                 <label htmlFor={`menu-${type}`}>
                     {menuItems.map((item, idx) => {
                         return (
@@ -22,8 +23,11 @@ export  function MenuEditSectionTest({type, menuItems, handleChange, addInputCou
                         )
                     })}
                 </label>
+                <div className= "flex align-start justify-end">
                 <Button id={`add-${type}-btn`} variant="contained" color="primary" 
                 onClick={() => addInputCourse(type)}>+</Button>
+                </div>
+                </div>
         </div>
     )
 }

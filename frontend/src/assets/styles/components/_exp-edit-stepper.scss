@@ -46,12 +46,52 @@
              font-size: 14px;
              
          }
-        //  .menu-edit-section{
-            //  display: grid;
-            //  display: grid;
-            // grid-template-columns: repeat(2, 1fr) 0.5fr;
-            // grid-column-gap: 8px;
-            // grid-row-gap: 8px;
+         .add-line-menu{
+             
+             display: grid;
+            grid-template-columns:  1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 8px;
+            grid-row-gap: 8px;
+        
+            // .appetizers{
+            
+            // border-bottom: 1px solid $clr4;
+            // margin-bottom: 16px;
+            // }
+
+            
+
+            button{
+               
+                background-color: $clr1;
+                color: $clr2;
+                font-size: 18px;
+                font-weight: 600;
+
+                
+                
+            }
+            input {
+                border: solid 1px lightgray;
+                background-color: #fff;
+                 text-align: left;
+                 padding: 8px 4px;
+                 margin: 4px 0;
+                 width: 100%;
+                 font-size: 14px;
+                 
+             }
+
+         }
+         .MuiFormControl-root{
+             width: 100%;
+         }
+
+         .MuiInput-underline:before{
+             border: none;
+         }
+
 
          
 
