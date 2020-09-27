@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 // import { getExpById, saveExp } from '../store/actions/expAction';
 // import { Modal } from '../cmps/Modal';
 // import { LoginSignup } from './LoginSignup';
-import { TextField, Button, TextareaAutosize } from '@material-ui/core';
+import {Button, TextareaAutosize } from '@material-ui/core';
 
 
 export class ExpInfo extends Component {
@@ -20,7 +20,7 @@ export class ExpInfo extends Component {
     handleChange = ({ target }) => {
         let field = target.name;
         let value = (target.type === 'number') ? +target.value : target.value
-        // debugger
+        if (value < 0) return
         if (field.includes('capacity')) {
             field = (field.includes('min')) ? 'min' : 'max';
             this.setState(prevState => {

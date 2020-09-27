@@ -126,7 +126,6 @@ class _ExpEdit extends Component {
                     }
                 }, () => console.log(this.state))
             } else if (field === 'schedule') {
-                debugger
                 const time = Date.parse(value)
                 this.setState(prevState => {
                     return {

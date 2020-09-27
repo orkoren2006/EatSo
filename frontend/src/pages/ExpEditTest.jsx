@@ -9,6 +9,7 @@ import { LoginSignup } from './LoginSignup';
 import { ExpInfo } from '../cmps/EditExpCmp/ExpInfo';
 import { ExpComplementaryInfo } from '../cmps/EditExpCmp/ExpComplementaryInfo';
 import { MenuEditTest } from "../cmps/EditExpCmp/MenuEditTest";
+import {ExpGalleryEdit} from '../cmps/EditExpCmp/ExpGalleryEdit';
 
 function DynamicCmp(props) {
     switch (props.step) {
@@ -20,6 +21,9 @@ function DynamicCmp(props) {
             break;
         case 2:
             return <MenuEditTest {...props} />
+            break;
+        case 3:
+            return <ExpGalleryEdit {...props} />
             break;
         default:
             break;
@@ -36,13 +40,20 @@ class _ExpEditTest extends Component {
 
     }
 
-    handleStepChange = (sectionState, diff) => {
-        console.log(sectionState, diff);
+    handleStepChange = (sectionState, stepDiff) => {
         this.setState(
             {
-                activeStep: this.state.activeStep + diff,
+                activeStep: this.state.activeStep + stepDiff,
                 exp: sectionState
-            },()=> console.log('from test', this.state))
+            })
+    }
+
+    saveExp = (sectionState) => {
+        this.setState(
+            {
+                exp: sectionState
+            }, ()=> console.log(this.state) )
+
     }
 
     render() {
@@ -59,7 +70,8 @@ class _ExpEditTest extends Component {
                     ))}
                 </Stepper>
                 <DynamicCmp exp={exp} step={activeStep}
-                    onNextStep={this.handleStepChange} />
+                    onNextStep={this.handleStepChange} 
+                    onSaveBtn={this.saveExp}/>
                 {/* <div>
                     {activeStep === steps.length ? (
                         <div>
