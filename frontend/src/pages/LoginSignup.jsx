@@ -76,7 +76,7 @@ class _LoginSignup extends Component {
 
     } catch (err) {
       console.log('failed to login', err);
-      this.setState({ isLoggedIn: false })
+      this.setState({loginCred: { ...this.state.loginCred, password: '' } ,isLoggedIn: false })
     }
   };
 
@@ -155,7 +155,7 @@ class _LoginSignup extends Component {
           placeholder="Password"
         />
         <br />
-        <button className="signin-btn">Login</button>
+        <button className="signin-btn">Sign in</button>
       </form>
     );
 
