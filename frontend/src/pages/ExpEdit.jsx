@@ -69,7 +69,7 @@ class _ExpEdit extends Component {
     }
 
     handleChange = (ev) => {
-        console.log(ev.target.value);
+ 
         if (ev.target) {
             let field = ev.target.name;
             const value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value
@@ -126,7 +126,6 @@ class _ExpEdit extends Component {
                     }
                 }, () => console.log(this.state))
             } else if (field === 'schedule') {
-                debugger
                 const time = Date.parse(value)
                 this.setState(prevState => {
                     return {
@@ -187,7 +186,6 @@ class _ExpEdit extends Component {
     render() {
         const { isModalShown, exp } = this.state
         const { loggedInUser } = this.props
-
         if (!loggedInUser) {
 
             return (
@@ -202,7 +200,7 @@ class _ExpEdit extends Component {
         return (
             <div className="edit-div flex align-center justify-center">
 
-                <form className="exp-edit-form flex  justify-center"
+                <form className="exp-edit-form flex justify-center"
                     autoComplete="off" onSubmit={this.onSaveExp}>
                     <div className="form-side form-left">
                         <span> Name:</span>

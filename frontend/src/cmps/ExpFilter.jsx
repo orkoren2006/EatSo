@@ -62,6 +62,9 @@ export class _ExpFilter extends Component {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            inputProps={{
+                                placeholder: "e.g Italian, Tel-Aviv-Yafo",
+                            }}
                             onChange={this.handleChange} />
                     </label>
                     <TextField
@@ -85,22 +88,13 @@ export class _ExpFilter extends Component {
                         }}
                         onChange={this.handleChange}
                     />
+                    <span >Price Range:</span>
                     <input type="number" id="price" name="price1" min="0" max="1000"
                         value={this.state.price1} placeholder="min"
                         onChange={(ev) => this.handleChange(ev)} />
                     <input type="number" id="price" name="price2" min="0" max="1000"
                         value={this.state.price2} placeholder="max"
                         onChange={(ev) => this.handleChange(ev)} />
-
-                    {/* <Slider
-                        value={[this.state.price.num1, this.state.price.num2]}
-                        onChange={(ev, newValue) => this.handleChange(ev, newValue)}
-                        valueLabelDisplay="auto"
-                        aria-labelledby="range-slider"
-                        // getAriaValueText={valuetext}
-                    /> */}
-                    {/* <Slider />
-                    <Range /> */}
                     <Button variant="contained" color="primary"
                         onClick={this.onSearch}><FontAwesomeIcon className="search-icon" icon={faSearch} /></Button>
                 </section>

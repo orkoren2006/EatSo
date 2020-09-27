@@ -64,7 +64,6 @@ async function update(exp) {
 async function add(exp) {
     exp._id = ObjectId(exp._id);
     exp.owner._id = ObjectId(exp.owner._id)
-    console.log('add-service', exp.name);
     const collection = await dbService.getCollection('exp')
     try {
         await collection.insertOne(exp);
