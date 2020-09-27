@@ -22,25 +22,37 @@ class _Header extends Component {
     state = {
         navbar: true,
         button: false,
-        user: null
+        user: null,
+        atHome: null,
+        isHeaderActive: null
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
        this.setHeaderStyle();
+       console.log(this.state.atHome);
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.location.pathname !== this.props.location.pathname) {
             this.setHeaderStyle();
+           
         }
     }
 
+    // setHeaderStyle = () => {
+    //     if (this.props.location.pathname !== '/') {
+    //         document.querySelector(".middle-navbar").className = "middle-navbar flex active";
+    //     } else {
+    //         document.querySelector(".middle-navbar").className = "middle-navbar flex";
+    //     }
+    // }
+
     setHeaderStyle = () => {
         if (this.props.location.pathname !== '/') {
-            console.log('not in home');
+            this.setState({ atHome: false })
         } else {
-            console.log('in home');
+            this.setState({ atHome: true })
         }
     }
 
@@ -50,11 +62,9 @@ class _Header extends Component {
 
     handleScroll = () => {
         if (window.scrollY > 30) {
-            document.querySelector(".header").className = "header active flex align-center space-between full";
-            document.querySelector(".middle-navbar").className = "middle-navbar flex active";
+            this.setState({isHeaderActive: true})
         } else {
-            document.querySelector(".header").className = "header flex align-center space-between full";
-            document.querySelector(".middle-navbar").className = "middle-navbar flex";
+            this.setState({isHeaderActive: false})
         }
     };
 
@@ -72,16 +82,18 @@ class _Header extends Component {
     render() {
         const toggleNavbarClass = this.state.navbar ? 'main-nav flex toggle' : 'main-nav flex'
         const toggleScreen = this.state.navbar ? 'header-screen' : 'header-screen open-menu'
+        const navBarColor = this.state.atHome ? 'shubi' : 'dark' 
+        const isHeaderActive = this.state.isHeaderActive ? 'active' : '' 
         const { user } = this.props
         const avatar = (user) ? user.imgUrl : `https://res.cloudinary.com/orkofy/image/upload/v1600666498/eatso-profile/user_bqaypc.jpg`
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
                 <div className={toggleScreen} onClick={this.toggleMenu}> </div>
-                <div className="header flex align-center space-between full">
+                <div className={`header flex align-center space-between full ${isHeaderActive}`}>
                     <Link to="/"><h1>EatSo!</h1></Link>
 
-                    <div className="middle-navbar flex">
+                    <div className={`middle-navbar flex ${navBarColor} ${isHeaderActive}`}>
                         <Link to="/exp"><h3>All Experiences</h3></Link> |
                         <Link to="/exp/edit"><h3>Host a meal</h3></Link>
                     </div>

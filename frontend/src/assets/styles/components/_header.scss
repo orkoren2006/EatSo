@@ -13,7 +13,6 @@
         background-image: url("../../imgs/appetizer-logo-yellow.png");
         height: 200px;
         position: sticky;
-    
     }
 
     h1 {
@@ -151,8 +150,12 @@
     h3:hover {
         color: lightgray;
     }
-}
 
-.middle-navbar.active {
-    color: black;
+    &.active {
+        color: black;
+    }
+
+    &.dark {
+        color: black;
+    }
 }
