@@ -4,17 +4,22 @@ import React, { Component } from 'react'
 // import { getExpById, saveExp } from '../store/actions/expAction';
 // import { Modal } from '../cmps/Modal';
 // import { LoginSignup } from './LoginSignup';
-import {Button, TextareaAutosize } from '@material-ui/core';
+import { Button, TextareaAutosize } from '@material-ui/core';
 
 
 export class ExpInfo extends Component {
 
     state = {
-        exp: null
+        exp: this.props.exp
     }
 
     componentDidMount() {
         this.setState({ exp: this.props.exp })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.exp._id !== this.props.exp._id)
+            this.setState({ exp: this.props.exp })
     }
 
     handleChange = ({ target }) => {
@@ -48,6 +53,7 @@ export class ExpInfo extends Component {
 
     render() {
         const { exp } = this.state
+        console.log('render info', exp);
         if (!exp) return <div>Load</div>
         return (
             <div>
@@ -95,10 +101,10 @@ export class ExpInfo extends Component {
                             < div >
                                 <Button
                                     disabled={this.props.step === 0}
-                                    onClick={() => this.props.onNextStep(this.state.exp,-1)}>
+                                    onClick={() => this.props.onNextStep(this.state.exp, -1)}>
                                     Back
                                 </Button>
-                                <Button variant="contained" color="primary" onClick={() => this.props.onNextStep(this.state.exp,1)}>
+                                <Button variant="contained" color="primary" onClick={() => this.props.onNextStep(this.state.exp, 1)}>
                                     {this.props.step === this.props.step.length - 1 ? 'Finish' : 'Next'}
                                 </Button>
                             </div>

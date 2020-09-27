@@ -6,11 +6,16 @@ import { Button } from '@material-ui/core';
 export class ExpGalleryEdit extends Component {
 
     state = {
-        exp: null
+        exp: this.props.exp
     }
 
     componentDidMount() {
         this.setState({ exp: this.props.exp })
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.exp._id !== this.props.exp._id)
+            this.setState({ exp: this.props.exp })
     }
 
     uploadImg = async (ev) => {

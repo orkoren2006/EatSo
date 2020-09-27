@@ -4,26 +4,25 @@ import { MenuEditSectionTest } from './MenuEditSectionTest';
 
 export class MenuEditTest extends Component {
     state = {
-        exp: null
+        exp: this.props.exp
     }
-
-    componentDidMount() {
-        this.setState({ exp: this.props.exp }, () => console.log('from menu', this.state))
-    }
-
-    onSaveMenu = () => {
-        this.props.setMenu(this.state.menu)
+    
+    componentDidUpdate(prevProps) {
+        if (prevProps.exp._id !== this.props.exp._id)
+            this.setState({ exp: this.props.exp })
     }
 
     addInputCourse = (field) => {
-        const newField = [...this.state.menu[field], { 'title': '', 'desc': '' }];
+
+        const newField = [...this.state.exp.menu[field], { 'title': '', 'desc': '' }];
         this.setState(prevState => {
             return {
+                exp: {
+                    ...prevState.exp,
                 menu: {
-                    ...prevState.menu,
+                    ...prevState.exp.menu,
                     [field]: newField
-                }
-
+                }}
             }
         })
     }
@@ -47,7 +46,9 @@ export class MenuEditTest extends Component {
     }
 
     render() {
-        const { menu } = this.props.exp
+        const {menu} = this.state.exp
+        if (!menu) return <div>Load</div>
+
         return (
             <div className="menu-edit-form" onSubmit={this.onSaveMenu}>
                 {
