@@ -36,7 +36,12 @@ class _ExpDetails extends Component {
             txt: '',
             rate: 5
         },
-        numOfGuests: 1
+        numOfGuests: 1,
+        login: false,
+        gallery: {
+            isShown: false,
+            idx: -1
+        }
 
     }
     async componentDidMount() {
@@ -60,8 +65,16 @@ class _ExpDetails extends Component {
         // socketService.terminate();
     }
 
+    onImgClick = (idx) => {
+        this.setState({login: false, gallery: {idx, isShown: true}})
+        this.onShowModal();
+    }
+
     onBookClick = async () => {
-        if (!this.props.user) return this.onShowModal();
+        if (!this.props.user){
+            this.setState({login: true, gallery: {...this.state.gallery, isShown: false}})
+            return this.onShowModal();
+        } 
         const { exp } = this.state;
         const { user } = this.props;
         const booking = await bookingService.getEmpty();
@@ -131,7 +144,7 @@ class _ExpDetails extends Component {
 
 
     render() {
-        const { exp, review, isModalShown, isAddReviewShown, numOfGuests } = this.state;
+        const { exp, review, isModalShown, isAddReviewShown, numOfGuests, login, gallery } = this.state;
         const { user } = this.props;
         // const date = exp.schedule.at
         if (!exp) return <div>  </div>
@@ -139,7 +152,8 @@ class _ExpDetails extends Component {
         return (
             <div className="exp-details-container main-container">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
-                    {<LoginSignup onCloseModal={this.onCloseModal} />}
+                    {login && <LoginSignup onCloseModal={this.onCloseModal} />}
+                    {gallery.isShown && <CarouselGallery images={exp.imgUrls} startIdx={gallery.idx} />}
                 </Modal>
                 <div className="exp-title flex column">
                     <div className="exp-title-name">
@@ -150,8 +164,8 @@ class _ExpDetails extends Component {
                         <h6>{exp.location.city} &gt; </h6>
                     </div>
                 </div>
-                <CarouselGallery />
-                <ExpGallery imgUrls={exp.imgUrls} />
+                
+                <ExpGallery imgUrls={exp.imgUrls} onImgClick={this.onImgClick} />
                 <section className="flex ">
                     <div className="flex column flex-2 exp-opening">
                         <div className="exp-details-host-avatar align-center flex space-between ">
