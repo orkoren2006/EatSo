@@ -1,20 +1,25 @@
 .user-msg {  
-    padding: 55px;
-    box-shadow: 0 0 2px 0px black;
+    padding: 10px;
+    color: white;
+    box-shadow: 0 2px 2px 0px black;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
-    min-width: 30%;
-    min-height: 30%;
+    min-width: 35%;
 
-    &.successed{
-      background-color: rgba(101, 228, 101, 0.92);
-      border:  rgba(101, 228, 101, 1) solid 1px;
-    }
-    &.failed{
-      background-color: rgba(228, 101, 101, 0.92);
+  #close-notification-btn{
+    width: initial;
+  }
+
+  &.successed{
+    background-color: rgb(29, 207, 118);
+    border:  rgba(101, 228, 101, 1) solid 1px;
+  }
+
+  &.failed{
+      background-color: rgb(235, 27, 27);
       border:  rgba(228, 101, 101, 1) solid 1px;
-    }
+  }
   }

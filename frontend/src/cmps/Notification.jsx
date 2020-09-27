@@ -13,7 +13,7 @@ export class _Notification extends Component {
         if (Object.keys(notification).includes('isSuccessed')) {
             notificationType = (notification.isSuccessed) ? 'successed' : 'failed'
         }
-        return `user-msg flex space-between column justify-center align-center ${notificationVisibility} ${notificationType}`
+        return `user-msg flex space-between justify-center align-center ${notificationVisibility} ${notificationType}`
     }
     getMsg = (notification) => {
         const notificationMsg = (notification) ? notification.msg : ''
@@ -22,17 +22,20 @@ export class _Notification extends Component {
 
     render() {
         const notification = this.props.notification || ''
-        // return <div className="user-msg flex column justify-center align-center space-between">
-        //     <h4>Experience Updated</h4>
+        // return <div className="user-msg flex justify-center align-center space-between">
+        //     <span>Experience Updated</span>
         //     {/* The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog */}
-        //     <button>Close</button>
+        //     <img id="close-notification-btn" src={require("../assets/imgs/cancel-button.png")} alt=""
+        //         onClick={() => console.log('itay')} />
         // </div>
         return notification &&
             <div className={this.getClass(notification)} >
-                <pre>{this.getMsg(notification)}</pre>
-                <section className="flex align-center">
-                    <button onClick={this.props.clearNotification}>Close</button>
-                </section>
+                <span>{this.getMsg(notification)}</span>
+                <img id="close-notification-btn" src={require("../assets/imgs/cancel-button.png")} alt=""
+                    onClick={() => console.log('itay')} />
+                {/* //         <section className="flex align-center">
+                    //             <button onClick={this.props.clearNotification}>Close</button>
+        //         </section> */}
             </div>
     }
 }
