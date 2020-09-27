@@ -5,7 +5,10 @@
     border-radius: 40px;
     height: 88px;
 
-    
+.MuiInputBase-input {
+     padding: 6px 5px 7px 5px;
+}
+
 .MuiInput-underline:before{
     width: 95%;
 }
