@@ -4,21 +4,25 @@ import { expService } from '../services/expService';
 import { Stepper, Button, Step, StepLabel } from '@material-ui/core';
 import { cloudinaryService } from '../services/cloudinary-service';
 import { getExpById, saveExp } from '../store/actions/expAction';
-import { MenuEdit } from '../cmps/MenuEdit';
 import { Modal } from '../cmps/Modal';
 import { LoginSignup } from './LoginSignup';
+import { ExpInfo } from '../cmps/EditExpCmp/ExpInfo';
+import { ExpComplementaryInfo } from '../cmps/EditExpCmp/ExpComplementaryInfo';
+import { MenuEditTest } from "../cmps/EditExpCmp/MenuEditTest";
 
-
-function getStepContent(stepIndex) {
-    switch (stepIndex) {
+function DynamicCmp(props) {
+    switch (props.step) {
         case 0:
-            return 'Select campaign settings...';
+            return <ExpInfo {...props} />
+            break;
         case 1:
-            return 'What is an ad group anyways?';
+            return <ExpComplementaryInfo {...props} />
+            break;
         case 2:
-            return 'This is the bit I really care about!';
+            return <MenuEditTest {...props} />
+            break;
         default:
-            return 'Unknown stepIndex';
+            break;
     }
 }
 
@@ -32,18 +36,18 @@ class _ExpEditTest extends Component {
 
     }
 
-    handleChange = (diff) => {
-        this.setState({
-            ...this.state,
-            activeStep: this.state.activeStep + diff
-        })
-
+    handleStepChange = (sectionState, diff) => {
+        console.log(sectionState, diff);
+        this.setState(
+            {
+                activeStep: this.state.activeStep + diff,
+                exp: sectionState
+            },()=> console.log('from test', this.state))
     }
-
 
     render() {
         const { exp, activeStep } = this.state
-        const steps = ['Select master blaster campaign settings', 'Create an ad group', 'Create an ad'];
+        const steps = ['Info', 'Complementary Info', 'Menu', 'Gallery'];
 
         return (
             <div>
@@ -54,7 +58,9 @@ class _ExpEditTest extends Component {
                         </Step>
                     ))}
                 </Stepper>
-                <div>
+                <DynamicCmp exp={exp} step={activeStep}
+                    onNextStep={this.handleStepChange} />
+                {/* <div>
                     {activeStep === steps.length ? (
                         <div>
                             <h2>All steps completed</h2>
@@ -64,16 +70,15 @@ class _ExpEditTest extends Component {
                             < div >
                                 <Button
                                     disabled={activeStep === 0}
-                                    onClick={() => this.handleChange(-1)}>
+                                    onClick={() => this.handleStepChange(-1)}>
                                     Back
                                 </Button>
-                                <Button variant="contained" color="primary" onClick={() => this.handleChange(1)}>
+                                <Button variant="contained" color="primary" onClick={() => this.handleStepChange(1)}>
                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                 </Button>
                             </div>
-
                         )}
-                </div>
+                </div> */}
             </div >
         )
     }
