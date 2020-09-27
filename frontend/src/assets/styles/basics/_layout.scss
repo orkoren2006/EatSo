@@ -18,9 +18,9 @@
     }
     @include for-normal-layout {
         grid-template-columns: 
-            minmax(20px, 1fr)
+            minmax(15px, 1fr)
             minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
+            minmax(15px, 1fr);
     }
     @include for-wide-layout {
         grid-template-columns: 
