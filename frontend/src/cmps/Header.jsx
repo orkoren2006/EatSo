@@ -27,7 +27,7 @@ class _Header extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
-        this.setHeaderStyle();
+       this.setHeaderStyle();
     }
 
     componentDidUpdate(prevProps, prevState) {

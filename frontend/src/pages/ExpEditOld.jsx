@@ -11,7 +11,6 @@ import { MenuEditTest } from "../cmps/EditExpCmp/MenuEditTest";
 import { ExpGalleryEdit } from '../cmps/EditExpCmp/ExpGalleryEdit';
 
 function DynamicCmp(props) {
-    console.log('from dynCmp', props);
     switch (props.step) {
         case 0:
             return <ExpInfo {...props} />
@@ -30,13 +29,10 @@ function DynamicCmp(props) {
     }
 }
 
-class _ExpEditTest extends Component {
+class _ExpEdit extends Component {
     state = {
         exp: expService.getEmptyExp(),
         activeStep: 0,
-        editMenu: false,
-        isModalShown: true,
-        isMount: false
     }
 
     async componentDidMount() {
@@ -70,8 +66,8 @@ class _ExpEditTest extends Component {
             {
                 exp: sectionState,
             }, async () => {
-                console.log('from save exp', this.state.exp)
                 await this.props.saveExp(this.state.exp)
+                this.props.history.push('/myexp/owner')
             })
 
 
@@ -80,19 +76,16 @@ class _ExpEditTest extends Component {
     render() {
         const { exp, activeStep } = this.state
         const steps = ['Info', 'Complementary Info', 'Menu', 'Gallery'];
-        console.log('from render', exp);
         return (
-            <div className="flex justify-center">
-            <div className= "full-stepper">
-                <Stepper className="flex column justify-center align-center stepper" activeStep={activeStep} alternativeLabel>
+            <div>
+                <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label) => (
                         <Step key={label}>
                             <StepLabel>{label}</StepLabel>
                         </Step>
                     ))}
                 </Stepper>
-                <div className="form-stepper align-center">
-                <DynamicCmp  exp={exp} step={activeStep}
+                <DynamicCmp exp={exp} step={activeStep}
                     onNextStep={this.handleStepChange}
                     onSaveBtn={this.saveExp} />
                 {/* {this.state.isMount && <DynamicCmp exp={exp} step={activeStep}
@@ -117,8 +110,6 @@ class _ExpEditTest extends Component {
                             </div>
                         )}
                 </div> */}
-                </div>
-                </div>
             </div >
         )
     }
@@ -135,4 +126,4 @@ const mapDispatchToProps = {
     getExpById
 };
 
-export const ExpEditTest = connect(mapStateToProps, mapDispatchToProps)(_ExpEditTest);
+export const ExpEdit = connect(mapStateToProps, mapDispatchToProps)(_ExpEdit);

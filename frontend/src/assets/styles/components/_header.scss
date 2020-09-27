@@ -9,9 +9,14 @@
     z-index: 10;
     // background-color: black;
 
+    .app-logo {
+        background-image: url("../../imgs/appetizer-logo-white.png");
+        height: 100px;
+    }
+
     h1 {
         margin: 0.67em 0;
-        color: #FFBB00;
+        color: #ffbb00;
         margin-left: 5px;
         font-family: orkney;
         font-size: 40px;
@@ -134,7 +139,6 @@
 .middle-navbar {
     z-index: 1;
     color: white;
-   
 
     h3 {
         margin: 5px;
@@ -148,10 +152,5 @@
 }
 
 .middle-navbar.active {
-    color:black;
-}
-
-.app-logo {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
-        url("../../imgs/appetizer-logo-white.png");
+    color: black;
 }

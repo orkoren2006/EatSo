@@ -2,12 +2,12 @@ import { expService } from '../../services/expService';
 import { loading, doneLoading } from './systemActions';
 
 // THUNK
-export function loadExps(filterBy,numOfExps) {
-  
+export function loadExps(filterBy, numOfExps) {
+
   return async dispatch => {
     try {
       dispatch(loading);
-      const exps = await expService.query(filterBy,numOfExps);
+      const exps = await expService.query(filterBy, numOfExps);
       dispatch({ type: 'SET_EXPS', exps });
     } catch (err) {
       console.log('ExpActions: err in loadExps', err);
@@ -46,14 +46,16 @@ export function saveExp(exp) {
   return async dispatch => {
     try {
       const expObj = await expService.save(exp);
-      if (exp._id) dispatch({ type: 'UPDATE_EXP', exp: expObj.exp})
-      else dispatch({ type: 'ADD_EXP', exp: expObj.exp})
-      // dispatch({ type: 'SAVE_EXP', exp: expObj.exp, isNew: expObj.isNew })
-      // const notificationTxt = (expObj.isNew) ? 'Toy Added' : 'Toy Updated'
-      // dispatch({ type: 'SEND_NOTIFICATION', notification: notificationTxt })
-      // setTimeout(() => {
-      //   dispatch({ type: 'CLEAR_NOTIFICATION' })
-      // }, 2000);
+      if (exp._id) {
+        dispatch({ type: 'UPDATE_EXP', exp: expObj.exp })
+        dispatch({ type: 'SEND_NOTIFICATION', notification:  {msg: 'Experience Updted', isSuccessed: true } })
+      } else {
+        dispatch({ type: 'ADD_EXP', exp: expObj.exp })
+        dispatch({ type: 'SEND_NOTIFICATION', notification:  {msg: 'Experience Added', isSuccessed: true } })
+      } 
+      setTimeout(() => {
+        dispatch({ type: 'CLEAR_NOTIFICATION' })
+      }, 3000);
     } catch (err) {
       console.log('ExpsActions: err in SaveExp', err);
     }

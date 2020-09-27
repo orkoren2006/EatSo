@@ -53,7 +53,6 @@ export class ExpInfo extends Component {
 
     render() {
         const { exp } = this.state
-        console.log('render info', exp);
         if (!exp) return <div>Load</div>
         return (
             <div>

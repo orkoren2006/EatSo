@@ -15,7 +15,7 @@ import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
 import { clearNotification, sendNotification } from './store/actions/systemActions.js';
 import { connect } from 'react-redux';
-import { ExpEditTest } from './pages/ExpEditTest.jsx';
+// import { ExpEditTest } from './pages/ExpEditTest.jsx';
 
 class _App extends Component {
   componentDidMount() {
@@ -51,8 +51,8 @@ class _App extends Component {
           <Switch>
             <Route path="/" component={Home} exact />
             {/* <Route path="/test" component={ExpEditTest} exact /> */}
-            <Route path="/exp/edit/:id?" component={ExpEditTest} exact />
-            {/* <Route path="/exp/edit/:id?" component={ExpEdit} exact /> */}
+            <Route path="/exp/edit/:id?" component={ExpEdit} exact />
+            {/* <Route path="/exp/edit/:id?" component={_ExpEdit} exact /> */}
             <Route path="/exp/:id" component={ExpDetails} exact />
             <Route path="/host/:id" component={HostDetails} exact />
             <Route path="/myexp/:as" component={UserExp} exact />

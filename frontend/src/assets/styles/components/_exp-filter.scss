@@ -5,6 +5,7 @@
     border-radius: 40px;
     height: 88px;
 
+    
 .MuiInput-underline:before{
     width: 95%;
 }
@@ -15,6 +16,16 @@
 
 input#price{
     margin-left:8px;
+}
+
+.price-inputs{
+    margin-block-start: 4px;
+}
+
+.price-title{
+    margin-inline-start: 8px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: rem(12px);
 }
 
 .MuiButton-containedPrimary{

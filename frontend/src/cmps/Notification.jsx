@@ -21,7 +21,6 @@ export class _Notification extends Component {
 
     render() {
         const notification = this.props.notification || ''
-
         return notification &&
             <div className={this.getClass(notification)} >
                 <pre>{this.getMsg(notification)}</pre>
