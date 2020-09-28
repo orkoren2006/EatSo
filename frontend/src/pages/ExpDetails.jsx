@@ -172,9 +172,13 @@ class _ExpDetails extends Component {
                         <h6>{exp.location.city} &gt; </h6>
                     </div>
                 </div>
-
-                <ExpGallery imgUrls={exp.imgUrls} onImgClick={this.onImgClick} />
-                <section className="flex ">
+                <div className="carousel-gallery">
+                    <CarouselGallery images={exp.imgUrls} startIdx={0} />
+                </div>
+                <div className="simple-gallery">
+                    <ExpGallery imgUrls={exp.imgUrls} onImgClick={this.onImgClick} />
+                </div>
+                <section className="flex exp-details-content">
                     <div className="flex column flex-2 exp-opening">
                         <div className="exp-details-host-avatar align-center flex space-between ">
                             <div>
