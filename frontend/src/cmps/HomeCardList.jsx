@@ -5,40 +5,24 @@ import { HomeCard } from './HomeCard';
 
 
 
-export class _HomeCardList extends Component {
+export function HomeCardList() {
 
-    state = {
-        cardsProps: [
-            { title: 'Outdoor', subtitle: 'dinner experiences', filterBy: { tags: 'outdoor' } },
-            { title: 'Traditional', subtitle: 'cuisine', filterBy: { tags: 'traditional' } },
-            { title: 'Romantic', subtitle: 'dinners', filterBy: { capacity: 'intimacy ' } },
-            { title: 'Holiday', subtitle: 'meals', filterBy: { schedule: 'holidy' } },
-            { title: 'Dinner', subtitle: 'parties', filterBy: { capacity: 'multi' } },
-        ]
-    }
-    render() {
-        return (
-            <React.Fragment>
-                {/* <div className="preview-header">
-                    <h2>Most Popular Categories</h2>
-                </div> */}
-                <div className="flex flex center wrap align-center preview-cards">
-                    {this.state.cardsProps.map((cardProps, idx) =>
-                        <HomeCard key={`card-${idx}`} propsObj={cardProps} cardIdx={idx} />
-                    )}
-                </div>
-            </React.Fragment>
-        )
-    }
+
+    const cards = [
+        { title: 'Outdoor', subtitle: 'dinner experiences', filterBy: { tags: 'outdoor' } },
+        { title: 'Traditional', subtitle: 'cuisine', filterBy: { tags: 'traditional' } },
+        { title: 'Romantic', subtitle: 'dinners', filterBy: { capacity: 'intimacy ' } },
+        { title: 'Holiday', subtitle: 'meals', filterBy: { schedule: 'holidy' } },
+        { title: 'Dinner', subtitle: 'parties', filterBy: { capacity: 'multi' } },
+    ]
+
+    return (
+        <div className="home-cards-list">
+            {cards.map((card, idx) =>
+                <HomeCard key={`card-${idx}`} card={card} cardIdx={idx} />
+            )}
+        </div>
+    )
+
 }
 
-const mapStateToProps = state => {
-    return {
-
-    };
-};
-const mapDispatchToProps = {
-
-};
-
-export const HomeCardList = connect(mapStateToProps, mapDispatchToProps)(_HomeCardList);
