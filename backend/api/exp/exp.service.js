@@ -12,6 +12,7 @@ module.exports = {
 }
 
 async function query(filterBy = {}, numOfExps = 0) {
+    console.log('query', filterBy);
 
     let exps;
     const criteria = _buildCriteria(filterBy)
@@ -75,7 +76,6 @@ async function add(exp) {
 }
 
 function _buildCriteria(filterBy) {
-    // const criteria = {};
     const criteriaArr = [];
     let criteriaToReturn = [];
     // for free text search - find in 'name' OR 'city' OR 'tags'
@@ -147,7 +147,7 @@ function _buildCriteria(filterBy) {
             criteriaToReturn.push({ [filterType]: filterBy[filterType] })
         }
     }
-    // console.log(criteriaToReturn);
+    console.log('criteria',criteriaToReturn);
 
     return criteriaToReturn;
 }

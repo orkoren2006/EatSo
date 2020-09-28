@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/actions/userActions';
 import { UserNav } from './UserNav';
