@@ -33,12 +33,11 @@
 @import "components/exp-filter";
 @import "components/login";
 
-// Media Query
-@import "media-query/home-media-query";
-
-
-
+// Homepage
 @import "views/home-page";
 
 
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+// Media Query
+@import "media-query/home-media-query";

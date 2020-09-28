@@ -1,4 +1,16 @@
-@media (max-width: 1020px) {
+// @media (max-width: 1080px) {
+
+//     .grid-container {
+      
+//         display: grid;
+//         grid-template-columns:  repeat(4, 350px);
+//         gap: 4px;
+//       }
+//     }
+
+
+
+@media (max-width: 1140px) {
 
 .grid-container {
   
@@ -10,10 +22,26 @@
 
 @media (max-width: 640px) {
 
+    .hero-image {
+        height: 50vh;
+    }
+
     .grid-container {
       
         display: grid;
-        grid-template-columns:  repeat(1, 1fr);
+        grid-template-columns:  repeat(1, 350px);
+        justify-content: center;
         gap: 4px;
       }
+
+      .preview-header {
+          h2 {
+              font-size: 20px;
+          }
+      }
+
+      .tokyo-banner {
+        background-size: contain;
+      }
+
     }

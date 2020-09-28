@@ -1,3 +1,5 @@
+
+
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)),
         url("https://res.cloudinary.com/orkofy/image/upload/v1600615140/eatso/hero-friends_r4vyhs.jpg");
@@ -46,12 +48,14 @@
     // justify-content: space-between;
 
     h2 {
-        font-size: rem(45px);
+        font-size: 45px;
         margin-bottom: rem(56px);
         font-weight: 600;
         // font-family: "prata";
     }
 }
+
+
 
 .home-category {
     margin: 25px 0;
@@ -181,3 +185,4 @@
         color: $clr6;
     }
 }
+
