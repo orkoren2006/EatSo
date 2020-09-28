@@ -17,6 +17,6 @@ export class CarouselGallery extends Component {
         const { images } = this.state;
         const { startIdx } = this.props;
         if (!images) return <div></div>
-        return <ImageGallery items={images} startIndex={startIdx} />;
+        return <ImageGallery items={images} startIndex={startIdx} showFullscreenButton={false} />;
     }
 }
