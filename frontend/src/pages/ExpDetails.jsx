@@ -21,7 +21,7 @@ import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';
 import { Link } from 'react-router-dom';
 import { CarouselGallery } from '../cmps/CarouselGallery';
-import ChatIcon from '@material-ui/icons/Chat';
+// import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 
 const ObjectId = require('mongodb').ObjectId
@@ -31,7 +31,7 @@ class _ExpDetails extends Component {
     state = {
         exp: null,
         isModalShown: false,
-        isChat: false,
+        // isChat: false,
         isAddReviewShown: false,
         review: {
             id: utilService.makeId(),
@@ -147,10 +147,6 @@ class _ExpDetails extends Component {
         this.toggleAddReviewShown();
     }
 
-    toggleChat = () => {
-        this.setState({ isChat: !this.state.isChat })
-    }
-
 
     render() {
         const { exp, review, isModalShown, isAddReviewShown, numOfGuests, login, gallery } = this.state;
@@ -225,10 +221,9 @@ class _ExpDetails extends Component {
                     <div className="google-maps">
                         <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
                     </div>
-                    <section className="chat-sec flex column">
-                        {/* {user && this.state.isChat && */}
-                        {user && <ExpChat username={user.username} expId={exp._id} />}
-                        <ChatIcon onClick={this.toggleChat} className="chat-btn" />
+                    <section className="chat-sec flex column space-between">
+                        {user &&
+                            <ExpChat username={user.username} expId={exp._id} />}
                     </section>
                 </section>
             </div>

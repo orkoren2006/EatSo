@@ -1,8 +1,61 @@
 .chat-sec{
-    background-color: brown;
-    justify-content: flex-end;
+    // justify-content: flex-end;
+    align-items: flex-end;
 
     h2,h3 {
         font-size: rem(16px);
+    }
+
+    // nsg btn/icon
+    .MuiSvgIcon-root {
+        color: #4285F4;
+        
+    }
+    .toggle-chat-btn {
+        * {
+            padding: 12px;
+            font-size: 60px;
+            color: black;
+            background-color: $clr1;
+            border-radius: 50%;
+            margin-top: 5px; 
+        }
+       
+    }
+
+    .exp-chat{
+        overflow: auto;
+        height: 275px;
+        background-color: #f1f1f1;
+        padding: 10px;
+        box-shadow: 0 0 1px;
+
+        &.hide{
+            display: block;
+            visibility: hidden
+        }
+
+        h2:nth-child(2) {
+            flex: 1
+        }
+
+        .chat-send-btn{
+            background-color: transparent;
+            border: transparent;
+        }
+
+        .msgs-list{
+
+            .chatMsg {
+                border-radius: 5px;
+                margin: 3px;
+                padding: 3px;
+                background-color: #d2d2d2;
+                &.myMsg {
+                text-align: right;
+                background-color: #0F9D58;
+                }
+            }
+        }
     }
 }
