@@ -39,15 +39,16 @@ export function ExpDetailsTab({ user, exp, numOfGuests, onNumOfGuestsChange, tog
                         </TabList>
                     </AppBar>
                     <TabPanel value="1"><Menu menu={exp.menu} /></TabPanel>
-                    <TabPanel value="2"><section className="exp-reviews flex column">
-                        <div className="flex space-between">
-                        <ExpRateBig reviews={exp.reviews} />
-                        
-                        <button onClick={toggleAddReviewShown}>Add review</button>
-                        </div>
-                        {isAddReviewShown && <ReviewEdit onHandleChange={onHandleChange} onAddReview={onAddReview} review={review} user={user} />}
-                        <ReviewList reviews={exp.reviews} />
-                    </section></TabPanel>
+                    <TabPanel value="2">
+                        <section className="exp-reviews flex column">
+                            <div className="flex space-between">
+                                <ExpRateBig reviews={exp.reviews} />
+                                <button onClick={toggleAddReviewShown}>Add review</button>
+                            </div>
+                            {isAddReviewShown && <ReviewEdit onHandleChange={onHandleChange} onAddReview={onAddReview} review={review} user={user} />}
+                            <ReviewList reviews={exp.reviews} />
+                        </section>
+                    </TabPanel>
                     <TabPanel value="3"><ExpParticipantsList participants={exp.participants} /></TabPanel>
                 </TabContext>
             </div>

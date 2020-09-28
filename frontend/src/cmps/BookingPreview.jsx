@@ -11,7 +11,7 @@ export function BookingPreview({ booking, onChangeStatusBooking }) {
     return (
         <React.Fragment>
             <UserPreview user={booking.guest} />
-            <div>{numOfGuests} {numOfGuests > 1 ? 'people' : 'person'}</div>
+            <div>{numOfGuests} {numOfGuests > 1 ? 'guest' : 'guests'}</div>
             <div>{booking.exp.name}</div>
             <div>
                 <button onClick={() => onChangeStatusBooking(booking._id, 'approved')}>V</button>

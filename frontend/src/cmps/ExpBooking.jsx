@@ -14,7 +14,7 @@ function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, booki
         (!isAlreadyBooked &&
             <section className="exp-booking">
                 <div className="flex space-between">
-                    <span className="price">${exp.price}  <span >/ Person &nbsp;</span></span>
+                    <span className="price">${exp.price}  <span >/ Guest &nbsp;</span></span>
                     <ExpRate reviews={exp.reviews} />
                 </div>
                 <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
