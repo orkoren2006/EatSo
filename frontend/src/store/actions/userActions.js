@@ -33,17 +33,8 @@ export function login(userCreds) {
     try {
       const user = await userService.login(userCreds);
       dispatch({ type: 'SET_USER', user });
-      // dispatch({ type: 'SEND_NOTIFICATION', notification: 'Login succsessfully' });
-      dispatch({ type: 'SEND_NOTIFICATION', notification: { msg: 'You are succsessfully logged in', isSuccessed: true } });
-      setTimeout(() => {
-        dispatch({ type: 'CLEAR_NOTIFICATION' })
-      }, 1500);
     } catch (err) {
       console.log('UserActions: err in Login', err);
-      dispatch({ type: 'SEND_NOTIFICATION', notification: { msg: 'Login failed', isSuccessed: false } });
-      setTimeout(() => {
-        dispatch({ type: 'CLEAR_NOTIFICATION' })
-      }, 1500);
       throw Error(err);
     }
   };
@@ -59,10 +50,6 @@ export function logout() {
     try {
       await userService.logout();
       dispatch({ type: 'LOGOUT' });
-      dispatch({
-        type: 'SEND_NOTIFICATION',
-        notification: { msg: `Logout succsessfully \nHope to see you soon`, isSuccessed: true }
-      });
     } catch (err) {
       console.log('UserActions: err in logout', err);
       dispatch({
@@ -70,8 +57,5 @@ export function logout() {
         notification: { msg: `Logout failed`, isSuccessed: false }
       });
     };
-    setTimeout(() => {
-      dispatch({ type: 'CLEAR_NOTIFICATION' })
-    }, 2000);
   }
 }

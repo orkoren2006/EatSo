@@ -68,6 +68,11 @@ class _Header extends Component {
         }
     };
 
+    onHostMeal = () => {
+        const URL = (this.props.user) ? '/exp/edit':'/login'
+        this.props.history.push(URL) 
+    }
+
 
     toggleMenu = () => {
         this.setState({ navbar: !this.state.navbar })
@@ -95,7 +100,8 @@ class _Header extends Component {
 
                     <div className={`middle-navbar flex ${navBarColor} ${isHeaderActive}`}>
                         <Link to="/exp"><h3>All Experiences</h3></Link> |
-                        <Link to="/exp/edit"><h3>Host a meal</h3></Link>
+                        <h3 className="host-meal-link" onClick={this.onHostMeal}>Host a meal</h3>
+                        {/* <Link to="/exp/edit"><h3>Host a meal</h3></Link> */}
                     </div>
                     {/* <img className="login-avatar" src={user.imgUrl} onClick={this.toggleMenu}></img> */}
                     <div className="header-avatar flex space-between align-center" onClick={this.toggleMenu}>

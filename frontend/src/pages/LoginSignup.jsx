@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -10,11 +11,11 @@ import {
   logout,
   signup
 } from '../store/actions/userActions';
-import { ExpEdit } from './ExpEdit';
 
 class _LoginSignup extends Component {
   state = {
     isLoggedIn: true,
+    isLoginSection: true,
     msg: '',
     loginCred: {
       email: '',
@@ -75,7 +76,7 @@ class _LoginSignup extends Component {
 
     } catch (err) {
       console.log('failed to login', err);
-      this.setState({ isLoggedIn: false })
+      this.setState({loginCred: { ...this.state.loginCred, password: '' } ,isLoggedIn: false })
     }
   };
 
@@ -85,7 +86,7 @@ class _LoginSignup extends Component {
     if (!email || !password || !username || !fullName) {
       return this.setState({ msg: 'All inputs are required!' });
     }
-    const signupCreds = { email, password, username,fullName };
+    const signupCreds = { email, password, username, fullName };
     this.props.signup(signupCreds);
     this.setState({ signupCred: { email: '', password: '', username: '', fullName: '' } });
   };
@@ -94,9 +95,13 @@ class _LoginSignup extends Component {
     this.props.removeUser(userId);
   };
 
+  onSigninTypeBtn = () => {
+    this.setState({ isLoginSection: !this.state.isLoginSection })
+  }
+
   render() {
     let signupSection = (
-      <form onSubmit={this.doSignup}>
+      <form className="flex column" onSubmit={this.doSignup}>
         <input
           type="text"
           name="email"
@@ -129,11 +134,11 @@ class _LoginSignup extends Component {
           placeholder="Full Name"
         />
         <br />
-        <button>Signup</button>
+        <button className="signin-btn">Create Account</button>
       </form>
     );
     let loginSection = (
-      <form onSubmit={this.doLogin}>
+      <form className="flex column" onSubmit={this.doLogin}>
         <input
           type="text"
           name="email"
@@ -150,32 +155,41 @@ class _LoginSignup extends Component {
           placeholder="Password"
         />
         <br />
-        <button>Login</button>
+        <button className="signin-btn">Sign in</button>
       </form>
     );
 
     const { loggedInUser } = this.props;
+    const { isLoginSection } = this.state;
 
     return (
-      <div className="test">
-        <h1>
-          Login
+      <div>
+        <section className="login-signup flex column justify-center align-center">
+          <h1>
+            {(isLoginSection) ? 'Login':'Create your account'}
         </h1>
-        <h2>{this.state.msg}</h2>
+          {/* <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
             <h2>Welcome: {loggedInUser.username} </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
-        )}
-        {!loggedInUser && loginSection}
-        {!this.state.isLoggedIn && <h3>Login Failed!</h3>}
-        <hr />
-        <h1>
-          Sign Up
+        )} */}
+          {/* {!loggedInUser && loginSection} */}
+          {(!loggedInUser && this.state.isLoginSection) ? loginSection : signupSection}
+
+          {/* <hr />
+          <h1>
+            Sign Up
         </h1>
-        {!loggedInUser && signupSection}
-        {/* <ExpEditTest/> */}
+          {!loggedInUser && signupSection} */}
+        </section>
+        <section className="login-signup-btn flex column justify-center align-center">
+            {(!this.state.isLoginSection) && <h6>Already have an account?</h6> }
+          <Button onClick={this.onSigninTypeBtn} variant="contained" color="primary">
+            {(this.state.isLoginSection) ? 'Create an account' : 'Sign in'}
+          </Button>
+        </section>
       </div>
     );
   }

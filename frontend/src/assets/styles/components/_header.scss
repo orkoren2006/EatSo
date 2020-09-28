@@ -9,6 +9,10 @@
     z-index: 10;
     // background-color: black;
 
+    .host-meal-link:hover{
+        cursor: pointer;
+    }
+
     .app-logo {
         background-image: url("../../imgs/appetizer-logo-yellow.png");
         height: 200px;
