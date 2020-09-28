@@ -145,7 +145,8 @@ class _UserExp extends Component {
                         </ul>
                     </section>
                 }
-                {this.state.isHost && <Link to="/exp/edit"><Button variant="contained" color="primary">
+                {this.state.isHost && <Link to="/exp/edit"><Button>
+                <img className="add-exp-img" src={require("../assets/imgs/crossed-knife-and-fork.png")} alt=""/>
                     Add Experience</Button></Link>}
 
                 <section className="user-exp-list">

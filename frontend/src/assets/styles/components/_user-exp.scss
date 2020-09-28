@@ -3,6 +3,25 @@
         padding-inline-start: 40px;
     }
 
+    .MuiButton-text {
+        background-color: $clr1;
+        margin-inline-start: 40px;
+        margin-block-end: 20px;
+        padding: 10px;
+    }
+
+    a{
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+
+}
+.add-exp-img{
+    height: 32px;
+    width: 32px;
+    margin-inline-end: 10px;
 }
 
 .user-exp-navbar-list{
