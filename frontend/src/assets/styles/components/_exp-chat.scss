@@ -2,21 +2,23 @@
     // justify-content: flex-end;
     align-items: flex-end;
 
-    h2,h3 {
+    h3 {
         font-size: rem(16px);
+        margin: 5px 5px 15px 0px;
     }
 
     // nsg btn/icon
     .MuiSvgIcon-root {
-        color: #4285F4;
+        // color: #4285F4;
+        color: $clr3;
         
     }
     .toggle-chat-btn {
         * {
             padding: 12px;
             font-size: 60px;
-            color: black;
             background-color: $clr1;
+            color: $clr2;
             border-radius: 50%;
             margin-top: 5px; 
         }       
@@ -32,12 +34,24 @@
         padding: 10px;
         box-shadow: 0 0 1px;
 
+        .is-typing{
+            font-weight: 400;
+            font-size: rem(14px);
+            margin-bottom: 0px;
+        }
+
+        h3 {
+            font-size: rem(16px);
+            margin: 5px 5px 10px 0px;
+            padding: 0px;
+        }
+
         &.hide{
             display: block;
             visibility: hidden
         }
 
-        h2:nth-child(2) {
+        h5 {
             flex: 1
         }
 
@@ -47,15 +61,20 @@
         }
 
         .msgs-list{
-
+            margin-top: 5px;
             .chatMsg {
+
+                .msg-txt{
+                    font-weight: 400;
+                }
                 border-radius: 5px;
                 margin: 3px;
                 padding: 3px;
                 background-color: $clr6;
                 &.myMsg {
                 text-align: right;
-                background-color:$clr1;
+                background-color:$clr3;
+                color: white;
                 }
             }
         }
