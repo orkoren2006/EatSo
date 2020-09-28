@@ -8,7 +8,6 @@ export function Menu({ menu }) {
                 <div className="side-menu">
                     <MenuSection title="Appetizers" list={menu.appetizers} type="appetizer" />
                     <MenuSection title="Main Dishes" list={menu.main} type="main-dish" />
-                
                     <MenuSection title="Desserts" list={menu.desserts} type="dessert" />
                     <MenuSection title="Drinks" list={menu.drinks} type="drink" />
                 </div>

@@ -13,7 +13,7 @@ import { LoginSignup } from './LoginSignup';
 import { utilService } from '../services/utilService';
 import { loadExps, saveExp } from '../store/actions/expAction';
 import { ExpGallery } from '../cmps/ExpGallery';
-import ExpContent from '../cmps/ExpContent';
+// import ExpContent from '../cmps/ExpContent';
 import { ExpChat } from '../cmps/ExpChat';
 import { bookingService } from '../services/bookingService';
 import { loadBookings, saveBooking } from '../store/actions/bookingAction';
@@ -21,6 +21,12 @@ import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';
 import { Link } from 'react-router-dom';
 import { CarouselGallery } from '../cmps/CarouselGallery';
+import { ExpBooking } from '../cmps/ExpBooking';
+import { ExpParticipantsList } from '../cmps/ExpParticipantsList';
+import { ReviewList } from '../cmps/ReviewList';
+import { ReviewEdit } from '../cmps/ReviewEdit';
+import { ExpRateBig } from '../cmps/ExpRateBig';
+import { Menu } from '../cmps/Menu';
 // import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 
@@ -211,14 +217,28 @@ class _ExpDetails extends Component {
 
 
                         <p>{exp.desc}</p>
-                        <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
-                            onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
-                            isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+                        <div className="tab-details">
+                            <ExpDetailsTab user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
+                                onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
+                                isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+                        </div>
+                        <div className="list-details">
+                            <Menu menu={exp.menu} />
+                            <section className="exp-reviews flex column">
+                                <div className="flex space-between">
+                                    <ExpRateBig reviews={exp.reviews} />
+                                    <button onClick={this.toggleAddReviewShown}>Add review</button>
+                                </div>
+                                {isAddReviewShown && <ReviewEdit onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} review={review} user={user} />}
+                                <ReviewList reviews={exp.reviews} />
+                            </section>
+                            <ExpParticipantsList participants={exp.participants} />
+                        </div>
                     </div>
 
-                    <ExpContent user={user} exp={exp} review={review} toggleAddReviewShown={this.toggleAddReviewShown}
-                        onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} numOfGuests={numOfGuests}
-                        isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+                    <section className="exp-content">
+                        <ExpBooking exp={exp} onBookClick={this.onBookClick} numOfGuests={numOfGuests} onNumOfGuestsChange={this.onNumOfGuestsChange} />
+                    </section>
 
                 </section>
                 <section className="details-footer flex space-between">
