@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { socketService } from '../services/socketService';
 
+import { ExpChat } from "../cmps/ExpChat";
+
 import {
   loadUsers,
   removeUser,
@@ -68,15 +70,12 @@ class _LoginSignup extends Component {
       this.setState({ isLoggedIn: true }) //switch with 66 if needed 
       await this.props.login(userCreds);
       socketService.emit('user login', this.props.loggedInUser._id)
-      // this.setState({ loginCred: { email: '', password: '' }, isLoggedIn: true }, () => {
       if (this.props.edit) this.props.history.push('/exp/edit')
       else if (this.props.onCloseModal) this.props.onCloseModal();
       else this.props.history.push('/')
-      // });
-
     } catch (err) {
       console.log('failed to login', err);
-      this.setState({loginCred: { ...this.state.loginCred, password: '' } ,isLoggedIn: false })
+      this.setState({ loginCred: { ...this.state.loginCred, password: '' }, isLoggedIn: false })
     }
   };
 
@@ -166,26 +165,12 @@ class _LoginSignup extends Component {
       <div>
         <section className="login-signup flex column justify-center align-center">
           <h1>
-            {(isLoginSection) ? 'Login':'Create your account'}
-        </h1>
-          {/* <h2>{this.state.msg}</h2>
-        {loggedInUser && (
-          <div>
-            <h2>Welcome: {loggedInUser.username} </h2>
-            <button onClick={this.props.logout}>Logout</button>
-          </div>
-        )} */}
-          {/* {!loggedInUser && loginSection} */}
+            {(isLoginSection) ? 'Login' : 'Create your account'}
+          </h1>
           {(!loggedInUser && this.state.isLoginSection) ? loginSection : signupSection}
-
-          {/* <hr />
-          <h1>
-            Sign Up
-        </h1>
-          {!loggedInUser && signupSection} */}
         </section>
         <section className="login-signup-btn flex column justify-center align-center">
-            {(!this.state.isLoginSection) && <h6>Already have an account?</h6> }
+          {(!this.state.isLoginSection) && <h6>Already have an account?</h6>}
           <Button onClick={this.onSigninTypeBtn} variant="contained" color="primary">
             {(this.state.isLoginSection) ? 'Create an account' : 'Sign in'}
           </Button>

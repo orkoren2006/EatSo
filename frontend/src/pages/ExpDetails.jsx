@@ -21,6 +21,7 @@ import { socketService } from '../services/socketService';
 import { Image, Transformation } from 'cloudinary-react';
 import { Link } from 'react-router-dom';
 import { CarouselGallery } from '../cmps/CarouselGallery';
+import ChatIcon from '@material-ui/icons/Chat';
 
 
 const ObjectId = require('mongodb').ObjectId
@@ -30,6 +31,7 @@ class _ExpDetails extends Component {
     state = {
         exp: null,
         isModalShown: false,
+        isChat: false,
         isAddReviewShown: false,
         review: {
             id: utilService.makeId(),
@@ -66,15 +68,15 @@ class _ExpDetails extends Component {
     }
 
     onImgClick = (idx) => {
-        this.setState({login: false, gallery: {idx, isShown: true}})
+        this.setState({ login: false, gallery: { idx, isShown: true } })
         this.onShowModal();
     }
 
     onBookClick = async () => {
-        if (!this.props.user){
-            this.setState({login: true, gallery: {...this.state.gallery, isShown: false}})
+        if (!this.props.user) {
+            this.setState({ login: true, gallery: { ...this.state.gallery, isShown: false } })
             return this.onShowModal();
-        } 
+        }
         const { exp } = this.state;
         const { user } = this.props;
         const booking = await bookingService.getEmpty();
@@ -124,10 +126,10 @@ class _ExpDetails extends Component {
 
     onAddReview = (ev) => {
         ev.preventDefault();
-        if (!this.props.user){
-            this.setState({login: true, gallery: {...this.state.gallery, isShown: false}})
+        if (!this.props.user) {
+            this.setState({ login: true, gallery: { ...this.state.gallery, isShown: false } })
             return this.onShowModal();
-        } 
+        }
         const reviewToAdd = this.state.review;
         const { user } = this.props;
 
@@ -145,18 +147,21 @@ class _ExpDetails extends Component {
         this.toggleAddReviewShown();
     }
 
+    toggleChat = () => {
+        this.setState({ isChat: !this.state.isChat })
+    }
+
 
     render() {
         const { exp, review, isModalShown, isAddReviewShown, numOfGuests, login, gallery } = this.state;
         const { user } = this.props;
-        // const date = exp.schedule.at
         if (!exp) return <div>  </div>
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container main-container">
                 <Modal onCloseModal={this.onCloseModal} isShown={isModalShown} >
                     {login && <LoginSignup onCloseModal={this.onCloseModal} />}
-                    {gallery.isShown && <CarouselGallery  images={exp.imgUrls} startIdx={gallery.idx} />}
+                    {gallery.isShown && <CarouselGallery images={exp.imgUrls} startIdx={gallery.idx} />}
                 </Modal>
                 <div className="exp-title flex column">
                     <div className="exp-title-name">
@@ -167,7 +172,7 @@ class _ExpDetails extends Component {
                         <h6>{exp.location.city} &gt; </h6>
                     </div>
                 </div>
-                
+
                 <ExpGallery imgUrls={exp.imgUrls} onImgClick={this.onImgClick} />
                 <section className="flex ">
                     <div className="flex column flex-2 exp-opening">
@@ -216,10 +221,16 @@ class _ExpDetails extends Component {
                         isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
 
                 </section>
-                <div className="google-maps flex space-between">
-                    <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
-                    {user && <ExpChat username={user.username} expId={exp._id} />}
-                </div>
+                <section className="details-footer flex space-between">
+                    <div className="google-maps">
+                        <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
+                    </div>
+                    <section className="chat-sec flex column">
+                        {/* {user && this.state.isChat && */}
+                        {user && <ExpChat username={user.username} expId={exp._id} />}
+                        <ChatIcon onClick={this.toggleChat} className="chat-btn" />
+                    </section>
+                </section>
             </div>
         )
     }

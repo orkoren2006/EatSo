@@ -28,8 +28,8 @@
             }
         }
         .social-media-list{
-            img:not(:last-child){
-                margin-inline-end: 15px;
+            a:not(:last-child){
+                margin-inline-end: 10px;
             }
         }            
     }
