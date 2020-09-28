@@ -1,6 +1,7 @@
 .home-cards-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
     a {
         color: inherit;
         text-decoration: none;
@@ -23,7 +24,7 @@
 
     .home-card {
         height: 100%;
-        padding: 8px 8px;
+        // padding: 8px 8px;
         height: 300px;
         cursor: pointer;
         &:first-child {
@@ -73,12 +74,34 @@
 }
 
 @media (max-width: 635px) {
+
     .home-cards-list {
-        display: none;
         grid-template-columns: 1fr;
+       
+         .home-card {
+        grid-column: 1 / -1;
+        &:first-child {
+            grid-column: 1 / -1;
+        }
+        .preview-image {
+            padding-left: 10px;
+
+        }
+    }
+        
+        justify-content: center;
+
+        h3 {
+            font-size: 40px;
+        }
     }
 
-    .home-card {
-        grid-column: 1 / -1;
-    }
+    // .home-cards-list {
+    //     display: none;
+    //     grid-template-columns: 1fr;
+    // }
+
+    // .home-card {
+    //     grid-column: 1 / -1;
+    // }
 }
