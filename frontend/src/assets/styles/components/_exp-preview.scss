@@ -28,6 +28,13 @@ ul {
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+
+    .MuiButton-text{
+        background-color: $clr3;
+        >span {
+            color: white;
+        }
+    }
 }
 
 // .exp-card:hover {

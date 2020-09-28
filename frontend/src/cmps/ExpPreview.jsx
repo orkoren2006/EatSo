@@ -22,13 +22,15 @@ export function ExpPreview(props) {
                 </section>
                 <section className="exp-card-desc">
                     <div className="flex space-between">
-                    <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
-                    
+                        <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
+                        {props.isHost &&
+                            <Link to={`/exp/edit/${exp._id}`}><Button>
+                                Edit</Button></Link>}
                     </div>
                     <h3>{exp.name}</h3>
                     <h4>{exp.title}</h4>
                     <h5>${exp.price}</h5>
-                    
+
 
                 </section>
             </Link>
@@ -37,14 +39,14 @@ export function ExpPreview(props) {
                     <Transformation width="200" height="200" gravity="face" radius="max" crop="thumb" />
                 </Image>
 
-                
-                    <p>Hosted by <Link to={`/host/${exp.owner._id}`}><span>{exp.owner.fullName}</span></Link></p>&nbsp;
-                
+
+                <p>Hosted by <Link to={`/host/${exp.owner._id}`}><span>{exp.owner.fullName}</span></Link></p>&nbsp;
+
             </section>
 
-            {props.isHost &&
-                <Link to={`/exp/edit/${exp._id}`}><Button variant="contained" color="primary">
-                    Edit</Button></Link>}
+            {/* {props.isHost &&
+                <Link to={`/exp/edit/${exp._id}`}><Button>
+                    Edit</Button></Link>} */}
         </div>
     )
 }
