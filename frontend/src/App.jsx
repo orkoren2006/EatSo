@@ -50,14 +50,15 @@ class _App extends Component {
           <Notification />
           <Switch>
             <Route path="/" component={Home} exact />
-            {/* <Route path="/test" component={ExpEditTest} exact /> */}
             <Route path="/exp/edit/:id?" component={ExpEdit} exact />
-            {/* <Route path="/exp/edit/:id?" component={_ExpEdit} exact /> */}
             <Route path="/exp/:id" component={ExpDetails} exact />
             <Route path="/host/:id" component={HostDetails} exact />
             <Route path="/myexp/:as" component={UserExp} exact />
-            <Route path="/exp" component={ExpDetails} />
-            {/* <Route path="/exp" component={ExpApp} /> */}
+<<<<<<< HEAD
+            {/* <Route path="/exp" component={ExpDetails}  /> */}
+=======
+>>>>>>> 0e7725b45cf9735a61c2c2e53591d2ca0827482e
+            <Route path="/exp" component={ExpApp} />
             <Route path="/about" component={About} exact />
             <Route path="/login" component={LoginSignup} exact />
           </Switch>

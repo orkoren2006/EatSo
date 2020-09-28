@@ -35,22 +35,12 @@ export function saveBooking(_booking) {
     try {
       const booking = await bookingService.save(_booking);
       dispatch({ type, booking})
+      dispatch({ type: 'SEND_NOTIFICATION', notification:  {msg: 'Booking sent', isSuccessed: true } })
     } catch (err) {
       console.log('BookingsActions: err in SaveBooking', err);
     }
+    setTimeout(() => {
+      dispatch({ type: 'CLEAR_NOTIFICATION' })
+    }, 3000);
   };
 }
-
-// export function getById(bookingId) {
-//   return async dispatch => {
-//     try {
-//       dispatch(loading);
-//       const booking = await bookingService.getById(bookingId);
-//       dispatch({ type: 'SET_BOOKING', booking });
-//     } catch (err) {
-//       console.log('BookingActions: err in loadBookings', err);
-//     } finally {
-//       dispatch(doneLoading);
-//     }
-//   };
-// }

@@ -234,6 +234,7 @@ class _ExpDetails extends Component {
                             </section>
                             <ExpParticipantsList participants={exp.participants} />
                         </div>
+                        
                     </div>
 
                     <section className="exp-content">

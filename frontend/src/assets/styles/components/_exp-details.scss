@@ -23,7 +23,7 @@
     .exp-content {
         display: flex;
         justify-content: space-between;
-        padding: 10px;
+        padding: 0;
         box-shadow: 0 0 4px 0px #6d6d6d;
         margin-bottom: 5px;
         position: relative;
@@ -74,7 +74,7 @@
             border-radius: 16px;
         }
     }
-    
+
     h3 {
         font-size: rem(28px);
         font-weight: 500;
@@ -125,7 +125,7 @@
             color: $clr4;
         }
         .side-menu {
-            padding: 0 40px 0 0;
+            padding: 0 0 0 0;
             margin-top: -40px;
             text-align: center;
         }
@@ -192,8 +192,9 @@
     }
 }
 
-@media (max-width: 800px) { //635
+@media (max-width: 635px) { //635
     .exp-details-container {
+        
         .carousel-gallery {
             display: block;
         }
@@ -215,6 +216,10 @@
         }
         .exp-menu {
             margin-left: 0;
+
+            .side-menu {
+                padding: 0 16px;
+            }
         }
 
         .exp-opening {

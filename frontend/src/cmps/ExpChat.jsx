@@ -71,10 +71,10 @@ export class ExpChat extends Component {
             <div className="chat-sec flex column space-between">
                 <div className={`exp-chat flex column ${chatShow}`}>
                     <h3>What's on your Plate?</h3>
-                    <h5>Write your host and other participants </h5>
+                    <h5>Write to your host and to other participants </h5>
                     {(this.state.typing.user &&
                         this.state.typing.user !== this.props.username) &&
-                        <h3>{this.state.typing.user + ''} is typing...</h3>}
+                        <h4 className="is-typing">{this.state.typing.user + ''} is typing...</h4>}
                     <ul className="msgs-list clean-list">
                         {this.state.msgs.map((msg, idx) => {
                             let senderName = msg.from;
@@ -86,7 +86,7 @@ export class ExpChat extends Component {
                             }
                             return <li key={idx} className={msgClass}>
                                 <h6>{senderName}</h6>
-                                <h5>{msg.txt}</h5>
+                                <h5 className="msg-txt">{msg.txt}</h5>
 
                             </li>
                         })}
