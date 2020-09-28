@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { socketService } from '../services/socketService.js';
+import SendIcon from '@material-ui/icons/Send';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 export class ExpChat extends Component {
 
@@ -8,6 +10,7 @@ export class ExpChat extends Component {
         msgs: [],
         exp: null,
         typing: { user: '', isTyping: false },
+        isChat: false
     };
 
     componentDidMount() {
@@ -58,31 +61,47 @@ export class ExpChat extends Component {
         socketService.emit('user typing', null);
     }
 
+    toggleChat = () => {
+        this.setState({ isChat: !this.state.isChat })
+    }
+
     render() {
+        const chatShow = (this.state.isChat) ? '' : 'hide'
         return (
-            <div className="exp-chat">
-                <h2>Tell us</h2>
-                <h2>What's on your Plate?</h2>
-                {/* <h2>Lets Chat About {exp.name}</h2> */}
-                {(this.state.typing.user &&
-                    this.state.typing.user !== this.props.username) &&
-                    <h3>{this.state.typing.user} is typing...</h3>}
-                <ul className="clean-list">
-                    {this.state.msgs.map((msg, idx) => (
-                        <li key={idx}>{(msg.from === this.props.username) ? 'Me':msg.from}: {msg.txt}</li>
-                    ))}
-                </ul>
-                <form onSubmit={this.sendMsg}>
-                    <input
-                        autoComplete="off"
-                        type="text"
-                        value={this.state.msg.txt}
-                        onChange={this.msgHandleChange}
-                        onBlur={this.onBlur}
-                        name="txt"
-                    />
-                    <button>Send</button>
-                </form>
+            <div className="chat-sec flex column space-between">
+                <div className={`exp-chat flex column ${chatShow}`}>
+                    <h2>Tell us</h2>
+                    <h2>What's on your Plate?</h2>
+                    {(this.state.typing.user &&
+                        this.state.typing.user !== this.props.username) &&
+                        <h3>{this.state.typing.user} is typing...</h3>}
+                    <ul className="msgs-list clean-list">
+                        {this.state.msgs.map((msg, idx) => {
+                            let senderName = msg.from + ':   ';
+                            let msgClass = 'chatMsg';
+
+                            if (msg.from === this.props.username) {
+                                senderName = '';
+                                msgClass += ' myMsg'
+                            }
+                            return <li key={idx} className={msgClass}>{senderName}{msg.txt}</li>
+                        })}
+                    </ul>
+                    <form className="chat-input-btn flex" onSubmit={this.sendMsg}>
+                        <input
+                            autoComplete="off"
+                            type="text"
+                            value={this.state.msg.txt}
+                            onChange={this.msgHandleChange}
+                            onBlur={this.onBlur}
+                            name="txt"
+                        />
+                        <button className="chat-send-btn"><SendIcon /></button>
+                    </form>
+                </div>
+                <section className="toggle-chat-btn">
+                    <ChatBubbleOutlineIcon onClick={this.toggleChat} />
+                </section>
             </div>
         )
     }

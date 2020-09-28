@@ -1,60 +1,82 @@
 // @media (max-width: 1080px) {
 
 //     .grid-container {
-      
+
 //         display: grid;
 //         grid-template-columns:  repeat(4, 350px);
 //         gap: 4px;
 //       }
 //     }
 
+@media (max-width: 1140px) {
+    //1260
 
-
-@media (max-width: 1140px) { //1260
-
-.grid-container {
-  
-    display: grid;
-    grid-template-columns:  repeat(2, 350px);
-    justify-content: center;
-    gap: 4px;
-  }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 350px);
+        justify-content: center;
+        gap: 4px;
+    }
 }
 
 @media (max-width: 740px) {
-
     .hero-image {
-        height: 50vh;
+        height: 70vh;
     }
 
     .grid-container {
-      
         display: grid;
-        grid-template-columns:  repeat(2, 300px);
+        grid-template-columns: repeat(2, 300px);
         justify-content: center;
         gap: 4px;
-      }
-
-      .preview-header {
-          h2 {
-              font-size: 20px;
-          }
-      }
-
-      .tokyo-banner {
-        background-size: contain;
-      }
-
     }
 
-    @media (max-width: 635px) {
+    .preview-header {
+        h2 {
+            font-size: 20px;
+        }
 
-        .grid-container {
       
-            display: grid;
-            grid-template-columns:  repeat(1, 350px);
-            justify-content: center;
-            gap: 4px;
-          }
+    }
+
+    .tokyo-banner {
+        background-size: auto;
+        width: 100%;
 
     }
+
+    .exp-filter {
+        height: 261px;
+        width: 201px;
+        border-radius: 0;
+    }
+    .filter-fields {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 635px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 350px);
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .hero-image {
+      
+        h1 {
+            font-size: 35px;
+        }
+    }
+
+    .tokyo-banner {
+        // display: none;
+    }
+
+    .preview-header {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
