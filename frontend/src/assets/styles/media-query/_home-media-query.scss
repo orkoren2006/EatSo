@@ -10,17 +10,18 @@
 
 
 
-@media (max-width: 1140px) {
+@media (max-width: 1140px) { //1260
 
 .grid-container {
   
     display: grid;
-    grid-template-columns:  repeat(2, 1fr);
+    grid-template-columns:  repeat(2, 350px);
+    justify-content: center;
     gap: 4px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 740px) {
 
     .hero-image {
         height: 50vh;
@@ -29,7 +30,7 @@
     .grid-container {
       
         display: grid;
-        grid-template-columns:  repeat(1, 350px);
+        grid-template-columns:  repeat(2, 300px);
         justify-content: center;
         gap: 4px;
       }
@@ -43,5 +44,17 @@
       .tokyo-banner {
         background-size: contain;
       }
+
+    }
+
+    @media (max-width: 635px) {
+
+        .grid-container {
+      
+            display: grid;
+            grid-template-columns:  repeat(1, 350px);
+            justify-content: center;
+            gap: 4px;
+          }
 
     }
