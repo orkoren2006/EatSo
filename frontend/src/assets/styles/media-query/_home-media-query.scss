@@ -1,14 +1,27 @@
-@media (max-width: 1080px) {
+@media (max-width: 1236px) {
+    .hero-image {
+      padding-left:40px;
+    }
+}
+
+@media (max-width: 940px) {
     .filter-fields {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        
+    grid-template-columns: repeat(2, 1fr) 64px;
+    grid-template-rows:  repeat(2, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+    
+
     }
 
     .exp-filter {
-        height: 280px;
-        width: 260px;
-        border-radius: 0;
+        height: 180px;
+        width: 550px;
+        border-radius: 64px;
     }
+    
 }
 
 @media (max-width: 1140px) {
@@ -16,13 +29,13 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(2, 350px);
+        grid-template-columns: repeat(3, 1fr);
         justify-content: center;
         gap: 4px;
     }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 800px) {
     .hero-image {
         height: 70vh;
     }
@@ -45,11 +58,11 @@
         width: 100%;
     }
 
-    .exp-filter {
-        height: 261px;
-        width: 201px;
-        border-radius: 0;
-    }
+    // .exp-filter {
+    //     height: 261px;
+    //     width: 201px;
+    //     border-radius: 0;
+    // }
 }
 
 @media (max-width: 635px) {
@@ -58,6 +71,29 @@
         grid-template-columns: repeat(1, 350px);
         justify-content: center;
         gap: 4px;
+    }
+
+    .filter-fields {
+        display: flex;
+        flex-direction: column;
+     }
+
+    .exp-filter {
+        padding: 32px 24px;
+        height:auto;
+        width: 300px;
+        border-radius: 64px;
+        opacity: 0.9;
+        
+    }
+    .exp-filter .MuiFormControl-root{
+        border-right: none;
+    }
+
+    
+    
+    .home-cards-list .home-card .preview-image{
+        padding-left: 24px;
     }
 
     .middle-navbar {
@@ -70,9 +106,11 @@
     }
 
     .hero-image {
-        .hero-image {
-            height: 50px;
-        }
+        
+            
+            padding-left: 24px;
+            height: 85vh;
+        
         h1 {
             font-size: 35px;
         }
