@@ -19,8 +19,10 @@
             background-color: $clr1;
             border-radius: 50%;
             margin-top: 5px; 
-        }
-       
+        }       
+    }
+    .toggle-chat-btn:hover {
+        cursor: pointer;
     }
 
     .exp-chat{
@@ -50,10 +52,10 @@
                 border-radius: 5px;
                 margin: 3px;
                 padding: 3px;
-                background-color: #d2d2d2;
+                background-color: $clr6;
                 &.myMsg {
                 text-align: right;
-                background-color: #0F9D58;
+                background-color:$clr1;
                 }
             }
         }

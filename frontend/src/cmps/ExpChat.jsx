@@ -70,21 +70,25 @@ export class ExpChat extends Component {
         return (
             <div className="chat-sec flex column space-between">
                 <div className={`exp-chat flex column ${chatShow}`}>
-                    <h2>Tell us</h2>
-                    <h2>What's on your Plate?</h2>
+                    <h3>What's on your Plate?</h3>
+                    <h5>Write your host and other participants </h5>
                     {(this.state.typing.user &&
                         this.state.typing.user !== this.props.username) &&
-                        <h3>{this.state.typing.user} is typing...</h3>}
+                        <h3>{this.state.typing.user + ''} is typing...</h3>}
                     <ul className="msgs-list clean-list">
                         {this.state.msgs.map((msg, idx) => {
-                            let senderName = msg.from + ':   ';
+                            let senderName = msg.from;
                             let msgClass = 'chatMsg';
 
                             if (msg.from === this.props.username) {
                                 senderName = '';
                                 msgClass += ' myMsg'
                             }
-                            return <li key={idx} className={msgClass}>{senderName}{msg.txt}</li>
+                            return <li key={idx} className={msgClass}>
+                                <h6>{senderName}</h6>
+                                <h5>{msg.txt}</h5>
+
+                            </li>
                         })}
                     </ul>
                     <form className="chat-input-btn flex" onSubmit={this.sendMsg}>
