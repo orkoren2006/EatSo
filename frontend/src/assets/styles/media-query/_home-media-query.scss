@@ -1,12 +1,15 @@
-// @media (max-width: 1080px) {
+@media (max-width: 1080px) {
+    .filter-fields {
+        display: flex;
+        flex-direction: column;
+    }
 
-//     .grid-container {
-
-//         display: grid;
-//         grid-template-columns:  repeat(4, 350px);
-//         gap: 4px;
-//       }
-//     }
+    .exp-filter {
+        height: 280px;
+        width: 260px;
+        border-radius: 0;
+    }
+}
 
 @media (max-width: 1140px) {
     //1260
@@ -47,10 +50,6 @@
         width: 201px;
         border-radius: 0;
     }
-    .filter-fields {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 @media (max-width: 635px) {
@@ -71,13 +70,19 @@
     }
 
     .hero-image {
+        .hero-image {
+            height: 50px;
+        }
         h1 {
             font-size: 35px;
         }
     }
 
     .tokyo-banner {
-        // display: none;
+        padding: 18px 9px 100px 0px;
+        span {
+            // font-size: 100px;
+        }
     }
 
     .preview-header {
