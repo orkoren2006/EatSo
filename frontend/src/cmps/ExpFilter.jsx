@@ -67,6 +67,7 @@ export class _ExpFilter extends Component {
                             }}
                             onChange={this.handleChange} />
                     </label>
+                    
                     <TextField
                         id="schedule"
                         label="Select a date"
@@ -77,6 +78,7 @@ export class _ExpFilter extends Component {
                         InputLabelProps={{
                             shrink: true,
                         }} />
+                        <div></div>
                     < TextField
                         id="capacity"
                         name="capacity"

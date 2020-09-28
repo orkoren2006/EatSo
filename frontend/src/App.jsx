@@ -54,6 +54,10 @@ class _App extends Component {
             <Route path="/exp/:id" component={ExpDetails} exact />
             <Route path="/host/:id" component={HostDetails} exact />
             <Route path="/myexp/:as" component={UserExp} exact />
+<<<<<<< HEAD
+            {/* <Route path="/exp" component={ExpDetails}  /> */}
+=======
+>>>>>>> 0e7725b45cf9735a61c2c2e53591d2ca0827482e
             <Route path="/exp" component={ExpApp} />
             <Route path="/about" component={About} exact />
             <Route path="/login" component={LoginSignup} exact />

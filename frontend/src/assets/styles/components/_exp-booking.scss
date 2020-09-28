@@ -66,3 +66,22 @@
         }
     }
 }
+
+@media (max-width: 635px) { 
+    .exp-booking {
+        background-color: white;
+        min-width: unset;
+        width: 100%;
+        height: fit-content;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+        display: block;
+        flex-direction: unset;
+        justify-content: unset;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        top: unset;
+    }
+}
