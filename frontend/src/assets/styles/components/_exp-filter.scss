@@ -37,7 +37,13 @@ input#price{
     border-radius: 50%;
     padding: 24px 0;
     background-color: $clr1;
+
 }
+
+.MuiButton-containedPrimary:hover {
+    background-color: $clr3;
+}
+
 .svg-inline--fa.fa-w-16{
     color: #0C0409;
     font-size: 18px;
