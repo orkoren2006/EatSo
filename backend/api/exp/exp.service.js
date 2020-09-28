@@ -12,7 +12,6 @@ module.exports = {
 }
 
 async function query(filterBy = {}, numOfExps = 0) {
-    console.log('query', filterBy);
 
     let exps;
     const criteria = _buildCriteria(filterBy)
@@ -147,7 +146,7 @@ function _buildCriteria(filterBy) {
             criteriaToReturn.push({ [filterType]: filterBy[filterType] })
         }
     }
-    console.log('criteria',criteriaToReturn);
+    // console.log('criteria',criteriaToReturn);
 
     return criteriaToReturn;
 }

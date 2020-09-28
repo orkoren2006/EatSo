@@ -17,7 +17,6 @@ async function query(filterBy = {}) {
     for (const filterType in filterBy) {
         queryParams.set(filterType, filterBy[filterType])
     }
-    console.log('query service', queryParams);
     return await httpService.get(`${URL}/?${queryParams}`)
     // const exps = await httpService.get(`exp/?${queryParams}`)
     // return await httpService.get(`exp/?${queryParams}`)

@@ -10,7 +10,19 @@ class _ExpApp extends Component {
     }
 
     async componentDidMount() {
+        await this._loadExps()
 
+    }
+
+    async componentDidUpdate(prevProps,prevState) {
+        console.log('from update',prevProps);
+        if (prevProps.match === this.props.match) return
+        this.setState({resultsMsg:''})
+        await this._loadExps()
+    }
+
+    async _loadExps() {
+        debugger
         let filterBy = {};
         let filterStr = '';
         const qParams = new URLSearchParams(this.props.location.search)
@@ -19,7 +31,7 @@ class _ExpApp extends Component {
             filterBy[key] = value;
             filterStr += ` "${value}"`
         }
-        if (filterBy) {
+        if (Object.keys(filterBy).length) {
             this.setState({ resultsMsg: `showing results for ${filterStr}` })
         }
         await this.props.loadExps(filterBy);
@@ -30,7 +42,7 @@ class _ExpApp extends Component {
         if (!exps) return <div></div>
         return (
             <div>
-                {this.state.resultsMsg && <h2>{this.state.resultsMsg}</h2> }
+                {this.state.resultsMsg && <h2>{this.state.resultsMsg}</h2>}
                 <ul>
                     {
                         <ExpList exps={exps} />
