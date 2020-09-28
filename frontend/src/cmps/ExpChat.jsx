@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {socketService} from '../services/socketService.js';
+import { socketService } from '../services/socketService.js';
 
 export class ExpChat extends Component {
 
@@ -67,6 +67,11 @@ export class ExpChat extends Component {
                 {(this.state.typing.user &&
                     this.state.typing.user !== this.props.username) &&
                     <h3>{this.state.typing.user} is typing...</h3>}
+                <ul className="clean-list">
+                    {this.state.msgs.map((msg, idx) => (
+                        <li key={idx}>{(msg.from === this.props.username) ? 'Me':msg.from}: {msg.txt}</li>
+                    ))}
+                </ul>
                 <form onSubmit={this.sendMsg}>
                     <input
                         autoComplete="off"
@@ -78,11 +83,6 @@ export class ExpChat extends Component {
                     />
                     <button>Send</button>
                 </form>
-                <ul>
-                    {this.state.msgs.map((msg, idx) => (
-                        <li key={idx}>{msg.from}:{msg.txt}</li>
-                    ))}
-                </ul>
             </div>
         )
     }
