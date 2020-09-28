@@ -2,6 +2,38 @@
     .hero-image {
       padding-left:40px;
     }
+    .home-category{
+        padding: 72px 0 0 0;
+    }
+}
+
+@media (max-width: 1140px) {
+    //1260
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 320px);
+        justify-content: center;
+        gap: 4px;
+    }
+    .home-category{
+        padding: 64px 0 0;
+    }
+    
+    .preview-header {
+        
+        flex-direction: column;
+        align-items: center !important;
+    
+
+    h2 {
+        margin-bottom: 16px;
+          
+    }
+    .MuiButton-root{
+        margin-bottom: 32px;
+    }
+}
 }
 
 @media (max-width: 940px) {
@@ -21,54 +53,58 @@
         width: 550px;
         border-radius: 64px;
     }
-    
-}
 
-@media (max-width: 1140px) {
-    //1260
-
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        justify-content: center;
-        gap: 4px;
+    .tokyo-banner {
+        h2 {
+            font-size: 28px;
+        
+        span{
+            font-size: 110px;
+        }    
+        }
     }
 }
+
+
 
 @media (max-width: 800px) {
     .hero-image {
         height: 70vh;
     }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(2, 300px);
-        justify-content: center;
-        gap: 4px;
-    }
+     .preview-header {
+        
+        
 
-    .preview-header {
         h2 {
-            font-size: 20px;
+            font-size: 35px;
+            margin-bottom: 16px;
+            text-align: center;
+            line-height: 1.3em;
+            
         }
+        .MuiButton-root{
+            margin-bottom: 32px;
+        }
+        
     }
+    
+    .home-category{
+        padding: 48px 0 0;
 
+    }
     .tokyo-banner {
-        background-size: auto;
-        width: 100%;
+        background-position: 80%
     }
 
-    // .exp-filter {
-    //     height: 261px;
-    //     width: 201px;
-    //     border-radius: 0;
-    // }
+   
+   
 }
 
 @media (max-width: 635px) {
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(1, 350px);
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
         gap: 4px;
     }
@@ -112,19 +148,76 @@
             height: 85vh;
         
         h1 {
-            font-size: 35px;
+            font-size: 68px;
+            margin-bottom: 16px;
+        }
+
+        h2{
+            font-size: 32px;
+            margin-top: 40px;
         }
     }
-
-    .tokyo-banner {
-        padding: 18px 9px 100px 0px;
-        span {
-            // font-size: 100px;
-        }
-    }
-
     .preview-header {
-        flex-direction: column;
-        justify-content: center;
+        
+         h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+              
+        }
+        .MuiButton-root{
+            margin-bottom: 16px;
+        }
     }
+
+  
+
+    
+}
+
+@media (max-width: 550px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 350px);
+        justify-content: center;
+        gap: 4px;
+    }
+    .tokyo-banner {
+        background-position: 60%;
+        .sushi-button{
+            margin-top: 0;
+        } 
+        h2 {
+            font-size: 18px;
+        
+        span{
+            font-size: 70px;
+        } 
+         
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    
+    .hero-image {
+    
+    h1 {
+        font-size: 56px;
+        margin-bottom: 16px;
+    }
+
+    h2{
+        font-size: 24px;
+        margin-top: 40px;
+    }
+    p{
+        max-width: 300px;
+    }
+    }
+    .home-cards-list{
+
+        h4{
+            line-height: 1.3em;
+        }
+    } 
 }
