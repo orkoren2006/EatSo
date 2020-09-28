@@ -23,10 +23,12 @@ export function Footer() {
                         </a>
                     </ul>
                 </div>
-                <div className="footer-links flex justify-center align-center">
-                    <span>Black Lives Matter. </span>
-                    <span className="support-span">Support the Equal Justice Initiative.</span>
-                </div>
+                <a href="https://eji.org/" target="_blank">
+                    <div className="footer-banner flex justify-center align-center">
+                        <span>Black Lives Matter. </span>
+                        <span className="support-span">Support the Equal Justice Initiative.</span>
+                    </div>
+                </a>
                 <ul className="footer-copyrights flex justify-start clean-list">
                     <li>All rights reserved to Appetizer! ©</li>
                     <li>Terms and conditions</li>
