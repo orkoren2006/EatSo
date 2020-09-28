@@ -100,7 +100,7 @@ class _Header extends Component {
                         src={require("../assets/imgs/appetizer-logo-yellow.png")} alt="" />
 
                     <div className={`middle-navbar flex ${navBarColor} ${isHeaderActive}`}>
-                        <Link to="/exp"><h3>All Experiences</h3></Link> |
+                        <Link to="/exp"><h3>All Experiences</h3></Link> <div className="divider">|</div>
                         <h3 className="host-meal-link" onClick={this.onHostMeal}>Host a meal</h3>
                         {/* <Link to="/exp/edit"><h3>Host a meal</h3></Link> */}
                     </div>

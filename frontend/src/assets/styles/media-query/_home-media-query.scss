@@ -35,14 +35,11 @@
         h2 {
             font-size: 20px;
         }
-
-      
     }
 
     .tokyo-banner {
         background-size: auto;
         width: 100%;
-
     }
 
     .exp-filter {
@@ -64,8 +61,16 @@
         gap: 4px;
     }
 
+    .middle-navbar {
+        .host-meal-link {
+            display: none;
+        }
+        .divider {
+            display: none;
+        }
+    }
+
     .hero-image {
-      
         h1 {
             font-size: 35px;
         }
