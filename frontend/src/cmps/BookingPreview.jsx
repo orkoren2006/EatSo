@@ -9,7 +9,7 @@ export function BookingPreview({ booking, onChangeStatusBooking }) {
     return (
         <div className="booking-preview">
             <UserPreview user={booking.guest} /> 
-            <div>{numOfGuests} {numOfGuests > 1 ? 'guest' : 'guests'}</div>
+            <div className="number-guest">{numOfGuests} {numOfGuests > 1 ? 'guest' : 'guests'}</div>
             <div className="name">({booking.exp.name})</div>
             <div className="buttons">
                 <Button className="approved-btn"

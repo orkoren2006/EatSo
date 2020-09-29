@@ -131,7 +131,7 @@
      }
 
     .exp-filter {
-        padding: 32px 24px;
+        padding: 24px 0;
         height:auto;
         width: 300px;
         border-radius: 64px;
@@ -152,6 +152,10 @@
         .host-meal-link {
             display: none;
         }
+
+    .all-exps-link {
+        display: none;
+    }
         .divider {
             display: none;
         }
@@ -161,7 +165,7 @@
         
             
             padding-left: 24px;
-            height: 85vh;
+            height: 105vh;
         
         h1 {
             font-size: 68px;
@@ -170,7 +174,7 @@
 
         h2{
             font-size: 32px;
-            margin-top: 40px;
+            margin-top: 56px;
         }
     }
     .preview-header {
@@ -228,6 +232,8 @@
     }
     p{
         max-width: 300px;
+        font-size:18px;
+        margin-bottom: 0;
     }
     }
     .home-cards-list{
@@ -236,6 +242,13 @@
             line-height: 1.3em;
         }
     } 
+    .preview-header {
+        
+        h2 {
+           font-size: 26px;
+           
+             
+       }
 
-  
+    }
 }
