@@ -37,17 +37,15 @@ class _ExpApp extends Component {
 
     render() {
         const { exps } = this.props;
-<<<<<<< HEAD
         if (!exps) return <div></div>
         // if (!isLoading) return <div>Itay</div>
-=======
+
         // if (!exps) return <div></div>
-<<<<<<< HEAD
-        if (!this.props.isLoading) return <Loading />
-=======
-        if (this.props.isLoading) return <div>Itay</div>
->>>>>>> 65b8a81c510fac9b219dec5d06091f06946bdf6e
->>>>>>> 1ec98c673a32987267cb6d2c9d32483a4ef75f3a
+
+        if (this.props.isLoading) return <Loading />
+
+        // if (this.props.isLoading) return <div>Itay</div>
+
 
         return (
          
