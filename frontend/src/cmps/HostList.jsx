@@ -29,7 +29,7 @@ export function HostList(props) {
                 <div className="host-exps card-grid">
                     {exps.map(exp => {
                         return (
-                            <Link to={`/exp/${exp._id}`}>
+                            <Link key={exp._id} to={`/exp/${exp._id}`}>
                                 <section className="exp-card-cont flex">
                                     <img className="img-in-div" src={exp.imgUrls[0]}></img>
                                     <div className="div-in-image"><ExpRate reviews={exp.reviews} /></div>
