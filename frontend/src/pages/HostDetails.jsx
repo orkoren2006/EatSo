@@ -29,8 +29,9 @@ class _HostDetails extends Component {
         if (!exps) return <div>Loading...</div>
         return (
 
-            <section>
-                {exps.map(exp => <HostList key={exp._id} exp={exp} host={host} />)}
+            <section className="host-page-list">
+                <HostList exps={exps} host={host} />
+                {/* {exps.map(exp => <HostList key={exp._id} exp={exp} host={host} />)} */}
             </section>
         )
     }

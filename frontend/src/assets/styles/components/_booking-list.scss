@@ -17,13 +17,22 @@
         font-weight: bold;
     }
 
+    .MuiButton-root{
+        margin: 0;
+    }
+    
     .approved-btn{
         background-color: rgb(15,157,88);
         margin: 0 5px 0 0;
     }
+    .approved-btn:hover{
+        background-color:  rgb(15,157,88);;
+    }
     
     .reject-btn{
-        background-color: rgb(219,68,55);
-        margin: 0;
+        background-color: rgb(219,68,55);      
+    }
+    .reject-btn:hover{
+        background-color: rgb(219,68,55);      
     }
 }

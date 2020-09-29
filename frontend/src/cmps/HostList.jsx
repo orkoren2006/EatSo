@@ -6,7 +6,7 @@ import { Image, Transformation } from 'cloudinary-react';
 
 
 export function HostList(props) {
-    const { exp, host } = props
+    const { exps, host } = props
     const firstName = host.fullName;
     const i = firstName.indexOf(" ");
     return (
@@ -23,24 +23,32 @@ export function HostList(props) {
                 </div>
 
                 <div className="host-description">
-                <p>{host.desc}</p>
+                    <p>{host.desc}</p>
                 </div>
                 <h3>{firstName.substring(0, i)}'s experiences </h3>
-
                 <div className="host-exps card-grid">
-                    <Link to={`/exp/${exp._id}`}>
-                        <section className="exp-card-cont flex">
-                            <img className="img-in-div" src={exp.imgUrls[0]}></img>
-                            {/* <img className="img-in-div-2" src={exp.imgUrls[1]}></img> */}
-                            <div className="div-in-image"><ExpRate reviews={exp.reviews} /></div>
-                        </section>
-                        <section className="exp-card-desc">
-                            <p><span>Dinner </span>in {exp.location.city}</p>   {/* replace the word 'dinner' with a varaible */}
-                            <h3>{exp.name}</h3>
-                            {/* <ExpRate reviews={exp.reviews} /> */}
-                        </section>
-                    </Link>
+                    {exps.map(exp => {
+                        return (
+                            <Link to={`/exp/${exp._id}`}>
+                                <section className="exp-card-cont flex">
+                                    <img className="img-in-div" src={exp.imgUrls[0]}></img>
+                                    <img className="img-in-div-2" src={exp.imgUrls[1]}></img>
+                                    <div className="div-in-image"><ExpRate reviews={exp.reviews} /></div>
+                                </section>
+                                <section className="exp-card-desc">
+                                    <p><span>Experience </span>in {exp.location.city}</p>   
+                                    {/* replace the word 'dinner' with a varaible */}
+                                    {/* <h5><span>Experience </span>in {exp.location.city}</h5>   
+                                    replace the word 'dinner' with a varaible */}
+                                    <h3>{exp.name}</h3>
+                                    <h3>{exp.title}</h3>
+                                    <ExpRate reviews={exp.reviews} />
+                                </section>
+                            </Link>
+                        )
+                    })}
                 </div>
+
             </section>
         </React.Fragment>
     )
