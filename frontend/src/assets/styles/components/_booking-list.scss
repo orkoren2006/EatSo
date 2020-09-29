@@ -6,33 +6,12 @@
 }
 
 .booking-list {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 20px;
-    width: max-content;
-    align-items: center;
-    text-align: center;
+    // display: grid;
+    // grid-template-columns: auto auto auto auto;
+    // gap: 20px;
+    // width: max-content;
+    // align-items: center;
+    // text-align: center;
 
-    button{
-        font-weight: bold;
-    }
-
-    .MuiButton-root{
-        margin: 0;
-    }
-    
-    .approved-btn{
-        background-color: rgb(15,157,88);
-        margin: 0 5px 0 0;
-    }
-    .approved-btn:hover{
-        background-color:  rgb(15,157,88);;
-    }
-    
-    .reject-btn{
-        background-color: rgb(219,68,55);      
-    }
-    .reject-btn:hover{
-        background-color: rgb(219,68,55);      
-    }
+   
 }
