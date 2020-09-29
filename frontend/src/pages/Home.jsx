@@ -65,7 +65,7 @@ class _Home extends Component {
     const { exps } = this.props
     if (!exps) return <div>Load</div>
     return (
-      <section className="home full main-container ">
+      <section className="home full main-container " id="top">
         <div className="hero-image flex column full">
 
           <h2>Change your food </h2>

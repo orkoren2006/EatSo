@@ -90,7 +90,7 @@ class _Header extends Component {
         const navBarColor = this.state.atHome ? 'shubi' : 'dark'
         const isHeaderActive = this.state.isHeaderActive ? 'active' : ''
         const { user } = this.props
-        const avatar = (user) ? user.imgUrl : `https://res.cloudinary.com/orkofy/image/upload/v1600666498/eatso-profile/user_bqaypc.jpg`
+        const avatar = (user) ? user.imgUrl : `https://res.cloudinary.com/orkofy/image/upload/v1601385346/eatso-profile/avatar_30x30_otcqhv.png`
         // const toggleNavbarButton = this.state.button ? 'main-nav-botton' : 'main-nav-botton-hide'
         return (
             <React.Fragment>
