@@ -5,13 +5,17 @@
     .user-exp-list{
         min-height: 36vh;
     }
+
+    
     .MuiButton-text {
         background-color: $clr1;
         margin-inline-start: 40px;
         margin-block-end: 20px;
         padding: 10px;
     }
-
+    .add-exp-btn:hover{
+        background-color: $clr1;
+    }
     a{
         color: inherit;
         text-decoration: none;

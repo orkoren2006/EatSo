@@ -132,22 +132,29 @@ class _UserExp extends Component {
         if (!user) return <div>Itay Loading...</div>
         return (
             <section className="user-exp-div">
-                <h3 className="user-exp-type">Experiences As a {(this.state.isHost) ? 'Host' : "Participants"} </h3>
-                {!this.state.isHost &&
-                    <section className="user-exp-navbar">
-                        <ul className="user-exp-navbar-list flex">
-                            <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
-                                id="past" onClick={this.onExpTimeFilter}>Past</li>
-                            <li key="approved-exps" className={(this.state.filter === 'approved') ? 'clicked' : ''}
-                                id="approved" onClick={this.onExpTimeFilter}>Upcoming</li>
-                            <li key="pending-exps" className={(this.state.filter === 'pending') ? 'clicked' : ''}
-                                id="pending" onClick={this.onExpTimeFilter}>Pending</li>
-                        </ul>
-                    </section>
-                }
-                {this.state.isHost && <Link to="/exp/edit"><Button>
+                <section className="list-header flex space-between align-center">
+                    <h3 className="user-exp-type"> {(this.state.isHost) ? 'Manage as a Host' : "Your Experiences"} </h3>
+                    {!this.state.isHost &&
+                        <section className="user-exp-navbar">
+                            <ul className="user-exp-navbar-list flex">
+                                <li key="past-exps" className={(this.state.filter === 'past') ? 'clicked' : ''}
+                                    id="past" onClick={this.onExpTimeFilter}>Past</li>
+                                <li key="approved-exps" className={(this.state.filter === 'approved') ? 'clicked' : ''}
+                                    id="approved" onClick={this.onExpTimeFilter}>Upcoming</li>
+                                <li key="pending-exps" className={(this.state.filter === 'pending') ? 'clicked' : ''}
+                                    id="pending" onClick={this.onExpTimeFilter}>Pending</li>
+                            </ul>
+                        </section>
+                    }
+                    {this.state.isHost &&
+                        <Button className='add-exp-btn'
+                            onClick={() => this.props.history.push('/exp/edit')}>
+                            <img className="add-exp-img" src={require("../assets/imgs/crossed-knife-and-fork.png")} alt="" />
+                    Add Experience</Button>}
+                </section>
+                {/* {this.state.isHost && <Link to="/exp/edit"><Button>
                 <img className="add-exp-img" src={require("../assets/imgs/crossed-knife-and-fork.png")} alt=""/>
-                    Add Experience</Button></Link>}
+                    Add Experience</Button></Link>} */}
 
                 <section className="user-exp-list">
                     {

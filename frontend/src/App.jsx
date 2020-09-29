@@ -15,7 +15,9 @@ import { UserExp } from './pages/UserExp.jsx';
 import { socketService } from './services/socketService.js';
 import { clearNotification, sendNotification } from './store/actions/systemActions.js';
 import { connect } from 'react-redux';
+import { getExpById } from './store/actions/expAction.js';
 // import { ExpEditTest } from './pages/ExpEditTest.jsx';
+
 
 class _App extends Component {
   componentDidMount() {
@@ -28,9 +30,13 @@ class _App extends Component {
     socketService.terminate();
   }
 
-  onBookingStatusChange = (booking) => {
+  onBookingStatusChange = async (booking) => {
     console.log('onBookingStatusChange in App.jsx');
-    const msg = `booking ${booking._id} ${booking.status}\nCheck it in your private zone`
+    debugger
+    const exp = await this.props.getExpById(booking.exp._id)
+    console.log(exp);
+    const msg = `booking ${exp.title} ${booking.status}\nCheck it in your private zone`
+    // const msg = `booking ${booking._id} ${booking.status}\nCheck it in your private zone`
     this.props.sendNotification({msg, isSuccessed: booking.status === 'approved'});
     setTimeout(this.props.clearNotification, 3000) ;
   }
@@ -74,7 +80,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   sendNotification,
-  clearNotification
+  clearNotification,
+  getExpById
 };
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App);
