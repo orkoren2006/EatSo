@@ -53,6 +53,7 @@ class _UserExp extends Component {
 
 
     newBookNotification = (booking) => {
+        console.log('UserExp: load bookings again', booking);
         this.props.loadBookings()
     }
 
