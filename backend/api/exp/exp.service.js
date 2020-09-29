@@ -146,7 +146,7 @@ function _buildCriteria(filterBy) {
             criteriaToReturn.push({ [filterType]: filterBy[filterType] })
         }
     }
-    // console.log('criteria',criteriaToReturn);
+    console.log('criteria',criteriaToReturn);
 
     return criteriaToReturn;
 }

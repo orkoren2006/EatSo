@@ -197,7 +197,7 @@ class _ExpDetails extends Component {
                                         <FontAwesomeIcon className="male-icon" icon={faMale} />
                                         <FontAwesomeIcon className="female-icon" icon={faFemale} />
                                     </div>
-                                    <p>2-12</p>
+                                    <p>{exp.capacity.min}-{exp.capacity.max}</p>
                                 </div>
                                 <div className="flex column align-center">
                                     <FontAwesomeIcon className="clock-icon" icon={faClock} />

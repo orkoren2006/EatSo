@@ -48,7 +48,7 @@ export function saveExp(exp) {
       const expObj = await expService.save(exp);
       if (exp._id) {
         dispatch({ type: 'UPDATE_EXP', exp: expObj.exp })
-        dispatch({ type: 'SEND_NOTIFICATION', notification:  {msg: 'Experience Updted', isSuccessed: true } })
+        dispatch({ type: 'SEND_NOTIFICATION', notification:  {msg: 'Experience Updated', isSuccessed: true } })
       } else {
         dispatch({ type: 'ADD_EXP', exp: expObj.exp })
         dispatch({ type: 'SEND_NOTIFICATION', notification:  {msg: 'Experience Added', isSuccessed: true } })

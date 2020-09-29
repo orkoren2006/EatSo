@@ -11,7 +11,6 @@ class _ExpApp extends Component {
 
     async componentDidMount() {
         await this._loadExps()
-
     }
 
     async componentDidUpdate(prevProps,prevState) {
@@ -22,7 +21,10 @@ class _ExpApp extends Component {
     }
 
     async _loadExps() {
+<<<<<<< HEAD
         // debugger
+=======
+>>>>>>> 15e84935f8032061fcf3b2bc3e7a6e53701be2c1
         let filterBy = {};
         let filterStr = '';
         const qParams = new URLSearchParams(this.props.location.search)

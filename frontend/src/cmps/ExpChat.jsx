@@ -36,6 +36,7 @@ export class ExpChat extends Component {
         socketService.emit('chat newMsg', this.state.msg);
         // socketService.emit('chat addMsg', this.state.msg);
         this.setState({ msg: { from: this.props.username, txt: '' } });
+        this.onBlur()
     };
 
     msgHandleChange = ev => {
@@ -74,7 +75,9 @@ export class ExpChat extends Component {
                     <h5>Write to your host and to other participants </h5>
                     {(this.state.typing.user &&
                         this.state.typing.user !== this.props.username) &&
-                        <h4 className="is-typing">{this.state.typing.user + ''} is typing...</h4>}
+                        <div className="is-typing"><h3>{this.state.typing.user + ''}</h3><h4>is typing...</h4></div>
+                        // <h4 className="is-typing">{this.state.typing.user + ''} is typing...</h4>
+                        }
                     <ul className="msgs-list clean-list">
                         {this.state.msgs.map((msg, idx) => {
                             let senderName = msg.from;
