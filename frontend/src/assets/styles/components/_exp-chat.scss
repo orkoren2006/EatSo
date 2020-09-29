@@ -1,4 +1,4 @@
-.chat-sec{
+.chat-sec {
     // justify-content: flex-end;
     align-items: flex-end;
 
@@ -11,7 +11,6 @@
     .MuiSvgIcon-root {
         // color: #4285F4;
         color: $clr3;
-        
     }
     .toggle-chat-btn {
         * {
@@ -20,21 +19,21 @@
             background-color: $clr1;
             color: $clr2;
             border-radius: 50%;
-            margin-top: 5px; 
-        }       
+            margin-top: 5px;
+        }
     }
     .toggle-chat-btn:hover {
         cursor: pointer;
     }
 
-    .exp-chat{
+    .exp-chat {
         overflow: auto;
         height: 275px;
         background-color: #f1f1f1;
         padding: 10px;
         box-shadow: 0 0 1px;
 
-        .is-typing{
+        .is-typing {
             font-weight: 400;
             font-size: rem(14px);
             margin-bottom: 0px;
@@ -46,25 +45,24 @@
             padding: 0px;
         }
 
-        &.hide{
+        &.hide {
             display: block;
-            visibility: hidden
+            visibility: hidden;
         }
 
         h5 {
-            flex: 1
+            flex: 1;
         }
 
-        .chat-send-btn{
+        .chat-send-btn {
             background-color: transparent;
             border: transparent;
         }
 
-        .msgs-list{
+        .msgs-list {
             margin-top: 5px;
             .chatMsg {
-
-                .msg-txt{
+                .msg-txt {
                     font-weight: 400;
                 }
                 border-radius: 5px;
@@ -74,10 +72,21 @@
                 background-color: $clr6;
                 &.myMsg {
                     padding-inline-end: 5px;
-                text-align: right;
-                background-color:$clr3;
-                color: white;
+                    text-align: right;
+                    background-color: $clr3;
+                    color: white;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 635px) {
+    .chat-sec {
+        .exp-chat {
+            &.hide {
+                display: none;
+                visibility: hidden;
             }
         }
     }
