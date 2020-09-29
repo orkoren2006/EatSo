@@ -22,7 +22,6 @@ class _ExpApp extends Component {
     }
 
     async _loadExps() {
-        debugger
         let filterBy = {};
         let filterStr = '';
         const qParams = new URLSearchParams(this.props.location.search)
