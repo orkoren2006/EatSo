@@ -7,6 +7,10 @@
 @media (max-width: 635px) {
     .review-list {
         display: block;
-        margin-top: 32px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        p {
+            margin-bottom: 10px;
+        }
     }
 }

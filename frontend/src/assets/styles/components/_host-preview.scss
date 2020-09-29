@@ -2,7 +2,11 @@
     font-family: roboto;
       margin-bottom: 16px;
        
-   
+    .exp-card-cont{
+        .div-in-image {
+            z-index: 1
+        }
+    }
 
     p {
         color: #8f8e87;
@@ -20,12 +24,12 @@
         text-decoration: none;
     }
 
-    // .exp-card-desc {
-    //     padding-top: 8px;
-    //     p{
-    //         padding-left: 0
-    //     }
-    // }
+    .exp-card-desc {
+        padding-inline-start: 0;
+        span {
+            margin-inline-start: 0px;
+        }
+    }
 }
 
 .host-pic {
@@ -34,6 +38,11 @@
 }
 
 .host-title {
+
+    .host-preview-avatar{
+        height: 150px;
+        width: 150px;
+    }
     h2 {
         padding-left: 15px;
         align-self: center;

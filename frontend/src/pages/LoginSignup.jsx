@@ -160,13 +160,14 @@ class _LoginSignup extends Component {
 
     const { loggedInUser } = this.props;
     const { isLoginSection } = this.state;
+    console.log(isLoginSection);
 
     return (
       <div>
         <section className="login-signup flex column justify-center align-center">
-          <h1>
+          <h3>
             {(isLoginSection) ? 'Login' : 'Create your account'}
-          </h1>
+          </h3>
           {(!loggedInUser && this.state.isLoginSection) ? loginSection : signupSection}
         </section>
         <section className="login-signup-btn flex column justify-center align-center">

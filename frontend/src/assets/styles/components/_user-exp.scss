@@ -2,7 +2,9 @@
     .user-exp-type,h2 {
         padding-inline-start: 40px;
     }
-
+    .user-exp-list{
+        min-height: 36vh;
+    }
     .MuiButton-text {
         background-color: $clr1;
         margin-inline-start: 40px;

@@ -19,6 +19,10 @@
     .list-details {
         display: none;
     }
+    a.owner {
+        color: $clr1 ;
+        text-decoration: none ;
+    }
 
     .exp-content {
         display: flex;
@@ -47,11 +51,7 @@
         .exp-details {
             flex: 1;
             margin: 0 56px 0 0;
-
-            .owner {
-                color: $clr1;
-                text-decoration: none;
-            }
+           
         }
 
         
@@ -155,7 +155,6 @@
 
 .add-review-text {
     width: 65%;
-
     textarea {
         border-radius: 16px;
         padding: 16px;
@@ -163,6 +162,7 @@
         font-family: "Roboto";
         border-color: #c1c1c1;
         outline: none;
+        max-width: 100%;
     }
     .rate-line {
         margin-bottom: 8px;
@@ -194,7 +194,13 @@
 
 @media (max-width: 635px) { //635
     .exp-details-container {
-        
+        h3 {
+            font-weight: 600;
+            margin: 5px 0 7px 0;
+        }
+        p{
+            margin-bottom: 30px;
+        }
         .carousel-gallery {
             display: block;
             width: 100%;
@@ -218,7 +224,7 @@
         }
         .exp-menu {
             margin-left: 0;
-
+            margin-bottom: 30px;
             .side-menu {
                 padding: 0 16px;
             }
@@ -230,6 +236,14 @@
 
         .exps-icons {
             display: none;
+        }
+
+        .exp-rate-big {
+            margin-bottom: 5px;
+        }
+
+        .details-footer {
+            flex-direction: column;
         }
     }
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loadBookings } from '../store/actions/bookingAction';
 import { ExpRate } from './ExpRate'
+import { InputNumber } from './InputNumber';
 
 
 function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, bookings, user, ...props }) {
@@ -19,8 +20,8 @@ function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, booki
                 </div>
                 <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
                 <div>
-                    <label htmlFor="number-of-guests-booking">Number of guests:</label>
-                    <input type="number" name="numOfGuests" value={numOfGuests} onChange={onNumOfGuestsChange} min="1" max={exp.capacity.max} id="number-of-guests-booking" />
+                    <label htmlFor="number-of-guests-booking">Number of guests: &nbsp;</label>
+                    <InputNumber value={numOfGuests} onChange={onNumOfGuestsChange} name="numOfGuests" />
                 </div>
                 <button disabled={isAlreadyBooked} className={className} onClick={onBookClick}>{txtBtn}</button>
             </section>)

@@ -53,7 +53,7 @@ class _Home extends Component {
   onShowAllBtn = (filterBy) => {
     const key = Object.keys(filterBy)[0]
     const value = Object.values(filterBy)[0]
-    
+
     this.props.history.push(`/exp?${key}=${value}`)
   }
 
@@ -97,11 +97,12 @@ class _Home extends Component {
         </section>
 
         <section className="tokyo-banner flex justify-end align-center full">
-          
+
           <div className="tokyo-banner-content">
             <h2> Eat real traditional sushi in</h2>
             <h2><span>Tokyo</span></h2>
-            <Button className="sushi-button" variant="contained" color="secondary">Show More</Button>
+            <Button onClick={() => this.props.history.push('exp/5f731e5d15cdc8492815a652')}
+              className="sushi-button" variant="contained" color="secondary">Show More</Button>
           </div>
         </section>
 

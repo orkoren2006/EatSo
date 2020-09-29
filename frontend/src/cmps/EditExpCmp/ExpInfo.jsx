@@ -84,9 +84,9 @@ export class ExpInfo extends Component {
                         value={exp.price} placeholder="Enter experience price"
                         onChange={this.handleChange} />
                 </label>
-                <span style={{ display: "inline" }}>Description:</span>
+                <span style={{ display: "block" }}>Description:</span>
                 <label htmlFor="exp-desc">
-                    <TextareaAutosize rowsMin={5} type="text" id="exp-description" name="desc"
+                    <TextareaAutosize className="desc-input" rowsMin={5} type="text" id="exp-description" name="desc"
                         value={exp.desc} placeholder="Enter experience description"
                         onChange={this.handleChange} />
                 </label>

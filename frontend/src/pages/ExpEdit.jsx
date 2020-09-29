@@ -47,7 +47,7 @@ class _ExpEdit extends Component {
             const exp = await expService.getById(expId)
             this.setState({ exp, isMount: true })
         } else {
-            this.setState({isMount: true})
+            this.setState({ isMount: true })
         }
     }
 
@@ -83,22 +83,22 @@ class _ExpEdit extends Component {
         console.log('from render', exp);
         return (
             <div className="flex justify-center">
-            <div className= "full-stepper">
-                <Stepper className="flex column justify-center align-center stepper" activeStep={activeStep} alternativeLabel>
-                    {steps.map((label) => (
-                        <Step key={label}>
-                            <StepLabel>{label}</StepLabel>
-                        </Step>
-                    ))}
-                </Stepper>
-                <div className="form-stepper align-center">
-                <DynamicCmp  exp={exp} step={activeStep}
-                    onNextStep={this.handleStepChange}
-                    onSaveBtn={this.saveExp} />
-                {/* {this.state.isMount && <DynamicCmp exp={exp} step={activeStep}
+                <div className="full-stepper">
+                    <Stepper className="flex column justify-center align-center stepper" activeStep={activeStep} alternativeLabel>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    <div className="form-stepper align-center">
+                        <DynamicCmp exp={exp} step={activeStep}
+                            onNextStep={this.handleStepChange}
+                            onSaveBtn={this.saveExp} />
+                        {/* {this.state.isMount && <DynamicCmp exp={exp} step={activeStep}
                     onNextStep={this.handleStepChange}
                     onSaveBtn={this.saveExp} />} */}
-                {/* <div>
+                        {/* <div>
                     {activeStep === steps.length ? (
                         <div>
                             <h2>All steps completed</h2>
@@ -117,7 +117,7 @@ class _ExpEdit extends Component {
                             </div>
                         )}
                 </div> */}
-                </div>
+                    </div>
                 </div>
             </div >
         )

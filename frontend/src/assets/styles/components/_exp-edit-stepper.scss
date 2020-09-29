@@ -36,6 +36,11 @@
             // color: $clr4;   
         }
 
+        .desc-input{
+            width: 100%;
+            font-family: inherit;
+        }
+
         input {
             border: solid 1px lightgray;
             background-color: #fff;
@@ -86,6 +91,8 @@
          .MuiInput-underline:before{
              border: none;
          }
+
+         
 
 
          

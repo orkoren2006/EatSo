@@ -17,7 +17,7 @@ class _UserExp extends Component {
         userBookings: [], // for exps as a participants
         filter: 'approved',
         isHost: false,
-        expList: null,
+        expList: [],
         toApproveBookings: null,
     }
 
@@ -151,7 +151,7 @@ class _UserExp extends Component {
 
                 <section className="user-exp-list">
                     {
-                        ((expList) ?
+                        ((expList.length) ?
                             <ExpList exps={expList} isHost={this.state.isHost} /> : <h2>No Exps To Show</h2>)
                     }
                 </section>
