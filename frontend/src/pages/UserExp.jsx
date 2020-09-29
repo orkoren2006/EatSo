@@ -133,8 +133,16 @@ class _UserExp extends Component {
         if (!user) return <div>Itay Loading...</div>
         return (
             <section className="user-exp-div">
-                <section className="list-header flex space-between align-center">
+                <section className="title flex space-between align-center">
                     <h3 className="user-exp-type"> {(this.state.isHost) ? 'Manage as a Host' : "Your Experiences"} </h3>
+                    {this.state.isHost &&
+                        <Button className='add-exp-btn'
+                            onClick={() => this.props.history.push('/exp/edit')}>
+                            <img className="add-exp-img" src={require("../assets/imgs/crossed-knife-and-fork.png")} alt="" />
+                    Add Experience</Button>}
+
+                </section>
+                <section className="list-header flex space-between align-center">
                     {!this.state.isHost &&
                         <section className="user-exp-navbar">
                             <ul className="user-exp-navbar-list flex">
@@ -147,11 +155,6 @@ class _UserExp extends Component {
                             </ul>
                         </section>
                     }
-                    {this.state.isHost &&
-                        <Button className='add-exp-btn'
-                            onClick={() => this.props.history.push('/exp/edit')}>
-                            <img className="add-exp-img" src={require("../assets/imgs/crossed-knife-and-fork.png")} alt="" />
-                    Add Experience</Button>}
                 </section>
                 {/* {this.state.isHost && <Link to="/exp/edit"><Button>
                 <img className="add-exp-img" src={require("../assets/imgs/crossed-knife-and-fork.png")} alt=""/>
