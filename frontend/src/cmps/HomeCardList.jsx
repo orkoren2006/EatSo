@@ -11,7 +11,7 @@ export function HomeCardList() {
     const cards = [
         { title: 'Outdoor', subtitle: 'dinner experiences', filterBy: { tags: 'outdoor' } },
         { title: 'Traditional', subtitle: 'cuisine', filterBy: { tags: 'traditional' } },
-        { title: 'Romantic', subtitle: 'dinners', filterBy: { tags: 'intimacy' } },
+        { title: 'Romantic', subtitle: 'dinners', filterBy: { tags: 'intimate' } },
         { title: 'Holiday', subtitle: 'meals', filterBy: { tags: 'holiday' } },
         { title: 'Dinner', subtitle: 'parties', filterBy: { tags: 'multi' } },
     ]
