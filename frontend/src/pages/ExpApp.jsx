@@ -24,7 +24,6 @@ class _ExpApp extends Component {
         let filterBy = {};
         let filterStr = '';
         const qParams = new URLSearchParams(this.props.location.search)
-        // if (this.props.match.params.field) {filterBy = {[this.props.match.params.field]:this.props.match.params.value}}
         for (const [key, value] of qParams.entries()) {
             filterBy[key] = value;
             filterStr += ` "${value}"`
