@@ -1,4 +1,10 @@
+
 @media (max-width: 1236px) {
+
+    .header {
+        padding: 0 40px;
+    }
+
     .hero-image {
       padding-left:40px;
     }
@@ -9,6 +15,7 @@
 
 @media (max-width: 1140px) {
     //1260
+  
 
     .grid-container {
         display: grid;
@@ -37,6 +44,10 @@
 }
 
 @media (max-width: 940px) {
+
+    .header {
+        padding: 0 30px;
+    }
     .filter-fields {
         display: grid;
         
@@ -102,6 +113,11 @@
 }
 
 @media (max-width: 635px) {
+
+    .header {
+        padding: 0 5px;
+    }
+
     .grid-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -169,8 +185,6 @@
         }
     }
 
-  
-
     
 }
 
@@ -220,4 +234,6 @@
             line-height: 1.3em;
         }
     } 
+
+  
 }
