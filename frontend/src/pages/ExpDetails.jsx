@@ -244,7 +244,7 @@ class _ExpDetails extends Component {
                 </section>
                 <section className="details-footer flex space-between">
                     <div className="google-maps">
-                        <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} />
+                        {/* <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} /> */}
                     </div>
                     <section className="chat-sec flex column space-between">
                         {user &&

@@ -3,3 +3,10 @@
     grid-template-columns: repeat(2, minmax(250px, 1fr));
     margin-top: 32px;
 }
+
+@media (max-width: 635px) {
+    .review-list {
+        display: block;
+        margin-top: 32px;
+    }
+}
