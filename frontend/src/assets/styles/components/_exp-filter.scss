@@ -5,6 +5,10 @@
     border-radius: 40px;
     height: 88px;
     opacity: 0.9;
+    
+    // .svg-inline--fa.fa-w-16:hover{
+    //     color: white;
+    // }
 
 .MuiInputBase-input {
      padding: 6px 5px 7px 5px;
@@ -40,14 +44,18 @@ input#price{
 
 }
 
-.MuiButton-containedPrimary:hover {
-    background-color: $clr3;
-}
-
 .svg-inline--fa.fa-w-16{
     color: #0C0409;
     font-size: 18px;
 }
 
+.MuiButton-containedPrimary:hover {
+    background-color: $clr3;
+    .svg-inline--fa.fa-w-16 {
+        color: white;
+    }
 }
+
+}
+
 
