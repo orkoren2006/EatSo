@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadExps, removeExp } from '../store/actions/expAction';
 import { ExpList } from '../cmps/ExpList';
+import { loading } from '../store/actions/systemActions';
 
 class _ExpApp extends Component {
 
@@ -36,8 +37,11 @@ class _ExpApp extends Component {
 
     render() {
         const { exps } = this.props;
-        if (!exps) return <div></div>
+        // if (!exps) return <div></div>
+        if (!isLoading) return <div>Itay</div>
+
         return (
+         
             <div>
                 {this.state.resultsMsg && <h2>{this.state.resultsMsg}</h2>}
                 <ul>
@@ -52,7 +56,8 @@ class _ExpApp extends Component {
 
 const mapStateToProps = state => {
     return {
-        exps: state.exp.exps
+        exps: state.exp.exps,
+        isLoading: state.system.isLoading
     };
 };
 
