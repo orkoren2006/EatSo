@@ -20,12 +20,11 @@
         text-decoration: none;
     }
 
-    // .exp-card-desc {
-    //     padding-top: 8px;
-    //     p{
-    //         padding-left: 0
-    //     }
-    // }
+    .exp-card-desc {
+        span {
+            margin-inline-start: 0px;
+        }
+    }
 }
 
 .host-pic {
