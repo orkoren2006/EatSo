@@ -197,6 +197,8 @@
         
         .carousel-gallery {
             display: block;
+            width: 100%;
+            grid-column: 1/-1;
         }
         .simple-gallery {
             display: none;
@@ -224,6 +226,10 @@
 
         .exp-opening {
             padding: 0;
+        }
+
+        .exps-icons {
+            display: none;
         }
     }
 }
