@@ -18,6 +18,7 @@ class _Home extends Component {
     let expsToSend;
     const [field, value] = attr.split('-')
     const valueRegex = new RegExp(`${value}`, 'i')
+    console.log(value);
 
     switch (field) {
       case 'tags':
@@ -79,7 +80,7 @@ class _Home extends Component {
         <section className="home-category flex column space-between">
           <section className="preview-header flex space-between align-start">
             <h2>Top Dinners in your Location</h2>
-            <Button onClick={() => this.onShowAllBtn({ 'location.city': 'Tel-Aviv-Yafo' })}
+            <Button onClick={() => this.onShowAllBtn({ 'location.city': 'Tel Aviv' })}
               className="tel-aviv-button"><span> Show All &gt;</span></Button>
           </section>
           <ExpList exps={this.getExps('address-tel-aviv')} />
