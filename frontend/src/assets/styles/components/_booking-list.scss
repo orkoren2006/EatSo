@@ -1,7 +1,29 @@
+.host-booking-queue{
+    h3{
+        margin-block-start: 20px;
+        margin-block-end: 20px;
+    }
+}
+
 .booking-list {
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 20px;
     width: max-content;
     align-items: center;
+    text-align: center;
+
+    button{
+        font-weight: bold;
+    }
+
+    .approved-btn{
+        background-color: rgb(15,157,88);
+        margin: 0 5px 0 0;
+    }
+    
+    .reject-btn{
+        background-color: rgb(219,68,55);
+        margin: 0;
+    }
 }
