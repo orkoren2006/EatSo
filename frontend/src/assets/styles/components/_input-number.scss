@@ -1,0 +1,57 @@
+.input-number {
+    clear: both;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    input,
+    textarea {
+        border: 0;
+        box-sizing: border-box;
+        margin: 0;
+        outline: none;
+        padding: 10px;
+        text-align: center;
+    }
+
+    input[type="button"] {
+        cursor: pointer;
+        background-color: $clr1;
+        transition: all 300ms ease;
+        text-align: center;
+    }
+
+    .button-minus,
+    .button-plus {
+        font-weight: bold;
+        height: 25px;
+        padding: 0;
+        width: 25px;
+        position: relative;
+        border-radius: 50%;
+    }
+
+    .button-minus {
+        left: 7px;
+        z-index: 2;
+    }
+
+    .button-plus {
+        right: 7px;
+    }
+
+    .quantity-field {
+        position: relative;
+        height: 25px;
+        text-align: center;
+        width: 45px;
+        display: inline-block;
+        font-size: 13px;
+        margin: 0 0 5px;
+        resize: vertical;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}

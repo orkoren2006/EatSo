@@ -127,6 +127,7 @@ class _ExpDetails extends Component {
     onNumOfGuestsChange = (ev) => {
         const key = ev.target.name;
         const value = +ev.target.value;
+        console.log('im so happy');
         this.setState({ [key]: value });
     }
 
@@ -223,8 +224,12 @@ class _ExpDetails extends Component {
                                 isAddReviewShown={isAddReviewShown} onBookClick={this.onBookClick} onNumOfGuestsChange={this.onNumOfGuestsChange} />
                         </div>
                         <div className="list-details">
-                            <Menu menu={exp.menu} />
+                            <div>
+                                <h3>Menu</h3>
+                                <Menu menu={exp.menu} />
+                            </div>
                             <section className="exp-reviews flex column">
+                                <h3>Reviews</h3>
                                 <div className="flex space-between">
                                     <ExpRateBig reviews={exp.reviews} />
                                     <button onClick={this.toggleAddReviewShown}>Add review</button>
@@ -232,9 +237,12 @@ class _ExpDetails extends Component {
                                 {isAddReviewShown && <ReviewEdit onHandleChange={this.onHandleChange} onAddReview={this.onAddReview} review={review} user={user} />}
                                 <ReviewList reviews={exp.reviews} />
                             </section>
-                            <ExpParticipantsList participants={exp.participants} />
+                            <div>
+                                <h3>Participants</h3>
+                                <ExpParticipantsList participants={exp.participants} />
+                            </div>
                         </div>
-                        
+
                     </div>
 
                     <section className="exp-content">
@@ -243,8 +251,8 @@ class _ExpDetails extends Component {
 
                 </section>
                 <section className="details-footer flex space-between">
-                    <div className="google-maps">
-                        {/* <GoogleMap containerStyle={{ width: '40%', height: 350 }} style={{ height: 350 }} center={center} /> */}
+                    <div className="google-maps" style={{right: 0}}>
+                        {/* <GoogleMap containerStyle={{ width: '0', height: 0 }} style={{ height: 350 }} center={center} /> */}
                     </div>
                     <section className="chat-sec flex column space-between">
                         {user &&
