@@ -30,7 +30,7 @@ export class _Notification extends Component {
         // </div>
         return notification &&
             <div className={this.getClass(notification)} >
-                <span>{this.getMsg(notification)}</span>
+                <pre>{this.getMsg(notification)}</pre>
                 <img id="close-notification-btn" src={require("../assets/imgs/cancel-button.png")} alt=""
                     onClick={() => console.log('itay')} />
                 {/* //         <section className="flex align-center">

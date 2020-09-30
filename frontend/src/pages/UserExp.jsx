@@ -9,6 +9,8 @@ import { loadBookings, saveBooking } from '../store/actions/bookingAction';
 import { bookingService } from '../services/bookingService';
 import { socketService } from '../services/socketService';
 import { BookingList } from '../cmps/BookingList';
+import { toggleLoading } from '../store/actions/systemActions';
+import { Loading } from '../cmps/Loading';
 
 class _UserExp extends Component {
 
@@ -22,6 +24,7 @@ class _UserExp extends Component {
     }
 
     async componentDidMount() {
+        toggleLoading(true);
         const toApproveBookings = this.props.bookings.filter(booking => booking.status === 'pending' && booking.exp.owner._id === this.props.user._id)
         const expAs = this.props.match.params.as; // gets 'host' OR 'participants' - from url
         const filter = new URLSearchParams(this.props.location.search).get('status')
@@ -32,6 +35,7 @@ class _UserExp extends Component {
             await this._getUserBooking()
             await this.getExpsList()
             socketService.on('new booking', this.newBookNotification)
+            toggleLoading(false);
         })
 
     }
@@ -86,8 +90,9 @@ class _UserExp extends Component {
     }
 
     async getExpsList() {
+        toggleLoading(true);
         // console.log(this.state.userExps, 'booking', this.state.userBookings);
-        if (this.state.isHost) this.setState({ expList: this.state.userExps })
+        if (this.state.isHost) this.setState({ expList: this.state.userExps }, () => toggleLoading(false))
 
         else if (this.state.filter === 'pending') {
             const pendingExpArr = [];
@@ -98,7 +103,7 @@ class _UserExp extends Component {
                 }
             })
             const expList = await Promise.all(pendingExpArr)
-            this.setState({ expList })
+            this.setState({ expList }, () => toggleLoading(false))
 
         } else if (this.state.filter !== 'pending') {
             const approvedBookings = this.state.userBookings.filter(booking => {
@@ -121,16 +126,17 @@ class _UserExp extends Component {
                 })
             }
             const expList = await Promise.all(pastExpArr)
-            this.setState({ expList })
-
+            this.setState({ expList }, () => toggleLoading(false))
         }
+
     }
 
 
     render() {
         const { user } = this.props;
         const { expList, toApproveBookings } = this.state
-        if (!user) return <div>Itay Loading...</div>
+        if (!user) return <div>Login first!</div>
+
         return (
             <section className="user-exp-div">
                 <section className="title flex space-between align-center">
@@ -161,6 +167,7 @@ class _UserExp extends Component {
                     Add Experience</Button></Link>} */}
 
                 <section className="user-exp-list">
+                    {this.props.isLoading && <Loading />}
                     {
                         ((expList.length) ?
                             <ExpList exps={expList} isHost={this.state.isHost} /> : <h2>No Exps To Show</h2>)
@@ -181,7 +188,8 @@ class _UserExp extends Component {
 const mapStateToProps = state => {
     return {
         user: state.user.loggedInUser,
-        bookings: state.booking.bookings
+        bookings: state.booking.bookings,
+        isLoading: state.system.isLoading
     };
 };
 
