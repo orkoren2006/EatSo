@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loadExps, removeExp } from '../store/actions/expAction';
 import { ExpList } from '../cmps/ExpList';
 import { Loading } from '../cmps/Loading';
+import { ExpFilter } from '../cmps/ExpFilter';
 
 class _ExpApp extends Component {
 
@@ -15,7 +16,6 @@ class _ExpApp extends Component {
     }
 
     async componentDidUpdate(prevProps,prevState) {
-        console.log('from update',prevProps);
         if (prevProps.match === this.props.match) return
         this.setState({resultsMsg:''})
         await this._loadExps()
@@ -40,8 +40,9 @@ class _ExpApp extends Component {
         if (this.props.isLoading || !exps) return <Loading />
         return (
          
-            <div>
-                {this.state.resultsMsg && <h2>{this.state.resultsMsg}</h2>}
+            <div className="exp-app">
+                <ExpFilter/>
+                {this.state.resultsMsg && <h4>{this.state.resultsMsg}</h4>}
                 <ul>
                     {
                         <ExpList exps={exps} />

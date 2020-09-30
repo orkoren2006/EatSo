@@ -18,7 +18,7 @@ class _Home extends Component {
     let expsToSend;
     const [field, value] = attr.split('-')
     const valueRegex = new RegExp(`${value}`, 'i')
-
+    // debugger
     switch (field) {
       case 'tags':
         expsToSend = this.props.exps.filter(exp => {
