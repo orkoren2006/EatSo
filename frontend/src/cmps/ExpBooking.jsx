@@ -18,7 +18,7 @@ function _ExpBooking({ exp, onBookClick, onNumOfGuestsChange, numOfGuests, booki
                     <span className="price">${exp.price}  <span >/ Guest &nbsp;</span></span>
                     <ExpRate reviews={exp.reviews} />
                 </div>
-                <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 3).toDateString()}</div>
+                <div className="exp-date">{new Date(Date.now() + 1000 * 60 * 60 * 24 * 14).toDateString()}</div>
                 <div>
                     <label htmlFor="number-of-guests-booking">Number of guests: &nbsp;</label>
                     <InputNumber value={numOfGuests} onChange={onNumOfGuestsChange} name="numOfGuests" />

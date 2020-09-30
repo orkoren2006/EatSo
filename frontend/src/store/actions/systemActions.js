@@ -12,3 +12,8 @@ export function sendNotification(notification) {
     }
 }
 
+export function toggleLoading(isLoading) {
+    return dispatch => {
+        dispatch(isLoading ? loading : doneLoading)
+    }
+}

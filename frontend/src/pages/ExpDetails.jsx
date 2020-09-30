@@ -27,6 +27,7 @@ import { ReviewList } from '../cmps/ReviewList';
 import { ReviewEdit } from '../cmps/ReviewEdit';
 import { ExpRateBig } from '../cmps/ExpRateBig';
 import { Menu } from '../cmps/Menu';
+import { Loading } from '../cmps/Loading';
 // import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 
@@ -127,7 +128,6 @@ class _ExpDetails extends Component {
     onNumOfGuestsChange = (ev) => {
         const key = ev.target.name;
         const value = +ev.target.value;
-        console.log('im so happy');
         this.setState({ [key]: value });
     }
 
@@ -158,7 +158,7 @@ class _ExpDetails extends Component {
     render() {
         const { exp, review, isModalShown, isAddReviewShown, numOfGuests, login, gallery } = this.state;
         const { user } = this.props;
-        if (!exp) return <div>  </div>
+        if (!exp) return <Loading />
         const center = { lat: exp.location.lat, lng: exp.location.lng }
         return (
             <div className="exp-details-container main-container">

@@ -55,7 +55,6 @@ class _ExpEdit extends Component {
     uploadImg = async (ev) => {
 
         const cloudinaryUrl = await cloudinaryService.uploadImg(ev)
-        console.log('here', cloudinaryUrl);
         const imgUrl = cloudinaryUrl.secure_url;
 
         this.setState(prevState => {
@@ -98,7 +97,7 @@ class _ExpEdit extends Component {
                             }
                         }
                     }
-                }, () => { console.log(this.state.exp); })
+                })
             } else if (field === 'address') {
                 this.setState(prevState => {
                     return {
@@ -124,7 +123,7 @@ class _ExpEdit extends Component {
 
                         }
                     }
-                }, () => console.log(this.state))
+                })
             } else if (field === 'schedule') {
                 const time = Date.parse(value)
                 this.setState(prevState => {
@@ -137,7 +136,7 @@ class _ExpEdit extends Component {
                             }
                         }
                     }
-                }, ()=> console.log(this.state))
+                })
             }
             else {
                 this.setState(prevState => {
