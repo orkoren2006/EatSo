@@ -31,7 +31,6 @@ class _App extends Component {
   }
 
   onBookingStatusChange = async (booking) => {
-    console.log('onBookingStatusChange in App.jsx');
     const msg = `booking "${booking.exp.name}" ${booking.status}\nCheck it in your private zone`
     // const msg = `booking ${booking._id} ${booking.status}\nCheck it in your private zone`
     this.props.sendNotification({msg, isSuccessed: booking.status === 'approved'});
@@ -39,7 +38,6 @@ class _App extends Component {
   }
 
   onNewBooking = () => {
-    console.log('onNewBooking in App.jsx');
     const msg = 'new booking is pending\nCheck it in your private zone'
     this.props.sendNotification({msg, isSuccessed: true});
     setTimeout(this.props.clearNotification, 5000) 

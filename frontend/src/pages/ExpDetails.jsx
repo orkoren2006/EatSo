@@ -128,7 +128,6 @@ class _ExpDetails extends Component {
     onNumOfGuestsChange = (ev) => {
         const key = ev.target.name;
         const value = +ev.target.value;
-        console.log('im so happy');
         this.setState({ [key]: value });
     }
 

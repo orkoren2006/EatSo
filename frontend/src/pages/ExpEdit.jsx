@@ -11,7 +11,6 @@ import { MenuEditTest } from "../cmps/EditExpCmp/MenuEditTest";
 import { ExpGalleryEdit } from '../cmps/EditExpCmp/ExpGalleryEdit';
 
 function DynamicCmp(props) {
-    console.log('from dynCmp', props);
     switch (props.step) {
         case 0:
             return <ExpInfo {...props} />
@@ -70,7 +69,7 @@ class _ExpEdit extends Component {
             {
                 exp: sectionState,
             }, async () => {
-                console.log('from save exp', this.state.exp)
+                
                 await this.props.saveExp(this.state.exp)
             })
 
@@ -80,7 +79,7 @@ class _ExpEdit extends Component {
     render() {
         const { exp, activeStep } = this.state
         const steps = ['Info', 'Complementary Info', 'Menu', 'Gallery'];
-        console.log('from render', exp);
+        
         return (
             <div className="flex justify-center">
                 <div className="full-stepper">

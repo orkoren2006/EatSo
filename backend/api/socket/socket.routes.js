@@ -29,7 +29,7 @@ function connectSockets(io) {
             socket.userId = userId;
         })
         socket.on('booking exp', ({ booking, ownerId }) => {
-            console.log('socket on')
+            // console.log('socket on')
             
             const ownerSocket = socketMap[ownerId];
             if (ownerSocket) ownerSocket.emit('new booking', booking);

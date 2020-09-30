@@ -6,6 +6,7 @@ import { loadExps, removeExp } from '../store/actions/expAction';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { HostList } from '../cmps/HostList';
+import { Loading } from '../cmps/Loading';
 
 class _HostDetails extends Component {
 
@@ -25,8 +26,7 @@ class _HostDetails extends Component {
     render() {
         const { host } = this.state;
         const { exps } = this.props;
-        if (!host) return <div>Loading...</div>
-        if (!exps) return <div>Loading...</div>
+        if (!exps || !host) return <Loading />
         return (
 
             <section className="host-page-list">
@@ -39,7 +39,8 @@ class _HostDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        exps: state.exp.exps
+        exps: state.exp.exps,
+        isLoading: state.system.isLoading
     };
 };
 
