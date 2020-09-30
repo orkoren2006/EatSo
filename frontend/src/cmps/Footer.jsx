@@ -6,8 +6,13 @@ export function Footer() {
         <React.Fragment>
             <section className="footer flex column full">
                 <div className="footer-logo flex space-between">
-                    {/* <a href="/"></a> */}
-                        <img src={require("../assets/imgs/appetizer-logo-black.png")} alt="" />
+                    <img className="footer-logo-img"
+                    onClick={() => {
+                        document.body.scrollTop = 0;
+                        document.documentElement.scrollTop = 0;
+                    }}
+                        src={require("../assets/imgs/appetizer-logo-black.png")} alt="" />
+                    {/* <img src={require("../assets/imgs/appetizer-logo-black.png")} alt="" /> */}
                     <ul className="footer-links-list flex space-between clean-list">
                         <li>About Us</li>
                         <li>Contact Us</li>

@@ -4,8 +4,8 @@ import { ExpList } from '../cmps/ExpList';
 import { loadExps } from '../store/actions/expAction';
 import { Button } from '@material-ui/core';
 import { HomeCardList } from '../cmps/HomeCardList';
-import { Link } from 'react-router-dom';
 import { ExpFilter } from '../cmps/ExpFilter';
+import { Loading } from '../cmps/Loading';
 
 
 class _Home extends Component {
@@ -18,7 +18,6 @@ class _Home extends Component {
     let expsToSend;
     const [field, value] = attr.split('-')
     const valueRegex = new RegExp(`${value}`, 'i')
-    console.log(value);
 
     switch (field) {
       case 'tags':
@@ -64,9 +63,10 @@ class _Home extends Component {
 
   render() {
     const { exps } = this.props
-    if (!exps) return <div>Load</div>
+    if (this.props.isLoading || !exps) return <Loading />
+
     return (
-      <section className="home full main-container " id="top">
+      <section className="home full main-container" >
         <div className="hero-image flex column full">
 
           <h2>Change your food </h2>
@@ -123,7 +123,8 @@ class _Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    exps: state.exp.exps
+    exps: state.exp.exps,
+    isLoading: state.system.isLoading
   };
 };
 const mapDispatchToProps = {

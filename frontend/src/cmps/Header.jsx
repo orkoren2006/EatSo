@@ -95,12 +95,12 @@ class _Header extends Component {
         return (
             <React.Fragment>
                 <div className={toggleScreen} onClick={this.toggleMenu}> </div>
-                <div className={`header flex align-center space-between full ${isHeaderActive}`} id="top">
+                <div className={`header flex align-center space-between full ${isHeaderActive}`}>
                     <img className="header-logo" onClick={() => this.props.history.push('/')}
                         src={require("../assets/imgs/appetizer-logo-yellow.png")} alt="" />
 
                     <div className={`middle-navbar flex ${navBarColor} ${isHeaderActive}`}>
-                        <Link to="/exp"><h3 h3 className="all-exps-link">All Experiences</h3></Link> <div className="divider">|</div>
+                        <Link to="/exp"><h3 className="all-exps-link">All Experiences</h3></Link> <div className="divider">|</div>
                         <h3 className="host-meal-link" onClick={this.onHostMeal}>Host a meal</h3>
                     </div>
                     {/* <img className="login-avatar" src={user.imgUrl} onClick={this.toggleMenu}></img> */}
