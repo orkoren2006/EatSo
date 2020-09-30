@@ -8,6 +8,7 @@ export function BookingPreview({ booking, onChangeStatusBooking }) {
     const numOfGuests = booking.numOfGuests;
     return (
         <div className="booking-preview">
+            <div className= "queue">
             <UserPreview user={booking.guest} /> 
             <div className="number-guest">{numOfGuests} {numOfGuests > 1 ? 'guest' : 'guests'}</div>
             <div className="name">({booking.exp.name})</div>
@@ -18,6 +19,7 @@ export function BookingPreview({ booking, onChangeStatusBooking }) {
                 <Button className="reject-btn"
                     onClick={() => onChangeStatusBooking(booking._id, 'rejected')}>
                     Reject</Button>
+                    </div>
             </div>
         </div>
     )
